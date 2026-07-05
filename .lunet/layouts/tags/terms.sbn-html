@@ -1,0 +1,19 @@
+---
+layout: base
+---
+{{~ include "_i18n-detect" ~}}
+{{~ tag_tax = site.taxonomies["tags"] ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>{{ i18n.strings.tags ?? "Tags" }}</h1>
+      <ul class="list-unstyled">
+        {{~ if tag_tax != null && tag_tax.terms != null && tag_tax.terms.by_name != null ~}}
+          {{~ for term in tag_tax.terms.by_name ~}}
+        <li><a href="{{ term.url }}">{{ term.name }}</a> ({{ term.pages.size }})</li>
+          {{~ end ~}}
+        {{~ end ~}}
+      </ul>
+    </article>
+  </div>
+</div>

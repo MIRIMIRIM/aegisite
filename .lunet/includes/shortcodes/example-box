@@ -1,0 +1,7 @@
+{{~# Example box shortcode ~}}
+<div class="card">
+  <strong class="card-header">{{ i18n.strings.example }}</strong>
+  <div class="card-body">
+    {{ content }}
+  </div>
+</div>

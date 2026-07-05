@@ -1,0 +1,5 @@
+---
+layout: base
+---
+{{~ include "_i18n-detect" ~}}
+{{ content }}

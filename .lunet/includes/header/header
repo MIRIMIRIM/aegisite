@@ -1,0 +1,145 @@
+{{~ include "header/alert" ~}}
+{{~ current_url = current_url ?? page.url ?? "/" ~}}
+{{~ if current_url == "/index.html" ~}}
+  {{~ current_url = "/" ~}}
+{{~ end ~}}
+{{~ if navbar_sticky ~}}
+<div class="sticky-top">
+{{~ end ~}}
+<div class="header-bar"></div>
+<header class="navbar navbar-expand-md navbar-light doks-navbar">
+  <nav class="container-{{ full_width ? "fluid" : "xxl" }} flex-wrap flex-md-nowrap" aria-label="Main navigation">
+    <a class="navbar-brand p-0 me-auto" href="/" aria-label="{{ i18n.title }}">
+      {{ i18n.title }}
+    </a>
+    <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+      <div class="header-bar d-md-none"></div>
+      <div class="offcanvas-header d-md-none">
+        <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">{{ i18n.title }}</a></h2>
+        <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+      </div>
+      <div class="offcanvas-body px-4">
+        <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+        <ul class="nav flex-column flex-md-row ms-md-n3">
+          {{~ if current_menu != null && current_menu.main != null ~}}
+            {{~ for item in current_menu.main ~}}
+              {{~ active = false ~}}
+              {{~ if item.url != null && item.url != "" && (current_url | string.contains item.url) ~}}
+                {{~ active = true ~}}
+              {{~ end ~}}
+              {{~ if item.children != null && item.children.size > 0 ~}}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle ps-0 py-1" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ item.name }}
+                    <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-main shadow rounded border-0" aria-labelledby="navbarDropdownMenuLink">
+                    {{~ for child in item.children ~}}
+                    <li>
+                      <a class="dropdown-item{{ if current_url | string.contains child.url }} active{{ end }}" href="{{ child.url }}">{{ child.name }}</a>
+                    </li>
+                    {{~ end ~}}
+                  </ul>
+                </li>
+              {{~ else if item.url != null && item.url != "" ~}}
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1{{ if active }} active{{ end }}" href="{{ item.url }}">{{ item.name }}</a>
+                </li>
+              {{~ end ~}}
+            {{~ end ~}}
+          {{~ end ~}}
+        </ul>
+        <hr class="text-black-50 my-4 d-md-none">
+        <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+        <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+          {{~ if current_menu != null && current_menu.social != null ~}}
+            {{~ for item in current_menu.social ~}}
+              <li class="nav-item">
+                <a class="nav-link ps-0 py-1" href="{{ item.url }}" aria-label="{{ item.name }}">
+                  {{~ if item.pre ~}}{{ item.pre }}{{~ end ~}}
+                  <small class="ms-2 d-md-none">{{ item.name }}</small>
+                </a>
+              </li>
+            {{~ end ~}}
+          {{~ end ~}}
+        </ul>
+      </div>
+    </div>
+    {{~ if dark_mode ~}}
+    <button id="mode" class="btn btn-link order-md-1" type="button" aria-label="Toggle user interface mode">
+      <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+    </button>
+    {{~ end ~}}
+    {{~# Language switcher ~}}
+    <div class="dropdown order-md-2">
+      <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+        {{ i18n.language_iso }}
+        <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+        {{~ for lang in site.languages ~}}
+          {{~ lang_config = site.data.i18n[lang] ~}}
+          {{~ if lang == current_lang ~}}
+            <li><a class="dropdown-item current" aria-current="true" href="{{ current_url }}">{{ lang_config.language_name }}</a></li>
+          {{~ else ~}}
+            {{~ base_url = current_url ~}}
+            {{~ if current_lang != "en" ~}}
+              {{~ base_url = current_url | regex.replace "^/" + current_lang + "/" "/" ~}}
+            {{~ end ~}}
+            {{~ if base_url == "/index.html" ~}}
+              {{~ base_url = "/" ~}}
+            {{~ end ~}}
+            {{~ home_url = lang == "en" ? "/" : "/" + lang + "/" ~}}
+            {{~ docs_url = lang == "en" ? "/docs/" : "/" + lang + "/docs/" ~}}
+            {{~ downloads_url = lang == "en" ? "/downloads/" : "/" + lang + "/downloads/" ~}}
+            {{~ privacy_url = lang == "en" ? "/privacy-policy/" : "/" + lang + "/privacy-policy/" ~}}
+            {{~ if lang == "en" ~}}
+              {{~ alt_url = base_url ~}}
+            {{~ else ~}}
+              {{~ alt_url = "/" + lang + base_url ~}}
+            {{~ end ~}}
+            {{~ if base_url == "/" ~}}
+              {{~ alt_url = home_url ~}}
+            {{~ else if base_url | string.contains "/downloads/" ~}}
+              {{~ alt_url = downloads_url ~}}
+            {{~ else if base_url | string.contains "/privacy-policy/" ~}}
+              {{~ alt_url = privacy_url ~}}
+            {{~ else if base_url | string.contains "/changelog/" ~}}
+              {{~ alt_url = lang == "en" ? "/changelog/" : home_url ~}}
+            {{~ else if base_url | string.contains "/blog/" ~}}
+              {{~ if lang == "es-us" ~}}
+                {{~ alt_url = home_url ~}}
+              {{~ else if lang == "en" ~}}
+                {{~ alt_url = base_url ~}}
+              {{~ else if base_url == "/blog/" ~}}
+                {{~ alt_url = "/" + lang + "/blog/" ~}}
+              {{~ else if base_url == "/blog/aegisub-3.4.0-released/" ~}}
+                {{~ alt_url = "/" + lang + base_url ~}}
+              {{~ else ~}}
+                {{~ alt_url = "/" + lang + "/blog/" ~}}
+              {{~ end ~}}
+            {{~ else if base_url | string.contains "/docs/3.2/" ~}}
+              {{~ if lang == "en" ~}}
+                {{~ alt_url = base_url ~}}
+              {{~ else if lang == "zh-cn" ~}}
+                {{~ alt_url = "/zh-cn" + base_url ~}}
+              {{~ else ~}}
+                {{~ alt_url = docs_url ~}}
+              {{~ end ~}}
+            {{~ else if base_url | string.contains "/docs/" ~}}
+              {{~ alt_url = docs_url ~}}
+            {{~ end ~}}
+            <li><a class="dropdown-item" rel="alternate" href="{{ alt_url }}" hreflang="{{ lang }}" lang="{{ lang }}">{{ lang_config.language_name }}</a></li>
+          {{~ end ~}}
+        {{~ end ~}}
+      </ul>
+    </div>
+  </nav>
+</header>
+{{~ if !flex_search ~}}
+</div>
+{{~ end ~}}

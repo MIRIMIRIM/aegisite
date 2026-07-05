@@ -1,0 +1,2 @@
+{{~# Lua inline code shortcode ~}}
+<code class="inline-code language-lua">{{ code }}</code>

@@ -1,0 +1,114 @@
+{{~# JSON-LD Structured Data ~}}
+{{~ base_url = site.baseurl ~}}
+{{~ schema_type = i18n.schema_type ~}}
+{{~ schema_name = i18n.schema_name ~}}
+{{~ schema_logo = i18n.schema_logo ~}}
+{{~ schema_logo_width = i18n.schema_logo_width ~}}
+{{~ schema_logo_height = i18n.schema_logo_height ~}}
+{{~ schema_image = i18n.schema_image ~}}
+{{~ schema_image_width = i18n.schema_image_width ~}}
+{{~ schema_image_height = i18n.schema_image_height ~}}
+{{~ schema_github = i18n.schema_github ~}}
+{{~ schema_twitter = i18n.schema_twitter ~}}
+{{~ schema_locale = i18n.schema_locale ~}}
+{{~ primary_image = base_url + "/" + schema_image ~}}
+{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      {{~ if schema_type == "Organization" ~}}
+        "@type": "Organization",
+        "@id": "{{ base_url }}#/schema/organization/1",
+      {{~ else ~}}
+        "@type": "Person",
+        "@id": "{{ base_url }}#/schema/person/1",
+      {{~ end ~}}
+      "name": "{{ schema_name }}",
+      "url": "{{ base_url }}",
+      "sameAs": [
+        {{~ if schema_twitter != "" ~}}
+        "{{ schema_twitter }}"
+        {{~ end ~}}
+        {{~ if schema_github != "" ~}}
+        {{ if schema_twitter != "" }}, {{ end }}"{{ schema_github }}"
+        {{~ end ~}}
+      ],
+      {{~ if schema_type == "Organization" ~}}
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "{{ base_url }}#/schema/image/1",
+          "url": "{{ base_url }}/{{ schema_logo }}",
+          "width": {{ schema_logo_width }},
+          "height": {{ schema_logo_height }},
+          "caption": "{{ schema_name }}"
+        },
+        "image": {
+          "@id": "{{ base_url }}#/schema/image/1"
+        }
+      {{~ else ~}}
+        "image": {
+          "@type": "ImageObject",
+          "@id": "{{ base_url }}#/schema/image/1",
+          "url": "{{ base_url }}/{{ schema_image }}",
+          "width": {{ schema_image_width }},
+          "height": {{ schema_image_height }},
+          "caption": "{{ schema_name }}"
+        }
+      {{~ end ~}}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ base_url }}#/schema/website/1",
+      "url": "{{ base_url }}",
+      "name": "{{ i18n.title }}",
+      "description": "{{ i18n.description }}",
+      {{~ if schema_type == "Organization" ~}}
+        "publisher": {
+          "@id": "{{ base_url }}#/schema/organization/1"
+        }
+      {{~ else ~}}
+        "publisher": {
+          "@id": "{{ base_url }}#/schema/person/1"
+        }
+      {{~ end ~}}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ public_url }}",
+      "url": "{{ public_url }}",
+      "name": "{{ page.title }}",
+      "isPartOf": {
+        "@id": "{{ base_url }}#/schema/website/1"
+      },
+      {{~ if schema_type == "Organization" ~}}
+        "about": {
+          "@id": "{{ base_url }}#/schema/organization/1"
+        },
+      {{~ else ~}}
+        "about": {
+          "@id": "{{ base_url }}#/schema/person/1"
+        },
+      {{~ end ~}}
+      "breadcrumb": {
+        "@id": "{{ public_url }}#/schema/breadcrumb/1"
+      },
+      "primaryImageOfPage": {
+        "@id": "{{ public_url }}#/schema/image/2"
+      },
+      "inLanguage": "{{ schema_locale }}",
+      "potentialAction": [{
+        "@type": "ReadAction", "target": ["{{ public_url }}"]
+      }]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "{{ public_url }}#/schema/image/2",
+      "url": "{{ primary_image }}",
+      "contentUrl": "{{ primary_image }}",
+      "caption": "{{ page.title }}"
+    }
+  ]
+}
+</script>

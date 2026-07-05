@@ -1,0 +1,14 @@
+{{~# Detect language from the public URL. page.relative_url is not reliable for
+   # translated routes, which made /zh-cn/... pages render with English chrome. ~}}
+{{~ current_lang = "en" ~}}
+{{~ public_url = page.url ?? page.relative_url ?? "/" ~}}
+{{~ for lang in site.languages ~}}
+  {{~ if lang == "en"; continue; end ~}}
+  {{~ lang_root = "/" + lang + "/" ~}}
+  {{~ if public_url == "/" + lang || (public_url | string.contains lang_root) ~}}
+    {{~ current_lang = lang ~}}
+  {{~ end ~}}
+{{~ end ~}}
+{{~# Load language-specific configuration ~}}
+{{~ i18n = site.data.i18n[current_lang] ~}}
+{{~ current_menu = site.data.menus[current_lang] ~}}

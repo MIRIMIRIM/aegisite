@@ -1,0 +1,6 @@
+{{~# Alert shortcode ~}}
+{{~ context = context ?? "doks" ~}}
+<div class="alert alert-{{ context }} d-flex" role="alert">
+  <div class="flex-shrink-1 alert-icon">{{ icon ?? "" }}</div>
+  <div class="w-100">{{ text ?? content }}</div>
+</div>

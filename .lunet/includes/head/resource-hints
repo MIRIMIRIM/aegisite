@@ -1,0 +1,2 @@
+{{~# Resource hints for performance ~}}
+<meta name="theme-color" content="{{ i18n.theme_color }}">

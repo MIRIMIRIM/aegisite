@@ -1,0 +1,9 @@
+{{~# Table of contents for current page ~}}
+{{~ if page.toc != false ~}}
+<div class="page-links">
+  <h3>{{ i18n.strings.on_this_page }}</h3>
+  {{~ if page.toc ~}}
+    {{ page.toc }}
+  {{~ end ~}}
+</div>
+{{~ end ~}}

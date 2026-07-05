@@ -1,0 +1,186 @@
+title = "Aegisub"
+description = "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles."
+baseurl = baseurl ?? "https://aegisub.org"
+basepath = ""
+environment = "prod"
+
+default_language = "en"
+languages = ["en", "zh-cn", "es-us", "tr-tr"]
+
+clip_board = true
+instant_page = true
+dark_mode = true
+bootstrap_js = true
+highlight = true
+breadcrumb = false
+flex_search = false
+katex = false
+full_width = true
+navbar_sticky = true
+to_top_button = false
+scroll_spy = false
+blog_per_page = 7
+
+with markdown
+  options.extensions = "advanced+bootstrap"
+end
+
+with attributes
+  attributes.clear
+
+  # English: default language, no URL prefix.
+  match "/content/en/index.md" { url: "/", layout: "home" }
+  match "/content/en/blog/**/*.md" { url: "/blog/:slug/", layout: "blog" }
+  match "/content/en/blog/index.md" { url: "/blog/", layout: "blog" }
+  match "/content/en/docs/index.md" { url: "/docs/", layout: "docs" }
+  match "/content/en/docs/latest/**/*.md" { url: "/docs/:slug/", layout: "docs" }
+  match "/content/en/changelog/**/*.md" { url: "/changelog/:slug/", layout: "changelog" }
+  match "/content/en/changelog/index.md" { url: "/changelog/", layout: "changelog" }
+  match "/content/en/downloads/index.md" { url: "/downloads/", layout: "dl" }
+  match "/content/en/privacy-policy/index.md" { url: "/privacy-policy/", layout: "default" }
+  match "/content/index.xml" { url: "/index.xml", layout: "_default", layout_type: "rss" }
+  match "/content/rss.xml" { url: "/rss.xml", layout: "_default", layout_type: "rss" }
+
+  # Translated content keeps its language prefix.
+  match "/content/zh-cn/index.md" { url: "/zh-cn/", layout: "home" }
+  match "/content/zh-cn/blog/**/*.md" { url: "/zh-cn/blog/:slug/", layout: "blog" }
+  match "/content/zh-cn/blog/index.md" { url: "/zh-cn/blog/", layout: "blog" }
+  match "/content/zh-cn/docs/index.md" { url: "/zh-cn/docs/", layout: "docs" }
+  match "/content/zh-cn/docs/latest/**/*.md" { url: "/zh-cn/docs/:slug/", layout: "docs" }
+  match "/content/zh-cn/downloads/index.md" { url: "/zh-cn/downloads/", layout: "dl" }
+  match "/content/zh-cn/privacy-policy/index.md" { url: "/zh-cn/privacy-policy/", layout: "default" }
+
+  match "/content/es-us/index.md" { url: "/es-us/", layout: "home" }
+  match "/content/es-us/docs/index.md" { url: "/es-us/docs/", layout: "docs" }
+  match "/content/es-us/docs/latest/**/*.md" { url: "/es-us/docs/:slug/", layout: "docs" }
+  match "/content/es-us/downloads/index.md" { url: "/es-us/downloads/", layout: "dl" }
+  match "/content/es-us/privacy-policy/index.md" { url: "/es-us/privacy-policy/", layout: "default" }
+
+  match "/content/tr-tr/index.md" { url: "/tr-tr/", layout: "home" }
+  match "/content/tr-tr/blog/**/*.md" { url: "/tr-tr/blog/:slug/", layout: "blog" }
+  match "/content/tr-tr/blog/index.md" { url: "/tr-tr/blog/", layout: "blog" }
+  match "/content/tr-tr/docs/**/*.md" { url: "/tr-tr/docs/:slug/", layout: "docs" }
+  match "/content/tr-tr/docs/index.md" { url: "/tr-tr/docs/", layout: "docs" }
+  match "/content/tr-tr/downloads/index.md" { url: "/tr-tr/downloads/", layout: "dl" }
+  match "/content/tr-tr/privacy-policy/index.md" { url: "/tr-tr/privacy-policy/", layout: "default" }
+end
+
+html.head.metas.add ''
+html.head.includes.add "_builtins/cards.sbn-html"
+
+with search
+  excludes.add ["/draft/**", "/internal/**"]
+end
+
+excludes.add "/README.md"
+excludes.add "/LICENSE"
+excludes.add "/vercel.json"
+excludes.add "/data/**"
+excludes.add "/static/**"
+excludes.add "/assets/scss/**"
+excludes.add "/assets/js/alert-init.js"
+excludes.add "/assets/js/bootstrap.js"
+excludes.add "/assets/js/darkmode-init.js"
+excludes.add "/assets/js/katex.js"
+excludes.add "/assets/js/mermaid.js"
+excludes.add "/content/*/docs/latest/**/*.html"
+excludes.add "/.github/**"
+excludes.add "/tools/**"
+excludes.add "/.lunet/build/**"
+excludes.add "/.lunet/verify*/**"
+excludes.add "/.lunet/probe*/**"
+excludes.add "/audit*/**"
+
+with bundle
+  $bootstrap = resource "npm:bootstrap" "5.3.8"
+  $bootstrap_icons = resource "npm:bootstrap-icons" "1.11.3"
+  content "/static/css/site.css" "/css/"
+  content $bootstrap_icons "/font/fonts/bootstrap-icons.*" "/fonts/"
+  content "/static/favicon.ico" "/"
+  content "/static/favicon.svg" "/"
+  content "/static/favicon-*.png" "/"
+  content "/static/apple-touch-icon.png" "/"
+  content "/static/android-chrome-*.png" "/"
+  content "/static/site.webmanifest" "/"
+  content "/static/logo-aegisub.*" "/"
+  content "/static/img/*.gif" "/img/"
+  content "/static/img/*.jpg" "/img/"
+  content "/static/img/*.png" "/img/"
+  content "/static/img/*.svg" "/img/"
+  content "/static/img/3.2/*.gif" "/img/3.2/"
+  content "/static/img/3.2/*.jpg" "/img/3.2/"
+  content "/static/img/3.2/*.png" "/img/3.2/"
+  content "/static/img/3.2/*.svg" "/img/3.2/"
+  content "/static/img/3.2/zh/*.gif" "/img/3.2/zh/"
+  content "/static/img/3.2/zh/*.jpg" "/img/3.2/zh/"
+  content "/static/img/3.2/zh/*.png" "/img/3.2/zh/"
+  content "/static/img/3.2/zh/*.svg" "/img/3.2/zh/"
+  content "/static/img/blog/*.gif" "/img/blog/"
+  content "/static/img/blog/*.jpg" "/img/blog/"
+  content "/static/img/blog/*.png" "/img/blog/"
+  content "/static/img/blog/*.svg" "/img/blog/"
+  content "/static/img/blog/old/*.gif" "/img/blog/old/"
+  content "/static/img/blog/old/*.jpg" "/img/blog/old/"
+  content "/static/img/blog/old/*.png" "/img/blog/old/"
+  content "/static/img/blog/old/*.svg" "/img/blog/old/"
+  content "/static/img/screenshots/*.gif" "/img/screenshots/"
+  content "/static/img/screenshots/*.jpg" "/img/screenshots/"
+  content "/static/img/screenshots/*.png" "/img/screenshots/"
+  content "/static/img/screenshots/*.svg" "/img/screenshots/"
+  content "/static/img/screenshots/osx/*.gif" "/img/screenshots/osx/"
+  content "/static/img/screenshots/osx/*.jpg" "/img/screenshots/osx/"
+  content "/static/img/screenshots/osx/*.png" "/img/screenshots/osx/"
+  content "/static/img/screenshots/osx/*.svg" "/img/screenshots/osx/"
+  content "/static/img/screenshots/unix/*.gif" "/img/screenshots/unix/"
+  content "/static/img/screenshots/unix/*.jpg" "/img/screenshots/unix/"
+  content "/static/img/screenshots/unix/*.png" "/img/screenshots/unix/"
+  content "/static/img/screenshots/unix/*.svg" "/img/screenshots/unix/"
+  content "/static/img/screenshots/win/*.gif" "/img/screenshots/win/"
+  content "/static/img/screenshots/win/*.jpg" "/img/screenshots/win/"
+  content "/static/img/screenshots/win/*.png" "/img/screenshots/win/"
+  content "/static/img/screenshots/win/*.svg" "/img/screenshots/win/"
+  content "/static/img/vendor/*.gif" "/img/vendor/"
+  content "/static/img/vendor/*.jpg" "/img/vendor/"
+  content "/static/img/vendor/*.png" "/img/vendor/"
+  content "/static/img/vendor/*.svg" "/img/vendor/"
+  content "/static/fonts/**/*" "/fonts/"
+
+  js $bootstrap "/dist/js/bootstrap.bundle.min.js"
+  js "/assets/js/app.js"
+  js "/assets/js/scroll-lock.js"
+  js "/assets/js/highlight.js"
+  js "/assets/js/clipboard.js"
+  js "/assets/js/darkmode.js"
+  js "/assets/js/instant.page.js"
+  js "/assets/js/to-top.js"
+  js "/assets/js/alert.js"
+
+  concat = true
+  minify = true
+end
+
+
+with taxonomies
+  taxonomies.clear
+end
+with cards
+  with twitter
+    enable = true
+    card = "summary_large_image"
+    user = "aegisub"
+    image = "/img/logo.png"
+    image_alt = "Aegisub"
+  end
+  with og
+    enable = true
+    type = "website"
+    image = "/img/logo.png"
+    image_alt = "Aegisub"
+  end
+end
+
+
+html.head.title = do
+  sep = site.data.i18n.en.title_separator ?? "-"
+  ret (page.title == "Home" ? site.title : page.title + " " + sep + " " + site.title)
+end

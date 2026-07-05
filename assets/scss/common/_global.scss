@@ -88,6 +88,14 @@ a.btn:focus {
   padding-bottom: 5rem;
 }
 
+.home-hero {
+  padding-top: 2rem;
+
+  .row {
+    align-items: flex-start;
+  }
+}
+
 .section-md {
   padding-top: 3rem;
   padding-bottom: 3rem;

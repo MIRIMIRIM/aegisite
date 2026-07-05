@@ -1,0 +1,57 @@
+title: Aegisub
+title_separator: "-"
+title_addition: Aegisub Advanced Subtitle Editor
+description: >-
+  Aegisub is a free, cross-platform open source tool for creating and modifying
+  subtitles. Aegisub makes it quick and easy to time subtitles to audio, and
+  features many powerful tools for styling them, including a built-in real-time
+  video preview.
+
+language_name: 简体中文
+language_iso: ZH
+language_tag: zh-CN
+date_format: "yyyy年M月d日"
+
+og_locale: zh_CN
+schema_locale: zh-CN
+schema_type: Organization
+schema_name: Aegisub
+schema_logo: logo-aegisub.png
+schema_logo_width: 512
+schema_logo_height: 512
+schema_image: img/logo-1280.png
+schema_image_width: 1280
+schema_image_height: 499
+schema_github: "https://github.com/TypesettingTools/Aegisub"
+schema_twitter: "https://twitter.com/aegisub"
+schema_section: blog
+
+twitter_site: "@aegisub"
+theme_color: "#fff"
+
+footer: >-
+  Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/>
+  Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.
+
+alert: true
+alert_dismissable: true
+alert_text: >-
+  <a href="/blog/aegisub-3.4.0-released/">Aegisub 3.4.0 released!</a>
+
+strings:
+  get_started: "快速上手"
+  on_this_page: "本页目录"
+  menu_overview: "概述"
+  search_text: "Search docs..."
+  404_title: "Page not found :("
+  404_text: "The page you are looking for doesn't exist or has been moved."
+  browse: "Browse"
+  bsd_license: "Open-source BSD-style licenses."
+  example: "Example"
+  language: "语言"
+  type: "类别"
+  notes: "说明"
+  file: "文件"
+  md5: "MD5"
+  and: "与"
+  comma: "，"

@@ -1,0 +1,13 @@
+---
+
+sitemap: false
+---
+{{~ include "_i18n-detect" ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>404: {{ i18n.strings.page_not_found ?? "Page not found" }}</h1>
+      <p>{{ i18n.strings.page_not_found_desc ?? "The page you requested does not exist." }}</p>
+    </article>
+  </div>
+</div>

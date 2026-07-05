@@ -1,0 +1,3 @@
+{{~# Tag definition box shortcode ~}}
+<h3 id="{{ id }}">{{ title }}</h3>
+<pre><code class="language-plaintext">{{ content }}</code></pre>

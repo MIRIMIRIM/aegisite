@@ -1,0 +1,12 @@
+{{~# Video embed shortcode ~}}
+<div class="ratio ratio-{{ ratio ?? "16x9" }}">
+  <video{{ if attributes }} {{ attributes }}{{ end }}>
+    {{~ if webm_src ~}}
+    <source src="{{ webm_src }}" type="video/webm">
+    {{~ end ~}}
+    {{~ if mp4_src ~}}
+    <source src="{{ mp4_src }}" type="video/mp4">
+    {{~ end ~}}
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+</div>

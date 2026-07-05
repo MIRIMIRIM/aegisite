@@ -1,0 +1,2 @@
+{{~# Email anti-spam shortcode ~}}
+<script type="text/javascript" nonce="dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs=">user="{{ user }}",domain="{{ domain }}",document.write(user+"@"+domain);</script><noscript>{{ user }} at {{ domain }}</noscript>

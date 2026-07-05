@@ -1,0 +1,21 @@
+{{~# SEO meta tags ~}}
+{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+{{~# Title ~}}
+{{~ if public_url == "/" ~}}
+<title>{{ i18n.title }} {{ i18n.title_separator }} {{ i18n.title_addition }}</title>
+{{~ else ~}}
+<title>{{ page.title }} {{ i18n.title_separator }} {{ i18n.title }}</title>
+{{~ end ~}}
+
+{{~# Description ~}}
+{{~ if page.description ~}}
+<meta name="description" content="{{ page.description }}">
+{{~ else ~}}
+<meta name="description" content="{{ i18n.description }}">
+{{~ end ~}}
+
+<link rel="canonical" href="{{ public_url }}">

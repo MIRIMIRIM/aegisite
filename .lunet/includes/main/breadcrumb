@@ -1,0 +1,5 @@
+{{~# Breadcrumb navigation ~}}
+{{~ if page.parent ~}}
+  {{ include "main/breadcrumb" }}
+  <li class="breadcrumb-item"><a href="{{ page.parent.relative_url }}">{{ page.parent.title }}</a></li>
+{{~ end ~}}

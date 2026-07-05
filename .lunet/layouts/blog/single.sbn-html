@@ -1,0 +1,18 @@
+---
+layout: base
+---
+{{~ include "_i18n-detect" ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <div class="blog-header">
+        <h1>{{ page.title }}</h1>
+        {{ include "main/blog-meta" }}
+      </div>
+      {{~ if page.lead ~}}
+      <p class="lead">{{ page.lead }}</p>
+      {{~ end ~}}
+      {{ content }}
+    </article>
+  </div>
+</div>

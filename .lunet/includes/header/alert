@@ -1,0 +1,11 @@
+{{~# Alert banner ~}}
+{{~ if i18n.alert ~}}
+<div class="alert alert-primary alert-dismissible fade show text-lg-center d-none d-lg-block m-3" id="doks-announcement" role="alert" data-dismissible="true">
+  <div class="container-{{ full_width ? "fluid" : "xxl" }}">
+    {{ i18n.alert_text }}
+  </div>
+  {{~ if i18n.alert_dismissable ~}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {{~ end ~}}
+</div>
+{{~ end ~}}

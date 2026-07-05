@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link href="{{ ref page.url }}" rel="self" type="application/rss+xml" />
+    <title>{{ site.title | html.escape }}</title>
+    <link>{{ ref '/' }}</link>
+    <description>{{ site.description }}</description>
+    <generator>lunet {{ lunet.version}}</generator>
+    <pubDate>{{ date.now | date.to_rfc822 | html.escape }}</pubDate>
+    <lastBuildDate>{{ date.now | date.to_rfc822 | html.escape }}</lastBuildDate>
+    {{~ $limit = page.rss_limit ?? site.rss.limit ?? 1000; ~}}
+    {{~ for post in site.pages.by_date.reverse ~}}
+    {{~ if post.layout_type != null && post.layout_type != 'single'; continue; end ~}}
+    {{~ if !(post.url | string.contains '/blog/'); continue; end ~}}
+    {{~ if (post.url | string.contains '/zh-cn/') || (post.url | string.contains '/es-us/') || (post.url | string.contains '/tr-tr/'); continue; end ~}}
+      {{~ $limit = $limit - 1; if $limit < 0; break; end; ~}}
+    <item>
+      <title>{{ post.title | html.escape }}</title>
+      <link>{{ ref post.url }}</link>
+      {{~ if post.date }}
+      <pubDate>{{ post.date | date.to_rfc822 | html.escape }}</pubDate>
+      {{~ end }}
+      <guid isPermaLink="true">{{ ref post.url }}</guid>
+      <description>{{ post.summary | html.escape }}</description>
+    </item>
+    {{~ end ~}}
+  </channel>
+</rss>

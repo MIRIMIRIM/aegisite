@@ -1,0 +1,26 @@
+---
+layout: base
+---
+{{~ include "_i18n-detect" ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>{{ page.title }}</h1>
+      <div class="card-list">
+        {{~ for item in page.pages.by_date ~}}
+        <div class="card">
+          <div class="card-body">
+            <h2 class="h3"><a class="stretched-link text-body" href="{{ item.relative_url }}">{{ item.title }}</a></h2>
+            {{~ if item.lead ~}}
+            <p>{{ item.lead }}</p>
+            {{~ end ~}}
+            {{~ if item.date ~}}
+            <p class="card-text text-muted small">{{ item.date | date.to_format "MMMM dd, yyyy" }}</p>
+            {{~ end ~}}
+          </div>
+        </div>
+        {{~ end ~}}
+      </div>
+    </article>
+  </div>
+</div>

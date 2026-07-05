@@ -1,0 +1,4 @@
+{{~# TODO alert shortcode ~}}
+<div class="alert alert-warning" role="alert">
+  <strong>TODO: </strong>{{ content }}
+</div>

@@ -1,0 +1,29 @@
+---
+layout: base
+---
+{{~ current_lang = "en" ~}}
+{{~ path = page.path.full_name ~}}
+{{~ if path != null ~}}
+  {{~ m = regex.match path "zh-cn" ~}}
+  {{~ if m ~}}
+    {{~ current_lang = "zh-cn" ~}}
+  {{~ end ~}}
+  {{~ m = regex.match path "es-us" ~}}
+  {{~ if m ~}}
+    {{~ current_lang = "es-us" ~}}
+  {{~ end ~}}
+  {{~ m = regex.match path "tr-tr" ~}}
+  {{~ if m ~}}
+    {{~ current_lang = "tr-tr" ~}}
+  {{~ end ~}}
+{{~ end ~}}
+{{~ i18n = site.data.i18n[current_lang] ~}}
+{{~ current_menu = site.data.menus[current_lang] ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </article>
+  </div>
+</div>

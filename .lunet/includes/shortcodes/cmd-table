@@ -1,0 +1,22 @@
+{{~# Command reference table shortcode ~}}
+{{~ if page.section == "docs" ~}}
+  {{~ commands = site.data.commands_32 ~}}
+  {{~ if commands ~}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Command</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{~ for cmd in commands ~}}
+    <tr>
+      <td><code>{{ cmd.command }}</code></td>
+      <td>{{ cmd.description }}</td>
+    </tr>
+    {{~ end ~}}
+  </tbody>
+</table>
+  {{~ end ~}}
+{{~ end ~}}

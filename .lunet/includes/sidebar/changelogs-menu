@@ -1,0 +1,10 @@
+{{~# Changelog sidebar menu ~}}
+{{~ if current_menu != null && current_menu.changelogs != null ~}}
+<ul class="list-unstyled collapsible-sidebar">
+  {{~ for item in current_menu.changelogs ~}}
+  <li class="mb-1">
+    <a class="docs-link rounded{{ page.relative_url | string.contains item.name ? " active" : "" }}" href="{{ item.url }}">{{ item.name }}</a>
+  </li>
+  {{~ end ~}}
+</ul>
+{{~ end ~}}

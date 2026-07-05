@@ -1,0 +1,5 @@
+{{~# Details/summary shortcode ~}}
+<details{{ if attrs }} {{ attrs }}{{ end }}>
+  <summary>{{ title }}</summary>
+  {{ content }}
+</details>

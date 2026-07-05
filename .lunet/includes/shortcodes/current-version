@@ -1,0 +1,33 @@
+{{~ i18n = i18n ?? site.data.i18n.en ~}}
+{{~# Current version download table ~}}
+{{~ cur_version = site.data.version.current ~}}
+{{~ for version in site.data.version.previous_versions ~}}
+  {{~ if version.version == cur_version ~}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{ i18n.strings.type }}</th>
+      <th scope="col">{{ i18n.strings.notes }}</th>
+      <th scope="col">{{ i18n.strings.file }}</th>
+      <th scope="col">{{ i18n.strings.md5 }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{~ for artifact in version.artifacts ~}}
+      {{~ if !artifact.isHidden ~}}
+      <tr>
+        <td>{{ artifact.type }}</td>
+        <td>{{ artifact.notes }}</td>
+        {{~ if artifact.link ~}}
+        <td><a href="{{ artifact.link }}">{{ artifact.filename }}</a></td>
+        {{~ else ~}}
+        <td>{{ artifact.filename }}</td>
+        {{~ end ~}}
+        <td><code>{{ artifact.md5 }}</code></td>
+      </tr>
+      {{~ end ~}}
+    {{~ end ~}}
+  </tbody>
+</table>
+  {{~ end ~}}
+{{~ end ~}}

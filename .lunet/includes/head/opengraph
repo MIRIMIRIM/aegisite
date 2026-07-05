@@ -1,0 +1,16 @@
+{{~# OpenGraph meta tags ~}}
+{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+{{~ og_image = "/img/logo.png" ~}}
+{{~ og_locale = i18n.og_locale ~}}
+{{~ if page.og_image ~}}
+  {{~ og_image = page.og_image ~}}
+{{~ end ~}}
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description ?? i18n.description }}">
+<meta property="og:type" content="{{ page.og_type ?? "website" }}">
+<meta property="og:url" content="{{ public_url }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:locale" content="{{ og_locale }}">
+{{~ if i18n.title ~}}
+<meta property="og:site_name" content="{{ i18n.title }}">
+{{~ end ~}}

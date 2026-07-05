@@ -1,0 +1,6 @@
+{{~# Blog post metadata ~}}
+<p class="meta">
+  {{~ if page.date ~}}
+    {{ page.date }}
+  {{~ end ~}}
+</p>

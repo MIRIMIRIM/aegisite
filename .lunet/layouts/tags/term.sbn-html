@@ -1,0 +1,19 @@
+---
+layout: base
+---
+{{~ include "_i18n-detect" ~}}
+{{~ term_pages = page["pages"] ~}}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>{{ i18n.strings.tag ?? "Tag" }}: {{ page.title }}</h1>
+      <ul class="list-unstyled">
+        {{~ if term_pages != null && term_pages.by_date != null ~}}
+          {{~ for post in term_pages.by_date ~}}
+        <li><a href="{{ post.relative_url }}">{{ post.title }}</a></li>
+          {{~ end ~}}
+        {{~ end ~}}
+      </ul>
+    </article>
+  </div>
+</div>

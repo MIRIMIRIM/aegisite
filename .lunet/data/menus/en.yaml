@@ -1,0 +1,77 @@
+main:
+  - name: Downloads
+    weight: 10
+    identifier: downloads
+  - name: Downloads
+    url: /downloads/
+    parent: downloads
+    weight: 11
+  - name: Changelog
+    url: /changelog/
+    parent: downloads
+    weight: 15
+  - name: Docs
+    url: /docs/
+    weight: 20
+  - name: Bug Tracker
+    url: https://github.com/TypesettingTools/Aegisub/issues
+    weight: 30
+  - name: Blog
+    url: /blog/
+    weight: 40
+
+social:
+  - name: GitHub
+    pre: >-
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0
+      0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-cap="round" stroke-linejoin="round" class="feather
+      feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0
+      0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0
+      0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09
+      1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44
+      7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    url: "https://github.com/TypesettingTools/Aegisub"
+    weight: 20
+
+docs:
+  - name: Navigation
+    weight: 110
+    identifier: navigation
+  - name: Introduction
+    weight: 200
+    identifier: introduction
+  - name: Working with Subtitles
+    weight: 300
+    identifier: working-with-subtitles
+  - name: Typesetting
+    weight: 400
+    identifier: typesetting
+  - name: Timing
+    weight: 500
+    identifier: timing
+  - name: Automation
+    weight: 600
+    identifier: automation
+  - name: Miscellaneous
+    weight: 700
+    identifier: miscellaneous
+
+changelogs:
+  - name: "3.4"
+    weight: -34
+  - name: "3.2"
+    weight: -32
+  - name: "3.1"
+    weight: -31
+  - name: "3.0"
+    weight: -30
+  - name: "2.1"
+    weight: -21
+  - name: "1"
+    weight: -10
+
+footer:
+  - name: Privacy
+    url: /privacy-policy/
+    weight: 10

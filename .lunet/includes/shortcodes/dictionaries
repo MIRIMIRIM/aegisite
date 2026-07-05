@@ -1,0 +1,74 @@
+{{~ i18n = i18n ?? site.data.i18n.en ~}}
+{{~# Dictionary downloads table ~}}
+{{~ dict_languages = site.data.dictionaries.dict_languages ~}}
+{{~ first_entry = true ~}}
+{{~ for dict_file in site.data.dictionaries.dict_files ~}}
+  {{~ if first_entry ~}}
+<h3>{{ dict_file.version }}</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{ i18n.strings.language }}</th>
+      <th scope="col">{{ i18n.strings.notes }}</th>
+      <th scope="col">{{ i18n.strings.file }}</th>
+      <th scope="col">{{ i18n.strings.md5 }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{~ for artifact in dict_file.artifacts ~}}
+    <tr>
+      {{~ lang_name = "" ~}}
+      {{~ for dl in dict_languages ~}}
+        {{~ if dl.lang == artifact.language ~}}
+          {{~ lang_name = dl.name ~}}
+        {{~ end ~}}
+      {{~ end ~}}
+      <td>{{ lang_name }}</td>
+      <td>{{ artifact.notes }}</td>
+      {{~ if artifact.link ~}}
+      <td><a href="{{ artifact.link }}">{{ artifact.filename }}</a></td>
+      {{~ else ~}}
+      <td>{{ artifact.filename }}</td>
+      {{~ end ~}}
+      <td><code>{{ artifact.md5 }}</code></td>
+    </tr>
+    {{~ end ~}}
+  </tbody>
+</table>
+  {{~ else ~}}
+<details>
+  <summary>{{ dict_file.version }}</summary>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">{{ i18n.strings.language }}</th>
+        <th scope="col">{{ i18n.strings.notes }}</th>
+        <th scope="col">{{ i18n.strings.file }}</th>
+        <th scope="col">{{ i18n.strings.md5 }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{~ for artifact in dict_file.artifacts ~}}
+      <tr>
+        {{~ lang_name = "" ~}}
+        {{~ for dl in dict_languages ~}}
+          {{~ if dl.lang == artifact.language ~}}
+            {{~ lang_name = dl.name ~}}
+          {{~ end ~}}
+        {{~ end ~}}
+        <td>{{ lang_name }}</td>
+        <td>{{ artifact.notes }}</td>
+        {{~ if artifact.link ~}}
+        <td><a href="{{ artifact.link }}">{{ artifact.filename }}</a></td>
+        {{~ else ~}}
+        <td>{{ artifact.filename }}</td>
+        {{~ end ~}}
+        <td><code>{{ artifact.md5 }}</code></td>
+      </tr>
+      {{~ end ~}}
+    </tbody>
+  </table>
+</details>
+  {{~ end ~}}
+  {{~ first_entry = false ~}}
+{{~ end ~}}

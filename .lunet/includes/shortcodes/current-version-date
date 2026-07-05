@@ -1,0 +1,2 @@
+{{~# Current version date ~}}
+{{ site.data.version.release_date }}

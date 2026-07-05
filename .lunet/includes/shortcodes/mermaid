@@ -1,0 +1,6 @@
+{{~# Mermaid diagram shortcode ~}}
+{{~ if page.mermaid ~}}
+<div class="mermaid{{ if class }} {{ class }}{{ end }}">
+  {{ content }}
+</div>
+{{~ end ~}}
