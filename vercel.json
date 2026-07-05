@@ -60,10 +60,5 @@
       ],
       "destination": "https://github.com/TypesettingTools/Aegisub"
     }
-  ],
-  "build": {
-    "env": {
-      "HUGO_VERSION": "0.110.0"
-    }
-  }
+  ]
 }

@@ -1,4 +1,9 @@
 node_modules
-public
-resources
+.lunet/build/
+.lunet/verify*/
+.lunet/probe*/
+.lunet/*.log
+.lunet/*.json
+.lunet/*.txt
+.lunet/*.png
 .hugo_build.lock

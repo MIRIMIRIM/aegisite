@@ -81,11 +81,9 @@ excludes.add "/assets/scss/**"
 excludes.add "/assets/js/**"
 excludes.add "/content/*/docs/latest/**/*.html"
 excludes.add "/.github/**"
-excludes.add "/tools/**"
 excludes.add "/.lunet/build/**"
 excludes.add "/.lunet/verify*/**"
 excludes.add "/.lunet/probe*/**"
-excludes.add "/audit*/**"
 
 with bundle
   $bootstrap = resource "npm:bootstrap" "5.3.8"
