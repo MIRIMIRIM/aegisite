@@ -1,6 +1,6 @@
 ---
-Type: glossary
-Title: Karaoke Effect
+type: glossary
+title: Karaoke Effect
 aliases:
   - /docs/latest/Glossary/Karaoke_effect/
 ---

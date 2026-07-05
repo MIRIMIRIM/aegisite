@@ -1,5 +1,9 @@
 ---
 title: Five cool things in Aegisub that people aren't aware of
+
+
+
+slug: five-cool-things-in-aegisub-that-people-arent-aware-of
 contributors:
   - Unknown
 date: 2008-07-23T03:25:00.008000+01:00

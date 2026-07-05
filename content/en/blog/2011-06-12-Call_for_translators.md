@@ -1,5 +1,9 @@
 ---
 title: Call for translators
+
+
+
+slug: call-for-translators
 contributors:
   - jfs
 date: 2011-06-12T03:59:00.006000+01:00

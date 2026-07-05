@@ -19,7 +19,7 @@ designed to make it easier writing effect templates.
 
 It's important to understand that the contents of code execution
 environment and the
-[inline-variables]({{< relref "./Inline_variables" >}})
+[inline-variables](/docs/inline-variables-variables/)
 ($-variables) are not related. You cannot change an inline-variable by
 changing something in the code execution environment nor can you add new
 ones. However, you can create and re-define the contents of the code
@@ -30,14 +30,14 @@ execution environment.
 The code execution environment contains a few variables pointing to the
 current line and syllable structure being processed, as well as some more
 supporting tables. These are just references to the structures produced by
-[karaskel]({{< relref "../Lua/Modules/karaskel.lua.md#datastructures" >}}) and are not
+[karaskel](/docs/karaskel-lua/#datastructures/) and are not
 modified in any way.
 
 You should treat all of these except `line` as read-only. If you change the
 other ones, the kara-templater script might start misbehaving.
 
 - **line** - The line currently being produced. Changing this will affect
-  the resulting line in the file. See the **[reference for dialogue line tables]({{< relref "../Lua/Modules/karaskel.lua.md#dialogue-line-table" >}})**.
+  the resulting line in the file. See the **[reference for dialogue line tables](/docs/karaskel-lua/#dialogue-line-table/)**.
 - **orgline** - The original line. This is the source line the current
   syllable is located on.
 - **syl** - The current syllable structure. If the current template is a
@@ -45,7 +45,7 @@ other ones, the kara-templater script might start misbehaving.
   template has one or both of the _char_ or _multi_ modifiers, this is a
   pseudo-syllable structure, a copy of the original syllable structure with
   several values changed to look like the current part of the syllable
-  being processed. Also see the **[reference for syllable tables]({{< relref "../Lua/Modules/karaskel.lua.md#karaoke-and-furigana-syllable-tables" >}})**.
+  being processed. Also see the **[reference for syllable tables](/docs/karaskel-lua/#karaoke-and-furigana-syllable-tables/)**.
 - **basesyl** - Usually the same as `syl`, except when the template has the
   _char_ or _multi_ modifier, then this is the original syllable. (If `syl == basesyl` is true, then the current template is neither _char_ nor
   _multi_.)
@@ -69,15 +69,15 @@ generally useful.
 
 You can also access the main execution environment of the kara-templater
 script itself using the **`_G`** (underscore capital-G) variable and
-through that access the rest of the Lua standard library and any [loaded modules]({{< relref "../Lua/Modules" >}}). For example, `_G.table.sort` refers to
+through that access the rest of the Lua standard library and any [loaded modules](/docs/lua-modules/). For example, `_G.table.sort` refers to
 the regular `table.sort` function. See the [Lua 5.1
 manual](https://www.lua.org/manual/5.1/manual.html#5) for details on the
 available libraries.
 
 For backwards compatibility, several of the included modules
-([karaskel.lua]({{< relref "../Lua/Modules/karaskel.lua.md" >}}),
-[unicode.lua]({{< relref "../Lua/Modules/unicode" >}}) and
-[utils.lua]({{< relref "../Lua/Modules/util" >}})) are automatically loaded
+([karaskel.lua](/docs/karaskel-lua/),
+[unicode.lua](/docs/unicode-lua/) and
+[utils.lua](/docs/utils-lua/)) are automatically loaded
 and will be accessible via `_G` by default. All others must be explicitly
 `require`d on a code line.
 
@@ -146,8 +146,9 @@ The `retime` function always returns the empty string (`""`) which will
 cause it to output nothing when used in code blocks, but still evaluate to
 true if used in boolean expressions.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !retime("preline", -1000, 0)!{\pos($scenter,$smiddle)\an5\fscx0\fscy0\t(\fscx100\fscy100)}
 ```
@@ -157,9 +158,11 @@ second (1000 milliseconds) before the actual line timing. The two important
 things to code: Quotation marks around `"preline"` and that the start
 offset is negative, -1000, because the start time needs to be moved
 backwards.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !retime("syl", 0, 0)!{\pos($x,$y)\t(\fscx360)}
 ```
@@ -170,9 +173,11 @@ syllable will only be visible during its highlight. Note how retiming a
 syllable line to just the syllable time makes it unneeded to put start and
 end times in the `\t` tag, as they default to the duration of the entire
 line and here the duration of the line is the duration of the syllable.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !retime("sylpct", 0, 50)!{\move($x,$y,$x,!$y-10!)}
 template syl: !retime("sylpct", 50, 100)!{\move($x,!$y-10!,$x,$y)}
@@ -184,7 +189,8 @@ Using `retime` is an easy way to get multiple `\move` tags to affect the
 same syllable; there can only be one `\move` tag on one line, but if you
 split the line into many "chained" times you can create an effect of the
 same syllable moving in several directions.
-{{</example-box>}}
+</div>
+</div>
 
 ### relayer
 
@@ -197,8 +203,9 @@ layer number, you do not need to use this function. You can just set the
 Layer field on the template line, and it will transfer to the generated
 lines. This function is only needed when the layer number is dynamic.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !relayer(syl.i*5+20)!
 ```
@@ -206,7 +213,8 @@ template syl: !relayer(syl.i*5+20)!
 Each syllable generated from the line gets a progressively higher layer
 number. The first syllable gets in layer 25, the second in layer 30 and so
 on, each syllable getting a layer 5 larger than the previous.
-{{</example-box>}}
+</div>
+</div>
 
 ### restyle
 
@@ -234,24 +242,28 @@ Dynamically control the number of times a template will be looped.
 
 You do not need to use the loop modifier on templates to use this function.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !maxloop(syl.width + 2*line.styleref.outline)!{\clip(!line.left+syl.left-line.styleref.outline+j-1!,0,!line.left+syl.left-line.styleref.outline+j!,!meta.res_y!)\an5\move(!line.left+syl.center!,!line.middle!,!line.left+syl.center!,!line.middle+math.random(-20,20)!,$start,$end)\shad0}
 ```
 
 Cut each syllable into a number of slivers, depending on the size of the
 syllable. Each sliver moves randomly on highlight.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: !maxloop(j+1)!
 ```
 
 Makes an infinite loop. It continually sets `j` one higher, making the loop
 never complete.
-{{</example-box>}}
+</div>
+</div>
 
 ### loopctl
 
@@ -297,8 +309,9 @@ The `remember_if` function will only store the value if the given _condition_
 is a truthy value (i.e. not `nil` or `false`.) It still returns the value even
 if the condition is falsey.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: {\frz!remember("entryrotation",math.random(100,200))!\fscx300\fscy300\t(0,300,\frz0\fscx100\fscy100)\pos($x,$y)}
 template syl: {\frz-!recall("entryrotation")!\fscx300\fscy300\t(0,300,\frz0\fscx100\fscy100)\pos($x,$y)\fad(300,0)}
@@ -313,9 +326,11 @@ The second line loads the same number back, since it uses the name
 `"entryrotation"` for recall. It places a minus sign in front of it, but
 otherwise does the same effect. The result is two copies of the syllable
 rotating opposite each other, but the same amount.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl: {\fscx!remember_if("longsyllables", recall("longsyllables", 100)+10, #syl.duration>200)!}
 ```
@@ -330,7 +345,8 @@ stored back.
 
 The effect is that the `\fscx` gets 10 bigger for all syllables, every time
 a "long" syllable is encountered.
-{{</example-box>}}
+</div>
+</div>
 
 ## Template execution data
 
@@ -351,11 +367,12 @@ variables are introduced in the code execution environment, **`j`** and
 
 If you change `j` or `maxj` while a template is executing, you can affect
 the number of iterations the loop makes. The
-[`maxloop`]({{< relref "Code_execution_environment#maxloop" >}})
+[`maxloop`](/docs/execution-environment/#maxloop/)
 function is convenient for making dynamic loops.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl loop 5: {\an5\pos($scenter,$smiddle)\1a&HFF&\3a&Hcc&\t($start,$end,\fscx!100+j\*10!\fscy!100+j\*10!\3a&HFF&)}
 ```
@@ -366,10 +383,12 @@ copies of the that border-only line is made through the loop, and made to
 
 This example assumes that the style definition has shadow disabled but it
 does have a border.
-{{</example-box>}}
+</div>
+</div>
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 template syl loop 20: {\move($x,$y,!$x+15\*math.cos(math.pi\*2\*j/maxj)!,!$y+15\*math.sin(math.pi\*2\*j/maxj)!,$start,$end)\t($start,$end,\alpha&HFF&)}
 ```
@@ -380,7 +399,8 @@ with radius 15 and make the syllables move out to those. Just by changing
 the number of loops in the Effect field you can make a more detailed circle
 because `j/maxj` is used to calculate how large a portion of the total
 number of loops have been completed.
-{{</example-box>}}
+</div>
+</div>
 
 ### Conditional templates with fxgroup
 
@@ -398,8 +418,9 @@ While you can technically use any text string for fxgroup names, because
 they're used in Lua code it's best to avoid ones that overlap with Lua
 reserved words such as `end`, `break`, `return` and several more.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 code syl: fxgroup.long = (syl.duration > 200)
 template syl noblank: all here:
@@ -427,4 +448,5 @@ Neither of the two templates will output anything for the zeroth syllable.
 The first template, because it has the "noblank" modifier, and the second
 because the zero'th syllable's duration is too short for the fxgroup to be
 enabled.
-{{</example-box>}}
+</div>
+</div>

@@ -1,5 +1,9 @@
 ---
 title: Unicode, UTF-8, UTF-16, UCS-2 - In a Nutshell
+
+
+
+slug: unicode-utf-8-utf-16-ucs-2-in-a-nutshell
 contributors:
   - Unknown
 date: 2008-10-14T22:57:00.004000+01:00

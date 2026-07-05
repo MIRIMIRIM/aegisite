@@ -1,5 +1,9 @@
 ---
 title: Aegisub for Windows Me and 98? Never.
+
+
+
+slug: aegisub-for-windows-me-and-98-never
 contributors:
   - jfs
 date: 2008-08-19T01:39:00.003000+01:00

@@ -1,5 +1,9 @@
 ---
 title: Undocumented control
+
+
+
+slug: undocumented-control
 contributors:
   - jfs
 date: 2008-09-10T17:27:00.003000+01:00

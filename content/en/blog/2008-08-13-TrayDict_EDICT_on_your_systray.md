@@ -1,5 +1,9 @@
 ---
 title: 'TrayDict: EDICT on your systray'
+
+
+
+slug: traydict-edict-on-your-systray
 contributors:
   - Unknown
 date: 2008-08-13T23:29:00.002000+01:00

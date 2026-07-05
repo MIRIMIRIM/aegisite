@@ -7,7 +7,7 @@ weight: 6171
 ---
 
 欢迎来到这里！这是有关卡拉OK模板执行器的第一篇教程，它可以帮助你创作
-[卡拉OK特效]({{< relref "../../Glossary/Karaoke_effect" >}})。在一系列教程里，我们由简单到复杂来进行教学。
+[卡拉OK特效](/zh-cn/docs/卡拉ok特效/)。在一系列教程里，我们由简单到复杂来进行教学。
 
 ## 找到卡拉OK模板执行器(Karaoke Templater)
 
@@ -27,7 +27,7 @@ weight: 6171
 ## 获取打好K值的行
 
 卡拉OK模板执行能做许多事，但是它没办法猜到歌曲的歌词，也没办法猜测歌词和音乐的同步信息。你不得不亲自给歌词制作卡拉OK时间。你可以在
-[Karaoke Timing Tutorial]({{< relref "Karaoke_Timing_Tutorial" >}})
+[Karaoke Timing Tutorial](/zh-cn/docs/卡拉ok计时/)
 中找到给歌词制作卡拉OK时间（K值）的方法。
 
 我们把基础的含有卡拉OK时间信息的歌词称为K值歌词(\\k
@@ -66,14 +66,14 @@ Dialogue: 0,0:00:09.28,0:00:16.21,Default,,0000,0000,0000,,{\k79}ki{\k61}su{\k0}
 1. 最后，键入文本作为模板行的内容，再次按 *回车* 保存。例如
    `{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 
-{{<todo>}}插入一张截屏来展示做完这几步后看起来是什么样子。{{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>插入一张截屏来展示做完这几步后看起来是什么样子。</div>
 
 现在再看看 *自动化* 菜单。如果你正确地编写了模板， *应用卡拉OK模板*
 看起来是可用的。如果还是灰色的，请按上述步骤检查。
 
 点击 *应用卡拉OK模板* 来观察卡拉OK模板执行器如何工作。
 
-{{<todo>}}另一张截图，展示应用完模板的效果.{{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>另一张截图，展示应用完模板的效果.</div>
 
 如果你已经读取了视频，那么现在应该能在Aegisub里预览到效果了。
 
@@ -89,7 +89,7 @@ Dialogue: 0,0:00:09.28,0:00:16.21,Default,,0000,0000,0000,,{\k79}ki{\k61}su{\k0}
    `{\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 1. 再次应用模板
 
-{{<todo>}}再添加一张截图{{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>再添加一张截图</div>
 
 卡拉OK模板执行器重新利用了打好K值的行，并且赋予它们特效。你也可以尝试改变被注释的打好K的行，然后重新应用模板。
 
@@ -139,8 +139,8 @@ Dialogue: 0,0:00:09.28,0:00:16.21,Default,,0000,0000,0000,,{\k79}ki{\k61}su{\k0}
     放回到行中，就像我们上面的模板中写的。
 
 知道了这些，你应该已经可以创作许多特效啦。配合着
-[ASS特效标签]({{< relref "ASS_Tags" >}})
+[ASS特效标签](/zh-cn/docs/ass标签/)
 ，发挥想象，会有更丰富的效果。
 
 你也可以
-[继续下一篇教程]({{< relref "./Tutorial_2" >}})，在那里你可以了解如何对变量做一些数学上的调整，来获取一些变型。
+[继续下一篇教程](/zh-cn/docs/教程二/)，在那里你可以了解如何对变量做一些数学上的调整，来获取一些变型。

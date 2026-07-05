@@ -25,11 +25,11 @@ is created for:
 
 Read-only
 : Some feature functions must not be allowed to modify the subtitle file at
-  all. This includes for example [macro validation functions]({{< relref "Registration#macro-validation-function" >}}) and [export filter configuration panel providers]({{< relref "Registration#export-filter-configuration-panel-provider" >}}),
+  all. This includes for example [macro validation functions](/docs/registration/#macro-validation-function/) and [export filter configuration panel providers](/docs/registration/#export-filter-configuration-panel-provider/),
   because this would be outside user expectations.
 
 Allow undo points
-: Only [macro processing functions]({{< relref "Registration#macro-processing-function" >}}) can set undo
+: Only [macro processing functions](/docs/registration/#macro-processing-function/) can set undo
   points, as it makes no sense to do so at any other time.
 
 To allow the most flexibility, the subtitles object represents a complete ASS
@@ -270,14 +270,14 @@ This class defines two additional fields:
 
 This class defines a large number of additional fields. It's usually processed
 by the _karaskel_ and modified a bit by that. See the _karaskel.lua_ section on
-[style tables]({{< relref "Modules/karaskel.lua.md#style-table" >}}) for more
+[style tables](/docs/karaskel-lua/#style-table/) for more
 information about this class.
 
 ### `dialogue` class
 
 This class defines a large number of additional fields. It's usually processed
 by the _karaskel_ and has many calculated fields added by that. See the
-_karaskel.lua_ section on [dialogue line tables]({{< relref "Modules/karaskel.lua.md#dialogue-line-table" >}}) for more
+_karaskel.lua_ section on [dialogue line tables](/docs/karaskel-lua/#dialogue-line-table/) for more
 information on this class.
 
 ### `unknown` class

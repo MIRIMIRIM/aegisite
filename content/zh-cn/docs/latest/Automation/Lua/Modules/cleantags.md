@@ -6,4 +6,4 @@ menu:
 weight: 6264
 ---
 
-{{<todo>}}Write documentation {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Write documentation</div>

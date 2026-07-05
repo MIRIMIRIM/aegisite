@@ -1,6 +1,6 @@
 ---
-Type: glossary
-Title: Automation script feature
+type: glossary
+title: Automation script feature
 aliases:
   - /docs/latest/Glossary/Automation_script_feature/
 ---

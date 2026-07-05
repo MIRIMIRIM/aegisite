@@ -148,19 +148,17 @@ The spectrum mode takes more CPU and RAM than waveform mode, but it gives a bett
 
 ## Fine timing, words and then syllables
 
-{{<todo>}}
-Click Karaoke button.<br>
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Click Karaoke button.<br>
 Time words.<br>
 Click Split button. Place split markers. Click Accept Split button.<br>
 Time syllables.<br>
 Commit.<br>
-Repeat.
-{{</todo>}}
+Repeat.</div>
 
 ## Styling
 
-{{<todo>}}a bit about styles, how basic karaoke looks, and the \kf and \ko effects {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>a bit about styles, how basic karaoke looks, and the \kf and \ko effects</div>
 
 ## Wrapping up
 
-{{<todo>}}mention the video tutorial again and point to other relevant topics {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>mention the video tutorial again and point to other relevant topics</div>

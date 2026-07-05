@@ -20,7 +20,7 @@ implementation discussed here is designed specifically with Japanese furigana
 in mind, the ruby text is also referred to as furigana everywhere.
 
 None of the subtitle formats Aegisub supports natively support ruby text or
-furigana, however the [karaskel]({{< relref "Automation/Lua/Modules/karaskel.lua.md" >}}) standard include
+furigana, however the [karaskel](/docs/karaskel-lua/) standard include
 implements an algorithm that can create basic furigana layouts by calculating
 the position of every individual character.
 
@@ -28,11 +28,11 @@ This page describes the syntax the Automation 4 karaskel.lua script understands
 for furigana text, and how to use the layout information it calculates to
 actually create positioned characters.
 
-[Karaoke Templater]({{< relref "Automation/Karaoke_Templater" >}}) also implements support for
+[Karaoke Templater](/docs/karaoke-templater/) also implements support for
 furigana using the karaskel.lua algorithm and syntax.
 
 It's important to note that the syntax is designed for karaoke, and revolves
-around [karaoke timed]({{< relref "Karaoke_Timing_Tutorial" >}}) text. It isn't suited for typesetting
+around [karaoke timed](/docs/karaoke-timing-tutorial/) text. It isn't suited for typesetting
 regular text (e.g. dialogue lines) with general purpose ruby text. A more
 elaborate syntax and more complex layout engine would be required for that.
 
@@ -48,12 +48,14 @@ syllable. You can have multiple number sign syllables in a row, adding up
 multiple timings in that way.
 
 The timings of the individual number sign syllables are still stored in the
-[highlight table]({{< relref "Automation/Lua/Modules/karaskel.lua.md#highlight-table" >}}) of the
+[highlight table](/docs/karaskel-lua/#highlight-table/) of the
 generated syllable structure, but the main timing (`start_time` and `end_time`)
 of the syllable structure reflects only the added-together timings of the
 number sign syllables.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 This line shows how multi-highlight syntax is used to mark up kanji and groups
 of kanji that cover multiple syllables:
 
@@ -75,7 +77,8 @@ It generates the following syllable structures:
     <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td></tr>
     <tr><td>14</td></tr>
 </table>
-{{</example-box>}}
+</div>
+</div>
 
 ## Basic furigana
 
@@ -91,7 +94,9 @@ syllables they belong to. If the string of furigana is wider than the main text
 the furigana is left-aligned with the main text. You can control this behaviour
 with special control characters, see below.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Adding furigana to the example above:
 
 ```ass
@@ -112,7 +117,8 @@ The following syllables, highlights and furigana are produced:
     <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td><td>と</td></tr>
     <tr><td>14</td><td>き</td></tr>
 </table>
-{{</example-box>}}
+</div>
+</div>
 
 ## Controlling the layout
 
@@ -142,7 +148,9 @@ In all cases, if two furigana sequences extend beyond their main text such that
 they would overlap, the main text is moved such that the furigana won't
 overlap.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Here is the same (rather contrived) sample text shown without layout control
 and with each of the two layout control characters:
 
@@ -157,7 +165,8 @@ difference is only a few pixels, but it is there. In the first sample, the た
 extends a bit over the left edge of 魂 and above 国 while it exactly
 left-aligns with 魂 in the second. In the second, ちゅうごく is also centered
 above 中国 while it isn't in the first.
-{{</example-box>}}
+</div>
+</div>
 
 ## Summary
 
@@ -179,11 +188,13 @@ characters are accepted.
 
 ## Usage in Karaoke Templater
 
-Furigana: [The _furi_ template class]({{< relref "Automation/Karaoke_Templater/Template_modifiers#furi" >}})
+Furigana: [The _furi_ template class](/docs/modifiers/#furi/)
 
-Multi-highlight: [The _multi_ modifier]({{< relref "Automation/Karaoke_Templater/Template_modifiers#multi" >}})
+Multi-highlight: [The _multi_ modifier](/docs/modifiers/#multi/)
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 The examples used earlier on this page are all generated using this kara-templater snippet:
 
 ```plaintext
@@ -196,11 +207,12 @@ Comment: 0,0:00:06.00,0:00:08.00,Default,,0000,0000,0000,karaoke,{\k10}中|ち�
 ```
 
 The font used in MS PMincho 30 pt with the furigana being 15 pt.
-{{</example-box>}}
+</div>
+</div>
 
 ## Usage in Lua scripts
 
-It's all in [karaskel]({{< relref "Automation/Lua/Modules/karaskel.lua.md" >}}).
+It's all in [karaskel](/docs/karaskel-lua/).
 
 Furigana layout is automatically invoked by `karaskel.preproc_line_pos` if a
 furigana style exists for a line main style. The furigana style for a main
@@ -219,4 +231,4 @@ generate to the furigana style.
 Multi-highlights are always processed even when furigana layout isn't done.
 Multi-highlight data are stored in `syl.highlights`.
 
-{{<todo>}}more details {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>more details</div>

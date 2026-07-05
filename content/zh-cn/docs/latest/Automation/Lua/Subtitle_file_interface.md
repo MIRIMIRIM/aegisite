@@ -34,21 +34,21 @@ context it is created for:
 只读
 : Some feature functions must not be allowed to modify the subtitle
   file at all. This includes for example [macro validation
-  functions]({{< relref "Registration#macrovalidationfunction" >}}) and
+  functions](/zh-cn/docs/注册/#macrovalidationfunction/) and
   [export filter configuration panel
-  providers]({{< relref "Registration#_export_filter_configuration_panel_provider" >}}),
+  providers](/zh-cn/docs/注册/#_export_filter_configuration_panel_provider/),
   because this would be outside user expectations.
 : 一些功能函数理应不允许其修改字幕文件。这种函数包括例如
-  [宏验证函数]({{< relref "Registration#macrovalidationfunction" >}})
+  [宏验证函数](/zh-cn/docs/注册/#macrovalidationfunction/)
   以及
-  [导出滤镜配置面板提供程序]({{< relref "Registration#_export_filter_configuration_panel_provider" >}})，因为可能会有与用户预期不符的效果。
+  [导出滤镜配置面板提供程序](/zh-cn/docs/注册/#_export_filter_configuration_panel_provider/)，因为可能会有与用户预期不符的效果。
 
 允许撤消点
 : Only [macro processing
-  functions]({{< relref "Registration#macroprocessingfunction" >}}) can
+  functions](/zh-cn/docs/注册/#macroprocessingfunction/) can
   set undo points, as it makes no sense to do so at any other time.
 
-仅有[宏处理函数]({{< relref "Registration#macroprocessingfunction" >}})可设置撤销点，因为在其他任何时候设置没有意义。
+仅有[宏处理函数](/zh-cn/docs/注册/#macroprocessingfunction/)可设置撤销点，因为在其他任何时候设置没有意义。
 
 To allow the most flexibility, the subtitles object represents a
 complete ASS format file, line by line, including all meta-lines such as
@@ -334,14 +334,14 @@ This class defines two additional fields:
 
 This class defines a large number of additional fields. It's usually processed
 by the _karaskel_ and modified a bit by that. See the _karaskel.lua_ section on
-[style tables]({{< relref "Modules/karaskel.lua.md#styletable" >}}) for more
+[style tables](/zh-cn/docs/karaskel-lua/#styletable/) for more
 information about this class.
 
 ### `dialogue` class
 
 This class defines a large number of additional fields. It's usually processed
 by the _karaskel_ and has many calculated fields added by that. See the
-_karaskel.lua_ section on [dialogue line tables]({{< relref "Modules/karaskel.lua.md#dialoguelinetable" >}}) for more
+_karaskel.lua_ section on [dialogue line tables](/zh-cn/docs/karaskel-lua/#dialoguelinetable/) for more
 information on this class.
 
 ### `unknown` class

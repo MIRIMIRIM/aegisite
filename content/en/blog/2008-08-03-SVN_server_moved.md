@@ -1,5 +1,9 @@
 ---
 title: SVN server moved
+
+
+
+slug: svn-server-moved
 contributors:
   - jfs
 date: 2008-08-03T17:53:00.003000+01:00

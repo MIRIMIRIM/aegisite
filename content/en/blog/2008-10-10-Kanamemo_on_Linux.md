@@ -1,5 +1,9 @@
 ---
 title: Kanamemo on Linux
+
+
+
+slug: kanamemo-on-linux
 contributors:
   - Unknown
 date: 2008-10-10T03:04:00.007000+01:00

@@ -13,7 +13,7 @@ The name **Automation** covers the entire scripting functionality of Aegisub.
 ## About Automation
 
 The single purpose of Automation is — as the name implies — to automate various aspects of subtitle creation and editing.
-This was originally used mainly for creating [karaoke effects]({{< relref "Glossary/Karaoke_effect" >}}), but over time it has expanded in scope to support more general purpose [macros]({{< relref "Glossary/Macro" >}}) which add arbitrary new functionaly to Aegisub.
+This was originally used mainly for creating [karaoke effects](/docs/karaoke-effect/), but over time it has expanded in scope to support more general purpose [macros](/docs/macro/) which add arbitrary new functionaly to Aegisub.
 
 Some of the goals of Automation:
 
@@ -26,13 +26,13 @@ Some of the goals of Automation:
 ## Using Automation
 
 Aegisub comes with several Automation scripts already packaged and ready to use.
-This includes the advanced **[Karaoke_Templater]({{< relref "Karaoke_Templater" >}})** script and a **[collection of macros]({{< relref "Included_macros" >}})** to simplify some editing tasks.
+This includes the advanced **[Karaoke_Templater](/docs/karaoke-templater/)** script and a **[collection of macros](/docs/standard-macros/)** to simplify some editing tasks.
 
 Aegisub almost always has several Automation scripts loaded at a time.
-You can see what scripts are loaded, and load/unload more from the **[Automation/Manager]({{< relref "Automation/Manager" >}})** window.
+You can see what scripts are loaded, and load/unload more from the **[Automation/Manager](/docs/automation-manager/)** window.
 
 All Automation scripts also present themselves in Aegisub in one way or another.
-Some appear as [macros in the Automation menu]({{< relref "Running_macros" >}}) and others appear as [filters in the Export dialog]({{< relref "Exporting" >}}).
+Some appear as [macros in the Automation menu](/docs/running-macros/) and others appear as [filters in the Export dialog](/docs/exporting-subtitles/).
 Some scripts even appear in both places.
 
 ## Automation for programmers

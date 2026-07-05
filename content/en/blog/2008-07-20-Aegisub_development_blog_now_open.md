@@ -1,5 +1,9 @@
 ---
 title: Aegisub development blog now open
+
+
+
+slug: aegisub-development-blog-now-open
 contributors:
   - jfs
 date: 2008-07-20T16:25:00+01:00

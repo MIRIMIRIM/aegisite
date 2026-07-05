@@ -1,5 +1,9 @@
 ---
 title: 'Kanamemo: a tool for the apprentice weeaboo'
+
+
+
+slug: kanamemo-a-tool-for-the-apprentice-weeaboo
 contributors:
   - Unknown
 date: 2008-07-24T03:24:00.006000+01:00

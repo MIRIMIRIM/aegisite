@@ -1,5 +1,9 @@
 ---
 title: Four years of Aegisub
+
+
+
+slug: four-years-of-aegisub
 contributors:
   - jfs
 date: 2009-06-17T17:05:00.013000+01:00

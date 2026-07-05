@@ -6,11 +6,11 @@ menu:
 weight: 4100
 ---
 
-Aegisub no es un reproductor de video (ni de media), pero aún así soporta abrir y trabajar con video de varias maneras. Esta página es una referencia de cómo el manejo de video de Aegisub funciona; para una intro más suave de cómo simplemente lograr que las cosas se muestren correctamente puede que quiera leer las páginas [Disposición visual de texto]({{<relref path="Visual_Typesetting" lang="en">}}).
+Aegisub no es un reproductor de video (ni de media), pero aún así soporta abrir y trabajar con video de varias maneras. Esta página es una referencia de cómo el manejo de video de Aegisub funciona; para una intro más suave de cómo simplemente lograr que las cosas se muestren correctamente puede que quiera leer las páginas [Disposición visual de texto](/docs/visual-typesetting/).
 
 ## Abrir video
 
-Para abrir un archivo de video, vaya al menú _Video_ y dele a _Abrir archivo de video_. Cuáles archivos uno puede abrir depende de su [proveedor de video]({{<relref path="Options#video" lang="en">}}). Para usar un video de suplente (falso, vacío), pulse _Use video de suplente_.
+Para abrir un archivo de video, vaya al menú _Video_ y dele a _Abrir archivo de video_. Cuáles archivos uno puede abrir depende de su [proveedor de video](/es-us/docs/opciones-de-aegisub/#video/). Para usar un video de suplente (falso, vacío), pulse _Use video de suplente_.
 
 ### Formatos soportados
 
@@ -41,11 +41,11 @@ en lugar de FFMS2. Al abrir a través de _Avisynth_, Aegisub probará varias fun
 `DirectShowSource()`
 : Usa DirectShowSource() (que se incluye con Avisynth) para intentar cargar el archivo. Básicamente es lo mismo que DSS2, pero mucho menos confiable y no converte VFR a CFR. Aviso: DSS es conocido por tener dificultad con saltos con precisión a fotograma. No lo use si se puede evitar.
 
-Tenga en cuenta que [VFR]({{<relref path="Video#variableframeratevideo">}}) no es compatible con el proveedor Avisynth. en algunos casos cargar [códigos de tiempo externos]({{<relref path="Video#timecodes" lang="en">}})
+Tenga en cuenta que [VFR](/es-us/docs/trabajando-con-video/#variableframeratevideo/) no es compatible con el proveedor Avisynth. en algunos casos cargar [códigos de tiempo externos](/es-us/docs/trabajando-con-video/#timecodes/)
 puede funcionar, pero en la práctica muchas veces resulta en un lío descompuesto.
 
 Aegisub buscará extensiones Avisynth en su carpeta
-[?data]({{<relref path="Aegisub_path_specifiers#?data" lang="en">}}) (generalmente la carpeta en donde está `aegisub32.exe`, en Windows). También se los puede colocar directamente en la carpeta plugins/extensiones Avisynth para autocargarlos.
+[?data](/docs/path-specifiers/#?data/) (generalmente la carpeta en donde está `aegisub32.exe`, en Windows). También se los puede colocar directamente en la carpeta plugins/extensiones Avisynth para autocargarlos.
 
 ### Video de suplente
 
@@ -141,7 +141,7 @@ Una imagen anamórfica necesita ampliarse hasta alcanzar la relación de aspecto
 
 ### Compensar el estiramiento
 
-Afortunadamente es fácil compensar el estiramiento, ya que se sabe cuánto se estirará la imagen (ya que se conocen sus dimensiones originales y la relación de aspecto de la pantalla). Calcule de qué porcentaje será la imagen estirada en la dirección X o Y, y luego fije el `ScaleX` o `ScaleY` en el [estilo]({{<relref path="Styles">}}) (o use [etiquetas]({{<relref path="ASS_Tags">}} `\fscx` o `\fscy`)) con la misma cantidad, pero de sentido contrario.
+Afortunadamente es fácil compensar el estiramiento, ya que se sabe cuánto se estirará la imagen (ya que se conocen sus dimensiones originales y la relación de aspecto de la pantalla). Calcule de qué porcentaje será la imagen estirada en la dirección X o Y, y luego fije el `ScaleX` o `ScaleY` en el [estilo](/es-us/docs/editar-estilos/) (o use [etiquetas](/docs/ASS_Tags/ `\fscx` o `\fscy`)) con la misma cantidad, pero de sentido contrario.
 
 Ejemplo: tenemos una imagen de 704x480 que sabemos que se mostrará en formato 16:9 (o 1.7777...:1). Si presumimos que el reproductor estirará el ancho y dejará intacto el alto, esto significa que el nuevo ancho será:
 

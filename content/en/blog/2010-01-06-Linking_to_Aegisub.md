@@ -1,5 +1,9 @@
 ---
 title: Linking to Aegisub
+
+
+
+slug: linking-to-aegisub
 contributors:
   - jfs
 date: 2010-01-06T18:57:00.008000Z

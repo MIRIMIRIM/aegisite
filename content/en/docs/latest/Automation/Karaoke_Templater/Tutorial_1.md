@@ -8,7 +8,7 @@ aliases:
   - /docs/latest/Automation/Karaoke_Templater/Tutorial_1/
 ---
 
-Welcome to the first tutorial in using Karaoke Templater to create [karaoke effects]({{< relref "../../Glossary/Karaoke_effect" >}}). We'll start out with something simple and
+Welcome to the first tutorial in using Karaoke Templater to create [karaoke effects](/docs/karaoke-effect/). We'll start out with something simple and
 then continue on to more advanced effects throughout the series.
 
 ## Finding Karaoke Templater
@@ -36,7 +36,7 @@ But there is something else to make sure of first.
 Karaoke Templater can do many things for you, but it can't guess the lyrics for
 your song, or how they're synchronised with the music. You'll have to time the
 lyrics yourself, or get someone else to do it. You can learn how to time
-karaoke at the [Karaoke_Timing_Tutorial]({{< relref "Karaoke_Timing_Tutorial" >}}).
+karaoke at the [Karaoke_Timing_Tutorial](/docs/karaoke-timing-tutorial/).
 
 We'll call song lyrics with basic karaoke timing (\\k timing), but no other
 special effects, _timed karaoke_. When an effect has been applied to the
@@ -73,7 +73,7 @@ follow.
 1. Find the _Effect_ field, it's to the right of the _Style_ and _Actor_ fields. Put the text "`template line`" into it. (Without the quotes!) Press the _Enter_ key on your keyboard to save the Effect field.
 1. Finally, enter this text for the main text of your template line. Finish off with _Enter_ again. `{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 
-{{<todo>}}Insert a screenshot of how it should look after the steps. {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Insert a screenshot of how it should look after the steps.</div>
 
 Now look at the _Automation_ menu again. If you made the template line
 correctly, _Apply karaoke template_ will now be available. If it isn't review
@@ -81,7 +81,7 @@ the steps above again.
 
 Select _Apply karaoke templates_ and watch Karaoke Templater do its work.
 
-{{<todo>}}Another screenshot, this time after applying templates. {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Another screenshot, this time after applying templates.</div>
 
 If you have a video open you can view the effect right now, inside Aegisub.
 
@@ -97,7 +97,7 @@ Continuing right on from above, now try doing this:
 1. Change the text of the template line to: `{\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 1. Apply templates again
 
-{{<todo>}}More screenshot {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>More screenshot</div>
 
 Karaoke Templater re-used the commented out timed karaoke and changed the
 styled karaoke to match the new effect instead. You can also try changing the
@@ -156,7 +156,7 @@ now.
     back into a \\k tag, like we did here.
 
 With this knowledge, you should already be able to create lots of effects. You
-may also want to refer to the page on [ASS override tags]({{< relref "ASS_Tags" >}}).
+may also want to refer to the page on [ASS override tags](/docs/ass-override-tags/).
 
-You can also [continue to the next tutorial]({{< relref "./Tutorial_2" >}}), where we'll look at how to
+You can also [continue to the next tutorial](/docs/using-math-expressions/), where we'll look at how to
 do math with variables to get more variation.

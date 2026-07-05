@@ -1,5 +1,8 @@
 ---
 title: Getting ready for 2.1.8
+
+
+slug: getting-ready-for-2.1.8
 contributors:
   - jfs
 date: 2009-10-27T16:58:00.003000Z

@@ -1,5 +1,9 @@
 ---
 title: Kanjimemo brainstorming and input request
+
+
+
+slug: kanjimemo-brainstorming-and-input-request
 contributors:
   - Unknown
 date: 2008-10-10T00:48:00.003000+01:00

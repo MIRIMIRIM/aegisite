@@ -8,7 +8,7 @@ weight: 7000
 
 Aegisub es altamente configurable y por lo tanto tiene un gran número de opciones configurables por el usuario. Estas están disponibles en la caja diálogo de opciones, dentro del menú Ver. Esta página es una guía de todas las opciones disponibles.
 
-Aegisub almacena toda su configuración en un archivo de texto llamado _config.json_, el cual por defecto se encuentra en la carpeta [?user]({{<relref path="Aegisub_path_specifiers" lang="en">}}). Si uno quiere restablecer Aegisub a sus opciones predeterminadas sin volver a instalarlo, se puede simplemente eliminar _config.json_ y luego reinicar Aegisub.
+Aegisub almacena toda su configuración en un archivo de texto llamado _config.json_, el cual por defecto se encuentra en la carpeta [?user](/docs/path-specifiers/). Si uno quiere restablecer Aegisub a sus opciones predeterminadas sin volver a instalarlo, se puede simplemente eliminar _config.json_ y luego reinicar Aegisub.
 
 ## General
 
@@ -63,7 +63,7 @@ Longitud de sincronización predeterminada
 
 Longitud de entrada predeterminada
 Longitud de cierre predeterminada
-: La duración agregada al inicio de una línea mediante las funciones "agregar apertura/entrada" y "agregar cierre/salida". También se utiliza en (y es configurado por) el [postprocesador de sincronización]({{<relref path="Timing_Post-Processor" lang="en">}}).
+: La duración agregada al inicio de una línea mediante las funciones "agregar apertura/entrada" y "agregar cierre/salida". También se utiliza en (y es configurado por) el [postprocesador de sincronización](/docs/timing-post-processor/).
 
 Sensibilidad de inicio de arrastre de marcador
 : La distancia en píxeles que se debe arrastrar un marcador para que se registre como arrastre. Los valores más altos reducen la posibilidad de cambios accidentales, a costa de una peor capacidad de respuesta.
@@ -141,7 +141,7 @@ Paso de salto rápido en cuadros
 : Decide qué tan grandes "saltos" hará Aegisub cuando use la función de desplazamiento rápido (Alt-flecha derecha y Alt-flecha izquierda). Medido en cuadros.
 
 Ruta para capturas de pantalla
-: Decide dónde Aegisub debe guardar las capturas de pantalla. El valor predeterminado es `?video`, lo que significa que se guardan dondequiera que esté el video, pero puedes cambiarlo a la ruta que desee. [Aegisub_path_specifiers]({{<relref path="Aegisub_path_specifiers" lang="en">}}) son compatibles. Otra opción directamente disponible en el menú desplegable es `?script`, que es dondequiera que esté el guion.
+: Decide dónde Aegisub debe guardar las capturas de pantalla. El valor predeterminado es `?video`, lo que significa que se guardan dondequiera que esté el video, pero puedes cambiarlo a la ruta que desee. [Aegisub_path_specifiers](/docs/path-specifiers/) son compatibles. Otra opción directamente disponible en el menú desplegable es `?script`, que es dondequiera que esté el guion.
 
 ### Resolución de secuencia
 
@@ -156,7 +156,7 @@ Coincidir resolución de video al abrir
 ![preferences-interface](/img/3.2/preferences-interface.png#center)
 
 Activar consejos de llamadas
-: Cuando está habilitado, Aegisub detectará cuando está escribiendo una [etiqueta manual]({{<relref path="ASS_Tags">}}) y mostrará un pequeño cuadro con una breve referencia de la sintaxis de la etiqueta en cuestión hasta que cierre la etiqueta. Esto se denomina "consejo de llamada" y la función puede resultar familiar para los usuarios de varios IDE de programación.
+: Cuando está habilitado, Aegisub detectará cuando está escribiendo una [etiqueta manual](/es-us/docs/etiquetas-manuales-ass/) y mostrará un pequeño cuadro con una breve referencia de la sintaxis de la etiqueta en cuestión hasta que cierre la etiqueta. Esto se denomina "consejo de llamada" y la función puede resultar familiar para los usuarios de varios IDE de programación.
 
 Sobrescribir en cajas de tiempo
 : Controla el comportamiento de todas las cajas de edición de tiempo en el programa. De forma predeterminada, todas las cajas de edición de tiempo en Aegisub se comportan como si hubiera presionado el botón Insertar, por lo que cada dígito que escriba sobrescribe lo que ya está ahí, y no puede borrar los números que ya están ahí, sido debe sobrescribirlos. Desmarcar esta casilla desactiva este comportamiento y hace que las cajas de edición de tiempo se comporten como cajas de edición de texto normales (casi).
@@ -310,7 +310,7 @@ Todos los demás contextos de teclas de acceso rápido deben explicarse por sí 
 
 Para modificar una tecla de acceso rápido, primero haga clic en la fila para seleccionarla, luego haga clic en el campo de tecla de acceso rápido de la fila y luego presione las teclas que deberían activar el comando. Acepte la nueva tecla de acceso rápido haciendo clic en otra fila.
 
-Para agregar una nueva tecla de acceso rápido, seleccione el contexto al que desea agregar la tecla de acceso rápido y luego haga clic en el botón Nuevo. Ingrese el [nombre del comando]({{<relref path="Commands" lang="en">}}), luego configure la tecla de acceso rápido como cuando se las edita.
+Para agregar una nueva tecla de acceso rápido, seleccione el contexto al que desea agregar la tecla de acceso rápido y luego haga clic en el botón Nuevo. Ingrese el [nombre del comando](/es-us/docs/comandos/), luego configure la tecla de acceso rápido como cuando se las edita.
 
 ## Copia de seguridad
 
@@ -325,7 +325,7 @@ Intervalo en segundos
 : Con qué frecuencia Aegisub debe guardar automáticamente.
 
 Ruta
-: decide dónde guardar los respaldos automáticos de los guiones en los que está trabajando. De forma predeterminada, establece `autosave` en su directorio `?user` de Aegisub (consulte la página de [variables Aegisub de rutas]({{<relref path="Aegisub_path_specifiers" lang="en">}}) para más detalles).
+: decide dónde guardar los respaldos automáticos de los guiones en los que está trabajando. De forma predeterminada, establece `autosave` en su directorio `?user` de Aegisub (consulte la página de [variables Aegisub de rutas](/docs/path-specifiers/) para más detalles).
 
 Guardar automáticamente tras cada cambio
 : Si está habilitado, Aegisub guardará el archivo después de cada cambio realizado. Tenga en cuenta que esto actualmente causa algunos problemas con el sistema de deshacer.
@@ -358,7 +358,7 @@ Prioridad de hilo
 : Prioridad dada al hilo de ejecución de la secuencia. Si está en un sistema de un solo núcleo/una sola CPU, tener esto a un nivel más bajo de lo normal hará que otros programas respondan mejor mientras las secuencias de ejecución prolongada estén activos.
 
 Autorecargar al exportar
-: Recarga automáticamente los conjuntos de secuencias especificados cuando el diálogo de [Exportar]({{<relref path="Exporting" lang="en">}}) se abre. En ese caso tendrá que pasar a la ventana [Automation/Manager]({{<relref path="Automation/Manager" lang="en">}}) y determinar la causa del error.
+: Recarga automáticamente los conjuntos de secuencias especificados cuando el diálogo de [Exportar](/docs/exporting-subtitles/) se abre. En ese caso tendrá que pasar a la ventana [Automation/Manager](/docs/automation-manager/) y determinar la causa del error.
 
 ## Audio avanzado
 
@@ -419,7 +419,7 @@ Calidad
 La cantidad de memoria utilizada no depende del número de canales
 (Aegisub siempre funciona en mono) ni de la profundidad de bits (el espectro siempre se calcula en punto flotante de 32 bits) del audio.
 
-{{<todo>}}this is probably wrong {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>this is probably wrong</div>
 
 Máximo de memoria caché
 : La cantidad máxima de memoria que se utilizará para el almacenamiento en caché del espectro de audio. Los resultados de los cálculos para mostrar el espectro de audio se almacenan en caché para que el desplazamiento por el audio sea más fluido. La cantidad de visualización del espectro que se puede almacenar en caché en una determinada cantidad de memoria depende de la configuración de calidad anterior. El tamaño de caché predeterminado de 128 MB da como resultado un poco menos de 6 minutos de audio a 48 kHz en calidad 1. Si lo configura en menos de 5 MB, se utilizará el valor predeterminado de 128 MB. Probablemente no deberías configurar esto en más de 1/4 de la cantidad de RAM física instalada.
@@ -477,7 +477,7 @@ Proveedor de subtítulos
    : Utiliza VSFilter 2.40 para representar subtítulos. Este es el procesador de subtítulos estándar que define el formato ASS utilizado por Aegisub.
 
    _libass_
-   : Utiliza [libass](http://code.google.com/p/libass/) para representar subtítulos. libass es mucho más rápido que VSFilter y (en cierto modo) multiplataforma, pero desafortunadamente todavía tiene algunas diferencias de representación con respecto a VSFilter y problemas relacionados con las fuentes en Windows. Si está realizando una composición tipográfica compleja que será [de subtítulos sueltos]({{<relref path="Attaching_subtitles_to_video#subtítulos-sueltossoftsubbing">}}), es una buena idea comprobar su trabajo tanto con VSFilter como con libass, ya que un número cada vez mayor de usuarios utiliza libass.
+   : Utiliza [libass](http://code.google.com/p/libass/) para representar subtítulos. libass es mucho más rápido que VSFilter y (en cierto modo) multiplataforma, pero desafortunadamente todavía tiene algunas diferencias de representación con respecto a VSFilter y problemas relacionados con las fuentes en Windows. Si está realizando una composición tipográfica compleja que será [de subtítulos sueltos](/es-us/docs/aplicar-subtítulos/#subtítulos-sueltossoftsubbing/), es una buena idea comprobar su trabajo tanto con VSFilter como con libass, ya que un número cada vez mayor de usuarios utiliza libass.
 
 Forzar BT.601
 : Suponer que todos los videos YUV son BT.601, para compatibilidad con VSFilter.

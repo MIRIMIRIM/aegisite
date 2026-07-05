@@ -1,5 +1,9 @@
 ---
 title: Kumaji explained
+
+
+
+slug: kumaji-explained
 contributors:
   - jfs
 date: 2009-02-10T02:59:00.013000Z

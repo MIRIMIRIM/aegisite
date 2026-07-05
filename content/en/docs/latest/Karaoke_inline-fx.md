@@ -8,11 +8,11 @@ aliases:
   - /docs/latest/Karaoke_inline-fx/
 ---
 
-Karaoke inline-fx (inline effects) is a way of marking up [timed karaoke]({{< relref "Timing#karaoke-timing" >}}) to assign different effects to different
+Karaoke inline-fx (inline effects) is a way of marking up [timed karaoke](/docs/timing-subtitles-to-audio/#karaoke-timing/) to assign different effects to different
 parts of a line.
 
 By itself, inline-fx markup doesn't do anything, it only has an effect when
-a [karaoke effect script]({{< relref "Automation" >}}) that understands it is applied to
+a [karaoke effect script](/docs/automation-overview/) that understands it is applied to
 the timed karaoke.
 
 ## The markup
@@ -26,7 +26,9 @@ inline-fx tag in it.
 
 At the start of each line the inline-fx is reset to nothing.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Here is a timed karaoke line with inline-fx markup:
 
 ```ass
@@ -47,17 +49,19 @@ These syllables get inline-fx assigned like this:
 | ta                 | `paint`   |
 | yu                 | `cloud`   |
 | me                 | `cloud`   |
-
-{{</example-box>}}
+</div>
+</div>
 
 ## Usage in Karaoke Templater
 
-If you use [Karaoke Templater]({{< relref "Automation/Karaoke_Templater" >}}) to create
+If you use [Karaoke Templater](/docs/karaoke-templater/) to create
 effects, you can use the _fx_ modifier on templates to make that template
 affect only syllables with a specific inline-fx. It isn't possible
 (directly) to match only syllables with blank inline-fx.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 With the sample timed karaoke from above, you could have the following templates:
 
 ```plaintext
@@ -68,10 +72,12 @@ template syl fx cloud: {overlay effect applied only to the 'cloud' syllables}
 
 The idea here is to have a base effect and then some of the syllables get
 some more effects on top of that.
+</div>
+</div>
 
-{{</example-box>}}
-
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 It is possible to match only syllables with blank inline-fx in
 kara-templater by using an _fxgroup_ that enables or disables basing on
 inline-fx. You can also use \_fxgroup_s to have templates that run for
@@ -84,20 +90,22 @@ template syl fxgroup blankfx: {effect only applied on blank inline-fx syllables}
 
 The important thing is that the code line runs per syllable and runs before
 any per-syllable templates that must use it.
-
-{{</example-box>}}
+</div>
+</div>
 
 ## Usage in Lua scripts
 
 The inline-fx tags are parsed by
-[`karaskel.preproc_line_text`]({{< relref "Automation/Lua/Modules/karaskel.lua.md#karaskelpreproc_line_text" >}})
+[`karaskel.preproc_line_text`](/docs/karaskel-lua/#karaskelpreproc_line_text/)
 so they will only work if you have applied at least that much karaskel
 pre-processing on your subtitle lines.
 
 The inline-fx for a syllable is then available as `syl.inline_fx`, which
 you can compare to a string to conditionally apply effects.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 In some code that runs per-syllable in your script:
 
 ```lua
@@ -112,9 +120,11 @@ end
 
 Simply compare the inline-fx name to the various possibilities and run the
 right effect code.
-
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 In some code that runs per-syllable in your script:
 At top-level of your script:
 
@@ -141,4 +151,5 @@ First, a table is created and filled with functions for applying the
 different effects. The keys used for the table are the names of the
 possible inline-fx. When the effect has to be applied, the right function
 is looked up in the effect table and then called.
-{{</example-box>}}
+</div>
+</div>

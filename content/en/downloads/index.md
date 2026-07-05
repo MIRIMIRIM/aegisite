@@ -1,14 +1,13 @@
 ---
 title: Downloads
-type: downloads
-layout: Downloads
+layout: dl
 ---
 
-The [Latest Release](https://github.com/TypesettingTools/Aegisub/releases/latest) version is **{{< current-version-number >}}**, released {{< current-version-date >}}
+The [Latest Release](https://github.com/TypesettingTools/Aegisub/releases/latest) is **{{ site.data.version.current }}**, released {{ site.data.version.release_date }}.
 
-See the [changelog]({{< relref "changelog/" >}}{{< current-version-number >}}) for a list of changes.
+See the [changelog](/changelog/3-4-2/) for a list of changes.
 
-{{< current-version >}}
+{{ include "shortcodes/current-version" }}
 
 ## Upcoming Versions
 
@@ -18,11 +17,11 @@ Check CI build
 
 To cut down on the download size, the Windows "Full" Install includes only a US English dictionary for the spell checker. All others must be downloaded separately:
 
-{{< dictionaries >}}
+{{ include "shortcodes/dictionaries" }}
 
 ## Previous Versions
 
 <details>
 <summary>Download Links</summary>
-{{< previous-versions >}}
+{{ include "shortcodes/previous-versions" }}
 </details>

@@ -29,13 +29,13 @@ The following tutorials are available for Aegisub:
 
 ### Karaoke Timing
 
-{{<todo>}}Actually do this {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Actually do this</div>
 
 - By: Niels Martin Hansen
 
 ## Text tutorials
 
-- [Karaoke timing]({{< relref "Karaoke_Timing_Tutorial" >}}) (work in progress) — Enter the words for a song and add time-codes to the words
-- [Karaoke Inline effects Tutorial]({{< relref "Karaoke_inline-fx" >}})
-- [Karaoke Furigana Tutorial]({{< relref "Furigana_karaoke" >}})
-- [Karaoke Templater]({{< relref "Automation/Karaoke_Templater" >}}) (incomplete) — Easy way to add special effects to karaoke, ranging from the most basic effects to very advanced ones.
+- [Karaoke timing](/docs/karaoke-timing-tutorial/) (work in progress) — Enter the words for a song and add time-codes to the words
+- [Karaoke Inline effects Tutorial](/docs/inline-effects-tutorial/)
+- [Karaoke Furigana Tutorial](/docs/furigana-tutorial/)
+- [Karaoke Templater](/docs/karaoke-templater/) (incomplete) — Easy way to add special effects to karaoke, ranging from the most basic effects to very advanced ones.

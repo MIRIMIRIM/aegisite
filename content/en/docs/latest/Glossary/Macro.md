@@ -1,6 +1,6 @@
 ---
-Type: glossary
-Title: Macro
+type: glossary
+title: Macro
 aliases:
   - /docs/latest/Glossary/Macro/
 ---

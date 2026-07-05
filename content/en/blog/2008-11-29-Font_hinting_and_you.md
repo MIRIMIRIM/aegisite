@@ -1,5 +1,9 @@
 ---
 title: Font hinting and you
+
+
+
+slug: font-hinting-and-you
 contributors:
   - jfs
 date: 2008-11-29T19:54:00.005000Z

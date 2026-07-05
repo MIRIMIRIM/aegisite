@@ -1,5 +1,9 @@
 ---
 title: 'The old and present: VSFilter'
+
+
+
+slug: the-old-and-present-vsfilter
 contributors:
   - jfs
 date: 2010-02-19T23:06:00.011000Z

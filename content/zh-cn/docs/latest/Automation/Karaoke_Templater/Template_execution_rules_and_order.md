@@ -17,11 +17,11 @@ weight: 6120
 
 `tenv`
 : **t**emplate **env**ironment(模板环境)的缩写, 或者
-  [代码执行环境]({{< relref "./Code_execution_environment" >}})。
+  [代码执行环境](/zh-cn/docs/execution-envirionment/)。
 
 `varctx`
 : **var**iable **c**on**t**e**x**t(内联变量环境),
-  [内联变量]({{< relref "./Inline_variables" >}})存储在的实际区域。
+  [内联变量](/zh-cn/docs/内联变量/)存储在的实际区域。
 
 `template`
 : 卡拉OK模板执行器(kara-templater)中最基本的 "执行单元(execution
@@ -59,11 +59,11 @@ weight: 6120
 ## 启动(Start-up)
 
 卡拉OK模板执行器(后文均简称模板应用器)做的第一件事是使用
-[卡拉OK框架(karaskel)]({{< relref "../Lua/Modules/karaskel.lua.md" >}})
+[卡拉OK框架(karaskel)](/zh-cn/docs/karaskel-lua/)
 来收集一些基础的字幕文件信息。这个过程中总是会伴随着传递 `真(true)`值给
 *generate_furigana* (生成假名标注)，它属于`karaskel.collect_head`
 函数，这意味着
-[假名标注(furigana)]({{< relref "Furigana_karaoke" >}}
+[假名标注(furigana)](/zh-cn/docs/Furigana_karaoke/
 的样式会被生成，除非它们早就存在。
 
 然后模板应用器会收集文件中的所有模板行(template line)信息。
@@ -94,7 +94,7 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
 ### 初始化 *tenv*
 
 在开始实际应用模板之前的最后一项工作就是初始化运行环境。基本上，在所有的模板运行之前，都会被放置到
-*tenv*。详见 [代码执行环境]({{< relref "./Code_execution_environment" >}})
+*tenv*。详见 [代码执行环境](/zh-cn/docs/execution-envirionment/)
 ("基本上"是指除了 `line`, `orgline`, `syl` 和 `basesyl`.)
 
 ## 运行 *once* 模板
@@ -124,7 +124,9 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
 
 值得注意的是，音节和注音假名音节是会被解析并储存的音节，而不是用multi时的虚拟音节，或是用char时的虚拟音节，并且不是一个组合。
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 假设有三个 `syl` 类模板: A, B 和 C.
 
 - A 是一个规则的模板，不带有 *multi* 或者 *char* 修饰语。
@@ -151,7 +153,8 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
     - 进行和上面相似的过程。
 
 想知道更多有关 多音节标注 和 以字符为单位的虚拟音节的内容，请看下面。
-{{</example-box>}}
+</div>
+</div>
 
 如果任何一个模板在以上三个步骤中匹配到了"打好K值的行"，执行过模板后这样的行就会被打上注释，并且特效栏会显示
 `karaoke` 。
@@ -168,11 +171,11 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
 
 ## 应用 *line* 类模板
 
-{{<todo>}}待编写(原文如此){{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>待编写(原文如此)</div>
 
 ## 应用 *syl* 和 *furi* 类模板
 
-{{<todo>}}待编写(原文如此){{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>待编写(原文如此)</div>
 
 ## 过程描述
 
@@ -323,4 +326,4 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
          1. 用函数运行的结果替换掉匹配到的内容
 </pre>
 
-{{<todo>}}把这变得更合理一些？(Turn this into something more reasonable?){{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>把这变得更合理一些？(Turn this into something more reasonable?)</div>

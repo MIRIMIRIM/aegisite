@@ -1,5 +1,9 @@
 ---
 title: How VSFilter renders border and shadow
+
+
+
+slug: how-vsfilter-renders-border-and-shadow
 contributors:
   - jfs
 date: 2008-07-25T03:00:00+01:00

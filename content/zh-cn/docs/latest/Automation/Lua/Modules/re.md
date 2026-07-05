@@ -37,8 +37,9 @@ documentation](http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/boost_re
 `last` (`number`)
 : 匹配到的 `str` 在原字符串中最后出现的位置。
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.match("b", "abc")
 {
@@ -49,8 +50,8 @@ documentation](http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/boost_re
     }
 }
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### Flags
 
@@ -81,8 +82,9 @@ re.MOD_X:
 re.NO_EMPTY_SUBEXPRESSION:
 : Don't match empty expressions/alternatives.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.match("a", "A")
 nil
@@ -95,12 +97,12 @@ nil
     }
 }
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.compile
 
-Synopsis: {{< lua `expr = re.compile(pattern, [FLAGS])` >}}
+Synopsis: <code class="inline-code language-lua">expr = re.compile(pattern, [FLAGS])</code>
 
 Compile a regular expression. Reusing a compiled regular expression is faster
 than recompiling it each time it is used, and is usually more readable as well.
@@ -112,8 +114,9 @@ than recompiling it each time it is used, and is usually more readable as well.
 : A table with all of the functions listed below, except without the pattern
   and flags arguments.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> expr = re.compile("a")
 >>> expr:split("banana")
@@ -123,12 +126,12 @@ than recompiling it each time it is used, and is usually more readable as well.
     "n"
 }
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.split
 
-Synopsis: {{< lua `chunks = re.split(str, pattern, skip_empty=false, max_splits=0)` >}}
+Synopsis: <code class="inline-code language-lua">chunks = re.split(str, pattern, skip_empty=false, max_splits=0)</code>
 
 Split the string at each of the occurrences of `pattern`.
 
@@ -150,8 +153,9 @@ Split the string at each of the occurrences of `pattern`.
 : A table containing each of the sections of `str` between the matches of
   `pattern`.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.split(",", "a,,b,c")
 {
@@ -161,10 +165,11 @@ Split the string at each of the occurrences of `pattern`.
     "c"
 }
 ```
-
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.split(",", "a,,b,c", true)
 {
@@ -173,10 +178,11 @@ Split the string at each of the occurrences of `pattern`.
     "c"
 }
 ```
-
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.split(",", "a,,b,c", false, 1)
 {
@@ -184,12 +190,12 @@ Split the string at each of the occurrences of `pattern`.
     ",b,c",
 }
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.gsplit
 
-Synopsis: {{< lua `iter = re.gsplit(str, pattern, skip_empty=false, max_splits=0)` >}}
+Synopsis: <code class="inline-code language-lua">iter = re.gsplit(str, pattern, skip_empty=false, max_splits=0)</code>
 
 Iterator version of re.split.
 
@@ -211,8 +217,9 @@ Iterator version of re.split.
 : An iterator over each of the sections of `str` between the matches of
   `pattern`.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> for str in re.gsplit(",", "a,,b,c") do
 >>>     print str
@@ -222,10 +229,11 @@ a
 b
 c
 ```
-
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> for str in re.gsplit(",", "a,,b,c", true) do
 >>>     print str
@@ -234,10 +242,11 @@ a
 b
 c
 ```
-
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> for str in re.gsplit(",", "a,,b,c", false, 1) do
 >>>     print str
@@ -245,12 +254,12 @@ c
 a
 ,b,c
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.find
 
-Synopsis: {{< lua `matches = re.find(str, pattern)` >}}
+Synopsis: <code class="inline-code language-lua">matches = re.find(str, pattern)</code>
 
 Find all non-overlapping substrings of `str` which match `pattern`.
 
@@ -261,11 +270,12 @@ Find all non-overlapping substrings of `str` which match `pattern`.
 : Pattern to search for. Capturing groups in the pattern are ignored.
 
 `matches` (`table` or `nil`)
-: A table of [Match Tables]({{< relref "re#match-tables" >}}) for all matches, or `nil` if
+: A table of [Match Tables](/zh-cn/docs/re/#match-tables/) for all matches, or `nil` if
   there were none.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.find(".", "☃☃")
 {
@@ -281,9 +291,11 @@ Find all non-overlapping substrings of `str` which match `pattern`.
     }
 }
 ```
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 function contains_an_a(str)
     if re.find("a", str)
@@ -297,12 +309,12 @@ Has an a
 >>> contains_an_a("def")
 Doesn't have an a
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.gfind
 
-Synopsis: {{< lua `iter = re.gfind(str, pattern)` >}}
+Synopsis: <code class="inline-code language-lua">iter = re.gfind(str, pattern)</code>
 
 Iterate over all non-overlapping substrings of `str` which match `pattern`.
 
@@ -317,8 +329,9 @@ Iterate over all non-overlapping substrings of `str` which match `pattern`.
   started index of the match in the source string, and the inclusive end index of
   the match in the source string.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> for str, start_idx, end_idx in re.gfind(".", "☃☃") do
 >>>     print string.format("%d-%d: %s", start_idx, end_idx, str)
@@ -326,12 +339,12 @@ Iterate over all non-overlapping substrings of `str` which match `pattern`.
 1-3: ☃
 4-6: ☃
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.match
 
-Synopsis: {{< lua `matches = re.match(str, pattern)` >}}
+Synopsis: <code class="inline-code language-lua">matches = re.match(str, pattern)</code>
 
 Match a pattern against a string. This differs from `find` in that `find`
 returns all matches and does not capture subgroups, while this returns only a
@@ -345,11 +358,12 @@ single match along with the captured subgroups.
 
 `matches` (`table` or `nil`)
 : `nil` if the pattern did not match the string. Otherwise, a table containing
-  a [Match Table]({{< relref "re#match-tables" >}}) for the full match, followed by a [Match Table]({{< relref "re#match-tables" >}}) for each capturing subexpression in the pattern (if
+  a [Match Table](/zh-cn/docs/re/#match-tables/) for the full match, followed by a [Match Table](/zh-cn/docs/re/#match-tables/) for each capturing subexpression in the pattern (if
   any).
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```lua
 >>> re.match("(\d+) (\d+) (\d+)", "{250 1173 380}Help!")
 {
@@ -375,14 +389,14 @@ single match along with the captured subgroups.
     }
 }
 ```
-
-{{</example-box>}}
+</div>
+</div>
 
 ### re.gmatch
 
-Synopsis: {{< lua `iter = re.gmatch(str, pattern)` >}}
+Synopsis: <code class="inline-code language-lua">iter = re.gmatch(str, pattern)</code>
 
-Iterator version of [`re.match`]({{< relref "re#re.match" >}}).
+Iterator version of [`re.match`](/zh-cn/docs/re/#re.match/).
 
 `@str` (`string`)
 : String to search for the pattern in.
@@ -391,13 +405,13 @@ Iterator version of [`re.match`]({{< relref "re#re.match" >}}).
 : Pattern to search for.
 
 `matches` (`iterator over table`)
-: An iterator which returns a table containing a [Match Table]({{< relref "re#match-tables" >}}) for the full match (if it matched), followed by a
-  [Match Table]({{< relref "re#match-tables" >}}) for each capturing subexpression in the pattern
+: An iterator which returns a table containing a [Match Table](/zh-cn/docs/re/#match-tables/) for the full match (if it matched), followed by a
+  [Match Table](/zh-cn/docs/re/#match-tables/) for each capturing subexpression in the pattern
   (if any).
 
 ### re.sub
 
-Synopsis: {{< lua `out_str, rep_count = re.sub(str, replace, pattern, max_count=0)` >}}
+Synopsis: <code class="inline-code language-lua">out_str, rep_count = re.sub(str, replace, pattern, max_count=0)</code>
 
 Replace each occurrence of `pattern` in `str` with `replace`.
 
@@ -428,25 +442,31 @@ Replace each occurrence of `pattern` in `str` with `replace`.
 `rep_count` (`number`)
 : The number of replacements that were made.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Replace all instances of \\k with \\kf:
 
 ```lua
 >>> re.sub("{\\k10}a{\\k15}b{\\k30}c", "\\\\k", "\\kf")
 {\kf10}a{\kf15}b{\kf30}c
 ```
-
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Replace all instances of \\k and \\K with \\kf:
 
 ```lua
 >>> re.sub("{\\K10}a{\\K15}b{\\k30}c", "\\\\k", "\\kf", re.ICASE)
 {\kf10}a{\kf15}b{\kf30}c
 ```
-
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Add one to each \\k duration:
 
 ```lua
@@ -456,5 +476,5 @@ end
 >>> re.sub("{\\k10}a{\\k15}b{\\k30}c", "\\\\k(\[[:digit:]]+)", add_one)
 {\k11}a{\k16}b{\k31}c
 ```
-
-{{</example-box>}}
+</div>
+</div>

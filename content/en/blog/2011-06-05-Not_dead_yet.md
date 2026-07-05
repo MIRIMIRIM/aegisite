@@ -1,5 +1,9 @@
 ---
 title: Not dead yet
+
+
+
+slug: not-dead-yet
 contributors:
   - jfs
 date: 2011-06-05T01:45:00.004000+01:00

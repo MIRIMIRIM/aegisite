@@ -6,11 +6,11 @@ menu:
 weight: 6172
 ---
 
-在 [前一篇教程]({{< relref "./Tutorial_1" >}})
+在 [前一篇教程](/zh-cn/docs/教程一/)
 中，我们了解了如何使用卡拉OK模板执行器的基本特性，并且能创作简单的卡拉OK效果。
 本篇中，我们将继续走下去，拓展一些知识。
 
-{{<todo>}}制作并插入截屏{{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>制作并插入截屏</div>
 
 ## 准备
 

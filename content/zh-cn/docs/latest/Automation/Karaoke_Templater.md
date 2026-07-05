@@ -7,27 +7,27 @@ menu:
 weight: 6100
 ---
 
-**卡拉OK模版执行器**是一个Aegisub自带的[自动化]({{< relref "Automation" >}})脚本。它的主要目的是帮助你使用特别设计的模版语言来制作[卡拉OK特效]({{< relref "../Glossary/Karaoke_effect" >}})。卡拉OK模版执行器已随Aegisub安装并可以使用。
+**卡拉OK模版执行器**是一个Aegisub自带的[自动化](/zh-cn/docs/自动化/)脚本。它的主要目的是帮助你使用特别设计的模版语言来制作[卡拉OK特效](/zh-cn/docs/卡拉ok特效/)。卡拉OK模版执行器已随Aegisub安装并可以使用。
 
 ## 教程：卡拉OK模版执行器介绍
 
-- [一个简单的例子]({{< relref "./Karaoke_Templater/Tutorial_1" >}})
-- [使用数学表达式]({{< relref "./Karaoke_Templater/Tutorial_2" >}})
+- [一个简单的例子](/zh-cn/docs/教程一/)
+- [使用数学表达式](/zh-cn/docs/教程二/)
 - Using multiple template lines
 - More advanced effects with positioned syllables
 
-{{<todo>}}计划制作更多教程，并补完上面的教程。{{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>计划制作更多教程，并补完上面的教程。</div>
 
 ## 相关
 
-- [声明template和code行]({{< relref "./Karaoke_Templater/Declaring_template_and_code_lines" >}})
-- [模版执行器将在何时以及以何种顺序执行]({{< relref "./Karaoke_Templater/Template_execution_rules_and_order" >}})
-- [template修饰语]({{< relref "./Karaoke_Templater/Template_modifiers" >}})
-- [内联变量（$变量）]({{< relref "./Karaoke_Templater/Inline_variables" >}})
-- [code区和code行的规则]({{< relref "./Karaoke_Templater/Code_lines_and_blocks" >}})
-- [code区/行的执行环境的内容]({{< relref "./Karaoke_Templater/Code_execution_environment" >}})
+- [声明template和code行](/zh-cn/docs/声明template行和code行/)
+- [模版执行器将在何时以及以何种顺序执行](/zh-cn/docs/卡拉ok模板执行环境和顺序/)
+- [template修饰语](/zh-cn/docs/模版修饰语/)
+- [内联变量（$变量）](/zh-cn/docs/内联变量/)
+- [code区和code行的规则](/zh-cn/docs/code行-和-code区/)
+- [code区/行的执行环境的内容](/zh-cn/docs/execution-envirionment/)
 
-也请看一下[Automation/Lua/Modules/karaskel.lua]({{< relref "Lua/Modules/karaskel.lua.md" >}})，有更多关于`line`和`syl`变量的内容，以及其他内容。
+也请看一下[Automation/Lua/Modules/karaskel.lua](/zh-cn/docs/karaskel-lua/)，有更多关于`line`和`syl`变量的内容，以及其他内容。
 
 ## 对于使用过 *multi-template* 的用户
 

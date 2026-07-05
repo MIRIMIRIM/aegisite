@@ -10,7 +10,7 @@ weight: 6500
 
 ## 应用卡拉OK模版
 
-这个是卡拉OK脚本执行器的宏，用法请参见[卡拉OK脚本执行器]({{< relref "Karaoke_Templater" >}})。
+这个是卡拉OK脚本执行器的宏，用法请参见[卡拉OK脚本执行器](/zh-cn/docs/卡拉ok模版执行器/)。
 
 这个宏只有在字幕文件中至少有一行模版行时才可用。
 
@@ -22,7 +22,9 @@ weight: 6500
 
 这个宏会修改在字幕栏中当前选择的所有行。
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 这有一个有排版的文本：
 
 ```ass
@@ -40,7 +42,8 @@ weight: 6500
 这是运行宏前后对比：
 
 ![StackedSign1](/img/3.2/StackedSign1.png) ![StackedSign2](/img/3.2/StackedSign2.png)
-{{</example-box>}}
+</div>
+</div>
 
 ## Automatic karaoke lead-in
 
@@ -53,7 +56,9 @@ weight: 6500
 它会改变除了第一行以外的开始时间，使得每行中间没有空隙，并且添加重新计算过的
 `\k` 标签到第一个音节。
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 这里是两行"紧密相连的" 卡拉OK行:
 
 ```ass
@@ -82,7 +87,8 @@ Smallest inter-line duration: 290 milliseconds
 
 简而言之，这是说明相邻两行的间隔时间被确定为 290 ms, 或 0.29s,
 以便于你确定入场退场特效中使用的时间参数等，同时也可以改善字幕的可读性。
-{{</example-box>}}
+</div>
+</div>
 
 ## 整理特效标签
 
@@ -101,13 +107,15 @@ Smallest inter-line duration: 290 milliseconds
 这个宏也可用作导出滤镜。
 
 The main intended function of this macro is to make
-[karaskel.lua]({{< relref "./Lua/Modules/karaskel.lua.md" >}}) split karaoke
+[karaskel.lua](/zh-cn/docs/karaskel-lua/) split karaoke
 lines more sensibly into syllable structures, see the example.
-这个宏主要功能是为了让[karaskel.lua]({{< relref "./Lua/Modules/karaskel.lua.md" >}})能够更聪明地将卡拉OK行分割为音节结构，请看如下的例子。
+这个宏主要功能是为了让[karaskel.lua](/zh-cn/docs/karaskel-lua/)能够更聪明地将卡拉OK行分割为音节结构，请看如下的例子。
 
 这个宏会修改所有字幕栏中所选行，重写这些行里的所有标签区。
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 原字幕行
 
 ```ass
@@ -133,11 +141,12 @@ Karaskel会创建这些音节结构：
 - 2 = {\\r\\fry180}me
 
 它会把特效标签放到处理过的音节上，所以整理后的版本通常是你想要的。
-{{</example-box>}}
+</div>
+</div>
 
 ## 添加边角模糊
 
-向所选行插入[`\be1`]({{< relref "../ASS_Tags#bluredges" >}})\`标签。轻微模糊所有字幕行的边缘可以显著提高[内嵌字幕]({{< relref "Attaching_subtitles_to_video" >}})的压缩率（尤其是使用像XviD这些旧的编码时），但由于字幕格式的限制，边缘模糊无法通过样式来调整。
+向所选行插入[`\be1`](/zh-cn/docs/ass标签/#bluredges/)\`标签。轻微模糊所有字幕行的边缘可以显著提高[内嵌字幕](/zh-cn/docs/将字幕加到视频上/)的压缩率（尤其是使用像XviD这些旧的编码时），但由于字幕格式的限制，边缘模糊无法通过样式来调整。
 
 ## 删除特效标签
 

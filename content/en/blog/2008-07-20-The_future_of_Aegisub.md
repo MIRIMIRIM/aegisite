@@ -1,5 +1,9 @@
 ---
 title: The future of Aegisub
+
+
+
+slug: the-future-of-aegisub
 contributors:
   - Unknown
 date: 2008-07-20T17:12:00.007000+01:00

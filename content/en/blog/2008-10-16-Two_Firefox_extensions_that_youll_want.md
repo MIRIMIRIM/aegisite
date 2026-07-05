@@ -1,5 +1,9 @@
 ---
 title: Two Firefox extensions that you'll want
+
+
+
+slug: two-firefox-extensions-that-youll-want
 contributors:
   - Unknown
 date: 2008-10-16T04:19:00.003000+01:00

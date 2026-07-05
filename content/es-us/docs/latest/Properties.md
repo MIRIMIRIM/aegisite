@@ -14,7 +14,7 @@ Las propiedades son:
 
 - **Título**, **Guion original**, **Traducción**, **Edición**, **Sicronización**, **Punto de sinc**, **Cambiado por** y **Detalles de cambios** - Estas son solo de propósitos informacionales y no afectan el renderizado de ninguna manera. Fíjelas en valores apropiados si a uno le parecen útiles.
 
-- **Resolución**, **Matriz YCbCr**, **Escala de contorno y sombra** - Consulte la página [Resolución de guion]({{<relref path="Script_Resolution" lang="en">}}) para el significado de estas opciones.
+- **Resolución**, **Matriz YCbCr**, **Escala de contorno y sombra** - Consulte la página [Resolución de guion](/docs/script-resolution/) para el significado de estas opciones.
 
 - **Estilo de salto** - Controla cómo el renderizador de subtítulos mete saltos en renglones demasiado largos como para caber en una sola línea. Los modos son:
 
@@ -24,4 +24,4 @@ Las propiedades son:
   - 3 - Igual que el modo 0, pero prefiere que la línea inferior sea más ancha. Tenga en cuenta que durante mucho tiempo la implementación de esto por parte de VSFilter tuvo errores y, a veces, insertaba líneas en blanco adicionales o tenía líneas con una sola palabra.
 
 El modo de salto debería ser 0 siempre.
-Modo 2 a veces es útil para renglones largos que se deslizan con animación o tienen saltos manuales, pero es mejor ajustarlo a nivel renglón con la etiqueta [\\q]({{<relref path="ASS_Tags#\\q">}}).
+Modo 2 a veces es útil para renglones largos que se deslizan con animación o tienen saltos manuales, pero es mejor ajustarlo a nivel renglón con la etiqueta [\\q](/es-us/docs/etiquetas-manuales-ass/#\\q/).

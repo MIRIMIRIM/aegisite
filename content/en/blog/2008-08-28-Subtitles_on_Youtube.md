@@ -1,5 +1,9 @@
 ---
 title: Subtitles on Youtube?
+
+
+
+slug: subtitles-on-youtube
 contributors:
   - jfs
 date: 2008-08-28T23:34:00.003000+01:00

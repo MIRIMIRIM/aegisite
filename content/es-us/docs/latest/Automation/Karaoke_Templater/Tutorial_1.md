@@ -6,7 +6,7 @@ menu:
 weight: 6171
 ---
 
-Bienvenido al primer tutorial acerca del uso de Karaoke Templater (plantillas de Karaoke) para crear [efectos de karaoke]({{<relref path="../../Glossary/Karaoke_effect" lang="en">}}). Comenzaremos con algo simple y luego continuaremos con efectos más avanzados a lo largo de la serie.
+Bienvenido al primer tutorial acerca del uso de Karaoke Templater (plantillas de Karaoke) para crear [efectos de karaoke](/docs/karaoke-effect/). Comenzaremos con algo simple y luego continuaremos con efectos más avanzados a lo largo de la serie.
 
 ## Encontrar Karaoke Templater
 
@@ -24,7 +24,7 @@ Pero hay algo más de qué asegurarnos primero.
 
 ## Karaoke sincronizado
 
-Karaoke Templater puede hacer muchas cosas por usted, pero no puede adivinar la letra de una canción ni cómo se sincroniza con la música. Tendrá que sincronizar la letra uno mismo o pedirle a alguien más que lo haga. Puede aprender a sincronizar el karaoke en el [tutorial de sincronizar karaoke]({{<relref path="Karaoke_Timing_Tutorial" lang="en">}}).
+Karaoke Templater puede hacer muchas cosas por usted, pero no puede adivinar la letra de una canción ni cómo se sincroniza con la música. Tendrá que sincronizar la letra uno mismo o pedirle a alguien más que lo haga. Puede aprender a sincronizar el karaoke en el [tutorial de sincronizar karaoke](/docs/karaoke-timing-tutorial/).
 
 Llamaremos a las letras de canciones con sincronización básica de karaoke (\\k timing), pero sin otros efectos, _karaoke sincronizado_. Cuando se ha aplicado un efecto al karaoke lo llamaremos _karaoke estilizado_.
 
@@ -53,13 +53,13 @@ Primero, aquí se explica cómo agregarla. A continuación, se explicará lo que
 5. Busque el campo _Efecto_, que está a la derecha de los campos _Estilo_ y _Actor_. Coloque el texto "`template line`" en él (¡Sin las comillas!). Presione la tecla _Enter_ en su teclado para guardar el campo Efecto.
 6. Finalmente, ingrese este texto como texto principal de la línea de su plantilla. Termine con _Enter_ nuevamente. `{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 
-{{<todo>}}Pantallazo de cómo se ve después de los pasos. {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Pantallazo de cómo se ve después de los pasos.</div>
 
 Ahora mire al menú _Automatización_ de nuevo. Si creó la línea de plantilla correctamente, ahora estará disponible _Aplicar plantilla de karaoke_. Si no es así, revise los pasos anteriores de nuevo.
 
 Seleccione _Aplicar plantillas de karaoke_ y observe cómo Karaoke Templater hace efecto.
 
-{{<todo>}}Otro pantallazo, después de aplicar plantillas. {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Otro pantallazo, después de aplicar plantillas.</div>
 
 Si tiene un video abierto puede ver el efecto ahora mismo, dentro de Aegisub.
 
@@ -73,7 +73,7 @@ Continuando desde arriba, ahora intente lo siguiente:
 1. Cambie el texto de la línea de plantilla a: `{\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 2. Aplicar plantillas nuevamente
 
-{{<todo>}}Más pantallazos {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Más pantallazos</div>
 
 Karaoke Templater reutilizó el karaoke sincronizado comentado y cambió el estilo del karaoke para que coincida con el nuevo efecto. También puede intentar cambiar el karaoke sincronizado comentado y aplicar plantillas nuevamente.
 
@@ -105,6 +105,6 @@ Esta no es la explicación completa de todo, pero debe de bastar por ahora.
 - Un poco más especial es `$mid`, que es el _tiempo intermedio_ de la sílaba, el tiempo justo en el medio de `$start` y `$end`. En nuestro ejemplo, lo usamos para hacer crecer cada sílaba durante la primera mitad de su duración, y volver a la altura normal para la segunda mitad. También es milisegundos.
 - La variable `$kdur`, sin embargo, está en centisegundos. Este es el tiempo original de la etiqueta \\k, y es casi solo útil para poner nuevamente en una etiqueta \\k, como hicimos acá.
 
-Con este conocimiento, ya debería poder crear muchos efectos. Es posible que también desee consultar la página sobre [etiquetas manuales ASS]({{<relref path="ASS_Tags">}}).
+Con este conocimiento, ya debería poder crear muchos efectos. Es posible que también desee consultar la página sobre [etiquetas manuales ASS](/es-us/docs/etiquetas-manuales-ass/).
 
-También puede [continuar con el siguiente tutorial]({{<relref path="./Tutorial_2" lang="en">}}), donde veremos cómo hacer cálculos con variables para conseguir más variación.
+También puede [continuar con el siguiente tutorial](/docs/using-math-expressions/), donde veremos cómo hacer cálculos con variables para conseguir más variación.

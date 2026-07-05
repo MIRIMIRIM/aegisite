@@ -1,5 +1,9 @@
 ---
 title: 'Universal Subtitle Format: a post-mortem?'
+
+
+
+slug: universal-subtitle-format-a-post-mortem
 contributors:
   - Unknown
 date: 2008-07-23T01:36:00.011000+01:00

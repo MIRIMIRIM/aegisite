@@ -8,9 +8,9 @@ aliases:
   - /docs/latest/Automation/Karaoke_Templater/Tutorial_2/
 ---
 
-In [the previous tutorial]({{< relref "./Tutorial_1" >}}) we saw how to use the basic features of Karaoke Templater to make simple karaoke effects. We'll continue where we left off here, by expanding on the basics from last tutorial.
+In [the previous tutorial](/docs/a-simple-example/) we saw how to use the basic features of Karaoke Templater to make simple karaoke effects. We'll continue where we left off here, by expanding on the basics from last tutorial.
 
-{{<todo>}}make and insert screenshots {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>make and insert screenshots</div>
 
 ## Preparations
 

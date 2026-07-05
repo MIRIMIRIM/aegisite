@@ -1,5 +1,6 @@
 ---
 title: Bug tracker lost...
+
 slug: bug-tracker-lost
 contributors:
   - jfs

@@ -13,7 +13,7 @@ Aegisub includes several macros. Here's a line-up of them.
 ## Apply karaoke template
 
 This is the macro incantation of Karaoke Templater. See the page on
-[Karaoke_Templater]({{< relref "Karaoke_Templater" >}}) for how to use this.
+[Karaoke_Templater](/docs/karaoke-templater/) for how to use this.
 
 This macro is only available when there is at least one template line in the
 subtitle file.
@@ -28,7 +28,9 @@ such that the letters are "stacked".
 This macro modifies all lines that are currently selected in the subtitles
 grid.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Here's a typeset sign:
 
 ```ass
@@ -50,7 +52,8 @@ Now after running this macro on the line:
 This is what it looks before and after running the macro:
 
 ![StackedSign1](/img/3.2/StackedSign1.png) ![StackedSign2](/img/3.2/StackedSign2.png)
-{{</example-box>}}
+</div>
+</div>
 
 ## Automatic karaoke lead-in
 
@@ -67,7 +70,9 @@ start-time of the selected line that comes before it. It changes the timing
 of the selected lines and adds `\k` tags at the start of them except the
 first.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Here's two lines of "tightly" timed karaoke:
 
 ```ass
@@ -102,7 +107,8 @@ This simply says that the smallest duration between two lines it found, was
 290 milliseconds, or 0.29 seconds, so that's as much time you have to make
 fade-in, fade-out and other transition effects, if you want every
 syllable-highlight to be fully visible.
-{{</example-box>}}
+</div>
+</div>
 
 ## Clean tags
 
@@ -127,13 +133,15 @@ lines.
 This macro is also available as an export filter.
 
 The main intended function of this macro is to make
-[karaskel.lua]({{< relref "./Lua/Modules/karaskel.lua.md" >}}) split karaoke lines more
+[karaskel.lua](/docs/karaskel-lua/) split karaoke lines more
 sensibly into syllable structures, see the example.
 
 This macro modifies all selected lines in the grid, re-writing all tag
 blocks in them.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Original line:
 
 ```ass
@@ -160,13 +168,14 @@ Now karaskel creates these syllable structures:
 
 The cleaned up version is generally what you'd want since it places the
 override tags inside the syllables they affect.
-{{</example-box>}}
+</div>
+</div>
 
 ## Add Edgeblur
 
-Add [`\be1`]({{< relref "../ASS_Tags#bluredges" >}}) to all selected lines. Lightly blurring the
+Add [`\be1`](/docs/ass-override-tags/#bluredges/) to all selected lines. Lightly blurring the
 edges of all dialogue lines can noticeably improve compressibility when
-[hardsubbing]({{< relref "Attaching_subtitles_to_video#hardsubbing" >}}) (especially when using older
+[hardsubbing](/docs/applying-subtitles/#hardsubbing/) (especially when using older
 codecs such as XviD), but edgeblur cannot be set in the style due to format
 limitations.
 

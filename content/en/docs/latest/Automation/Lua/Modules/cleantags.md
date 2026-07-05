@@ -8,4 +8,4 @@ aliases:
   - /docs/latest/Automation/Lua/Modules/cleantags/
 ---
 
-{{<todo>}}Write documentation {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>Write documentation</div>

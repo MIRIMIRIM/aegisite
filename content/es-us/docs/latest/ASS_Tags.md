@@ -6,22 +6,25 @@ menu:
 weight: 4400
 ---
 
-La siguiente es una lista de todas las etiquetas admitidas por el formato Advanced Substation Alpha. Esta es básicamente una versión detallada de `ass-quickref.txt`. Consulte el [tutorial]({{<relref path="Visual_Typesetting" lang="en">}}) para obtener una introducción a la composición tipográfica, utilizando algunas etiquetas básicas.
+La siguiente es una lista de todas las etiquetas admitidas por el formato Advanced Substation Alpha. Esta es básicamente una versión detallada de `ass-quickref.txt`. Consulte el [tutorial](/docs/visual-typesetting/) para obtener una introducción a la composición tipográfica, utilizando algunas etiquetas básicas.
 
 ## Caracteres especiales
 
 Las siguientes etiquetas están escritas en el medio del texto y no dentro de bloques de anulación (es decir, no entre { y }).
 
-{{<tag-def-box title="Salto de línea suave" id="\n">}}\\n{{</tag-def-box>}}
+<h3 id="\n">Salto de línea suave</h3>
+<pre><code class="language-plaintext">\\n</code></pre>
 Inserta un salto de línea forzado, pero solo cuando esté en el modo de salto 2. (Ver
-[la etiqueta \\q]({{<relref path="ASS_Tags#\q" >}})). Fíjese que es una n minúscula.
+[la etiqueta \\q](/es-us/docs/etiquetas-manuales-ass/#\q/)). Fíjese que es una n minúscula.
 
 En todos los demás modos de salto, esto se reemplaza por un espacio normal. Rara vez (o nunca) es realmente útil. Si no está seguro de si quiere esto o \\N, probablemente quiere \\N.
 
-{{<tag-def-box title="Salto de línea duro" id="\N">}}\\N{{</tag-def-box>}}
+<h3 id="\N">Salto de línea duro</h3>
+<pre><code class="language-plaintext">\\N</code></pre>
 Inserta un salto de línea forzado, independientemente del modo de ajuste. Fíjese que es una N mayúscula.
 
-{{<tag-def-box title="Espacio duro" id="\h">}}\\h{{</tag-def-box>}}
+<h3 id="\h">Espacio duro</h3>
+<pre><code class="language-plaintext">\\h</code></pre>
 Inserta un espacio "duro" que no se rompa. La línea nunca se dividirá automáticamente justo antes ni después de un espacio duro, y los espacios no se colapsan cuando aparecen al principio o al final de una línea dibujada.
 
 ## Etiquetas manuales
@@ -39,199 +42,216 @@ Algunas etiquetas son "complejas" y aceptan más de un parámetro. En estos caso
 **Nota sobre tipografía:**
 En esta página, todo lo escrito en _cursiva_ rodeado por `<` corchetes angulares `>` es un parámetro y uno tiene que ingresar un valor en su lugar. Los corchetes angulares no forman parte del valor que debe ingresar. Utilice los ejemplos como guía sobre cómo se deben escribir las etiquetas. En general, se aplican las mismas reglas a todas las etiquetas en cuanto a su apariencia.
 
-{{<tag-def-box title="Cursiva" id="\i">}}
-\\i1
-\\i0
-{{</tag-def-box>}}
+<h3 id="\i">Cursiva</h3>
+<pre><code class="language-plaintext">\\i1
+\\i0</code></pre>
 Activa o desactiva el texto en _cursiva_. Utilice `\i1` para habilitar la cursiva para el siguiente texto y `\i0` para deshabilitarla nuevamente.
 
-{{<tag-def-box title="Negrita" id="\b">}}
-\\b1
+<h3 id="\b">Negrita</h3>
+<pre><code class="language-plaintext">\\b1
 \\b0
-\\b<i>\<peso></i>
-{{</tag-def-box>}}
+\\b<i>\<peso></i></code></pre>
 Activa o desactiva el texto en **negrita**. Utilice `\b1` para habilitar la negrita para el siguiente texto y `\b0` para desactivarla nuevamente.
 
 La versión <code>\\b<i>\<peso></i></code> permite especificar un peso explícito para usar. Tenga en cuenta que la mayoría de las fuentes sólo admiten uno o dos pesos, por lo que rara vez necesitará utilizarlo. Los pesos de las fuentes son múltiplos de 100, de modo que 100 es el más bajo, 400 es "normal", 700 es "negrita" y 900 es el más pesado.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 No me hace {\b1}ninguna{\b0} gracia.
 ```
 
 La palabra "no" está escrita en negrita.
-{{</example-box>}}
+</div>
+</div>
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\b100}¿Qué {\b300}tan {\b500}negrita {\b700}se {\b900}alcanza?
 ```
 
 Las palabras se escriben con cada vez mayor peso. Tenga en cuenta que la mayoría de las fuentes no tienen más de uno o dos pesos diferentes y en ese caso solo podrá ver "sin negrita" y "negrita".
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Subrayado" id="\u">}}
-\\u1
-\\u0
-{{</tag-def-box>}}
+<h3 id="\u">Subrayado</h3>
+<pre><code class="language-plaintext">\\u1
+\\u0</code></pre>
 Activa o desactiva el texto <u>subrayado</u>. Utilice `\u1` para habilitar el subrayado en el siguiente texto y `\u0` para desactivarlo nuevamente.
 
-{{<tag-def-box title="Tachado" id="\s">}}
-\\s1
-\\s0
-{{</tag-def-box>}}
+<h3 id="\s">Tachado</h3>
+<pre><code class="language-plaintext">\\s1
+\\s0</code></pre>
 Activa o desactiva el texto <s>tachado</s>. Utilice `\s1` para habilitar el tachado del siguiente texto y `\s0` para desactivarlo nuevamente.
 
-{{<tag-def-box title="Grosor de borde" id="\bord">}}\\bord<i>\<grosor></i>{{</tag-def-box>}}
+<h3 id="\bord">Grosor de borde</h3>
+<pre><code class="language-plaintext">\\bord<i>\<grosor></i></code></pre>
 Cambia el grosor del borde alrededor del texto. Fije el grosor en 0 (cero) para desactivar el borde por completo.
 
-Si "escalar borde y sombra" (consulte [propiedades del guion]({{<relref path="Properties">}})) está habilitado, el valor se proporciona en píxeles de resolución del guion; de lo contrario, se proporciona en píxeles de resolución de vídeo (lo cual significa que el grosor del borde variará según la resolución del vídeo en la que se renderizan los subtítulos).
+Si "escalar borde y sombra" (consulte [propiedades del guion](/es-us/docs/propiedades-de-guion/)) está habilitado, el valor se proporciona en píxeles de resolución del guion; de lo contrario, se proporciona en píxeles de resolución de vídeo (lo cual significa que el grosor del borde variará según la resolución del vídeo en la que se renderizan los subtítulos).
 
 El valor no se limita a píxeles enteros y puede tener decimales. El grosor del borde no puede ser negativo.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \bord0
 ```
 
 Deshabilitar el borde por completo.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \bord3.7
 ```
 
 Establecer el grosor del borde en 3.7 píxeles.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Grosor de borde (extendido)" id="\xbord">}}
-\\xbord<i>\<grosor></i>
-\\ybord<i>\<grosor></i>
-{{</tag-def-box>}}
+<h3 id="\xbord">Grosor de borde (extendido)</h3>
+<pre><code class="language-plaintext">\\xbord<i>\<grosor></i>
+\\ybord<i>\<grosor></i></code></pre>
 Utilice las etiquetas `\xbord` `\ybord` para establecer el grosor del borde en las direcciones X y Y por separado. Esto puede ser útil para corregir el tamaño del borde en caso del renderizado anamórfico de subtítulos.
 
 Tenga en cuenta que si usa `\bord` después de `\xbord` o `\ybord` en una línea, las anulará a ambas.
 
 Uno puede establecer el grosor del borde en 0 (cero) en una de las direcciones para desactivar completamente el borde en esa dirección.
 
-{{<tag-def-box title="Distancia de sombra" id="\shad">}}\\shad<i>\<profundidad></i>{{</tag-def-box>}}
+<h3 id="\shad">Distancia de sombra</h3>
+<pre><code class="language-plaintext">\\shad<i>\<profundidad></i></code></pre>
 Establece la distancia desde el texto para posicionar la sombra. Fijar la profundidad en 0
-(cero) desactiva la sombra por completo. Funciona de manera similar a [\\bord]({{<relref path="ASS_Tags#\bord">}}).
+(cero) desactiva la sombra por completo. Funciona de manera similar a [\\bord](/es-us/docs/etiquetas-manuales-ass/#\bord/).
 
 La profundidad de la sombra no puede ser negativa con esta etiqueta.
 
-{{<tag-def-box title="Distancia de sombra (extendida)" id="\xshad">}}
-\\xshad<i>\<profundidad></i>
-\\yshad<i>\<profundidad></i>
-{{</tag-def-box>}}
+<h3 id="\xshad">Distancia de sombra (extendida)</h3>
+<pre><code class="language-plaintext">\\xshad<i>\<profundidad></i>
+\\yshad<i>\<profundidad></i></code></pre>
 Establece la distancia desde el texto para posicionar la sombra, con las posiciones X y Y configuradas por separado. La sombra solo se desactiva si la distancia X y Y es 0.
 
 Tenga en cuenta que, a diferencia de \\shad, puede establecer la distancia negativa con estas etiquetas para colocar la sombra arriba o izquierda del texto.
 
-{{<tag-def-box title="Bordes borrosos" id="\be">}}
-\\be0
+<h3 id="\be">Bordes borrosos</h3>
+<pre><code class="language-plaintext">\\be0
 \\be1
-\\be<i>\<fuerza></i>
-{{</tag-def-box>}}
+\\be<i>\<fuerza></i></code></pre>
 Habilita o deshabilita un efecto de suavizado sutil para los bordes del texto. El efecto no siempre es muy visible, pero en algunos casos puede hacer que el texto se vea mejor. Suele ser más visible en tamaños de texto más pequeños.
 
-Fíjese que esta etiqueta difumina solo los _bordes_ del texto, no todo. Esto significa que si el texto tiene un borde (establecido con [\\bord]({{<relref path="ASS_Tags#\bord">}})) el borde se verá borroso, pero si no hay borde, el texto principal aparecerá borroso.
+Fíjese que esta etiqueta difumina solo los _bordes_ del texto, no todo. Esto significa que si el texto tiene un borde (establecido con [\\bord](/es-us/docs/etiquetas-manuales-ass/#\bord/)) el borde se verá borroso, pero si no hay borde, el texto principal aparecerá borroso.
 
 En la versión extendida, _fuerza_ es la cantidad de veces que se aplica el efecto normal. Tenga en cuenta que en valores altos el efecto degenera hasta la nada y, en general, no es muy útil. Como resultado, para desenfoques fuertes, `\blur` generalmente es más útil. La _fuerza_ tiene que ser un número entero.
 
-{{<tag-def-box title="Bordes borrosos (núcleo gaussiano)" id="\blur">}}\\blur<i>\<fuerza></i>{{</tag-def-box >}}
-En general, tiene la misma función que la etiqueta [`\be`]({{<relref path="ASS_Tags#\be">}}), pero utiliza un algoritmo más avanzado que se ve mejor en niveles altos de fuerza. A diferencia de `\be`, la _fuerza_ aquí puede ser no entera. Establezca _fuerza_ en 0 (cero) para desactivar el efecto. Con cuidado, que configurar _fuerza_ demasiado alto puede requerir mucho tiempo de CPU para renderizar.
+<h3 id="\blur">Bordes borrosos (núcleo gaussiano)</h3>
+<pre><code class="language-plaintext">\\blur<i>\<fuerza></i></code></pre>
+En general, tiene la misma función que la etiqueta [`\be`](/es-us/docs/etiquetas-manuales-ass/#\be/), pero utiliza un algoritmo más avanzado que se ve mejor en niveles altos de fuerza. A diferencia de `\be`, la _fuerza_ aquí puede ser no entera. Establezca _fuerza_ en 0 (cero) para desactivar el efecto. Con cuidado, que configurar _fuerza_ demasiado alto puede requerir mucho tiempo de CPU para renderizar.
 
-Tenga en cuenta que esta etiqueta difumina solo los _bordes_ del texto, no todo. Esto significa que si el texto tiene un borde (establecido con [`\bord`]({{<relref path="ASS_Tags#\bord">}})) el borde se verá borroso, pero si no hay borde, el texto principal aparecerá borroso.
+Tenga en cuenta que esta etiqueta difumina solo los _bordes_ del texto, no todo. Esto significa que si el texto tiene un borde (establecido con [`\bord`](/es-us/docs/etiquetas-manuales-ass/#\bord/)) el borde se verá borroso, pero si no hay borde, el texto principal aparecerá borroso.
 
-{{<tag-def-box title="Nombre de fuente" id="\fn">}}\\fn<i>\<nombre></i>{{</tag-def-box>}}
+<h3 id="\fn">Nombre de fuente</h3>
+<pre><code class="language-plaintext">\\fn<i>\<nombre></i></code></pre>
 Establece la fuente que se utilizará para el texto que sigue. No debe haber ningún espacio entre `\fn` y el nombre de la fuente, y tampoco puede poner paréntesis o algo similar alrededor del nombre de la fuente.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fnArial
 ```
 
 El texto que sigue a esta etiqueta estará en fuente Arial.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fnTimes New Roman
 ```
 
 El texto que sigue a esta etiqueta estará en fuente Times New Roman.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Tamaño de fuente" id="\fs">}}\\fs<i>\<tamaño></i>{{</tag-def-box>}}
+<h3 id="\fs">Tamaño de fuente</h3>
+<pre><code class="language-plaintext">\\fs<i>\<tamaño></i></code></pre>
 Establece el tamaño de la fuente. El tamaño especificado es la altura en píxeles de escritura, por lo que con un tamaño de fuente 40, una línea de texto tiene 40 píxeles de alto. (Nota técnica: en realidad se trata de puntos tipográficos (edición de escritorio), no de píxeles de guion, pero dado que la representación siempre se realiza a 72 DPI (según el estándar de facto), un punto termina siendo exactamente igual a un píxel de resolución de guion).
 
 Sólo puede especificar tamaños de fuente enteros.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fs10
 ```
 
 El siguiente texto será de una fuente de tamaño 10.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Escala de fuente" id="\fscx">}}
-\\fscx<i>\<escala></i>
-\\fscy<i>\<escala></i>
-{{</tag-def-box>}}
+<h3 id="\fscx">Escala de fuente</h3>
+<pre><code class="language-plaintext">\\fscx<i>\<escala></i>
+\\fscy<i>\<escala></i></code></pre>
 Ajusta el tamaño del texto en dirección X (`\fscx` o Y (`\fscy`). La _escala_ dada está en porcentaje, por lo que 100 significa "tamaño original".
 
 Esto no es lo mismo que configurar el tamaño de fuente, ya que configurar el tamaño está sujeto a [sugerencias de fuente](http://en.wikipedia.org/wiki/Font_hinting), mientras que escalar el texto modifica la forma del texto después de la sugerencia. Como resultado, esto siempre debe usarse con `\t` en lugar de `\fs`, ya que la animación de cambio de sugerencias para fuentes muy rara vez es deseable.
 
-Estas etiquetas también afectan a los [dibujos vectoriales]({{<relref path="ASS_Tags#comandos-de-dibujo">}}).
+Estas etiquetas también afectan a los [dibujos vectoriales](/es-us/docs/etiquetas-manuales-ass/#comandos-de-dibujo/).
 
-Puede utilizar la escala de fuente para corregir la representación anamórfica y especificar el tamaño del texto con mayor precisión que con [\\fs]({{<relref path="ASS_Tags#\fs">}}).
+Puede utilizar la escala de fuente para corregir la representación anamórfica y especificar el tamaño del texto con mayor precisión que con [\\fs](/es-us/docs/etiquetas-manuales-ass/#\fs/).
 
 Tenga en cuenta que las versiones anteriores de VSFitler redondearán abajo las escalas que no sean enteras.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscx150
 ```
 
 Aumenta el texto un 50% más ancho de lo normal.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscy50
 ```
 
 Disminuye el texto a media altura.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscx200\fscy200
 ```
 
 Duplica el tamaño del texto.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Espaciado entre letras" id="\fsp">}}\\fsp<i>\<espaciado></i>{{</tag-def-box>}}
+<h3 id="\fsp">Espaciado entre letras</h3>
+<pre><code class="language-plaintext">\\fsp<i>\<espaciado></i></code></pre>
 Cambia el espacio entre las letras individuales del texto. Puede utilizar esto para separar el texto más visualmente. El _espaciado_ se proporciona en píxeles de resolución de guion.
 
 El espaciado puede ser negativo y tener decimales.
 
-{{<tag-def-box title="Rotación de texto" id="\frx">}}
-\\frx<i>\<cantidad></i>
+<h3 id="\frx">Rotación de texto</h3>
+<pre><code class="language-plaintext">\\frx<i>\<cantidad></i>
 \\fry<i>\<cantidad></i>
 \\frz<i>\<cantidad></i>
-\\fr<i>\<cantidad></i>
-{{</tag-def-box>}}
+\\fr<i>\<cantidad></i></code></pre>
 Gira el texto alrededor del eje X, Y o Z. La etiqueta `\fr` es un atajo para `\frz`.
 
 - El **eje X** corre horizontalmente por la pantalla. Girando sobre él (con valores positivos) provoca un efecto con que la parte superior del texto se mete hacia "adentro" de la pantalla mientras que la parte inferior sale hacia "afuera" de la pantalla.
@@ -240,35 +260,43 @@ Gira el texto alrededor del eje X, Y o Z. La etiqueta `\fr` es un atajo para `\f
 
 La _cantidad_ de rotación se da en grados matemáticos, de modo que 360 grados es una rotación completa, y rotar cualquier múltiple de 360 es lo mismo que no rotar. Se permite especificar cantidades de rotación negativas, así como cantidades mayores a 360 grados.
 
-La rotación se realiza alrededor del punto de origen de la línea del subtítulo; esto se define con la etiqueta [\\org]({{<relref path="ASS_Tags#\org">}}).
+La rotación se realiza alrededor del punto de origen de la línea del subtítulo; esto se define con la etiqueta [\\org](/es-us/docs/etiquetas-manuales-ass/#\org/).
 
-Estas etiquetas también afectan a [dibujos vectoriales]({{<relref path="ASS_Tags#comandos-de-dibujo">}}).
+Estas etiquetas también afectan a [dibujos vectoriales](/es-us/docs/etiquetas-manuales-ass/#comandos-de-dibujo/).
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \frx45
 ```
 
 Gira el texto 45 grados por el eje X.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 freír-45
 ```
 
 Gira el texto 45 grados en dirección opuesta por el eje Y.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \frz180
 ```
 
 Gira el texto 180 grados por el eje Z, dejándolo patas arriba.
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Las dos rotaciones siguientes producen el mismo resultado:
 
 ```plaintext
@@ -277,16 +305,21 @@ Las dos rotaciones siguientes producen el mismo resultado:
 ```
 
 Esto se debe a que 330 grados son 30 grados menos que una rotación completa de 360 grados.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \t(\frz3600)
 ```
 
-Realiza una animación donde el texto realiza 10 revoluciones completas en el eje Z. Consulte también la etiqueta [\\t]({{<relref path="ASS_Tags#\t">}}).
-{{</example-box>}}
-{{<example-box>}}
+Realiza una animación donde el texto realiza 10 revoluciones completas en el eje Z. Consulte también la etiqueta [\\t](/es-us/docs/etiquetas-manuales-ass/#\t/).
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Los siguientes pantallazos demuestran el efecto de girar sobre los diferentes ejes:
 
 ![Fr_sample01](/img/3.2/Fr_sample01.jpg)
@@ -294,23 +327,27 @@ Los siguientes pantallazos demuestran el efecto de girar sobre los diferentes ej
 ![Fr_sample02](/img/3.2/Fr_sample02.jpg)
 
 ![Fr_sample03](/img/3.2/Fr_sample03.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Cizallamiento de texto" id="\fax">}}
-\\fax<i>\<factor></i>
-\\fay<i>\<factor></i>
-{{</tag-def-box>}}
+<h3 id="\fax">Cizallamiento de texto</h3>
+<pre><code class="language-plaintext">\\fax<i>\<factor></i>
+\\fay<i>\<factor></i></code></pre>
 Realiza una transformación de cizallamiento (corte, transvección) del texto. Un _factor_ de 0 (cero) significa que no hay distorsión.
 
 Por lo general, _factor_ será un número pequeño; es poco probable que los valores fuera del rango -2 a 2 produzcan resultados deseables.
 
-El corte se realiza después de la rotación, en las coordenadas giradas. El sistema de coordenadas utilizado para el corte no se ve afectado por el [origen de rotación]({{<relref path="ASS_Tags#\org">}}).
+El corte se realiza después de la rotación, en las coordenadas giradas. El sistema de coordenadas utilizado para el corte no se ve afectado por el [origen de rotación](/es-us/docs/etiquetas-manuales-ass/#\org/).
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ![cizallamiento](/img/3.2/shearing.png)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Codificación de fuente" id="\fe">}}\\fe<i>\<id></i>{{</tag-def-box>}}
+<h3 id="\fe">Codificación de fuente</h3>
+<pre><code class="language-plaintext">\\fe<i>\<id></i></code></pre>
 Configura la codificación de fuente Windows utilizada para seleccionar la tabla de mapeo de fuentes utilizado para traducir puntos Unicode a índices de glifos en la fuente. Para algunas fuentes sin una tabla de mapeo Unicode, esto puede ser necesario para que funcione el texto en ciertos idiomas. Para las fuentes que tienen una tabla de mapeo Unicode, se podría usar para seleccionar variaciones regionales, como elegir el glifo correcto para un ideograma Han que sea diferente en chino simplificado, chino tradicional, japonés y coreano.
 
 Algunos ID de codificación de fuentes comunes son:
@@ -327,19 +364,20 @@ Algunos ID de codificación de fuentes comunes son:
 - 177 - hebreo.
 - 178 - árabe.
 
-{{<todo>}}¿Es eso realmente correcto? {{</todo>}}
+<div class="alert alert-warning" role="alert">
+<strong>TODO: </strong>¿Es eso realmente correcto?
+</div>
 
-Una lista más completa se puede ver en la caja de diálogo del [editor de estilos]({{<relref path="Styles#el-editor-de-estilo">}}).
+Una lista más completa se puede ver en la caja de diálogo del [editor de estilos](/es-us/docs/editar-estilos/#el-editor-de-estilo/).
 
 En archivos ASS almacenados en codificaciones que no son Unicode, esta etiqueta también afecta en qué página de códigos debe interpretarse el texto que le sigue. Aegisub no soporta este uso y es posible que algunos renderizadores tampoco lo admitan. Se recomienda que no confíe en esto y, en su lugar, almacene siempre sus archivos en codificación Unicode. (Aegisub almacena archivos en Unicode UTF-8 por defecto).
 
-{{<tag-def-box title="Establecer color" id="\c">}}
-\\c&H<i>\<bb>\<gg>\<rr></i>&
+<h3 id="\c">Establecer color</h3>
+<pre><code class="language-plaintext">\\c&H<i>\<bb>\<gg>\<rr></i>&
 \\1c&H<i>\<bb>\<gg>\<rr></i>&
 \\2c&H<i>\<bb>\<gg>\<rr></i>&
 \\3c&H<i>\<bb>\<gg>\<rr></i>&
-\\4c&H<i>\<bb>\<gg>\<rr></i>&
-{{</tag-def-box>}}
+\\4c&H<i>\<bb>\<gg>\<rr></i>&</code></pre>
 Establece el color del siguiente texto. La etiqueta `\c` es una abreviatura de `\1c`.
 
 - `\1c` establece el color de relleno principal.
@@ -351,13 +389,12 @@ Los códigos de color se dan en [hexadecimal](http://en.wikipedia.org/wiki/Hexad
 
 Los botones Seleccionar Color de la barra de herramientas ![pick-color-toolbar-buttons](/img/3.2/pick-color-toolbar-buttons.png) pueden ayudar a seleccionar colores e ingresar los códigos de color.
 
-{{<tag-def-box title="Establecer alfa" id="\alpha">}}
-\\alpha&H<i>\<aa></i>
+<h3 id="\alpha">Establecer alfa</h3>
+<pre><code class="language-plaintext">\\alpha&H<i>\<aa></i>
 \\1a&H<i>\<aa></i>
 \\2a&H<i>\<aa></i>
 \\3a&H<i>\<aa></i>
-\\4a&H<i>\<aa></i>
-{{</tag-def-box>}}
+\\4a&H<i>\<aa></i></code></pre>
 Establece el alfa (transparencia) del texto.
 
 - `\alpha` establece el alfa de todos los componentes a la vez.
@@ -368,25 +405,30 @@ Establece el alfa (transparencia) del texto.
 
 Un alfa de 00 (cero) significa opaco/completamente visible, y un alfa de FF (es decir, 255 en decimal) es completamente transparente/invisible.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \alpha&H80&
 ```
 
 Fija el alfa de todos los componentes en hexadecimal 80, decimal 128, para que el texto sea 50% transparente en general.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \1a&HFF&
 ```
 
 Fija el alfa de relleno principal en hexadecimal FF, decimal 255, para que resulte efectivamente invisible dejando solo el borde y la sombra.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Alineación de línea" id="\an">}}\\an<i>\<pos></i>{{</tag-def-box>}}
-Especifica la alineación de la línea. La alineación define la posición de la línea cuando no hay ni [anulación de posición]({{<relref path="ASS_Tags#\pos">}}) ni [movimiento]({{<relref path="ASS_Tags#\move">}}) en efecto. De lo contrario, especifica el punto de anclaje de posicionamiento y rotación.
+<h3 id="\an">Alineación de línea</h3>
+<pre><code class="language-plaintext">\\an<i>\<pos></i></code></pre>
+Especifica la alineación de la línea. La alineación define la posición de la línea cuando no hay ni [anulación de posición](/es-us/docs/etiquetas-manuales-ass/#\pos/) ni [movimiento](/es-us/docs/etiquetas-manuales-ass/#\move/) en efecto. De lo contrario, especifica el punto de anclaje de posicionamiento y rotación.
 
 La etiqueta `\an` usa valores del "teclado numérico" ("numpad") para _pos_. Es decir, los valores de alineación corresponden a las posiciones de los dígitos en el teclado numérico de cuadrícula:
 
@@ -400,7 +442,8 @@ La etiqueta `\an` usa valores del "teclado numérico" ("numpad") para _pos_. Es 
 1. Arriba centro
 1. Arriba derecha
 
-{{<tag-def-box title="Alineación de línea (antigua)" id="\a">}}\\a<i>\<pos></i>{{</tag-def-box>}}
+<h3 id="\a">Alineación de línea (antigua)</h3>
+<pre><code class="language-plaintext">\\a<i>\<pos></i></code></pre>
 Especifica la alineación de la línea utilizando códigos de alineación heredados de SubStation Alpha. Esta etiqueta es compatible pero se considera obsoleta; normalmente uno debe usar `\an` en nuevos guiones, ya que es más intuitivo.
 
 La excepción es que `\a6` debería usarse para la traducción perezosa de signos, porque si uno va a ser holgazán ha de hacerlo bien y ahorrar la letra extra.
@@ -417,12 +460,11 @@ Calcule _pos_ de la siguiente manera: use 1 para alineación a la izquierda, 2 p
 - 10: Centro
 - 11: Centro derecha
 
-{{<tag-def-box title="Efecto Karaoke" id="\k">}}
-\\k<i>\<duración></i>
+<h3 id="\k">Efecto Karaoke</h3>
+<pre><code class="language-plaintext">\\k<i>\<duración></i>
 \\K<i>\<duración></i>
 \\kf<i>\<duración></i>
-\\ko<i>\<duración></i>
-{{</tag-def-box>}}
+\\ko<i>\<duración></i></code></pre>
 
 > _Tenga en cuenta que estas etiquetas por sí solas solo crean algunos efectos muy específicos
 > y todos los demás efectos se crean con una combinación de múltiples diferentes
@@ -430,7 +472,7 @@ Calcule _pos_ de la siguiente manera: use 1 para alineación a la izquierda, 2 p
 
 La familia de etiquetas `\k` marca los subtítulos para efectos de karaoke especificando la duración de cada sílaba. Coloque una etiqueta `\k` antes de cada sílaba en la línea.
 
-La _duración_ se da en centisegundos, ej. una _duración_ de 100 equivale a 1 segundo. Por lo general, uno no ingresa etiquetas `\k` manualmente, sino que utiliza herramientas de sincronización de karaoke como [modo karaoke de Aegisub]({{<relref path="Tutorials#sincronizar-karaoke">}}).
+La _duración_ se da en centisegundos, ej. una _duración_ de 100 equivale a 1 segundo. Por lo general, uno no ingresa etiquetas `\k` manualmente, sino que utiliza herramientas de sincronización de karaoke como [modo karaoke de Aegisub](/es-us/docs/tutoriales/#sincronizar-karaoke/).
 
 Las diferentes etiquetas `\k` crean varios efectos:
 
@@ -440,7 +482,8 @@ Las diferentes etiquetas `\k` crean varios efectos:
 
 _Nota: Hay una etiqueta de karaoke adicional, `\kt`, que es muy diferente a las demás. Rara vez es útil y Aegisub no soporta esa etiqueta; por lo tanto no está documentada._
 
-{{<tag-def-box title="Estilo de salto" id="\q">}}\\q<i>\<estilo></i>{{</tag-def-box>}}
+<h3 id="\q">Estilo de salto</h3>
+<pre><code class="language-plaintext">\\q<i>\<estilo></i></code></pre>
 
 Determina cómo se aplica el salto de línea a la línea de subtítulo. Los siguientes \_estilo_s están disponibles:
 
@@ -449,44 +492,50 @@ Determina cómo se aplica el salto de línea a la línea de subtítulo. Los sigu
 - 2: Sin ajuste, las líneas anchas se extenderán más allá de los bordes de la pantalla. Tanto `\n` como `\N` fuerzan saltos de línea.
 - 3: Salto/ajuste inteligente, similar al estilo 0, pero las líneas inferiores se hacen más anchas.
 
-{{<tag-def-box title="Restablecer estilo" id="\r">}}\\r<br>\\r<i>\<estilo></i>{{</tag-def-box>}}
+<h3 id="\r">Restablecer estilo</h3>
+<pre><code class="language-plaintext">\\r<br>\\r<i>\<estilo></i></code></pre>
 Restablece el estilo. Esto cancela todas las anulaciones de estilo vigentes, incluidas
-[animaciones]({{<relref path="ASS_Tags#\t">}}), para todo el texto siguiente.
+[animaciones](/es-us/docs/etiquetas-manuales-ass/#\t/), para todo el texto siguiente.
 
 La primera forma que no especifica un _estilo_ restablecerá al estilo definido para toda la línea, mientras que el segundo formulario, que especifica el nombre de un _estilo_, establecerá el estilo en ese estilo específico.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 -Hey\N{\rAlternate}-Huh?\N{\r}-Who are you?
 ```
 
 Suponiendo que el estilo de línea actual es "Default", primero tiene "Hey" en el estilo predeterminado y luego sigue en la siguiente línea "Huh?" en el estilo "Alternate", y en la tercera línea el estilo se restablece a "Default" para "Who are you?"
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Fijar posición" id="\pos">}}\\pos(<i>\<X></i>,<i>\<Y></i>){{</tag-def-box>}}
-Establece la posición de la línea. Las coordenadas _X_ y _Y_ deben ser números enteros y se proporcionan en el sistema de coordenadas de resolución de guion. El significado de _X_ y _Y_ cambia ligeramente dependiendo de la [alineación]({{<relref path="ASS_Tags#\an">}}).
+<h3 id="\pos">Fijar posición</h3>
+<pre><code class="language-plaintext">\\pos(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+Establece la posición de la línea. Las coordenadas _X_ y _Y_ deben ser números enteros y se proporcionan en el sistema de coordenadas de resolución de guion. El significado de _X_ y _Y_ cambia ligeramente dependiendo de la [alineación](/es-us/docs/etiquetas-manuales-ass/#\an/).
 
 La alineación de la línea de subtítulo se utiliza como punto de anclaje para la posición. Es decir, cuando tiene una línea con alineación arriba-izquierda, la esquina superior izquierda del subtítulo se coloca en las coordenadas dadas a `\pos`, y para la alineación abajo-centro, el centro inferior del subtítulo se coloca en las coordenadas dadas.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Las siguientes capturas de pantalla demuestran la forma de que la alineación afecta el posicionamiento. La cruz verde señala el punto (320,240) en el vídeo.
 
 ![Pos_sample01](/img/3.2/Pos_sample01.jpg)
 ![Pos_sample02](/img/3.2/Pos_sample02.jpg)
 ![Pos_sample03](/img/3.2/Pos_sample03.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Movimiento" id="\move">}}
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >,<i>\<t1</i>>,<i>\<t2</i>>)
-{{</tag-def-box>}}
-La etiqueta `\move` funciona de manera similar a [`\pos`]({{<relref path="ASS_Tags#\pos">}}) en que posiciona la línea de subtítulo, la diferencia es que `\ move` hace que el subtítulo se mueva.
+<h3 id="\move">Movimiento</h3>
+<pre><code class="language-plaintext">\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)
+\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >,<i>\<t1</i>>,<i>\<t2</i>>)</code></pre>
+La etiqueta `\move` funciona de manera similar a [`\pos`](/es-us/docs/etiquetas-manuales-ass/#\pos/) en que posiciona la línea de subtítulo, la diferencia es que `\ move` hace que el subtítulo se mueva.
 
 Las dos versiones de `\move` se diferencian en que una hace que el movimiento se produzca durante toda la duración del subtítulo, mientras que la otra especifica el tiempo durante el cual se produce el movimiento.
 
 Las coordenadas _x1_, _y1_, _x2_ y _y2_ se dan en el sistema de coordenadas de resolución del guion, como `\pos`. El subtítulo comienza en el punto (_x1_,_y1_) y se mueve con velocidad constante por lo que termina en (_x2_,_y2_).
-[Alineación]({{<relref path="ASS_Tags#\an">}}) influye en las coordenadas de movimiento de la misma manera que influye en las coordenadas `\pos`.
+[Alineación](/es-us/docs/etiquetas-manuales-ass/#\an/) influye en las coordenadas de movimiento de la misma manera que influye en las coordenadas `\pos`.
 
 En la segunda versión, los tiempos _t1_ y _t2_ se dan en milisegundos (milésimas de segundo) y son relativos a la hora de inicio del subtítulo. Por ejemplo, un valor _t1_ de 1500 significa que el movimiento comienza 1,5 segundos (un segundo y medio) después de que la línea haya aparecido en pantalla. Cuando especificas tiempos para el movimiento, la posición del subtítulo es la siguiente:
 
@@ -504,27 +553,32 @@ Hay algunas cosas que con **`\move` no se pueden hacer**:
 
 Si necesita hacer cualquiera de esos dos, deberá dividir el movimiento en segmentos que se realizan en líneas de subtítulos separadas. (Cómo hacer esto está fuera del alcance de esta página).
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \move(100,150,300,350)
 ```
 
 Cuando aparece la línea en la pantalla, el subtítulo está en (100,150). Mientras se ve el subtítulo, este se mueve a velocidad constante de manera que llegará al punto (300,350) al mismo tiempo que desaparece.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \move(100,150,300,350,500,1500)
 ```
 
 La línea aparece en (100,150). Después de que la línea haya aparecido durante medio segundo (500 milisegundos), comienza a moverse hacia (300,350), de modo que llegará al punto un segundo y medio (1500 milisegundos) después de que la línea apareció por primera vez en la pantalla.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Origen de rotación" id="\org">}}\\org(<i>\<X></i>,<i>\<Y></i> ){{</tag-def-box>}}
-Establece el punto de origen utilizado para [rotación]({{<relref path="ASS_Tags#\frx">}}). Esto afecta a todas las rotaciones de la línea. Las coordenadas _X_ y _Y_ se proporcionan en números enteros de píxeles de resolución de guion.
+<h3 id="\org">Origen de rotación</h3>
+<pre><code class="language-plaintext">\\org(<i>\<X></i>,<i>\<Y></i> )</code></pre>
+Establece el punto de origen utilizado para [rotación](/es-us/docs/etiquetas-manuales-ass/#\frx/). Esto afecta a todas las rotaciones de la línea. Las coordenadas _X_ y _Y_ se proporcionan en números enteros de píxeles de resolución de guion.
 
-Cuando no hay una etiqueta `\org` en una línea, el origen de rotación es implícitamente el mismo que el [punto de anclaje de posición]({{<relref path="ASS_Tags#\pos">}}). Esto significa que el origen de la rotación se moverá si la línea se mueve y no hay un origen establecido con `\org`. Tenga en cuenta que _no_ puede animar la etiqueta `\org`, está limitado a un origen fijo si la usa.
+Cuando no hay una etiqueta `\org` en una línea, el origen de rotación es implícitamente el mismo que el [punto de anclaje de posición](/es-us/docs/etiquetas-manuales-ass/#\pos/). Esto significa que el origen de la rotación se moverá si la línea se mueve y no hay un origen establecido con `\org`. Tenga en cuenta que _no_ puede animar la etiqueta `\org`, está limitado a un origen fijo si la usa.
 
 Si el origen de la rotación se coloca en el punto de fuga en una escena 3D, las rotaciones 3D de la línea de subtítulo producirán la perspectiva correcta para coincidir con la escena.
 
@@ -532,42 +586,50 @@ Es perfectamente posible (y en ocasiones útil) colocar el punto de origen muy f
 
 Puede haber como máximo una etiqueta `\org` en una sola línea, si se pone más de una en una sola línea, solo se usa la primera.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \org(320,240)
 ```
 
 Fija el origen de rotación en el punto (320,240).
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \org(10000,0)
 ```
 
 Colocar el origen de rotación en un punto lejano le permite utilizar ligeras rotaciones `\frz` para producir efectos de "salto"; el texto se moverá hacia arriba o hacia abajo sin que parezca girar.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Desvanecimiento" id="\fad">}}\\fad(<i>\<entrada></i>,<i>\<salida></i>) {{</tag-def-box>}}
+<h3 id="\fad">Desvanecimiento</h3>
+<pre><code class="language-plaintext">\\fad(<i>\<entrada></i>,<i>\<salida></i>)</code></pre>
 Produce un efecto de aparición y desaparición gradual. Los tiempos de _entrada_ y _salida_ se dan en milisegundos; es decir, 1000 significa un segundo. Puede especificar _entrada_ o _salida_ como 0 (cero) para no tener ningún efecto de desvanecimiento en ese extremo.
 
 Agregar un efecto de desvanecimiento no extiende la duración de la línea, sino que se usa el inicio o el final del tiempo visible de la línea para el efecto de desvanecimiento. Por esta razón, debes tener cuidado de que _entrada_+_salida_ no sea mayor que la duración de la línea. Por ejemplo, para una línea que aparece durante 4 segundos, la suma de _entrada_+_salida_ no debe ser mayor que 4000.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fad(1200,250)
 ```
 
 Aparece gradualmente la línea en los primeros 1,2 segundos que está visible y se desvanece durante el último cuarto de segundo visible.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Desvanecimiento (complejo)" id="\fade">}}\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>> ,<i>\<t4</i>>){{</tag-def-box>}}
+<h3 id="\fade">Desvanecimiento (complejo)</h3>
+<pre><code class="language-plaintext">\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>> ,<i>\<t4</i>>)</code></pre>
 Realice un desvanecimiento de cinco partes utilizando tres valores alfa _a1_, _a2_ y _a3_ y cuatro tiempos _t1_, _t2_, _t3_ y _t4_.
 
 Los valores alfa se dan en _decimal_ y están entre 0 y 255, siendo 0 completamente visible y 255 invisible. Los valores de tiempo se dan en milisegundos después del inicio de la línea. Se requieren los siete parámetros.
-(Para los efectos de desvanecimiento más comunes, la etiqueta [`\fad`]({{<relref path="ASS_Tags#\fad">}}) funciona bien.)
+(Para los efectos de desvanecimiento más comunes, la etiqueta [`\fad`](/es-us/docs/etiquetas-manuales-ass/#\fad/) funciona bien.)
 
 - Antes de _t1_, la línea tiene alfa _a1_.
 - Entre _t1_ y _t2_ la línea transiciona de alfa _a1_ a alfa _a2_.
@@ -575,21 +637,22 @@ Los valores alfa se dan en _decimal_ y están entre 0 y 255, siendo 0 completame
 - Entre _t3_ y _t4_ la línea se desvanece de alfa _a2_ a alfa _a3_.
 - Después de _t4_ la línea tiene alfa _a3_.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fade(255,32,224,0,500,2000,2200)
 ```
 
 Comienza invisible, se materializa hasta volverse casi totalmente opaco y luego se desvanece hasta volverse casi totalmente invisible. El primer desvanecimiento comienza cuando comienza la línea y dura 500 milisegundos. El segundo desvanecimiento comienza a los 1500 milisegundos más tarde y dura 200 milisegundos.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Transformación animada" id="\t">}}
-\\t(<i>\<estilos></i>)
+<h3 id="\t">Transformación animada</h3>
+<pre><code class="language-plaintext">\\t(<i>\<estilos></i>)
 \\t(<i>\<acel></i>,<i>\<estilos></i>)
 \\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<estilos></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<acel></i>,<i>\<estilos></i>)
-{{</tag-def-box>}}
+\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<acel></i>,<i>\<estilos></i>)</code></pre>
 
 Realiza una transformación gradual y animada de un estilo a otro. Los _estilos_ son otras etiquetas manuales como se especifica en esta referencia. Sólo un conjunto limitado de etiquetas manuales se pueden animar con `\t`:
 
@@ -618,75 +681,88 @@ El parámetro _acel_ se puede utilizar para hacer que la animación no sea linea
 
 Antes de _t1_, el estilo es el que especifican todas las etiquetas antes de la etiqueta `\t`. Después de _t2_, el estilo es como todas las etiquetas antes de la etiqueta `\t` y se anula aún más por las _anulaciones de estilo_ dadas. Entre _t1_ y _t2_ el estilo se anima gradualmente entre esos dos puntos, siguiendo la función de aceleración descrita anteriormente.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\1c&HFF0000&\t(\1c&H0000FF&)}¡Hola!
 ```
 
 El texto comienza en azul, pero desvanece hacia el rojo, por lo que es completamente rojo cuando termina la línea.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\t(0,5000,\frz3600)}Uiii
 ```
 
 Hace que el texto gire 10 veces, en sentido antihorario, con una duración de 5 segundos.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\t(0,5000,0.5,\frz3600)}Uiii
 ```
 
 Igual que el anterior, pero comenzará rápido y disminuirá, aún haciendo las 10 rotaciones en 5 segundos.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\fscx0\fscy0\t(0,500,\fscx100\fscy100)}¡Bú!
 ```
 
 El texto comienza con un tamaño cero, es decir, invisible, y luego crece hasta alcanzar el 100% del tamaño tanto en la dirección X como en la Y.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Clip (rectángulo)" id="\clip">}}
-\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)
-\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)
-{{</tag-def-box>}}
+<h3 id="\clip">Clip (rectángulo)</h3>
+<pre><code class="language-plaintext">\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)
+\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i> >)</code></pre>
 Define un rectángulo para recortar la línea; solo la parte de la línea que está dentro del rectángulo será visible. La etiqueta `\iclip` tiene el efecto contrario: define un rectángulo donde no se ve la línea.
 
 Las coordenadas _x1_, _y1_, _x2_ y _y2_ se dan en píxeles de resolución de guion y son relativas a la esquina superior izquierda del vídeo. Las coordenadas deben ser números enteros, no hay posibilidad de utilizar coordenadas no enteras. (Aumentar la resolución del guion no aumentará la precisión; el recorte siempre ocurre en los límites de los píxeles del video).
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \clip(0,0,320,240)
 ```
 
 Suponiendo una resolución de guion de 640x480, solo es visible la parte de la línea dentro del cuadrante superior izquierdo.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \iclip(0,0,320,240)
 ```
 
 Similar a lo anterior, pero la parte de la línea dentro del cuadrante superior izquierdo está oculta.
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Ejemplo de `\clip(0,0,704,245)` en un vídeo de 704x480:
 
 ![Clip_sample01](/img/3.2/Clip_sample01.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Clip (dibujo vectorial)" id="\clip-vector">}}
-\\clip(<i>\<comandos de dibujo></i>)
+<h3 id="\clip-vector">Clip (dibujo vectorial)</h3>
+<pre><code class="language-plaintext">\\clip(<i>\<comandos de dibujo></i>)
 \\clip(<i>\<escala></i>,<i>\<comandos de dibujo></i>)
 \\iclip(<i>\<comandos de dibujo></i>)
-\\iclip(<i>\<escala></i>,<i>\<comandos de dibujo></i>)
-{{</tag-def-box>}}
+\\iclip(<i>\<escala></i>,<i>\<comandos de dibujo></i>)</code></pre>
 Usa la forma definida como dibujo vectorial para mostrar selectivamente (`\clip`) u ocultar (`\iclip`) partes de la línea.
 
 Los _comandos de dibujo_ son comandos de dibujo como los que se usan con la etiqueta `\p`. Las coordenadas se dan en píxeles de resolución de guion y son relativas a la esquina superior izquierda del video.
@@ -695,14 +771,16 @@ Si la _escala_ no se especifica, se asume que es 1 (uno), lo que significa que l
 
 A diferencia del clip rectangular, el clip de dibujo vectorial _no_ puede animarse con `\t`. Si necesita animar un clip de dibujo vectorial, debe crear varias líneas de subtítulos similares, cada una con su propio "cuadro" de la animación de recorte.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \clip(1,m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0)
 ```
 
 Muestra solo la parte de la línea dentro del pseudocírculo definido.
-{{</example-box>}}
+</div>
+</div>
 
 ## Etiquetas de dibujo
 
@@ -812,4 +890,4 @@ Extiende el b-spline a x,y. Esto es esencialmente lo mismo que agregar otro par 
 
 Cierra el b-spline.
 
-_Nota: La [herramienta de composición tipográfica de clip vectorial]({{<relref path="Visual_Typesetting#vectorial-clip" lang="en">}}) solo admite los comandos m, l y b, y puede dañar los dibujos que usan los otros comandos._
+_Nota: La [herramienta de composición tipográfica de clip vectorial](/docs/visual-typesetting/#vectorial-clip/) solo admite los comandos m, l y b, y puede dañar los dibujos que usan los otros comandos._

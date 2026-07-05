@@ -7,7 +7,7 @@ weight: 4200
 ---
 
 Un **style** en formato ASS es un conjunto de reglas de estilo tipográfico que se aplica a las líneas de diálogo. Los parámetros de estilo se pueden anular con
-[etiquetas manuales]({{<relref path="ASS_Tags">}}); los estilos existen para que no haya que especificar todas las etiquetas en cada línea.
+[etiquetas manuales](/es-us/docs/etiquetas-manuales-ass/); los estilos existen para que no haya que especificar todas las etiquetas en cada línea.
 
 ## El gestor de estilos
 
@@ -60,7 +60,7 @@ Colores
    El color principal de "relleno" del cuerpo del texto.
 
    **Secundario:**
-   Color de relleno secundario, utilizado para efectos de karaoke (consulte `\k` y sus relativos en la [página de etiquetas manuales]({{<relref path="ASS_Tags#\k">}})).
+   Color de relleno secundario, utilizado para efectos de karaoke (consulte `\k` y sus relativos en la [página de etiquetas manuales](/es-us/docs/etiquetas-manuales-ass/#\k/)).
 
    **Contorno:**
    El color del borde del texto.
@@ -68,10 +68,10 @@ Colores
    **Sombra**
    El color de la sombra, que se muestra debajo del texto principal y desplazado por el ancho de la sombra definido a la derecha.
 
-   Los cuatro cuadros de colores le muestran el color actual de cada uno de los cuatro colores de texto; al hacer clic en ellos se abre el [selector de color]({{<relref path="Colour_Picker" lang="en">}}).
+   Los cuatro cuadros de colores le muestran el color actual de cada uno de los cuatro colores de texto; al hacer clic en ellos se abre el [selector de color](/docs/colour-picker/).
 
 Márgenes
-: Controla qué tan cerca de los bordes del marco de video estará el texto posicionado (y por lo tanto también cuándo se activará el salto de línea automático; pero tenga en cuenta que no hay opción para la justificación del texto). Cada valor (izquierda, derecha, vertical) se proporciona en píxeles de resolución de guion (consulte [propiedades de guion] ({{<relref path="Properties">}})). Para alineaciones (`\an`) 1-3, el margen vertical es relativo al pie del marco de video; para 4-6 no tiene ningún significado, y para 7-9 es relativo a la cima del marco de video.
+: Controla qué tan cerca de los bordes del marco de video estará el texto posicionado (y por lo tanto también cuándo se activará el salto de línea automático; pero tenga en cuenta que no hay opción para la justificación del texto). Cada valor (izquierda, derecha, vertical) se proporciona en píxeles de resolución de guion (consulte [propiedades de guion] (/docs/Properties/)). Para alineaciones (`\an`) 1-3, el margen vertical es relativo al pie del marco de video; para 4-6 no tiene ningún significado, y para 7-9 es relativo a la cima del marco de video.
 
 Alineación
 : Controla la alineación del texto. Los números corresponden a los argumentos de la etiqueta `\an`. Las alineaciones 1, 4 y 7 están al ras de la izquierda; 3, 6 y 9 están al ras de la derecha; 2, 5 y 8 están centrados. 1, 2 y 3 son "subtítulos" (es decir, dibujados abajo en el marco); 4, 5 y 6 son "títulos intermedios" (es decir, centrados verticalmente en el marco); 7, 8 y 9 son "sobretítulos" (es decir, dibujados arriba en el marco). Tenga en cuenta que no existe tal cosa como la alineación justificada; esta es una limitación del formato.
@@ -79,7 +79,7 @@ Alineación
 Contorno
 : Controla el grosor (y el estilo) del contorno (borde) y el desplazamiento de la sombra.
 
-   - Para el contorno, el número es el grosor del borde en píxeles de guion si ScaledBorderAndShadow está habilitado (consulte [propiedades del guion]({{<relref path="Properties">}})); si está deshabilitado el grosor se da en píxeles de video en cambio. Fijarlo en 0 desactiva el contorno.
+   - Para el contorno, el número es el grosor del borde en píxeles de guion si ScaledBorderAndShadow está habilitado (consulte [propiedades del guion](/es-us/docs/propiedades-de-guion/)); si está deshabilitado el grosor se da en píxeles de video en cambio. Fijarlo en 0 desactiva el contorno.
    - La sombra, por otro lado, es una copia del texto principal, desplazada hacia abajo derecha por la distancia especificada. La distancia está en píxeles de guion si ScaledBorderAndShadow está habilitado y, en caso contrario, en píxeles de vídeo. Fijarlo en 0 desactiva la sombra.
    - Finalmente, la casilla de opción etiquetada como "Cuadro opaco" controla si el contorno debe dibujarse como se describe arriba (lo que sucede si no está habilitada), o reemplazado por un cuadro delimitador de fondo opaco. Tenga en cuenta que la representación de los contornos de cuadros opacos no funciona cuando la escala de fuente es diferente a 100%.
 
@@ -90,7 +90,7 @@ Otro
    : Controla el estirado del texto en dirección horizontal (X) y vertical (Y) respectivamente. El valor se da como porcentaje, así que 100 significa que no se estira nada. No se debería usar esto para el ajuste de tamaño de texto; utilice mejor el valor de punto en la zona Fuente, ya que ese utiliza información indicativa de la fuente misma.
 
    Rotación
-   : Controla la rotación del texto. El valor es el ángulo de rotación en grados (360 grados en un círculo completo) y puede ser negativo o mayor que 360 (establecerlo en 360, 720, etc. es lo mismo que configurarlo en 0, excepto por cuando están involucradas las [transformaciones animadas]({{<relref path="ASS_Tags#\t">}})).
+   : Controla la rotación del texto. El valor es el ángulo de rotación en grados (360 grados en un círculo completo) y puede ser negativo o mayor que 360 (establecerlo en 360, 720, etc. es lo mismo que configurarlo en 0, excepto por cuando están involucradas las [transformaciones animadas](/es-us/docs/etiquetas-manuales-ass/#\t/)).
 
    Espaciado:
    : Controla el espacio horizontal entre letras. 0 significa que se usan los valores predeterminados del tipo de letra. Puede ser negativo para menos espacio o positivo para más. El valor es la brecha adicional en píxeles entre cada carácter; si estos son píxeles de guion o píxeles de video no está definido con precisión.
@@ -100,4 +100,3 @@ Otro
 
    Vista previa:
    : Muestra una vista previa de cómo se verá el texto usando los parámetros de estilo actuales. El campo de texto le permite ingresar texto de muestra para ver una vista previa y el cuadro coloreado controla el color de fondo.
-   

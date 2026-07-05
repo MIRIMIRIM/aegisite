@@ -1,5 +1,9 @@
 ---
 title: The epic of Aegisub-tan
+
+
+
+slug: the-epic-of-aegisub-tan
 contributors:
   - Unknown
 date: 2008-07-26T17:47:00.006000+01:00

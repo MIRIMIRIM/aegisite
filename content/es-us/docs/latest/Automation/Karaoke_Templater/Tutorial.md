@@ -9,5 +9,5 @@ aliases:
   - /docs/latest/Automation/Karaoke_Templater/Tutorial/
 ---
 
-- [Un ejemplo sencillo]({{< relref "./Tutorial_1" >}})
-- [Usar expresiones matemáticas]({{< relref path="./Tutorial_2" lang="en" >}})
+- [Un ejemplo sencillo](/es-us/docs/un-ejemplo-sencillo/)
+- [Usar expresiones matemáticas](/docs/using-math-expressions/)

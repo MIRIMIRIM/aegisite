@@ -13,7 +13,7 @@ options. These are available in the options dialog box, found in the View menu.
 This page is a reference of all the available options.
 
 Aegisub stores all its configuration in a plain text file called _config.json_
-which by default is stored in the [?user]({{< relref "Aegisub_path_specifiers" >}}) directory.
+which by default is stored in the [?user](/docs/path-specifiers/) directory.
 If you want to reset Aegisub to its default options without reinstalling the
 program, you can just delete config.json and restart Aegisub.
 
@@ -93,7 +93,7 @@ Default timing length
 Default lead-in length
 Default lead-out length
 : The duration added to the start of a line by the "add lead-in" and "add
-  lead-out" functions. Also used in (and set by) the [timing postprocessor]({{< relref "Timing_Post-Processor" >}}).
+  lead-out" functions. Also used in (and set by) the [timing postprocessor](/docs/timing-post-processor/).
 
 Marker drag-start sensitivity
 : The distance in pixels that a marker must be dragged for it to register as a
@@ -197,7 +197,7 @@ Fast jump step in frames
 Screenshot save path
 : Decides where Aegisub should save screenshots. The default is `?video`, which
   means they are saved to wherever the video is, but you can change it to any
-  path you like. [Aegisub_path_specifiers]({{< relref "Aegisub_path_specifiers" >}}) are supported; another option
+  path you like. [Aegisub_path_specifiers](/docs/path-specifiers/) are supported; another option
   directly available in the dropdown is `?script`, which is wherever the script
   is.
 
@@ -222,7 +222,7 @@ Match video resolution on open
 ![preferences-interface](/img/3.2/preferences-interface.png#center)
 
 Enable call tips
-: When enabled, Aegisub will detect when you are writing an [override tag]({{< relref "ASS_Tags" >}}) and display a small box with a brief reference of the syntax of
+: When enabled, Aegisub will detect when you are writing an [override tag](/docs/ass-override-tags/) and display a small box with a brief reference of the syntax of
   the tag in question until you close the tag. This is called a "call tip" and
   the feature may be familiar to users of various programming IDEs.
 
@@ -398,7 +398,7 @@ hotkey field in the row, then press the key(s) that should trigger the command.
 Accept the new hotkey by clicking on another row.
 
 To add a new hotkey, select the context you want to add the hotkey to, then
-click the New button. Enter the [command name]({{< relref "Commands" >}}), then set the hotkey
+click the New button. Enter the [command name](/docs/commands/), then set the hotkey
 as when editing them.
 
 ## Backup
@@ -417,7 +417,7 @@ Interval in seconds
 Path
 : Decides where to save autosaved copies of scripts you are working on. By
   default set to `autosave` in your Aegisub `?user` directory (see the
-  [Aegisub_path_specifiers]({{< relref "Aegisub_path_specifiers" >}}) page for details).
+  [Aegisub_path_specifiers](/docs/path-specifiers/) page for details).
 
 Autosave after every change
 : If enabled, Aegisub will save the file after every change made to it. Note
@@ -458,9 +458,9 @@ Trace level
   (i.e. a "Fatal" level message will not cause the script to terminate.)
 
 Autoreload on Export
-: Automatically reloads the specified sets of scripts when the [Exporting]({{< relref "Exporting" >}})
+: Automatically reloads the specified sets of scripts when the [Exporting](/docs/exporting-subtitles/)
   dialogue is opened. In that case you will have to enter the
-  [Automation/Manager]({{< relref "Automation/Manager" >}}) window and determine the cause of the error.
+  [Automation/Manager](/docs/automation-manager/) window and determine the cause of the error.
 
 ## Advanced Audio
 
@@ -554,7 +554,7 @@ Spectrum quality
   (Aegisub always works in mono) or the bit-depth (the spectrum is always
   calculated in 32 bit floating point) of the audio.
 
-{{<todo>}}this is probably wrong {{</todo>}}
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>this is probably wrong</div>
 
 Cache memory max
 : The maximum amount of memory to use for audio spectrum caching. The results
@@ -644,7 +644,7 @@ Subtitles provider
     libass is far faster than VSFilter and (somewhat) cross-platform, but
     unfortunately still has some rendering differences from VSFilter and
     font-related issues on Windows. If you are doing complex typesetting
-    that will be [softsubbed]({{< relref "Attaching_subtitles_to_video#softsubbing" >}}) it
+    that will be [softsubbed](/docs/applying-subtitles/#softsubbing/) it
     is a good idea to check your work with both VSFilter and libass, as an
     increasing number of users are using libass.
 

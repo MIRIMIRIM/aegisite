@@ -1,0 +1,8 @@
+---
+layout: "_default"
+layout_type: "rss"
+title: "RSS"
+rss_section: "blog"
+sitemap: false
+---
+{{~# intentionally blank ~}}

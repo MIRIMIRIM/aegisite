@@ -10,7 +10,7 @@ aliases:
 
 The following is a list of every tag supported by the Advanced Substation
 Alpha format. This is basically a detailed version of ass-quickref.txt. See
-the [tutorial]({{< relref "Visual_Typesetting" >}}) for an introduction to typesetting,
+the [tutorial](/docs/visual-typesetting/) for an introduction to typesetting,
 using some basic tags.
 
 ## Special characters
@@ -18,19 +18,22 @@ using some basic tags.
 The following tags are written in the middle of the text, and not inside
 override blocks (i.e. not between { and }).
 
-{{<tag-def-box title="Soft line break" id="\n">}}\\n{{</tag-def-box>}}
+<h3 id="\n">Soft line break</h3>
+<pre><code class="language-plaintext">\\n</code></pre>
 Insert a forced line break, but only when in wrapping mode 2. (See
-[the \\q tag]({{< relref "ASS_Tags#\q" >}})). Note that this is a lowercase n.
+[the \\q tag](/docs/ass-override-tags/#\q/)). Note that this is a lowercase n.
 
 In all other wrapping modes, this is replaced by a regular space. This is
 rarely (if ever) actually useful. If you're not sure whether you want this or
 \\N, you probably want \\N.
 
-{{<tag-def-box title="Hard line break" id="\N">}}\\N{{</tag-def-box>}}
+<h3 id="\N">Hard line break</h3>
+<pre><code class="language-plaintext">\\N</code></pre>
 Insert a forced line break, regardless of wrapping mode. Note that this is an
 uppercase N.
 
-{{<tag-def-box title="Hard space" id="\h">}}\\h{{</tag-def-box>}}
+<h3 id="\h">Hard space</h3>
+<pre><code class="language-plaintext">\\h</code></pre>
 Insert a non-breaking "hard" space. The line will never break automatically
 right before or after a hard space, and hard spaces are not folded when they
 appear at the start or end of a displayed line.
@@ -68,18 +71,16 @@ brackets are not part of the value you should enter. Use the examples as a
 guide to how the tags should be entered. In general, the same rules apply to
 all tags in how they look.
 
-{{<tag-def-box title="Italics" id="\i">}}
-\\i1
-\\i0
-{{</tag-def-box>}}
+<h3 id="\i">Italics</h3>
+<pre><code class="language-plaintext">\\i1
+\\i0</code></pre>
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
 
-{{<tag-def-box title="Bold" id="\b">}}
-\\b1
+<h3 id="\b">Bold</h3>
+<pre><code class="language-plaintext">\\b1
 \\b0
-\\b<i>\<weight></i>
-{{</tag-def-box>}}
+\\b<i>\<weight></i></code></pre>
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
 
@@ -88,17 +89,20 @@ explicit weight to use. Note that most fonts only support one or two weights
 so you rarely need to use this. Font weights are multiples of 100, such that
 100 is the lowest, 400 is "normal", 700 is "bold" and 900 is the heaviest.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 I am {\b1}not{\b0} amused.
 ```
 
 The word "not" is written in boldface.
-{{</example-box>}}
+</div>
+</div>
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\b100}How {\b300}bold {\b500}can {\b700}you {\b900}get?
 ```
@@ -106,27 +110,27 @@ The word "not" is written in boldface.
 The words are written with increasingly greater weight. Note that most fonts
 do not have more than one or two different weights and you will only be able
 to see "not bold" and "bold" in that case.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Underline" id="\u">}}
-\\u1
-\\u0
-{{</tag-def-box>}}
+<h3 id="\u">Underline</h3>
+<pre><code class="language-plaintext">\\u1
+\\u0</code></pre>
 Switch <u>underlined</u> text on or off. Use `\u1` to enable underlining for
 the following text and `\u0` to disable underlining again.
 
-{{<tag-def-box title="Strikeout" id="\s">}}
-\\s1
-\\s0
-{{</tag-def-box>}}
+<h3 id="\s">Strikeout</h3>
+<pre><code class="language-plaintext">\\s1
+\\s0</code></pre>
 Switch <s>striked out</s> text on or off. Use `\s1` to enable strikeout for
 the following text and `\s0` to disable strikeout again.
 
-{{<tag-def-box title="Border size" id="\bord">}}\\bord<i>\<size></i>{{</tag-def-box>}}
+<h3 id="\bord">Border size</h3>
+<pre><code class="language-plaintext">\\bord<i>\<size></i></code></pre>
 Change the width of the border around the text. Set the size to 0 (zero) to
 disable the border entirely.
 
-If "scale border and shadow" (see [script properties]({{< relref "Properties" >}})) is
+If "scale border and shadow" (see [script properties](/docs/script-properties/)) is
 enabled, the value is given in script resolution pixels, otherwise it is given
 in video resolution pixels (which means the border thickness will vary
 depending on the resolution of the video on which the subtitles are rendered.)
@@ -134,27 +138,30 @@ depending on the resolution of the video on which the subtitles are rendered.)
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \bord0
 ```
 
 Disable border entirely.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \bord3.7
 ```
 
 Set the border width to 3.7 pixels
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Border size (extended)" id="\xbord">}}
-\\xbord<i>\<size></i>
-\\ybord<i>\<size></i>
-{{</tag-def-box>}}
+<h3 id="\xbord">Border size (extended)</h3>
+<pre><code class="language-plaintext">\\xbord<i>\<size></i>
+\\ybord<i>\<size></i></code></pre>
 Use the `\xbord` `\ybord` tags to set the border size in X and Y direction
 separately. This can be useful for correcting the border size for anamorphic
 rendering of subtitles.
@@ -165,16 +172,16 @@ override both of them.
 You can set the border width to 0 (zero) in one of the directions to entirely
 disable border in that direction.
 
-{{<tag-def-box title="Shadow distance" id="\shad">}}\\shad<i>\<depth></i>{{</tag-def-box>}}
+<h3 id="\shad">Shadow distance</h3>
+<pre><code class="language-plaintext">\\shad<i>\<depth></i></code></pre>
 Set the distance from the text to position the shadow. Set the depth to 0
-(zero) to disable shadow entirely. Works similar to [\\bord]({{< relref "ASS_Tags#\bord" >}}).
+(zero) to disable shadow entirely. Works similar to [\\bord](/docs/ass-override-tags/#\bord/).
 
 The shadow distance can not be negative with this tag.
 
-{{<tag-def-box title="Shadow distance (extended)" id="\xshad">}}
-\\xshad<i>\<depth></i>
-\\yshad<i>\<depth></i>
-{{</tag-def-box>}}
+<h3 id="\xshad">Shadow distance (extended)</h3>
+<pre><code class="language-plaintext">\\xshad<i>\<depth></i>
+\\yshad<i>\<depth></i></code></pre>
 Set the distance from the text to position the shadow at, with X and Y
 position set separately. Shadow is only disabled if both X and Y distance is
 0\.
@@ -182,17 +189,16 @@ position set separately. Shadow is only disabled if both X and Y distance is
 Note that unlike \\shad, you can set the distance negative with these tags to
 position the shadow to the top or left of the text.
 
-{{<tag-def-box title="Blur edges" id="\be">}}
-\\be0
+<h3 id="\be">Blur edges</h3>
+<pre><code class="language-plaintext">\\be0
 \\be1
-\\be<i>\<strength></i>
-{{</tag-def-box>}}
+\\be<i>\<strength></i></code></pre>
 Enable or disable a subtle softening-effect for the edges of the text. The
 effect isn't always very visible, but it can in some cases make the text look
 better. It is usually more visible at smaller text sizes.
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
-means that if the text has a border (set with [\\bord]({{< relref "ASS_Tags#\bord" >}})) the
+means that if the text has a border (set with [\\bord](/docs/ass-override-tags/#\bord/)) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
@@ -201,41 +207,48 @@ regular effect. Note that at high values the effect de-generates into
 nothingness, and generally isn't very useful. For strong blurs, `\blur` is
 generally more useful as a result. The _strength_ must be an integer number.
 
-{{<tag-def-box title="Blur edges (Gaussian kernel)" id="\blur">}}\\blur<i>\<strength></i>{{</tag-def-box>}}
-In general, this has the same function as the [`\be`]({{< relref "ASS_Tags#\be" >}}) tag, but
+<h3 id="\blur">Blur edges (Gaussian kernel)</h3>
+<pre><code class="language-plaintext">\\blur<i>\<strength></i></code></pre>
+In general, this has the same function as the [`\be`](/docs/ass-override-tags/#\be/) tag, but
 uses a more advanced algorithm that looks better at high strengths. Unlike
 `\be`, the _strength_ can be non-integer here. Set _strength_ to 0 (zero) to
 disable the effect. Be careful, setting _strength_ too high can take a lot of
 CPU time to render.
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
-means that if the text has a border (set with [`\bord`]({{< relref "ASS_Tags#\bord" >}})) the
+means that if the text has a border (set with [`\bord`](/docs/ass-override-tags/#\bord/)) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
-{{<tag-def-box title="Font name" id="\fn">}}\\fn<i>\<name></i>{{</tag-def-box>}}
+<h3 id="\fn">Font name</h3>
+<pre><code class="language-plaintext">\\fn<i>\<name></i></code></pre>
 Set the font face to use for the following text. There should be no space
 between `\fn` and the font name, and you should not put parentheses or similar
 around the font name either.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fnArial
 ```
 
 The text following this tag will be in Arial font.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fnTimes New Roman
 ```
 
 The text following this tag will be in Times New Roman font.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Font size" id="\fs">}}\\fs<i>\<size></i>{{</tag-def-box>}}
+<h3 id="\fs">Font size</h3>
+<pre><code class="language-plaintext">\\fs<i>\<size></i></code></pre>
 Set the size of the font. The size specified is the height in script pixels,
 so at font size 40 one line of text is 40 pixels tall. (Technical note: it's
 really typographic (desktop publishing) points, not script pixels, but since
@@ -244,19 +257,20 @@ point ends up being exactly equal to one script resolution pixel.)
 
 You can only specify integer font sizes.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fs10
 ```
 
 The following text will use a size 10 font.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Font scale" id="\fscx">}}
-\\fscx<i>\<scale></i>
-\\fscy<i>\<scale></i>
-{{</tag-def-box>}}
+<h3 id="\fscx">Font scale</h3>
+<pre><code class="language-plaintext">\\fscx<i>\<scale></i>
+\\fscy<i>\<scale></i></code></pre>
 Adjust the size of the text in X (`\fscx` or Y (`\fscy`) direction. The
 _scale_ given is in percent, so 100 means "original size".
 
@@ -266,51 +280,57 @@ text modifies the text shape after hinting. As a result, this should always be
 used with `\t` rather than `\fs`, as animating changing font hinting is very
 rarely desirable.
 
-These tags also affect [vector drawings]({{< relref "ASS_Tags#drawing-commands" >}}).
+These tags also affect [vector drawings](/docs/ass-override-tags/#drawing-commands/).
 
 You can use font scaling to correct for anamorphic rendering and to specify
-text size more precisely than with [\\fs]({{< relref "ASS_Tags#\fs" >}}).
+text size more precisely than with [\\fs](/docs/ass-override-tags/#\fs/).
 
 Note that older versions of VSFitler will truncate non-integer scales.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscx150
 ```
 
 Make the text 50% wider than normal.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscy50
 ```
 
 Make the text half height.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fscx200\fscy200
 ```
 
 Make the text double size.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Letter spacing" id="\fsp">}}\\fsp<i>\<spacing></i>{{</tag-def-box>}}
+<h3 id="\fsp">Letter spacing</h3>
+<pre><code class="language-plaintext">\\fsp<i>\<spacing></i></code></pre>
 Changes the spacing between the individual letters in the text. You can use
 this to spread the text more out visually. The _spacing_ is given in script
 resolution pixels.
 
 Spacing can be negative and can have decimals.
 
-{{<tag-def-box title="Text rotation" id="\frx">}}
-\\frx<i>\<amount></i>
+<h3 id="\frx">Text rotation</h3>
+<pre><code class="language-plaintext">\\frx<i>\<amount></i>
 \\fry<i>\<amount></i>
 \\frz<i>\<amount></i>
-\\fr<i>\<amount></i>
-{{</tag-def-box>}}
+\\fr<i>\<amount></i></code></pre>
 Rotates the text along the X, Y or Z axis. The `\fr` tag is a shortcut for `\frz`.
 
 - The **X axis** runs horizontally on the screen. Rotating on it (with
@@ -329,35 +349,43 @@ rotating. It is legal to specify negative rotation amounts, as well as amounts
 larger than 360 degrees.
 
 The rotation is performed around the subtitle line origin point, this is
-described with the [\\org]({{< relref "ASS_Tags#\org" >}}) tag.
+described with the [\\org](/docs/ass-override-tags/#\org/) tag.
 
-These tags also affect [vector drawings]({{< relref "ASS_Tags#drawing-commands" >}}).
+These tags also affect [vector drawings](/docs/ass-override-tags/#drawing-commands/).
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \frx45
 ```
 
 Rotate the text 45 degrees on the X axis.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fry-45
 ```
 
 Rotate the text 45 degrees in opposite direction on the Y axis.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \frz180
 ```
 
 Rotate the text 180 degrees on the Z axis, making it upside-down.
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 The following two rotations produce the same result:
 
 ```plaintext
@@ -366,16 +394,21 @@ The following two rotations produce the same result:
 ```
 
 This is because 330 degrees is 30 degrees less than a full rotation of 360 degrees.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \t(\frz3600)
 ```
 
-Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t]({{< relref "ASS_Tags#\t" >}}) tag.
-{{</example-box>}}
-{{<example-box>}}
+Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t](/docs/ass-override-tags/#\t/) tag.
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 The following screenshots illustrate the effect of rotating on the different axes:
 
 ![Fr_sample01](/img/3.2/Fr_sample01.jpg)
@@ -383,12 +416,12 @@ The following screenshots illustrate the effect of rotating on the different axe
 ![Fr_sample02](/img/3.2/Fr_sample02.jpg)
 
 ![Fr_sample03](/img/3.2/Fr_sample03.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Text shearing" id="\fax">}}
-\\fax<i>\<factor></i>
-\\fay<i>\<factor></i>
-{{</tag-def-box>}}
+<h3 id="\fax">Text shearing</h3>
+<pre><code class="language-plaintext">\\fax<i>\<factor></i>
+\\fay<i>\<factor></i></code></pre>
 Perform a shearing (perspective distortion) transformation of the text. A
 _factor_ of 0 (zero) means no distortion.
 
@@ -396,24 +429,27 @@ Usually _factor_ will be a small number; values outside the range -2 to 2 are
 unlikely to have desireable results.
 
 Shearing is performed after rotation, on the rotated coordinates. The
-coordinate system used for shearing is not affected by the [rotation origin]({{< relref "ASS_Tags#\org" >}}).
+coordinate system used for shearing is not affected by the [rotation origin](/docs/ass-override-tags/#\org/).
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ![shearing](/img/3.2/shearing.png)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Font encoding" id="\fe">}}\\fe<i>\<id></i>{{</tag-def-box>}}
+<h3 id="\fe">Font encoding</h3>
+<pre><code class="language-plaintext">\\fe<i>\<id></i></code></pre>
 Overrides the `Encoding` value of the style.
 This is rarely ever useful or a good idea and should thus be avoided.
-See the [style docs]({{< relref "Styles#the-style-editor" >}}) for more details.
+See the [style docs](/docs/editing-styles/#the-style-editor/) for more details.
 
-{{<tag-def-box title="Set color" id="\c">}}
-\\c&H<i>\<bb>\<gg>\<rr></i>&
+<h3 id="\c">Set color</h3>
+<pre><code class="language-plaintext">\\c&H<i>\<bb>\<gg>\<rr></i>&
 \\1c&H<i>\<bb>\<gg>\<rr></i>&
 \\2c&H<i>\<bb>\<gg>\<rr></i>&
 \\3c&H<i>\<bb>\<gg>\<rr></i>&
-\\4c&H<i>\<bb>\<gg>\<rr></i>&
-{{</tag-def-box>}}
+\\4c&H<i>\<bb>\<gg>\<rr></i>&</code></pre>
 Set the color of the following text. The `\c` tag is an abbreviation of `\1c`.
 
 - `\1c` sets the primary fill color.
@@ -430,13 +466,12 @@ must always start with `&H` and end with `&`.
 The Pick Color toolbar buttons ![pick-color-toolbar-buttons](/img/3.2/pick-color-toolbar-buttons.png) can
 assist in picking colors and entering the color codes.
 
-{{<tag-def-box title="Set alpha" id="\alpha">}}
-\\alpha&H<i>\<aa></i>
+<h3 id="\alpha">Set alpha</h3>
+<pre><code class="language-plaintext">\\alpha&H<i>\<aa></i>
 \\1a&H<i>\<aa></i>
 \\2a&H<i>\<aa></i>
 \\3a&H<i>\<aa></i>
-\\4a&H<i>\<aa></i>
-{{</tag-def-box>}}
+\\4a&H<i>\<aa></i></code></pre>
 Set the alpha (transparency) of the text.
 
 - `\alpha` sets the alpha of all components at once.
@@ -449,29 +484,34 @@ Set the alpha (transparency) of the text.
 An alpha of 00 (zero) means opaque/fully visible, and an alpha of FF (ie. 255
 in decimal) is fully transparent/invisible.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \alpha&H80&
 ```
 
 Set the alpha of all components to hexadecimal 80, decimal 128, making the
 text 50% transparent in general.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \1a&HFF&
 ```
 
 Set the primary fill alpha to hexadecimal FF, decimal 255, making it invisible
 and effectively leaving only the border and shadow.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Line alignment" id="\an">}}\\an<i>\<pos></i>{{</tag-def-box>}}
+<h3 id="\an">Line alignment</h3>
+<pre><code class="language-plaintext">\\an<i>\<pos></i></code></pre>
 Specify the alignment of the line. The alignment specifies the position of the
-line when no [position override]({{< relref "ASS_Tags#\pos" >}}) or
-[movement]({{< relref "ASS_Tags#\move" >}}) is in effect, and otherwise specifies the
+line when no [position override](/docs/ass-override-tags/#\pos/) or
+[movement](/docs/ass-override-tags/#\move/) is in effect, and otherwise specifies the
 anchor point of positioning and rotation.
 
 The `\an` tag uses "numpad" values for the _pos_, ie. the alignment values
@@ -488,7 +528,8 @@ keyboard:
 1. Top center
 1. Top right
 
-{{<tag-def-box title="Line alignment (legacy)" id="\a">}}\\a<i>\<pos></i>{{</tag-def-box>}}
+<h3 id="\a">Line alignment (legacy)</h3>
+<pre><code class="language-plaintext">\\a<i>\<pos></i></code></pre>
 Specify the alignment of the line using legacy alignment codes from SubStation
 Alpha. This tag is supported but considered deprecated; you should usually use
 `\an` in new scripts instead, as it is more intuitive.
@@ -510,13 +551,12 @@ top-titles, add 4 to the number, to get mid-titles add 8 to the number:
 - 10: Middle center
 - 11: Middle right
 
-{{<tag-def-box title="Karaoke effect" id="\k">}}
-\\k<i>\<duration></i>
+<h3 id="\k">Karaoke effect</h3>
+<pre><code class="language-plaintext">\\k<i>\<duration></i>
 \\K<i>\<duration></i>
 \\kf<i>\<duration></i>
 \\ko<i>\<duration></i>
-\\kt<i>\<time></i>
-{{</tag-def-box>}}
+\\kt<i>\<time></i></code></pre>
 
 > _Please note that these tags alone only create some very specific effects
 > and all other effects are created with a combination of multiple different
@@ -528,7 +568,7 @@ the line.
 
 The _duration_ is given in centiseconds, ie. a _duration_ of 100 is equivalent
 to 1 second. You generally don't enter `\k` tags manually but rather use
-karaoke timing tools such as [Aegisub's karaoke mode]({{< relref "Tutorials#karaoke-timing" >}}).
+karaoke timing tools such as [Aegisub's karaoke mode](/docs/tutorials/#karaoke-timing/).
 
 The different `\k` tags create various effects:
 
@@ -550,7 +590,8 @@ Additionally the `\kt` tag sets the start time of the next karaoke syllable
 relative to the event’s start. Without `\kt` each syllable start is implicitly
 determined as the sum of all preceding syllable’s duration.
 
-{{<tag-def-box title="Wrap style" id="\q">}}\\q<i>\<style></i>{{</tag-def-box>}}
+<h3 id="\q">Wrap style</h3>
+<pre><code class="language-plaintext">\\q<i>\<style></i></code></pre>
 Determine how line breaking is applied to the subtitle line. The following
 _style_ values are available:
 
@@ -562,16 +603,18 @@ _style_ values are available:
   Both `\n` and `\N` force line breaks.
 - 3: Smart wrapping, similar to style 0, but bottom lines are made wider.
 
-{{<tag-def-box title="Reset style" id="\r">}}\\r<br>\\r<i>\<style></i>{{</tag-def-box>}}
+<h3 id="\r">Reset style</h3>
+<pre><code class="language-plaintext">\\r<br>\\r<i>\<style></i></code></pre>
 Reset the style. This cancels all style overrides in effect, including
-[animations]({{< relref "ASS_Tags#\t" >}}), for all following text.
+[animations](/docs/ass-override-tags/#\t/), for all following text.
 
 The first form that does not specify a _style_ will reset to the style defined
 for the entire line, while the second form, that specifies the name of a
 _style_, will reset the style to that specific style.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 -Hey\N{\rAlternate}-Huh?\N{\r}-Who are you?
 ```
@@ -580,12 +623,14 @@ Assuming the current line style is "Default", this has first "Hey" in the
 Default style, then follows on next line "Huh?" in the style "Alternate", and
 on the third line the style is reset to "Default" for the "Who are you?"
 text.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Set position" id="\pos">}}\\pos(<i>\<X></i>,<i>\<Y></i>){{</tag-def-box>}}
+<h3 id="\pos">Set position</h3>
+<pre><code class="language-plaintext">\\pos(<i>\<X></i>,<i>\<Y></i>)</code></pre>
 Set the position of the line. The _X_ and _Y_ coordinates must be integers and
 are given in the script resolution coordinate system. The meaning of _X_ and
-_Y_ changes slightly depending on [alignment]({{< relref "ASS_Tags#\an" >}}).
+_Y_ changes slightly depending on [alignment](/docs/ass-override-tags/#\an/).
 
 The alignment of the subtitle line is used as anchor point for the position.
 I.e. when you have a line with alignment top-left, the top-left corner of the
@@ -593,20 +638,22 @@ subtitle is placed at the coordinates given to `\pos`, and for bottom-center
 alignment, the bottom center of the subtitle is placed at the coordinates
 given.
 
-{{<example-box>}}
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 The following screenshots illustrate the way alignment affects positioning.
 The green cross marks the point (320,240) on the video.
 
 ![Pos_sample01](/img/3.2/Pos_sample01.jpg)
 ![Pos_sample02](/img/3.2/Pos_sample02.jpg)
 ![Pos_sample03](/img/3.2/Pos_sample03.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Movement" id="\move">}}
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>,<i>\<t1</i>>,<i>\<t2</i>>)
-{{</tag-def-box>}}
-The `\move` tag works similar to [`\pos`]({{< relref "ASS_Tags#\pos" >}}) in that it
+<h3 id="\move">Movement</h3>
+<pre><code class="language-plaintext">\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
+\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>,<i>\<t1</i>>,<i>\<t2</i>>)</code></pre>
+The `\move` tag works similar to [`\pos`](/docs/ass-override-tags/#\pos/) in that it
 positions the subtitle line, the difference is that `\move` makes the subtitle
 move.
 
@@ -617,7 +664,7 @@ over which the movement occurs.
 The coordinates _x1_, _y1_, _x2_ and _y2_ are given in the script resolution
 coordinate system, like `\pos`. The subtitle starts out at point (_x1_,_y1_)
 and moves with constant speed so it ends up at (_x2_,_y2_).
-[Alignment]({{< relref "ASS_Tags#\an" >}}) influences movement coordinates the same
+[Alignment](/docs/ass-override-tags/#\an/) influences movement coordinates the same
 way as it influences `\pos` coordinates.
 
 In the second version, the times _t1_ and _t2_ are given in milliseconds, ie.
@@ -649,8 +696,9 @@ If you need to do do any of those two you will need to split the movement into
 segments that are done on separate subtitle lines. (How to do this is outside
 the scope of this page.)
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \move(100,150,300,350)
 ```
@@ -658,9 +706,11 @@ the scope of this page.)
 When the line appears on screen, the subtitle is at (100,150). While the
 subtitle is displayed, it moves at constant speed such that it will arrive at
 point (300,350) at the same time it disappears.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \move(100,150,300,350,500,1500)
 ```
@@ -669,15 +719,17 @@ The line appears at (100,150). After the line has been displayed for half a
 second (500 milliseconds) it begins moving towards (300,350) such that it will
 arrive at the point a second and a half (1500 milliseconds) after the line
 first appeared on screen.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Rotation origin" id="\org">}}\\org(<i>\<X></i>,<i>\<Y></i>){{</tag-def-box>}}
-Set the origin point used for [rotation]({{< relref "ASS_Tags#\frx" >}}). This
+<h3 id="\org">Rotation origin</h3>
+<pre><code class="language-plaintext">\\org(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+Set the origin point used for [rotation](/docs/ass-override-tags/#\frx/). This
 affects all rotations of the line. The _X_ and _Y_ coordinates are given in
 integer script resolution pixels.
 
 When there is no `\org` tag in a line, the rotation origin is implicitly the
-same as the [position anchor point]({{< relref "ASS_Tags#\pos" >}}). This means that
+same as the [position anchor point](/docs/ass-override-tags/#\pos/). This means that
 the rotation origin will move if the line moves and there is no origin set
 with `\org`. Note that you can _not_ animate the `\org` tag, you are limited
 to a fixed origin if you use it.
@@ -696,16 +748,19 @@ the inability to do accelerated moves or several moves per line.
 There can be at most one `\org` tag in a single line, if you put more than one
 in a single line, only the first is used.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \org(320,240)
 ```
 
 Fix the rotation origin at point (320,240).
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \org(10000,0)
 ```
@@ -713,9 +768,11 @@ Fix the rotation origin at point (320,240).
 Placing the rotation origin at a far away point allows you to use slight
 `\frz` rotations to produce "jumping" effects; the text will move up or down
 without seeming to rotate.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Fade" id="\fad">}}\\fad(<i>\<fadein></i>,<i>\<fadeout></i>){{</tag-def-box>}}
+<h3 id="\fad">Fade</h3>
+<pre><code class="language-plaintext">\\fad(<i>\<fadein></i>,<i>\<fadeout></i>)</code></pre>
 Produce a fade-in and fade-out effect. The _fadein_ and _fadeout_ times are
 given in milliseconds, ie. 1000 means one second. You can specify _fadein_ or
 _fadeout_ as 0 (zero) to not have any fade effect on that end.
@@ -726,24 +783,27 @@ reason, you should be careful that _fadein_+_fadeout_ is not greater than the
 duration of the line. For example, for a line displayed for 4 seconds, the sum
 of _fadein_+_fadeout_ should not be greater than 4000.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fad(1200,250)
 ```
 
 Fade in the line in the first 1.2 seconds it is to be displayed, and fade it
 out for the last one quarter second it is displayed.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Fade (complex)" id="\fade">}}\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>>,<i>\<t4</i>>){{</tag-def-box>}}
+<h3 id="\fade">Fade (complex)</h3>
+<pre><code class="language-plaintext">\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>>,<i>\<t4</i>>)</code></pre>
 Perform a five-part fade using three alpha values _a1_, _a2_ and _a3_ and four
 times _t1_, _t2_, _t3_ and _t4_.
 
 The alpha values are given in _decimal_ and are between 0 and 255, with 0
 being fully visible and 255 being invisible. The time values are given in
 milliseconds after the start of the line. All seven parameters are required.
-(For most common fade effects the [`\fad`]({{< relref "ASS_Tags#\fad" >}}) tag works fine.)
+(For most common fade effects the [`\fad`](/docs/ass-override-tags/#\fad/) tag works fine.)
 
 - Before _t1_, the line has alpha _a1_.
 - Between _t1_ and _t2_ the line fades from alpha _a1_ to alpha _a2_.
@@ -751,8 +811,9 @@ milliseconds after the start of the line. All seven parameters are required.
 - Between _t3_ and _t4_ the line fades from alpha _a2_ to alpha _a3_.
 - After _t4_ the line has alpha _a3_.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \fade(255,32,224,0,500,2000,2200)
 ```
@@ -760,14 +821,14 @@ milliseconds after the start of the line. All seven parameters are required.
 Starts invisible, fades to almost totally opaque, then fades to almost totally
 invisible. First fade starts when the line starts and lasts 500 milliseconds.
 Second fade starts 1500 milliseconds later, and lasts 200 milliseconds.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Animated transform" id="\t">}}
-\\t(<i>\<style modifiers></i>)
+<h3 id="\t">Animated transform</h3>
+<pre><code class="language-plaintext">\\t(<i>\<style modifiers></i>)
 \\t(<i>\<accel></i>,<i>\<style modifiers></i>)
 \\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<style modifiers></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<accel></i>,<i>\<style modifiers></i>)
-{{</tag-def-box>}}
+\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<accel></i>,<i>\<style modifiers></i>)</code></pre>
 
 Perform a gradual, animated transformation from one style to another. The
 _style modifiers_ are other override tags as specified in this reference. Only
@@ -812,43 +873,50 @@ the style is as all tags before the `\t` tag, and further overridden by the
 given _style overrides_. Between _t1_ and _t2_ the style is gradually animated
 between those two points, following the acceleration function described above.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\1c&HFF0000&\t(\1c&H0000FF&)}Hello!
 ```
 
 The text starts out blue, but fades towards red so it is completely red when the line ends.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\t(0,5000,\frz3600)}Wheee
 ```
 
 Makes the text rotate 10 times, counterclockwise, lasting for 5 seconds.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\t(0,5000,0.5,\frz3600)}Wheee
 ```
 
 Same as above, but it will start fast and slow down, still doing the 10 rotations in 5 seconds.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```ass
 {\an5\fscx0\fscy0\t(0,500,\fscx100\fscy100)}Boo!
 ```
 
 Text starts at zero size, i.e. invisible, then grows to 100% size in both X and Y direction.
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Clip (rectangle)" id="\clip">}}
-\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-{{</tag-def-box>}}
+<h3 id="\clip">Clip (rectangle)</h3>
+<pre><code class="language-plaintext">\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
+\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)</code></pre>
 Define a rectangle to clip the line, only the part of the line that is inside
 the rectangle is visible. The `\iclip` tag has the opposite effect, it defines
 a rectangle where the line is not shown.
@@ -859,36 +927,42 @@ must be integers, there is no possibility to use non-integer coordinates.
 (Increasing the script resolution will not increase the precision, the
 clipping always happens on video pixel boundaries.)
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \clip(0,0,320,240)
 ```
 
 Assuming 640x480 script resolution, only the part of the line within the top
 left quadrant is visible.
-{{</example-box>}}
-{{<example-box>}}
-
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \iclip(0,0,320,240)
 ```
 
 Similar to above, but instead the part of the line within the top left
 quadrant is hidden.
-{{</example-box>}}
-{{<example-box>}}
+</div>
+</div>
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 Example of `\clip(0,0,704,245)` on a 704x480 video:
 
 ![Clip_sample01](/img/3.2/Clip_sample01.jpg)
-{{</example-box>}}
+</div>
+</div>
 
-{{<tag-def-box title="Clip (vector drawing)" id="">}}
-\\clip(<i>\<drawing commands></i>)
-\\clip(<i>\<scale></i>,<i>\<drawing commands></i>)
-\\iclip(<i>\<drawing commands></i>)
-\\iclip(<i>\<scale></i>,<i>\<drawing commands></i>)
-{{</tag-def-box>}}
+<h3 id="">Clip (vector drawing)</h3>
+<pre><code>\\clip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
+\\clip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
+\\iclip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
+\\iclip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)</code></pre>
 Use the shape defined by a vector drawing to selectively display (`\clip`) or
 hide (`\iclip`) parts of the line.
 
@@ -905,14 +979,16 @@ with `\t`. If you need to animate a vector drawing clip, you must create
 multiple similar subtitle lines with each their own "frame" of the clipping
 animation.
 
-{{<example-box>}}
-
+<div class="card">
+<strong class="card-header">Example</strong>
+<div class="card-body">
 ```plaintext
 \clip(1,m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0)
 ```
 
 Only show the portion of the line within the defined pseudo-circle.
-{{</example-box>}}
+</div>
+</div>
 
 ## Drawing tags
 
@@ -1052,5 +1128,5 @@ pair of coordinates at the end of s.
 
 Closes the b-spline.
 
-_Note: The [vector clip visual typesetting tool]({{< relref "Visual_Typesetting#vectorial-clip" >}}) only supports the m, l and b
+_Note: The [vector clip visual typesetting tool](/docs/visual-typesetting/#vectorial-clip/) only supports the m, l and b
 commands, and may corrupt drawings which use the other commands._

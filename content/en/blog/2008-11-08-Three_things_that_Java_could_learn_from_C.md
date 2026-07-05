@@ -1,5 +1,9 @@
 ---
 title: Three things that Java could learn from C++
+
+
+
+slug: three-things-that-java-could-learn-from-c
 contributors:
   - Unknown
 date: 2008-11-08T16:03:00.026000Z

@@ -1,5 +1,9 @@
 ---
 title: Bug tracker back!
+
+
+
+slug: bug-tracker-back
 contributors:
   - jfs
 date: 2008-12-21T06:51:00.003000Z

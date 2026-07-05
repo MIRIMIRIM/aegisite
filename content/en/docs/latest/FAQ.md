@@ -13,7 +13,7 @@ stuff that didn't fit anywhere else.
 
 ### Karaoke effects?
 
-See the [Karaoke Templater tutorials]({{< relref "Automation/Karaoke_Templater/Tutorial_1" >}}).
+See the [Karaoke Templater tutorials](/docs/a-simple-example/).
 
 ### Can I create DVD subtitles with Aegisub?
 

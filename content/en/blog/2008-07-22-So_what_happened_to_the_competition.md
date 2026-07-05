@@ -1,5 +1,9 @@
 ---
 title: So, what happened to the competition?
+
+
+
+slug: so-what-happened-to-the-competition
 contributors:
   - Unknown
 date: 2008-07-22T02:35:00.010000+01:00

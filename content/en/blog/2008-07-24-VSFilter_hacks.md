@@ -1,5 +1,9 @@
 ---
 title: VSFilter hacks
+
+
+
+slug: vsfilter-hacks
 contributors:
   - jfs
 date: 2008-07-24T15:00:00.006000+01:00

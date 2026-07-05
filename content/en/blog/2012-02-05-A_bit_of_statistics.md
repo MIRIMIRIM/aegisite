@@ -1,5 +1,9 @@
 ---
 title: A bit of statistics
+
+
+
+slug: a-bit-of-statistics
 contributors:
   - jfs
 date: 2012-02-05T20:26:00.004000Z

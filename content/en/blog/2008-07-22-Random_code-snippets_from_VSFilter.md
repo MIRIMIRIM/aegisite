@@ -1,5 +1,9 @@
 ---
 title: Random code-snippets from VSFilter
+
+
+
+slug: random-code-snippets-from-vsfilter
 contributors:
   - jfs
 date: 2008-07-22T15:23:00.004000+01:00

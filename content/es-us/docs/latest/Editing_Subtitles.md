@@ -6,7 +6,7 @@ menu:
 weight: 3000
 ---
 
-La edición de subtítulos es para lo que sirve Aegisub. Esta página trata sobre edición básica de renglones de subtítulos; para más información de tipografía de subtítulos, véase [tipografía]({{<relref path="Typesetting" lang="en">}}). Para más información acerca de cronometrar renglones de subtítulos, véase [trabajar con audio]({{<relref path="Audio">}}).
+La edición de subtítulos es para lo que sirve Aegisub. Esta página trata sobre edición básica de renglones de subtítulos; para más información de tipografía de subtítulos, véase [tipografía](/es-us/docs/introducción-a-la-composición-tipográfica-typesetting/). Para más información acerca de cronometrar renglones de subtítulos, véase [trabajar con audio](/es-us/docs/trabajando-con-audio/).
 
 ## Abrir subtítulos
 
@@ -24,7 +24,7 @@ Abrir subtítulos con charset
 Abrir subtítulos desde video
 : Abrir subtítulos multiplexados en el archivo de video actualmente abierto. Esta opción actualmente solo funciona con archivos de video Matroska.
 
-Abrir [subtítulos autoguardados]({{<relref path="Autosave" lang="en">}})
+Abrir [subtítulos autoguardados](/docs/autosave/)
 : Abrir un archivo creado por la función de autoguardado de Aegisub. Útil si Aegisub se cierra inesperadamente sin haber guardado cambios, o si solo se quiere abrir una versión más antigua de un archivo.
 
 Cuando se abre un archivo de subtítulos que no se reconoce como Unicode, Aegisub intentará adivinar con qué arreglo de caracteres se ha codificado. Si no está seguro, le pedirá que escoja entre dos o más alternativas probables. Si el resultado se ve revuelto o incorrecto de alguna manera, intente volver a abrirlo con otro arreglo de caracteres.
@@ -77,11 +77,11 @@ La caja de edición es sencillamente una zona en la cual editar texto sin format
 Son:
 
 1. Marcar el renglón como comentario. Renglones de comentario no aparecerán en el video.
-1. El [estilo]({{<relref path="Styles">}}) usado en este renglón.
+1. El [estilo](/es-us/docs/editar-estilos/) usado en este renglón.
 1. El actor hablando en este renglón. No tiene efecto real en la muestra de subtítulos pero puede ser útil para propósitos de edición.
-1. Efecto para este renglón. Hay unos cuantos efectos predefinidos que pueden ser aplicados con este campo, pero la compatibilidad con renderizadores es inconsistente y usar [etiquetas manuales]({{<relref path="ASS_Tags">}}) es casi siempre más recomendable. Este campo se usa comúnmente como metadatos para scripts automatizados.
+1. Efecto para este renglón. Hay unos cuantos efectos predefinidos que pueden ser aplicados con este campo, pero la compatibilidad con renderizadores es inconsistente y usar [etiquetas manuales](/es-us/docs/etiquetas-manuales-ass/) es casi siempre más recomendable. Este campo se usa comúnmente como metadatos para scripts automatizados.
 1. El número de caracteres en el renglón más largo del subtítulo.
-1. Capa para el renglón. Si fija posicionamiento con una [etiqueta manual]({{<relref path="ASS_Tags">}}) para que dos o más renglones se muestren encima uno del otro, este campo controla cuál se dibuja dónde; números de capa mayores se dibujan encima de menores.
+1. Capa para el renglón. Si fija posicionamiento con una [etiqueta manual](/es-us/docs/etiquetas-manuales-ass/) para que dos o más renglones se muestren encima uno del otro, este campo controla cuál se dibuja dónde; números de capa mayores se dibujan encima de menores.
 1. Momento de inicio del renglón.
 1. Momento de fin del renglón.
 1. Duración del renglón. Si se modifica, el momento final será cambiado como resultado.
@@ -93,10 +93,10 @@ Son:
 1. Inserta una etiqueta manual _subrayado_ (`\u1`) en la posición del cursor. Si el texto ya está subrayado, inserta una etiqueta de cierre correspondiente (`\u0`).
 1. Inserta una etiqueta manual ~~tachado~~ (`\s1`) en la posición del cursor. Si el texto ya está tachado, inserta una etiqueta de cierre correspondiente (`\s0`).
 1. Abre una ventana de elegir tipografía e inserta una etiqueta de nombre de fuente tipográfica (`\fnFontName`) con el nombre de fuente elegida, además de las etiquetas de efectos elegidas.
-1. Abre la [paleta de colores]({{<relref path="Colour_Picker" lang="en">}}) y le permite escoger un color; luego inserta una etiqueta manual de color principal (`\c`) con el color en la posición del cursor.
-1. Abre la [paleta de colores]({{<relref path="Colour_Picker" lang="en">}}) y le permite escoger un color; luego inserta una etiqueta manual de color secundario (`\2c`) con el color en la posición del cursor.
-1. Abre la [paleta de colores]({{<relref path="Colour_Picker" lang="en">}}) y le permite escoger un color; luego inserta una etiqueta manual de color de borde (`\3c`) con el color en la posición del cursor.
-1. Abre la [paleta de colores]({{<relref path="Colour_Picker" lang="en">}}) y le permite escoger un color; luego inserta una etiqueta manual de color de sombra (`\4c`) con el color en la posición del cursor.
+1. Abre la [paleta de colores](/docs/colour-picker/) y le permite escoger un color; luego inserta una etiqueta manual de color principal (`\c`) con el color en la posición del cursor.
+1. Abre la [paleta de colores](/docs/colour-picker/) y le permite escoger un color; luego inserta una etiqueta manual de color secundario (`\2c`) con el color en la posición del cursor.
+1. Abre la [paleta de colores](/docs/colour-picker/) y le permite escoger un color; luego inserta una etiqueta manual de color de borde (`\3c`) con el color en la posición del cursor.
+1. Abre la [paleta de colores](/docs/colour-picker/) y le permite escoger un color; luego inserta una etiqueta manual de color de sombra (`\4c`) con el color en la posición del cursor.
 1. Pasar al siguiente renglón, creando uno nuevo al final del archivo cuando es necesario. Ojo que a diferencia de versiones previas de Aegisub, los cambios no necesitan ser registrados (committed) con este botón.
 1. Cambiar la vista entre tiempos/momentos y cuadros. Note que esto no afecta cómo los tiempos son realmente guardados en el guion.
 
@@ -129,7 +129,7 @@ Si hace clic derecho en cualquier parte de la caja de edición, aparece el menú
 Seleccionar todo, copiar, cortar y pegar se comportan todos como uno esperaría.
 
 Corrector ortográfico
-: Si se hace clic derecho en una palabra que se ha detectado como mal escrita, el corrector ortográfico sugerirá unas alternativas probables. Se puede también fijar cuál idioma usará para la corrección en este menú, o agregar palabras que no reconoce pero que uno sabe que son correctas al diccionario. Para más información acerca de la corrección ortográfica en Aegisub, véase la página del [Corrector de ortografía]({{<relref path="Spell_Checker" lang="en">}}).
+: Si se hace clic derecho en una palabra que se ha detectado como mal escrita, el corrector ortográfico sugerirá unas alternativas probables. Se puede también fijar cuál idioma usará para la corrección en este menú, o agregar palabras que no reconoce pero que uno sabe que son correctas al diccionario. Para más información acerca de la corrección ortográfica en Aegisub, véase la página del [Corrector de ortografía](/docs/spell-checker/).
 
 Tesauro
 : Sugiere palabras alternativas similares a la palabra resaltada.
@@ -149,11 +149,11 @@ Algunos controles comunes:
 - Para selecionar múltiples renglones, pulse o `ctrl` o `shift`/`mayús` y haga clic. Ctrl-clic selecciona uno o más renglones por click; Mayús-clic selecciona todos los renglones entre el primero y último cliqueados.
 - Para cambiar el renglón activo mostrado en la caja de edición sin cambiar la selección, pulse `alt` y haga clic en el nuevo renglón.
 - Para ordenar todas las filas de la cuadrícula, abra el menú _Subtítulo_, y bajo _Ordenar renglones_ seleccione el campo en el cual ordenarlas.
-- Para cambiar la manera en que [etiquetas manuales]({{<relref path="ASS_Tags">}}) se muestran en la cuadrícula, haga clic en el botón "ojear modos de ocultar etiquetas" en la barra herramientas.
+- Para cambiar la manera en que [etiquetas manuales](/es-us/docs/etiquetas-manuales-ass/) se muestran en la cuadrícula, haga clic en el botón "ojear modos de ocultar etiquetas" en la barra herramientas.
 
 ![Subs_grid_tags](/img/3.2/Subs_grid_tags.png)
 
-Los renglones tienen diferentes (configurables) colores representando cosas diferentes; véase la [sección cuadrícula de subtítulos de la página de opciones]({{<relref path="Options#cuadrícula-de-subtítulos">}}) para detalles acerca de qué significan los colores.
+Los renglones tienen diferentes (configurables) colores representando cosas diferentes; véase la [sección cuadrícula de subtítulos de la página de opciones](/es-us/docs/opciones-de-aegisub/#cuadrícula-de-subtítulos/) para detalles acerca de qué significan los colores.
 
 Por defecto, las columnas siguientes son visibles:
 
@@ -248,7 +248,7 @@ Cortar/Copiar/Pegar
 : Corta/copia/pega renglones enteros. Fíjese que los renglones son copiados como texto sin formato y pueden ser copiados y pegados libremente entre editores de texto, programas de chat, navegadores web, otras instancias de Aegisub, etc.
 
 Pegar renglones encima...
-: Abre la ventana [Pegar encima]({{<relref path="Paste_Over" lang="en">}}).
+: Abre la ventana [Pegar encima](/docs/paste-over/).
 
 Eliminar
 : Elimina los renglones seleccionados.
