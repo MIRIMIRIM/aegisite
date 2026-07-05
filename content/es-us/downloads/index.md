@@ -3,9 +3,9 @@ title: Descargas
 layout: downloads
 ---
 
-La versión de [última distribución](https://github.com/Aegisub/Aegisub/releases/latest) es **{{ site.data.version.current }}**, publicada {{ site.data.version.release_date }}
+La última versión compartida antes de esta bifurcación es **{{ site.data.version.current }}**, publicada {{ site.data.version.release_date }}.
 
-Vea [changelog](/changelog/{{ site.data.version.current }}) para ver la lista de cambios.
+Vea el [changelog](/changelog/3-2-2/) para ver la lista de cambios.
 
 {{~ cur_version = site.data.version.current ~}}
 {{~ for version in site.data.version.previous_versions ~}}
@@ -39,9 +39,9 @@ Vea [changelog](/changelog/{{ site.data.version.current }}) para ver la lista de
   {{~ end ~}}
 {{~ end ~}}
 
-## Versiones pendientes
+## Compilaciones de la bifurcación actual
 
-Revise la CI build
+Las descargas de esta bifurcación se actualizarán por separado.
 
 ## Diccionarios
 

@@ -127,8 +127,6 @@
                 {{~ alt_url = base_url ~}}
               {{~ else if base_url == "/blog/" ~}}
                 {{~ alt_url = "/" + lang + "/blog/" ~}}
-              {{~ else if base_url == "/blog/aegisub-3.4.0-released/" ~}}
-                {{~ alt_url = "/" + lang + base_url ~}}
               {{~ else ~}}
                 {{~ alt_url = "/" + lang + "/blog/" ~}}
               {{~ end ~}}

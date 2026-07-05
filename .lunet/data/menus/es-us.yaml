@@ -48,10 +48,6 @@ docs:
     weight: 700
     identifier: miscellaneous
 
-changelogs:
-  - name: "3.4"
-    weight: -34
-
 footer:
   - name: Privacy
     url: /es-us/privacy-policy/

@@ -17,7 +17,7 @@ Aegisub'un güncelleştirme denetleyicisi, yüklü olan Aegisub sürümünüz i�
 
 Eğer otomatik güncelleştirme kontrolünü etkinleştirdiyseniz, güncelleştirme denetleyicisi Aegisub'u her başlattığınızda otomatik olarak çalışır, ancak bir saat içinde en fazla bir kez çalıştırılır. güncelleştirmeler bulunursa, bir sonraki kontrolün bir hafta ertelenmesi önerilir. Erteleme seçeneğini tercih ederseniz, bir sonraki güncelleştirme kontrolü yaklaşık 7 gün sonra yapılır. Aegisub, çalışmadığı zamanlarda güncelleştirme denetimi yapmaz ve arka planda herhangi bir işlem gerçekleştirmez.
 
-3.4.0 sürümünden itibaren, bir güncelleştirme kontrolü yapıldığında kaydedilen bilgiler şunlardır:
+Güncelleştirme denetleyicisi etkinleştirildiğinde, denetim sırasında aşağıdaki bilgiler kaydedilebilir:
 
 ### Tarih ve saat
 Tarih ve saat, istatistikleri zaman dilimlerine göre gruplayarak zaman içindeki eğilimleri görmek için kullanılır. Örneğin, yeni bir sürümün kabul oranını takip etmek için.

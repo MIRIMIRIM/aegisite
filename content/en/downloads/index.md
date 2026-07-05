@@ -3,15 +3,15 @@ title: Downloads
 layout: dl
 ---
 
-The [Latest Release](https://github.com/TypesettingTools/Aegisub/releases/latest) is **{{ site.data.version.current }}**, released {{ site.data.version.release_date }}.
+The last shared release before this fork is **{{ site.data.version.current }}**, released {{ site.data.version.release_date }}.
 
-See the [changelog](/changelog/3-4-2/) for a list of changes.
+See the [changelog](/changelog/3-2-2/) for a list of changes.
 
 {{ include "shortcodes/current-version" }}
 
-## Upcoming Versions
+## Current Fork Builds
 
-Check CI build
+Downloads for this fork will be updated separately.
 
 ## Dictionaries
 

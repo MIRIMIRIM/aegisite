@@ -33,10 +33,7 @@ footer: >-
   Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/>
   Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.
 
-alert: true
-alert_dismissable: true
-alert_text: >-
-  <a href="/blog/aegisub-3.4.0-released/">Aegisub 3.4.0 released!</a>
+alert: false
 
 strings:
   get_started: "Get Started"

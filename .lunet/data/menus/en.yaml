@@ -58,8 +58,6 @@ docs:
     identifier: miscellaneous
 
 changelogs:
-  - name: "3.4"
-    weight: -34
   - name: "3.2"
     weight: -32
   - name: "3.1"

@@ -3,9 +3,9 @@ title: 下载
 layout: downloads
 ---
 
-[最新的版本](https://github.com/TypesettingTools/Aegisub/releases/latest)是 **{{ site.data.version.current }}**，发布于 {{ site.data.version.release_date }}
+当前分支的下载信息后续会单独更新。最后一个共同基线版本是 **{{ site.data.version.current }}**，发布于 {{ site.data.version.release_date }}。
 
-阅读 [更新日志](/changelog/{{ site.data.version.current }}) 了解更新内容
+阅读 [更新日志](/changelog/3-2-2/) 了解更新内容。
 
 {{~ cur_version = site.data.version.current ~}}
 {{~ for version in site.data.version.previous_versions ~}}
@@ -39,9 +39,9 @@ layout: downloads
   {{~ end ~}}
 {{~ end ~}}
 
-## 即将推出的版本
+## 当前分支构建
 
-Check CI build
+当前分支的下载链接后续会单独更新。
 
 ## 词典
 

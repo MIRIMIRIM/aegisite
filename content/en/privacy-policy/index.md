@@ -17,7 +17,7 @@ Aegisub's update checker function retrieves a file describing any potential upda
 
 If you have enabled automatic update checking, the update checker runs automatically every time you start Aegisub, although at most once in a one-hour period. If updates are found, you are offered to postpone further checking for a week. If you choose to postpone further checks, it will be approximately 7 days until the next time a check is run. Aegisub never checks for updates when it is not running; there are no background processes.
 
-As of version 3.4.0, the following information is recorded when a check for updates is made:
+When the update checker is enabled, the following information may be recorded when a check for updates is made:
 
 ### Date and time
 Date and time are used to group the statistics by time periods and to see trends across time. For example, to track the adoption rate of a new version.

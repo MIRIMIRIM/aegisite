@@ -3,9 +3,9 @@ title: İndir
 layout: downloads
 ---
 
-[Son sürüm](https://github.com/TypesettingTools/Aegisub/releases/latest) **{{ site.data.version.current }}** olup, {{ site.data.version.release_date }} tarihinde yayınlanmıştır.
+Bu çatallanma öncesindeki son ortak sürüm **{{ site.data.version.current }}** olup, {{ site.data.version.release_date }} tarihinde yayınlanmıştır.
 
-[Değişiklikler Günlüğü](/changelog/{{ site.data.version.current }}) adresinden güncellemeleri inceleyebilirsiniz.
+[Değişiklikler Günlüğü](/changelog/3-2-2/) adresinden değişiklikleri inceleyebilirsiniz.
 
 {{~ cur_version = site.data.version.current ~}}
 {{~ for version in site.data.version.previous_versions ~}}
@@ -39,9 +39,9 @@ layout: downloads
   {{~ end ~}}
 {{~ end ~}}
 
-## Yaklaşan Sürümler
+## Geçerli Çatallanma Derlemeleri
 
-CI derlemesini kontrol edin
+Bu çatallanmanın indirme bağlantıları ayrıca güncellenecektir.
 
 ## Sözlükler
 
