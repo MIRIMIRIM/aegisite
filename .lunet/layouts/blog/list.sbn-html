@@ -7,7 +7,7 @@
 {{ include "head/head" }}
 <body class="{{ body_class }}">
   {{ include "header/header" }}
-  <div class="wrap container-{{ full_width ? "fluid" : "xxl" }}" role="document">
+  <div class="wrap container-{{ site.full_width ? "fluid" : "xxl" }}" role="document">
     <div class="content">
       <div class="row justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
@@ -40,7 +40,7 @@
   </div>
   {{ include "footer/footer" }}
   {{ include "footer/script-footer" }}
-  {{ if to_top_button }}
+  {{ if site.to_top_button }}
   <div class="d-flex fixed-bottom pb-4 pb-lg-5 pe-4 pe-lg-5">
     <a id="toTop" href="#" class="btn btn-outline-primary rounded-circle ms-auto p-2"><span class="visually-hidden">Top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></a>
   </div>

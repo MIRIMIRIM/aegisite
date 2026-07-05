@@ -1,37 +1,51 @@
-import Clipboard from 'clipboard';
-
-var pre = document.getElementsByTagName('pre');
-
-for (var i = 0; i < pre.length; ++ i)
-{
-  var element = pre[i];
-  var mermaid = element.getElementsByClassName('language-mermaid')[0];
+;Array.prototype.forEach.call(document.getElementsByTagName('pre'), function(pre) {
+  var mermaid = pre.getElementsByClassName('language-mermaid')[0];
 
   if (mermaid == null) {
-    element.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy"></button>');
+    pre.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy"></button>');
   }
+});
+
+document.addEventListener('click', function(event) {
+  var button = event.target.closest('.btn-copy');
+
+  if (button === null) {
+    return;
+  }
+
+  var code = button.nextElementSibling;
+
+  if (code === null) {
+    return;
+  }
+
+  copyText(code.textContent);
+});
+
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(function() {
+      copyTextFallback(text);
+    });
+    return;
+  }
+
+  copyTextFallback(text);
 }
 
-var clipboard = new Clipboard('.btn-copy', {
+function copyTextFallback(text) {
+  var textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  document.body.appendChild(textarea);
+  textarea.select();
 
-  target: function(trigger) {
-    return trigger.nextElementSibling;
-  },
+  try {
+    document.execCommand('copy');
+  } catch (error) {}
 
-});
-
-clipboard.on('success', function(e) {
-
-    /*
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
-    */
-
-    e.clearSelection();
-});
-
-clipboard.on('error', function(e) {
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
-});
+  document.body.removeChild(textarea);
+}
+;

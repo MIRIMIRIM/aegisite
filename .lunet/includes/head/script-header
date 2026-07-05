@@ -1,8 +1,33 @@
 {{~# Inline scripts that need to run before paint ~}}
-{{~ if dark_mode ~}}
+{{~ if i18n.alert ~}}
 <script>
-if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.setAttribute('data-bs-theme', 'dark');
-}
+(function () {
+  try {
+    var closed = localStorage.getItem('global-alert-dismissed') === 'closed';
+    if (!closed) {
+      closed = Object.keys(localStorage).some(function (key) {
+        return /^global-alert-/.test(key) && localStorage.getItem(key) === 'closed';
+      });
+    }
+    if (closed) {
+      document.documentElement.setAttribute('data-global-alert', 'closed');
+    }
+  } catch (error) {}
+})();
+</script>
+{{~ end ~}}
+{{~ if site.dark_mode ~}}
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+    document.documentElement.setAttribute('data-theme-mode', mode);
+    document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+    document.documentElement.toggleAttribute('data-dark-mode', dark);
+  } catch (error) {}
+})();
 </script>
 {{~ end ~}}

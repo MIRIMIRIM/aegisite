@@ -1,20 +1,27 @@
 var announcement = document.getElementById('announcement');
 
 if (announcement !== null) {
+  var globalAlertClosed = false;
 
-  var id = announcement.dataset.id;
+  try {
+    globalAlertClosed = localStorage.getItem('global-alert-dismissed') === 'closed';
 
-  Object.keys(localStorage).forEach(function(key) {
-    if (/^global-alert-/.test(key)) {
-      if (key !== id ) {
-        localStorage.removeItem(key);
-        document.documentElement.removeAttribute('data-global-alert');
-      }
+    if (!globalAlertClosed) {
+      globalAlertClosed = Object.keys(localStorage).some(function(key) {
+        return /^global-alert-/.test(key) && localStorage.getItem(key) === 'closed';
+      });
     }
-  });
+  } catch (error) {}
+
+  if (globalAlertClosed) {
+    document.documentElement.setAttribute('data-global-alert', 'closed');
+  }
 
   announcement.addEventListener('closed.bs.alert', () => {
-    localStorage.setItem(id, 'closed');
+    try {
+      localStorage.setItem('global-alert-dismissed', 'closed');
+    } catch (error) {}
+    document.documentElement.setAttribute('data-global-alert', 'closed');
   });
 
 }
