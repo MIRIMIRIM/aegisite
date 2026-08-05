@@ -1,19 +1,33 @@
 AegiSite
 ========
 
-> New AegiSite Powered by Hugo
+AegiSite is built with [Lunet](https://github.com/lunet-io/lunet), documents of [AmusementClub/Aegisub](https://github.com/AmusementClub/Aegisub).
 
+## Requirements
 
-## run
+- .NET SDK 10.x
+- Lunet CLI
+
+Install Lunet:
 
 ```bash
-npm install
-npm run start
+dotnet tool install --global lunet
 ```
 
-Other [commands](https://getdoks.org/docs/prologue/commands/) for common tasks.
+## Development
+
+```bash
+lunet -o .lunet/build/www serve --no-threads
+```
+
+## Build
+
+```bash
+lunet -o .lunet/build/www build --no-threads
+```
+
+The generated site is written to `.lunet/build/www`.
 
 ## Documentation
 
-- [Hugo](https://gohugo.io/documentation/)
-- [Doks](https://getdoks.org/)
+- [Lunet](https://lunet.io)

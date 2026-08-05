@@ -1,4 +1,3 @@
-node_modules
 .lunet/build/
 .lunet/verify*/
 .lunet/probe*/
@@ -6,4 +5,3 @@ node_modules
 .lunet/*.json
 .lunet/*.txt
 .lunet/*.png
-.hugo_build.lock
