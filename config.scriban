@@ -85,7 +85,6 @@ with bundle
   $bootstrap_icons = resource "npm:bootstrap-icons" "1.11.3"
   content "/static/css/site.css" "/css/"
   content "/static/css/site-overrides.css" "/css/"
-  content "/static/js/lang-init.js" "/js/"
   content $bootstrap_icons "/font/fonts/bootstrap-icons.*" "/fonts/"
   content "/static/favicon.ico" "/"
   content "/static/favicon.svg" "/"

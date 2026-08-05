@@ -31,12 +31,102 @@
 })();
 </script>
 {{~ end ~}}
-{{~# Auto language config + early script (logic in /js/lang-init.js) ~}}
+{{~# Auto language: first visit follows browser; manual switch is remembered. ~}}
 <script>
-window.__SITE_I18N__ = {
-  basepath: "{{ bp }}",
-  defaultLang: "{{ site.default_language ?? "en" }}",
-  languages: [{{~ for lang in site.languages ~}}"{{ lang }}"{{ if !for.last }},{{ end }}{{~ end ~}}]
-};
+(function () {
+  try {
+    var STORAGE = 'aegisite-lang';
+    var basepath = "{{ bp }}";
+    var supported = [{{~ for lang in site.languages ~}}"{{ lang }}"{{ if !for.last }}, {{ end }}{{~ end ~}}];
+    var defaultLang = "{{ site.default_language ?? "en" }}";
+
+    function stripBase(pathname) {
+      if (basepath && pathname.indexOf(basepath) === 0) {
+        pathname = pathname.slice(basepath.length) || '/';
+      }
+      return pathname || '/';
+    }
+
+    function withBase(path) {
+      if (!path) path = '/';
+      if (path.charAt(0) !== '/') path = '/' + path;
+      return (basepath || '') + path;
+    }
+
+    function langFromPath(pathname) {
+      var p = stripBase(pathname);
+      for (var i = 0; i < supported.length; i++) {
+        var lang = supported[i];
+        if (lang === defaultLang) continue;
+        if (p === '/' + lang || p.indexOf('/' + lang + '/') === 0) return lang;
+      }
+      return defaultLang;
+    }
+
+    function homePath(lang) {
+      if (lang === defaultLang) return '/';
+      return '/' + lang + '/';
+    }
+
+    function isHomePath(pathname) {
+      var p = stripBase(pathname);
+      if (p === '/' || p === '/index.html') return true;
+      for (var i = 0; i < supported.length; i++) {
+        var lang = supported[i];
+        if (lang === defaultLang) continue;
+        if (p === '/' + lang || p === '/' + lang + '/' || p === '/' + lang + '/index.html') return true;
+      }
+      return false;
+    }
+
+    function detectBrowserLang() {
+      var list = [];
+      if (navigator.languages && navigator.languages.length) {
+        list = navigator.languages;
+      } else if (navigator.language) {
+        list = [navigator.language];
+      }
+      for (var i = 0; i < list.length; i++) {
+        var tag = String(list[i] || '').toLowerCase().replace(/_/g, '-');
+        if (!tag) continue;
+        if (tag === 'zh-cn' || tag === 'zh-hans' || tag === 'zh-sg' || tag.indexOf('zh-cn') === 0 || tag.indexOf('zh-hans') === 0) {
+          if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+        }
+        if (tag === 'zh' || tag.indexOf('zh-') === 0) {
+          if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+        }
+        if (tag === 'en' || tag.indexOf('en-') === 0) {
+          if (supported.indexOf('en') !== -1) return 'en';
+        }
+        if (supported.indexOf(tag) !== -1) return tag;
+      }
+      return defaultLang;
+    }
+
+    var path = location.pathname || '/';
+    var current = langFromPath(path);
+    var stored = null;
+    try { stored = localStorage.getItem(STORAGE); } catch (e) {}
+
+    if (stored && supported.indexOf(stored) === -1) stored = null;
+
+    // First visit: remember browser preference.
+    if (!stored) {
+      stored = detectBrowserLang();
+      try { localStorage.setItem(STORAGE, stored); } catch (e) {}
+    }
+
+    // Soft auto-switch: only on language home pages, avoid breaking deep EN/ZH links.
+    if (stored && stored !== current && isHomePath(path)) {
+      var target = withBase(homePath(stored));
+      if (target !== path && target !== path + '/') {
+        location.replace(target);
+        return;
+      }
+    }
+
+    // Visiting a language page updates the preference (covers manual switcher clicks).
+    try { localStorage.setItem(STORAGE, current); } catch (e) {}
+  } catch (error) {}
+})();
 </script>
-<script src="{{ site_href "/js/lang-init.js" }}"></script>
