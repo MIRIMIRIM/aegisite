@@ -7,7 +7,7 @@ type: simple-page
 
 <p>
 <br />
-<a href="latest/" class="btn btn-primary" role="button">3.4 Manual</a> Latest user manual
+<a href="latest/" class="btn btn-primary" role="button">Latest Manual</a> Latest user manual
 </p>
 <p>
 <br />
