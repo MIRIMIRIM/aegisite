@@ -5,7 +5,7 @@
 {{~ en_prefix = "/changelog/" ~}}
 {{~ locale_prefix = current_lang == "en" ? "/changelog/" : "/" + current_lang + "/changelog/" ~}}
 <!doctype html>
-<html lang="{{ i18n.language_tag }}">
+<html lang="{{ i18n.language_tag }}" data-basepath="{{ bp }}" data-lang="{{ current_lang }}">
 {{ include "head/head" }}
 <body class="{{ body_class }}">
   {{ include "header/header" }}

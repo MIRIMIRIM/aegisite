@@ -10,10 +10,11 @@
   {{~ body_class = "home" ~}}
 {{~ end ~}}
 <!doctype html>
-<html lang="{{ i18n.language_tag }}">
+<html lang="{{ i18n.language_tag }}" data-basepath="{{ bp }}" data-lang="{{ current_lang }}">
 {{ include "head/head" }}
 <body class="{{ body_class }}">
   {{ include "header/header" }}
+
   <div class="wrap container-{{ site.full_width ? "fluid" : "xxl" }}" role="document">
     <div class="content">
       {{ content }}

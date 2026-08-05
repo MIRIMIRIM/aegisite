@@ -3,7 +3,7 @@
 {{~ lang_prefix = "/" + current_lang + "/" ~}}
 {{~ body_class = page.section + " list" ~}}
 <!doctype html>
-<html lang="{{ i18n.language_tag }}">
+<html lang="{{ i18n.language_tag }}" data-basepath="{{ bp }}" data-lang="{{ current_lang }}">
 {{ include "head/head" }}
 <body class="{{ body_class }}">
   {{ include "header/header" }}
