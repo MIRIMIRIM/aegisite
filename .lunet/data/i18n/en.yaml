@@ -23,7 +23,6 @@ schema_image: img/logo-1280.png
 schema_image_width: 1280
 schema_image_height: 499
 schema_github: "https://github.com/AmusementClub/Aegisub"
-schema_twitter: "https://twitter.com/aegisub"
 schema_section: blog
 
 twitter_site: "@aegisub"
