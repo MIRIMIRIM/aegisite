@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-basepath="/aegisite" data-lang="zh-cn">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -16,6 +16,104 @@
       document.documentElement.setAttribute('data-theme-mode', mode);
       document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
       document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+  <script>
+  (function () {
+    try {
+      var STORAGE = 'aegisite-lang';
+      var basepath = "/aegisite";
+      var supported = ["en", "zh-cn"];
+      var defaultLang = "en";
+  
+      function stripBase(pathname) {
+        if (basepath && pathname.indexOf(basepath) === 0) {
+          pathname = pathname.slice(basepath.length) || '/';
+        }
+        return pathname || '/';
+      }
+  
+      function withBase(path) {
+        if (!path) path = '/';
+        if (path.charAt(0) !== '/') path = '/' + path;
+        return (basepath || '') + path;
+      }
+  
+      function langFromPath(pathname) {
+        var p = stripBase(pathname);
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p.indexOf('/' + lang + '/') === 0) return lang;
+        }
+        return defaultLang;
+      }
+  
+      function homePath(lang) {
+        if (lang === defaultLang) return '/';
+        return '/' + lang + '/';
+      }
+  
+      function isHomePath(pathname) {
+        var p = stripBase(pathname);
+        if (p === '/' || p === '/index.html') return true;
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p === '/' + lang + '/' || p === '/' + lang + '/index.html') return true;
+        }
+        return false;
+      }
+  
+      function detectBrowserLang() {
+        var list = [];
+        if (navigator.languages && navigator.languages.length) {
+          list = navigator.languages;
+        } else if (navigator.language) {
+          list = [navigator.language];
+        }
+        for (var i = 0; i < list.length; i++) {
+          var tag = String(list[i] || '').toLowerCase().replace(/_/g, '-');
+          if (!tag) continue;
+          if (tag === 'zh-cn' || tag === 'zh-hans' || tag === 'zh-sg' || tag.indexOf('zh-cn') === 0 || tag.indexOf('zh-hans') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'zh' || tag.indexOf('zh-') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'en' || tag.indexOf('en-') === 0) {
+            if (supported.indexOf('en') !== -1) return 'en';
+          }
+          if (supported.indexOf(tag) !== -1) return tag;
+        }
+        return defaultLang;
+      }
+  
+      var path = location.pathname || '/';
+      var current = langFromPath(path);
+      var stored = null;
+      try { stored = localStorage.getItem(STORAGE); } catch (e) {}
+  
+      if (stored && supported.indexOf(stored) === -1) stored = null;
+  
+      // First visit: remember browser preference.
+      if (!stored) {
+        stored = detectBrowserLang();
+        try { localStorage.setItem(STORAGE, stored); } catch (e) {}
+      }
+  
+      // Soft auto-switch: only on language home pages, avoid breaking deep EN/ZH links.
+      if (stored && stored !== current && isHomePath(path)) {
+        var target = withBase(homePath(stored));
+        if (target !== path && target !== path + '/') {
+          location.replace(target);
+          return;
+        }
+      }
+  
+      // Visiting a language page updates the preference (covers manual switcher clicks).
+      try { localStorage.setItem(STORAGE, current); } catch (e) {}
     } catch (error) {}
   })();
   </script>
@@ -51,7 +149,7 @@
         "name": "Aegisub",
         "url": "https://mirimirim.github.io/aegisite",
         "sameAs": [
-          "https://twitter.com/aegisub"
+          ""
           , "https://github.com/AmusementClub/Aegisub"
         ],
           "logo": {
@@ -186,6 +284,7 @@
   </header>
   </div>
 
+
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
@@ -193,56 +292,8 @@
         <div class="col-md-12 col-lg-10 col-xl-8">
           <article>
             <h1>下载</h1>
-            <p>本分支分叉前的最后一个共同基线版本是 <strong>3.2.2</strong>，发布于 12/08/2014 00:00:00。</p>
+            <p>本分支分叉前的最后一个共同基线版本是 <strong>exp-20260613</strong>，发布于 07/03/2026 00:00:00。</p>
             <p>阅读 <a href="/aegisite/zh-cn/changelog">更新日志</a>（基线 <a href="/aegisite/changelog/3-2-2">3.2.2</a> 仍为英文）了解变更。</p>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">类别</th>
-                  <th scope="col">说明</th>
-                  <th scope="col">文件</th>
-                  <th scope="col">MD5</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                    <td>Windows</td>
-                    <td>Regular Install (32-bit)</td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2-32.exe">Aegisub-3.2.2-32.exe</a></td>
-                    <td><code>7717d85ebb15ee3a2b30e3271068fa0f</code></td>
-                  </tr>
-                  <tr>
-                    <td>Windows</td>
-                    <td>Regular Install (64-bit)</td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2-64.exe">Aegisub-3.2.2-64.exe</a></td>
-                    <td><code>3cb95e30c73b7a227a4590b0cd986ddb</code></td>
-                  </tr>
-                  <tr>
-                    <td>OS X</td>
-                    <td>Full Install</td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2.dmg">Aegisub-3.2.2.dmg</a></td>
-                    <td><code>913e07d6483dcea627c3706584c9d95d</code></td>
-                  </tr>
-                  <tr>
-                    <td>Windows</td>
-                    <td>Portable (32-bit)</td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-32.exe">aegisub-3.2.2-portable-32.exe</a></td>
-                    <td><code>908016606d64c52ef52b52a3704fc1b2</code></td>
-                  </tr>
-                  <tr>
-                    <td>Windows</td>
-                    <td>Portable (64-bit)</td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-64.exe">aegisub-3.2.2-portable-64.exe</a></td>
-                    <td><code>d316e4ce9bcbfb53d3803c86804c3f69</code></td>
-                  </tr>
-                  <tr>
-                    <td>Source</td>
-                    <td></td>
-                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2.tar.xz">aegisub-3.2.2.tar.xz</a></td>
-                    <td><code>d80e852c34811add358c06d77f5cd40d</code></td>
-                  </tr>
-              </tbody>
-            </table>
             <h2 id="beta-通道本分支">Beta 通道（本分支）</h2>
             <p>AmusementClub 分支的 <strong>beta</strong> Windows 便携版由 <code>exp</code> 分支的 GitHub Actions 构建。后续 beta 不单独发 GitHub Release，更新说明在本站维护。</p>
             <ul>
@@ -1412,6 +1463,57 @@
                     <td></td>
                     <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.1/aegisub-3.2.1.tar.xz">aegisub-3.2.1.tar.xz</a></td>
                     <td><code>ff50e925eb96c69d928811e93a045a6b</code></td>
+                  </tr>
+              </tbody>
+            </table>
+            <h3 title="SVN Revision: 8635">
+              3.2.2
+            </h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">类别</th>
+                  <th scope="col">说明</th>
+                  <th scope="col">文件</th>
+                  <th scope="col">MD5</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>Windows</td>
+                    <td>Regular Install (32-bit)</td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2-32.exe">Aegisub-3.2.2-32.exe</a></td>
+                    <td><code>7717d85ebb15ee3a2b30e3271068fa0f</code></td>
+                  </tr>
+                  <tr>
+                    <td>Windows</td>
+                    <td>Regular Install (64-bit)</td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2-64.exe">Aegisub-3.2.2-64.exe</a></td>
+                    <td><code>3cb95e30c73b7a227a4590b0cd986ddb</code></td>
+                  </tr>
+                  <tr>
+                    <td>OS X</td>
+                    <td>Full Install</td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/Aegisub-3.2.2.dmg">Aegisub-3.2.2.dmg</a></td>
+                    <td><code>913e07d6483dcea627c3706584c9d95d</code></td>
+                  </tr>
+                  <tr>
+                    <td>Windows</td>
+                    <td>Portable (32-bit)</td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-32.exe">aegisub-3.2.2-portable-32.exe</a></td>
+                    <td><code>908016606d64c52ef52b52a3704fc1b2</code></td>
+                  </tr>
+                  <tr>
+                    <td>Windows</td>
+                    <td>Portable (64-bit)</td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-64.exe">aegisub-3.2.2-portable-64.exe</a></td>
+                    <td><code>d316e4ce9bcbfb53d3803c86804c3f69</code></td>
+                  </tr>
+                  <tr>
+                    <td>Source</td>
+                    <td></td>
+                    <td><a href="https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2.tar.xz">aegisub-3.2.2.tar.xz</a></td>
+                    <td><code>d80e852c34811add358c06d77f5cd40d</code></td>
                   </tr>
               </tbody>
             </table>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" data-basepath="/aegisite" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,6 +19,104 @@
     } catch (error) {}
   })();
   </script>
+  <script>
+  (function () {
+    try {
+      var STORAGE = 'aegisite-lang';
+      var basepath = "/aegisite";
+      var supported = ["en", "zh-cn"];
+      var defaultLang = "en";
+  
+      function stripBase(pathname) {
+        if (basepath && pathname.indexOf(basepath) === 0) {
+          pathname = pathname.slice(basepath.length) || '/';
+        }
+        return pathname || '/';
+      }
+  
+      function withBase(path) {
+        if (!path) path = '/';
+        if (path.charAt(0) !== '/') path = '/' + path;
+        return (basepath || '') + path;
+      }
+  
+      function langFromPath(pathname) {
+        var p = stripBase(pathname);
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p.indexOf('/' + lang + '/') === 0) return lang;
+        }
+        return defaultLang;
+      }
+  
+      function homePath(lang) {
+        if (lang === defaultLang) return '/';
+        return '/' + lang + '/';
+      }
+  
+      function isHomePath(pathname) {
+        var p = stripBase(pathname);
+        if (p === '/' || p === '/index.html') return true;
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p === '/' + lang + '/' || p === '/' + lang + '/index.html') return true;
+        }
+        return false;
+      }
+  
+      function detectBrowserLang() {
+        var list = [];
+        if (navigator.languages && navigator.languages.length) {
+          list = navigator.languages;
+        } else if (navigator.language) {
+          list = [navigator.language];
+        }
+        for (var i = 0; i < list.length; i++) {
+          var tag = String(list[i] || '').toLowerCase().replace(/_/g, '-');
+          if (!tag) continue;
+          if (tag === 'zh-cn' || tag === 'zh-hans' || tag === 'zh-sg' || tag.indexOf('zh-cn') === 0 || tag.indexOf('zh-hans') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'zh' || tag.indexOf('zh-') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'en' || tag.indexOf('en-') === 0) {
+            if (supported.indexOf('en') !== -1) return 'en';
+          }
+          if (supported.indexOf(tag) !== -1) return tag;
+        }
+        return defaultLang;
+      }
+  
+      var path = location.pathname || '/';
+      var current = langFromPath(path);
+      var stored = null;
+      try { stored = localStorage.getItem(STORAGE); } catch (e) {}
+  
+      if (stored && supported.indexOf(stored) === -1) stored = null;
+  
+      // First visit: remember browser preference.
+      if (!stored) {
+        stored = detectBrowserLang();
+        try { localStorage.setItem(STORAGE, stored); } catch (e) {}
+      }
+  
+      // Soft auto-switch: only on language home pages, avoid breaking deep EN/ZH links.
+      if (stored && stored !== current && isHomePath(path)) {
+        var target = withBase(homePath(stored));
+        if (target !== path && target !== path + '/') {
+          location.replace(target);
+          return;
+        }
+      }
+  
+      // Visiting a language page updates the preference (covers manual switcher clicks).
+      try { localStorage.setItem(STORAGE, current); } catch (e) {}
+    } catch (error) {}
+  })();
+  </script>
 
   <link rel="stylesheet" href="/aegisite/css/site.css">
   <link rel="stylesheet" href="/aegisite/css/site-overrides.css">
@@ -28,11 +126,11 @@
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   
-  <title>beta 20260804 - Aegisub</title>
+  <title>r9903 beta 20260804 - Aegisub</title>
   
   <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
   
-  <link rel="canonical" href="https://mirimirim.github.io/aegisite/changelog/beta-20260804/">
+  <link rel="canonical" href="https://mirimirim.github.io/aegisite/changelog/r9903-beta-20260804/">
 
   <link rel="alternate" type="application/rss+xml" href="/aegisite/index.xml">
   <link rel="icon" href="/aegisite/favicon.ico" sizes="any">
@@ -51,7 +149,7 @@
         "name": "Aegisub",
         "url": "https://mirimirim.github.io/aegisite",
         "sameAs": [
-          "https://twitter.com/aegisub"
+          ""
           , "https://github.com/AmusementClub/Aegisub"
         ],
           "logo": {
@@ -78,9 +176,9 @@
       },
       {
         "@type": "WebPage",
-        "@id": "/changelog/beta-20260804/",
-        "url": "/changelog/beta-20260804/",
-        "name": "beta 20260804",
+        "@id": "/changelog/r9903-beta-20260804/",
+        "url": "/changelog/r9903-beta-20260804/",
+        "name": "r9903 beta 20260804",
         "isPartOf": {
           "@id": "https://mirimirim.github.io/aegisite#/schema/website/1"
         },
@@ -88,22 +186,22 @@
             "@id": "https://mirimirim.github.io/aegisite#/schema/organization/1"
           },
         "breadcrumb": {
-          "@id": "/changelog/beta-20260804/#/schema/breadcrumb/1"
+          "@id": "/changelog/r9903-beta-20260804/#/schema/breadcrumb/1"
         },
         "primaryImageOfPage": {
-          "@id": "/changelog/beta-20260804/#/schema/image/2"
+          "@id": "/changelog/r9903-beta-20260804/#/schema/image/2"
         },
         "inLanguage": "en-US",
         "potentialAction": [{
-          "@type": "ReadAction", "target": ["/changelog/beta-20260804/"]
+          "@type": "ReadAction", "target": ["/changelog/r9903-beta-20260804/"]
         }]
       },
       {
         "@type": "ImageObject",
-        "@id": "/changelog/beta-20260804/#/schema/image/2",
+        "@id": "/changelog/r9903-beta-20260804/#/schema/image/2",
         "url": "https://mirimirim.github.io/aegisite/img/logo-1280.png",
         "contentUrl": "https://mirimirim.github.io/aegisite/img/logo-1280.png",
-        "caption": "beta 20260804"
+        "caption": "r9903 beta 20260804"
       }
     ]
   }
@@ -178,13 +276,14 @@
           <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
-              <li><a class="dropdown-item current" aria-current="true" href="/aegisite/changelog/beta-20260804/">English</a></li>
-              <li><a class="dropdown-item" rel="alternate" href="/aegisite/zh-cn/changelog/beta-20260804/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/aegisite/changelog/r9903-beta-20260804/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/aegisite/zh-cn/changelog/r9903-beta-20260804/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
         </ul>
       </div>
     </nav>
   </header>
   </div>
+
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
@@ -192,7 +291,7 @@
       <div class="row justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
           <article>
-            <h1>beta 20260804</h1>
+            <h1>r9903 beta 20260804</h1>
             <p><strong>Beta channel</strong> GHA snapshot (no GitHub Release). r9903; changes since <a href="/aegisite/changelog/beta-20260801">beta 20260801</a>.</p>
             <p>Download <code>aegisub-win-x64-portable.zip</code> from <a href="https://github.com/AmusementClub/Aegisub/actions/runs/30934967206">Actions run</a>.</p>
             <h3 id="editing-and-ui">Editing and UI</h3>
