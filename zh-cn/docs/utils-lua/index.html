@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>utils.lua - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/zh-cn/docs/utils-lua/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/zh-cn/docs/utils-lua/",
+        "url": "/zh-cn/docs/utils-lua/",
+        "name": "utils.lua",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/zh-cn/docs/utils-lua/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/zh-cn/docs/utils-lua/#/schema/image/2"
+        },
+        "inLanguage": "zh-CN",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/zh-cn/docs/utils-lua/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/zh-cn/docs/utils-lua/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "utils.lua"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/downloads/">下载</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/changelog/">更新日志</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/zh-cn/docs/">文档</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug 追踪</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/blog/">博客</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          ZH
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item" rel="alternate" href="/docs/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/zh-cn/docs/utils-lua/">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>utils.lua</h1>
+                <p>Automation 4 Lua include的文件 <code>utils.lua</code>
+                包括了多种不同的辅助函数来帮助你写Lua脚本。 这个文件并没有统一的主题。</p>
+                <h2 id="用法">用法</h2>
+                <p>使用 <code>util = require 'aegisub.util'</code> 来导入这个模块。</p>
+                <h2 id="table-functions">Table functions</h2>
+                <p>以多种方式复制一个table是经常要做的工作之一。 <code>util</code>
+                提供了一些函数来解决这些问题。</p>
+                <h3 id="copy">copy</h3>
+                <p>摘要: <code>newtable = util.copy(oldtable)</code></p>
+                <p>制作参数table的浅拷贝。 浅拷贝意味着它不会访问和复制table中的table。
+                举个例子, 如果 <code>oldtable.st</code> 指某table, <code>newtable.st</code> 指某相同table, 对
+                <code>newtable.st</code>的更改也会反映到 <code>oldtable.st</code> 中，反之亦然。</p>
+                <h3 id="deep_copy">deep_copy</h3>
+                <p>摘要: <code>newtable = util.deep_copy(oldtable)</code></p>
+                <p>制作参数table的深拷贝。
+                虽然这个函数试图处理循环引用而不是对它们进行无限递归，但它可能不适用于所有情况。
+                你基本用不到这个函数。 如果你认为需要进行深拷贝，请考虑任务额外时间。</p>
+                <h2 id="颜色函数">颜色函数</h2>
+                <p>这类函数对于不同类型的颜色数据转换来说是十分有用的。 有以下这些函数</p>
+                <h3 id="ass_color">ass_color</h3>
+                <p>摘要: <code>colorstring = util.ass_color(r, g, b)</code></p>
+                <p>给定 <code>r</code>, <code>g</code> , <code>b</code> 数值，返回ASS的 <code>&amp;HBBGGRR</code> 颜色格式字符串。</p>
+                <p>警告:本函数并不含有颜色输入范围检查功能。
+                如果你用了0~255之外的数值，返回的是什么鬼就不一定了。</p>
+                <h3 id="ass_alpha">ass_alpha</h3>
+                <p>摘要: <code>alphastring = util.ass_alpha(a)</code></p>
+                <p>给定 <code>a</code> 数值，返回ASS的 <code>&amp;HAA&amp;</code> 透明度格式字符串。</p>
+                <p>不具有输入范围检查(0~255)</p>
+                <h3 id="ass_style_color">ass_style_color</h3>
+                <p>摘要: <code>colorstring = util.ass_style_color(r, g, b, a)</code></p>
+                <p>生成ASS样式使用的颜色格式字符串，也就是<code>&amp;HAABBGGRR</code>。</p>
+                <p>不具有输入范围检查。</p>
+                <h3 id="extract_color">extract_color</h3>
+                <p>摘要: <code>r, g, b, a = util.extract_color(colorstring)</code></p>
+                <p>从一个颜色字符串中导出色值。支持识别以下几种:</p>
+                <ul>
+                <li>样式定义: <code>&amp;HAABBGGRR</code></li>
+                <li>行内颜色标签: <code>&amp;HBBGGRR&amp;</code></li>
+                <li>行内透明度标签: <code>&amp;HAA&amp;</code></li>
+                <li>带透明度的HTML: <code>#RRGGBBAA</code></li>
+                </ul>
+                <p>注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
+                无用的部分会被置0。 无法识别的的颜色字符串会返回<code>nil</code>。</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                r, g, b, a = extract_color("&H7F&")
+                ```
+                <p><code>r</code>, <code>g</code>,  <code>b</code> 都是 0; <code>a</code> 是 127.</p>
+                </div>
+                </div>
+                <h3 id="alpha_from_style">alpha_from_style</h3>
+                <p>摘要: <code>alphastring = util.alpha_from_style(coloralphastring)</code></p>
+                <p>返回一个颜色字符串的透明度部分，作为一个透明度标签，<code>&amp;HAA&amp;</code> 格式。
+                这个函数是 <code>extract_color</code> 和 <code>ass_alpha</code> 的组成部分。</p>
+                <h3 id="color_from_style">color_from_style</h3>
+                <p>摘要: <code>colorstring = util.color_from_style(coloralphastring)</code></p>
+                <p>返回一个颜色字符串的颜色部分，作为一个颜色标签， <code>&amp;HBBGGRR&amp;</code> 格式。
+                这个函数是 <code>extract_color</code> 和 <code>ass_color</code> 的组成部分。</p>
+                <h3 id="hsv_to_rgb">HSV_to_RGB</h3>
+                <p>摘要: <code>r, g, b = util.HSV_to_RGB(h, s, v)</code></p>
+                <p>将输入的色相，饱和度和明度转化为RGB值。 <code>h</code> 是角度定义，范围
+                0..359，不在范围内的值会被转换回360以内 <code>s</code> 和 <code>v</code> 范围在 0..1 之间。
+                无输入范围检查 输出的 <code>r</code>, <code>g</code> , <code>b</code> 范围是 0..255。</p>
+                <h2 id="字符串函数">字符串函数</h2>
+                <p>因为lua标准的 <code>string</code> 库功能十分有限, 这里提供了一些额外的辅助函数。
+                可以参见 <a href="/zh-cn/docs/unicode-lua">unicode</a> 。</p>
+                <h3 id="stringtrim">string.trim</h3>
+                <p>摘要: <code>outstring = util.trim(instring)</code></p>
+                <p>移除输入字符串中首尾的空格。</p>
+                <p>警告: 这个函数和 UTF-8 的兼容性并未完全确认。 它使用 Lua 的正则 <code>%s</code>
+                类来匹配空格，当遇到一些传统的编码时可能会出现问题。</p>
+                <h3 id="stringheadtail">string.headtail</h3>
+                <p>摘要: <code>head, tail = util.headtail(instring)</code></p>
+                <p>利用字符串中首个空格将其分割成 &quot;头&quot; 和 &quot;尾&quot; 两部分。</p>
+                <p>如果 <code>instring</code> 中不含有空格，则会返回 <code>instring, &quot;&quot;</code>.</p>
+                <h3 id="stringwords">string.words</h3>
+                <p>摘要: <code>for word in util.words(instring) do ... end</code></p>
+                <p>返回一个迭代器函数，可以用于 for 循环中，本质是使用 <code>string.headtail</code>
+                多次。</p>
+                <h2 id="数学函数">数学函数</h2>
+                <p>一些用来对数字进行操作的函数。</p>
+                <h3 id="clamp">clamp</h3>
+                <p>摘要: <code>outval = util.clamp(inval, min, max)</code></p>
+                <p>返回的outval介于min、max之间，若inval小于min，返回min，若大于max，返回max。</p>
+                <h3 id="interpolate">interpolate</h3>
+                <p>摘要: <code>outval = util.interpolate(t, a, b)</code></p>
+                <p>在 <code>a</code> 和 <code>b</code>之间插值 <code>t</code> 代指倾向a还是b，取值范围0-1。
+                如果取值到了[a,b]范围外，则会被clamp。</p>
+                <h3 id="interpolate_color">interpolate_color</h3>
+                <p>摘要: <code>outcolor = util.interpolate_color(t, color1, color2)</code></p>
+                <p>在 <code>color1</code> 和 <code>color2</code> 之间插值， <code>t</code> 含义与上文相同。 <code>color1</code>,
+                <code>color2</code> 和 <code>outcolor</code> 是颜色字符串， <code>outcolour</code> 是ASS格式颜色字符串。</p>
+                <h3 id="interpolate_alpha">interpolate_alpha</h3>
+                <p>摘要: <code>outalpha = util.interpolate_alpha(t, alpha1, alpha2)</code></p>
+                <p>和 <code>interpolate_color</code> 相似，但是对象是透明度字符串。</p>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/zh-cn/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

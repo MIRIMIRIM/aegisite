@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>Universal Subtitle Format: a post-mortem? - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/blog/universal-subtitle-format-a-post-mortem/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/blog/universal-subtitle-format-a-post-mortem/",
+        "url": "/blog/universal-subtitle-format-a-post-mortem/",
+        "name": "Universal Subtitle Format: a post-mortem?",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/blog/universal-subtitle-format-a-post-mortem/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/blog/universal-subtitle-format-a-post-mortem/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/blog/universal-subtitle-format-a-post-mortem/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/blog/universal-subtitle-format-a-post-mortem/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "Universal Subtitle Format: a post-mortem?"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/blog/universal-subtitle-format-a-post-mortem/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/blog/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="blog-header">
+              <h1>Universal Subtitle Format: a post-mortem?</h1>
+              <p class="meta">
+                  23 Jul 2008
+              </p>
+      
+            </div>
+            <p>The Universal Subtitle Format (USF) was an ambitious project. It was a XML-based subtitle format, supposed to replace the old and problematic community standard, Advanced Substation Alpha (ASS). It was chosen as the default subtitle format for the <a href="http://www.matroska.org">Matroska</a> multimedia container, and was the primary format of Medusa's unfortunate successor, ChronoSub.</p>
+            <p>It failed to achieve that goal.</p>
+            <p>This is what its page on CoreForge has to say:</p>
+            <blockquote class="blockquote">
+            <p>The format is based on XML for many reasons: flexibility, human readability, portability, Unicode support, hierarchical system and easier management.</p>
+            </blockquote>
+            <p>While I can certainly understand &quot;flexibility&quot; and &quot;portability&quot;, I don't see why you need XML to have a portable format, or Unicode support. But they go ahead and claim human readability and easier management. Is that supposed to be a joke? It sure is human readable - compared to binary formats. But it's still an incredibly verbose format that no sane person would try to edit by hand. And how is it easier to manage? Only if they mean that it's easier to avoid horribly misshapen subtitle files (you know, the kind of file that's always floating around the community and that VSFilter will happily eat). And what's with &quot;hierarchical system&quot;? It is true, but isn't it also completely irrelevant? Subtitles are NOT intrinsically hierarchical - forcing them to be only complicates matters.</p>
+            <p>But let's have a look at the format itself. This is a simple &quot;Hello World&quot; in USF:</p>
+            <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+            &lt;!-- DOCTYPE USFSubtitles SYSTEM &quot;USFV100.dtd&quot; --&gt;
+            &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;USFV100.xsl&quot;?&gt;
+            
+            &lt;USFSubtitles version=&quot;1.0&quot;&gt;
+            
+              &lt;styles&gt;
+                &lt;style name=&quot;NarratorSpeaking&quot;&gt;
+                  &lt;fontstyle italic=&quot;yes&quot; color=&quot;#FFEEEE&quot; outline-color=&quot;#FF4444&quot;/&gt;
+                &lt;/style&gt;
+              &lt;/styles&gt;
+            
+              &lt;subtitles&gt;
+                &lt;subtitle start=&quot;6.100&quot; duration=&quot;4.900&quot;&gt;
+                  &lt;text style=&quot;NarratorSpeaking&quot;&gt;This is a demo of&lt;br/&gt;The Core Media Player&lt;br/&gt;subtitle format&lt;/text&gt;
+                &lt;/subtitle&gt;
+                &lt;subtitle start=&quot;00:00:11.000&quot; stop=&quot;00:00:15.000&quot;&gt;
+                  &lt;text style=&quot;NarratorSpeaking&quot;&gt;What can be done ?&lt;/text&gt;
+                &lt;/subtitle&gt;
+              &lt;/subtitles&gt;
+            
+            &lt;/USFSubtitles&gt;
+            </code></pre>
+            <p>The above sample is the &quot;official&quot; sample included with the specs, stripped down to make a suitable &quot;hello world&quot;. For comparison, I've re-created the script in ASS:</p>
+            <pre><code class="language-ass">[Script Info]
+            ScriptType: v4.00+
+            PlayResX: 640
+            PlayResY: 480
+            
+            [V4+ Styles]
+            Style: NarratorSpeaking,Arial,20,&amp;H00EEEEFF,&amp;H000000FF,&amp;H004444FF,&amp;H00000000,0,-1,0,0,100,100,0,0,1,2,0,2,10,10,10,0
+            
+            [Events]
+            Dialogue: 0,0:00:06.10,0:00:11.00,NarratorSpeaking,,0000,0000,0000,,This is a demo of\NThe Core Media Player\Nsubtitle format
+            Dialogue: 0,0:00:11.00,0:00:15.00,NarratorSpeaking,,0000,0000,0000,,What can be done ?
+            </code></pre>
+            <p><strong>Note</strong>: I removed the &quot;Format:&quot; lines from the above file. This is because, to the best of my knowledge, Sabbu is the only program that actually cares about those lines. Neither VSFilter nor Aegisub care if it's there or not, and both will, in fact, ignore it.</p>
+            <p>For further comparison, this is what the same script would look like in the current draft of AS5:</p>
+            <pre><code class="language-ass">[AS5]
+            ScriptType: AS5
+            Resolution: 640x480
+            
+            [Styles]
+            Style: NarratorSpeaking,,\i1\1c#FFEEEE\3c#FF4444
+            
+            [Events]
+            Line: 0:00:06.10,0:00:11.00,NarratorSpeaking,,This is a demo of\NThe Core Media Player\Nsubtitle format
+            Line: 0:00:11.00,0:00:15.00,NarratorSpeaking,,What can be done ?
+            </code></pre>
+            <p>The first thing that we can notice there is that ASS is a much more &quot;compact&quot; format, and USF is more &quot;readable&quot; in the sense that you'll easily know what each thing does if you aren't familiar with the format - unless you are very familiar with the ASS format, the &quot;Style&quot; line should be incomprehensible. ASS is also more &quot;horizontal&quot; - that is, unless you cram things into the same line in USF, ASS will take less lines but those lines will be longer.</p>
+            <p>Here's the important point: USF is <strong>NOT</strong> designed to be written by hand. It's just too much effort to write all of that, and if you forget to close some tag somewhere, you'll break the entire file, which isn't an issue in an ASS-like format. And this is exactly where the problem is: there is no good editor that supports USF!</p>
+            <p>Lately, there has been a trend for XML-based subtitle formats. This is probably because XML is relatively easy to parse by a machine, and also because of the &quot;buzz&quot; associated with XML. But let's face it: subtitles are not best modeled by XML. The ASS format is a strange hybrid of an <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, a <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV list</a>, and <a href="http://en.wikipedia.org/wiki/TeX">TeX</a>, and that works astonishingly well - that's why we have decided to base AS5 on the same combination, although that is a subject for another post.</p>
+            <p>So here's the situation that USF faced: there was no real editor that could deal with it and nobody wants to write or maintain USF files by hand. Because of that, nobody actually uses USF, so there is no renderer that accepts it. Finally, USF offers very few real benefits over ASS, feature-wise. All in all, it just wasn't interesting to support it, and it faded into oblivion.</p>
+            <p>But here's an idea: Athenasub (the library that will be the backend of Aegisub 3.x series) will be completely format-agnostic. That would make it feasible to make Aegisub fully support USF, even its fanciest features, except that there is no renderer to display it. Should we bother? Is there still any interest in this format? At the moment, I have little interest in attempting to resurrect it (especially since we have our own plans with AS5), but if there is popular demand for it, I might reconsider. Last time I checked, not even the Matroska team seemed to care much for it anymore.</p>
+            <p>AS5. USF. And let's not forget Gabest's SSF. Do any of those formats have a future in the community? Or will fansubbers linger to ASS until the rest of their days?</p>
+      
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

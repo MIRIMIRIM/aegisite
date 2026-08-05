@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>beta 20260801 - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/zh-cn/changelog/beta-20260801/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/zh-cn/changelog/beta-20260801/",
+        "url": "/zh-cn/changelog/beta-20260801/",
+        "name": "beta 20260801",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/zh-cn/changelog/beta-20260801/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/zh-cn/changelog/beta-20260801/#/schema/image/2"
+        },
+        "inLanguage": "zh-CN",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/zh-cn/changelog/beta-20260801/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/zh-cn/changelog/beta-20260801/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "beta 20260801"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/downloads/">下载</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/zh-cn/changelog/">更新日志</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/docs/">文档</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug 追踪</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/blog/">博客</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          ZH
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item" rel="alternate" href="/changelog/beta-20260801/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/zh-cn/changelog/beta-20260801/">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <h1>beta 20260801</h1>
+            <p><strong>Beta 通道</strong> GHA 快照（无 GitHub Release）。相对带标签发布 <a href="/zh-cn/changelog/exp-20260613">exp-20260613</a> 的变更。</p>
+            <p>请从 <a href="https://github.com/AmusementClub/Aegisub/actions/runs/30692940546">Actions</a> 下载 <code>aegisub-win-x64-portable.zip</code>。</p>
+            <h3 id="编辑与界面">编辑与界面</h3>
+            <ul>
+            <li>样式管理器：清空边距 / 描边 / 阴影时恢复为 <code>0</code> 而非默认样式值</li>
+            <li>编辑框：优化命令条（command bar）的稳定性</li>
+            <li>编辑框（wxSTC）：括号、大括号高亮匹配</li>
+            <li>编辑框（wxSTC）：在光标处分割时去掉 UTF-8 空白</li>
+            <li>编辑框（wxSTC）：选择文本拖拽时实时预览结果</li>
+            <li>编辑框（wxSTC）：显示标记，在menu的view和设置的interface中开启和控制，对于错误的字符鼠标停置可提供相关信息</li>
+            <li>编辑框：边距可调步进，默认 1；值范围与 VSFilter 边距范围对齐，支持负边距</li>
+            <li>字幕网格：支持负边距显示</li>
+            <li>字幕网格：选择锚点导航用于固定、跳转（<code>grid/selection/back</code>、<code>grid/selection/forward</code>）</li>
+            <li>命令 / 热键：增加鼠标侧键 1/2 支持，默认绑定 grid/selection/back 和 forward</li>
+            <li>「重新加载外部更改」改为运行时选项（无需重启）</li>
+            </ul>
+            <h3 id="字体">字体</h3>
+            <p>主要涉及样式编辑器、编辑栏的字体选择、字体收集器、字体名称规范化（新增功能）。</p>
+            <ul>
+            <li>字体选择增加偏好本地化名称选项（General/ASS Font Names/Prefer localized font family names），默认开启，关闭的话会显示英文family name而不是本地化后的名称</li>
+            <li>关闭「偏好本地化名称」时始终使用自定义对话框选字体，会先建立 Windows 字体缓存</li>
+            <li>字体收集器：优化收集逻辑</li>
+            </ul>
+            <h3 id="查找--替换">查找 / 替换</h3>
+            <ul>
+            <li>修复区分大小写与偶发匹配错误</li>
+            <li>增加按样式筛选</li>
+            <li>全部查找、全部替换会弹出结果对话框，双击可以跳转指定行</li>
+            </ul>
+            <h3 id="副字幕">副字幕</h3>
+            <ul>
+            <li>副字幕：可从视频加载（默认不自动加载）；会话内可切换已加载源</li>
+            <li>副字幕：支持分离视频，生命周期与状态加固</li>
+            <li>副字幕：支持 VobSub IDX/SUB</li>
+            <li>副字幕：downscale 使用更高质量的算法</li>
+            </ul>
+            <h3 id="可视化排版">可视化排版</h3>
+            <ul>
+            <li>持久测量参考线；测量工具箭头、可选标签框、fax / fay / 角度读数</li>
+            <li>键盘微移、矢量裁剪子模式与热键</li>
+            <li>双击定位时保留多选</li>
+            <li>共享拖拽管线优化</li>
+            <li>Skia 可视化工具：叠加层缓存 / 生命周期；需要时默认仍对齐旧版拖拽</li>
+            </ul>
+            <h3 id="视频--场景切换检测">视频 / 场景切换检测</h3>
+            <ul>
+            <li>libplacebo：修复特定环境下的花屏，提升稳定性</li>
+            <li>ffms2：SIMD BGRA 变换</li>
+            <li>视频详情：使用精准的 FPS 如 24000/1001 而不是 23.976 之类的数字</li>
+            <li>视频框：支持输入帧号跳转</li>
+            <li>对帧工具：优化色彩匹配算法</li>
+            <li>场景切换检测：新增 scxvid 支持，默认使用 wwxd</li>
+            <li>命令 / 热键：修复与上游原始功能的不一致，<code>video/reset_pan</code> → <code>video/pan_reset</code></li>
+            <li>优化多轨道选择框，避免过长无法选择</li>
+            </ul>
+            <h3 id="音频">音频</h3>
+            <ul>
+            <li>新增 Skia 音频显示管线，默认不启用，需要手动启用与重启应用生效</li>
+            <li>新增游标拖拽死区，可配置，默认 5px</li>
+            <li>设置中可自定义 <code>audio/play/section/*</code> 范围，默认 500ms</li>
+            </ul>
+            <h3 id="自动化">自动化</h3>
+            <ul>
+            <li>增加依赖 skia 的 shape api，用于替代依赖 qt 的 a3shape</li>
+            </ul>
+            <h3 id="cli">CLI</h3>
+            <ul>
+            <li>把 fontcollecor cli 合并到本体，通过 <code>Aegisub fontcollector</code> 调用</li>
+            <li>用 CLI11 处理命令解析</li>
+            </ul>
+            <h3 id="打包--运行时">打包 / 运行时</h3>
+            <ul>
+            <li>更新 assdraw3 为 x64 hidpi 版本</li>
+            <li>libass 动态加载</li>
+            <li>更新 lsmasnative、scenechange_*、ragbag_subtitle 等打包依赖</li>
+            <li>Windows 目标：<code>_WIN32_WINNT</code> / <code>WINVER</code> 0x0A00（Windows 10 1703+）</li>
+            </ul>
+      
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/zh-cn/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

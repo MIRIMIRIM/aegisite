@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>Working with Video - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/docs/working-with-video/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/docs/working-with-video/",
+        "url": "/docs/working-with-video/",
+        "name": "Working with Video",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/docs/working-with-video/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/docs/working-with-video/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/docs/working-with-video/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/docs/working-with-video/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "Working with Video"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/docs/working-with-video/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/docs/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>Working with Video</h1>
+                <p>Aegisub isn't a video (or media) player, but it still supports loading and
+                working with video in various ways. This page is a reference of how Aegisub's
+                loading and handling of video works; for a gentler introduction on how to just
+                get things to display properly you may want to read the <a href="/docs/visual-typesetting">Visual_Typesetting</a> pages.</p>
+                <h2 id="opening-video">Opening video</h2>
+                <p>To load a video file, go to the <em>Video</em> menu and press <em>Open video file</em>. What
+                video files you can open depends on your <a href="/docs/aegisub-options#video/">video provider</a>. To
+                use a dummy (mockup, blank) video, press <em>Use dummy video</em>.</p>
+                <h3 id="supported-formats">Supported formats</h3>
+                <p>Aegisub normally uses <a href="https://github.com/FFMS/ffms2">FFMS2</a> to open
+                video, which supports opening nearly all common A/V formats, and many uncommon
+                ones. For a full list of codecs supported, see <a href="https://ffmpeg.org/">FFmpeg</a> or
+                <a href="https://libav.org/">Libav</a> documentation. Note that FFMS2 current has issues
+                with interlaced H.264.</p>
+                <p>On Windows, <a href="https://avisynth.org/mediawiki/Main_Page">Avisynth</a> can be used
+                instead of FFMS2. When opening via <em>Avisynth</em>, Aegisub will try several source
+                functions to find the best choice:</p>
+                <p>Import()
+                : Avisynth builtin function. Used to load Avisynth scripts, never used
+                for anything else.</p>
+                <p>AviSource()
+                : Avisynth builtin function. AviSource uses the system's Video for
+                Windows (VfW) decoder to open the video, which for some esoteric
+                formats may be the best or only way to open a file. Only supports .avi
+                files, for obvious reasons. If AviSource cannot open a file, DSS2 is
+                tried, followed by DirectShowSource.</p>
+                <p>MPEG2Source()
+                : Only used to load .d2v files (DVD2AVI project files; otherwise known
+                as indexed .VOB's ripped from DVD's). Tries to use neuron2's
+                <a href="https://neuron2.net/dgmpgdec/dgmpgdec.html">DGDecode</a> to open the file;
+                if Aegisub can't find or load that it'll try the old mpeg2dec3.dll
+                instead; if that too fails, returns an error. This is the most
+                reliable way to open DVD video in Aegisub.</p>
+                <p>DSS2()
+                : Tries to find, load and use Haali's DirectShowSource2 plugin (comes
+                with the <a href="https://haali.cs.msu.ru/mkv/">Haali Media Splitter</a> package
+                and with the <a href="https://cccp-project.net">CCCP</a>; the Avisynth plugin is
+                <em>avss.dll</em>, you need to manually put it somewhere where Aegisub or
+                Avisynth can find it, see below). That will in turn try to use your
+                computer's DirectShow environment to open the file. Theoretically any
+                file renderable by DirectShow should be supported, but since you are at
+                the mercy of third-party splitters and decoders, your mileage may vary.
+                As a rule of thumb, if it's playable in Windows Media Player, Aegisub
+                should be able to load it. Do note that DSS2 converts variable
+                framerate files to constant.  Usually this is what you want and expect
+                but if you're doing proper VFR subtitles, it isn't.</p>
+                <p>DirectShowSource()
+                : Uses DirectShowSource() (which ships with Avisynth) to try to load
+                the file. Basically the same as DSS2, but far less reliable and it
+                doesn't convert VFR to CFR. Warning: DSS is known to have problems with
+                frame-accurate seeking. Do not use it if you can avoid it.</p>
+                <p>Note that <a href="/docs/working-with-video#variable-framerate-video/">VFR</a> is not supported by the
+                Avisynth provider. In some cases loading <a href="/docs/working-with-video#timecodes/">external timecodes</a>
+                may work, but in practice it will often result in a broken mess.</p>
+                <p>Aegisub will look for Avisynth plugins in its
+                <a href="/docs/path-specifiers">?data</a> directory (generally the folder where
+                aegisub32.exe is, on Windows). You can also put them directly in your Avisynth
+                plugins folder to get them autoloaded.</p>
+                <h3 id="dummy-video">Dummy video</h3>
+                <p>Aegisub also supports providing a bogus video surface for you to render
+                subtitles on without having any actual video loaded. The dummy video dialog box
+                looks like this:</p>
+                <p><img src="/img/3.2/Dummy_video.png#center" class="img-fluid" alt="Dummy_video" /></p>
+                <p>Resolution
+                : The resolution of the dummy video in pixels. There are a few
+                pre-defined choices in the dropdown menu; you can also specify the size
+                yourself. Note that since the dummy video is RGB there are no
+                particular restrictions with regards to odd widths/heights.</p>
+                <p>Colour
+                : The colour of the video surface. The color is solid by default; tick
+                the box &quot;checkerboard pattern&quot; if you want some more variation.</p>
+                <p>Frame rate
+                : Determines how long each frame is displayed by setting the number of
+                frames per second (fps). Note that it is in fact possible to load VFR
+                timecodes with dummy video.</p>
+                <p>Duration
+                : The duration of the video in frames. Below this number is shown the
+                resulting duration in hours/minutes/seconds.</p>
+                <h2 id="playing-video">Playing video</h2>
+                <p>Aegisub does support playing back video, but it has been widely debated if it
+                is a misfeature or not.</p>
+                <h3 id="before-you-press-the-play-button">Before you press the &quot;play&quot; button</h3>
+                <p>Think it through. Do you really <strong>want</strong> to play the video? (Hint: the answer
+                is &quot;no&quot;, you don't want to do that, at least not in Aegisub.) If you're trying
+                to check if a subtitle matches up to something in the video, wouldn't it be
+                easier to just step through the video frame-by-frame with the arrow keys? If
+                you're proofwatching, it would be a better idea to watch it in a player your
+                viewers might actually use.</p>
+                <p>To conclude: in real world situations, you will never need to play the video
+                from inside Aegisub. The mantra is: Aegisub isn't a media player; if you want a
+                media player use a media player. Nonetheless, Aegisub does make a reasonable
+                effort to support reliable video playback and in practice it will usually work
+                fine.</p>
+                <p>Note that audio has to be explicitly loaded for Aegisub to play it while
+                playing video. If you find this bothersome, there is an option to automatically
+                open audio whenever a video file is opened.</p>
+                <h2 id="keyframes">Keyframes</h2>
+                <p>A brief, highly simplified explanation of what a keyframe is, for the people
+                who missed Video 101:</p>
+                <p>Modern video codecs compress video by storing as little information as
+                possible. Instead of storing all frames in full (like a large amount of JPG
+                pictures), they take occasionally take a keyframe, which is stored fully, and
+                for each frame after that until the next keyframe, they only store what changed
+                in the picture since the last frame. Hence, to seek to a given frame the
+                decoder needs to find the previous keyframe and decode all frames between that
+                frame and the sought one, which means seeking to keyframes is faster than to
+                other frames. Keyframes are interesting mostly for scene timing reasons,
+                because they usually appear at scenechanges. The first frame in a scene is
+                almost invariably a keyframe, but beware - far from every keyframe is a
+                scenechange! Most encoders insert a keyframe at least once every 250-300
+                frames, even if there hasn't been a scenechange.</p>
+                <p>Aegisub uses keyframe data at several places in the program. They are drawn as
+                black lines on the video seek bar, and (by default) also displayed in the audio
+                waveform/spectrum analyzer.</p>
+                <h3 id="loading-and-saving-of-keyframe-data">Loading and saving of keyframe data</h3>
+                <p>When opening video through FFMS2, Aegisub supports reading keyframe data from
+                most file formats, while the Avisynth provider only supports reading keyframes
+                from AVI. If you are using a video format which keyframes can't be read from,
+                you can still load keyframe data separately. Aegisub currently supports reading
+                from several formats: its own keyframe file format (see specification below),
+                XviD first-pass files, DivX first-pass files, and x264 first-pass files.</p>
+                <p>Even if keyframes can be read from the file it is sometimes useful to override
+                them with external keyframes. Using XviD first-pass .stat files for audio
+                timing is fairly popular, as XviD's keyframe choices correlate unusually well
+                with scene changes.</p>
+                <p>Aegisub can also write the currently loaded keyframe data to a keyframes file,
+                which can be useful to avoid passing video files around in certain situations
+                (audio timing for example).</p>
+                <h3 id="keyframe-file-specification">Keyframe file specification</h3>
+                <p>A keyframes file is a plain ASCII-encoded text file; both \n and \r\n is
+                understood to mean a linebreak. Syntax example:</p>
+                <pre><code class="language-plaintext"># keyframe format v1
+                fps 0
+                0
+                30
+                70
+                82
+                130
+                131
+                </code></pre>
+                <p>The first line is the format specification: the string
+                <code># keyframe format v1</code>. The second line contains the FPS of the video used to
+                generate the keyframe data; however no programs (Aegisub included) actually
+                support this and so it is typically just <code>0</code>. Finally, after the fps line
+                follows an arbitrary number of long integers (one per line), each representing
+                the frame number of a keyframe. The frame numbers are zero-indexed; i.e. the
+                first frame of the video is frame number 0.</p>
+                <h2 id="variable-framerate-video">Variable framerate video</h2>
+                <p>Aegisub supports loading and working with variable framerate video. The how's
+                and why's of VFR is far outside the scope of this manual (see for example <a href="https://forums.animesuki.com/showthread.php?t=34738">the
+                VFR thread on AnimeSuki</a> or
+                the <a href="https://avisynth.org/mediawiki/VFR">Avisynth manual page</a> for more
+                information about VFR), but we will cover what you need to know about how
+                Aegisub handles it.</p>
+                <h3 id="timecodes">Timecodes</h3>
+                <p>Loading of Matroska timecode files (v1 and v2) is supported and useful if you
+                have a VFRaC (Variable FrameRate assumed Constant; for example the frames of an
+                VFR MKV stored in an AVI at a constant FPS, see the VFR thread linked above for
+                details) video file but want the subs to sync to it. If you load a VFR file,
+                Aegisub will automatically read the timecodes from it directly.</p>
+                <h3 id="vfr-and-hardsubbing">VFR and hardsubbing</h3>
+                <p>As long as you're not encoding with GDSMux, the encoding environment your
+                subtitling filter is working in (i.e. Avisynth, VirtualDub or mencoder) will
+                assume that the world is CFR, and hence the input file is VFRaC. This is
+                obviously a problem since it messes up subtitle synchronization. Aegisub
+                provides a way around this through the Framerate Transformation export filter,
+                which takes the framerate of the VFRaC input file and the timecodes, and then
+                changes every time code and override tag in the script so it can be hardsubbed
+                on the VFRaC video and still sync up perfectly after timecodes are applied. To
+                prepare a script for hardsubbing, make sure you have the timecodes loaded, then
+                go to the <em>File</em> menu and press <em>Export</em>. Untick everything except the
+                <em>Transform Framerate</em> filter. Choose the <em>Variable</em> output mode. It needs to
+                know the FPS of the video you're going to hardsub the subtitles on; if you have
+                video loaded Aegisub will assume that's it and insert it in the box for you.</p>
+                <p><strong>Note:</strong> if you have a Matroska or other VFR file loaded, remember that the
+                FPS value Aegisub reports might not be the same as the one of the video you are
+                going to hardsub the subtitles on.</p>
+                <h2 id="anamorphic-video">Anamorphic video</h2>
+                <p><strong>OR: How to get your subtitles to not look stretched</strong></p>
+                <p>The following paragraphs assumes that you have a working knowledge of what
+                anamorphic video is and how aspect ratios work. If you feel unsure, you may
+                want to consult a <a href="https://www.hometheaterhifi.com/volume_6_4/feature-article-enhanced-widescreen-november-99.html">gentle but fairly complete
+                introduction</a>.</p>
+                <h3 id="image-stretching-and-subtitle-rendering">Image stretching and subtitle rendering</h3>
+                <p>An anamorphic image needs to be stretched to the proper aspect ratio before it
+                is presented to the viewer. On a computer, this is usually done by the video
+                renderer, and thereby lies a problem. Most subtitle renderers (including
+                VSFilter, the current &quot;standard&quot; renderer) do the subtitle drawing on the image
+                before it is stretched, and since the renderer is not aware of any aspect ratio
+                issues, the subtitles will be stretched along with the image when the video is
+                displayed to the viewer, and therefore they will look stretched. Aegisub does
+                its subtitle rendering this way as well (since that way it will be WYSIWYG with
+                most players); you can test how it looks by using the &quot;Override aspect ratio&quot;
+                in the video menu.</p>
+                <h3 id="compensating-for-the-stretching">Compensating for the stretching</h3>
+                <p>Fortunately it's easy to compensate for the stretching, since you know by how
+                much the image will be stretched (since you know its original dimensions and
+                the display aspect ratio). You just calculate how many percent the image will
+                be stretched in either the X or the Y direction, and then set the ScaleX or
+                ScaleY parameter in the <a href="/docs/editing-styles">style</a> (or use the <code>\fscx</code> or
+                <code>\fscy</code> <a href="/docs/ass-override-tags">overrides</a>) to the same amount but in the other
+                direction.</p>
+                <p>Example: we have a 704x480 image that we know will be displayed as 16:9 (or
+                1.7777...:1). If we assume that the player will stretch the width but leave the
+                height untouched, this means that the new width will be:</p>
+                <pre><code class="language-plaintext">(16 / 9) * 480 = 853.333...
+                </code></pre>
+                <p>which in percent is:</p>
+                <pre><code class="language-plaintext">853.333... / 704 = 1.212121...
+                </code></pre>
+                <p>i.e. 121%. Hence, to compensate for this horizontal (X-direction) stretch we
+                set ScaleY in all our styles to 121% to stretch the subtitles by the same
+                amount, and after rendering they now no longer look stretched.</p>
+                <p><strong>OR</strong> we can do the stretching in the other direction, assuming that the
+                player changes the height of the image instead. Assuming the same image:
+                704 / (16 / 9) = 396
+                which corresponds to:
+                396 / 480 = 0.825
+                or 82.5%, which means we can compensate for the vertical (Y) compression by
+                setting ScaleX to 82.5%.</p>
+                <h3 id="caveats">Caveats</h3>
+                <p>Both of the above methods give the subtitles the proper aspect ratio, but
+                depending on how the player does the stretching, you may get subtle variations
+                in subtitle size. Aegisub (and indeed most video players and renderers) always
+                changes the image width and never the height, except if you pick the &quot;custom&quot;
+                aspect ratio and specify a resolution. Note that if you use the Matroska
+                container, you may specify the display resolution directly, but player support
+                of this varies.</p>
+                <p>Note that some odd subtitle renderers (most notably Media Player Classic's
+                builtin renderer) are actually a part of the video renderer and will do the
+                subtitle rendering <em>after</em> anamorphic stretching, resulting in stretched
+                subtitles and much annoyance. With MPlayer's libass renderer, you can actually
+                specify whether subtitles should be drawn before or after stretching by using
+                the -vf parameter to move the subtitle renderer in the filter chain.</p>
+                <h3 id="further-reading">Further reading</h3>
+                <p>For more information about anamorphic video and aspect ratios in general (a
+                deeply obfuscated topic that appears simple at a glance) the following links
+                may be of interest:</p>
+                <ul>
+                <li><a href="https://lipas.uwasa.fi/%7Ef76998/video/conversion/">A Quick Guide to Digital Video Resolution and Aspect Ratio
+                Conversions</a> - Absolutely
+                essential reading for anyone who wants to really understand the topic, but
+                unfortunately far more than everything most people ever wanted to know about
+                it.
+                <a href="https://www.widescreen.org/aspect_ratios.shtml">Widescreen.org: Aspect
+                Ratios</a> - the history and
+                reasons for some common aspect ratios</li>
+                <li><a href="https://en.wikipedia.org/wiki/Aspect_ratio_(image)">Wikipedia: Aspect Ratio (image)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Anamorphic_widescreen">Wikipedia: Anamorphic Widescreen</a></li>
+                </ul>
+                <h2 id="the-video-menu">The video menu</h2>
+                <p>The following options are available from the video menu:</p>
+                <h3 id="sourcefile-related">Sourcefile-related</h3>
+                <p>Open video
+                : Opens video. Note that if you try to open another video with video
+                already loaded, the original video will be closed first.</p>
+                <p>Close video
+                : Unloads the currently open video.</p>
+                <p>Recent
+                : Shows list of recently opened videos.</p>
+                <p>Use dummy video
+                : Opens a dummy video (see above).</p>
+                <p>Show video details
+                : Shows some information about the currently open video. Details shown
+                are filename, frames per second (for VFR files the average FPS is
+                displayed), resolution and aspect ratio, length and decoder. Decoder
+                being what filter/method Aegisub used to open the file.</p>
+                <h3 id="timecodes-related">Timecodes-related</h3>
+                <p>Open timecodes file
+                : Loads a timecodes file and applies it to the video, changing the
+                video/subtitle synchronization.</p>
+                <p>Save timecodes file
+                : Saves the currently loaded timecodes as a new v2 timecodes file.</p>
+                <p>Close timecodes file
+                : Unloads the currently loaded timecodes.</p>
+                <p>Recent
+                : Shows list of recently opened timecodes files.</p>
+                <h3 id="keyframes-related">Keyframes-related</h3>
+                <p>Open keyframes
+                : Loads keyframe data from the given file. If you already have keyframe
+                data loaded, it will be replaced by the one read from the file.</p>
+                <p>Save keyframes
+                : Saves the currently loaded keyframes data to a keyframes file.</p>
+                <p>Close keyframes
+                : Unloads the currently loaded keyframe data, if any. Note that it is
+                not possible to unload keyframe data that was directly loaded from the
+                video file; if you want to get rid of that for some reason, load a
+                keyframes file with only frame 0 being marked as a keyframe.</p>
+                <p>Recent
+                : Shows list of recently loaded keyframe files.</p>
+                <h3 id="display-related">Display-related</h3>
+                <p>Detach video
+                : Detaches the video display and related controls from the Aegisub main
+                window and moves it into its own window. To reattach the video to the
+                main window, close the detached window. This feature can be
+                particularly useful on multi-monitor setups.</p>
+                <p>Set zoom
+                : Sets the video zoom level.</p>
+                <p>Override aspect ratio
+                : Stretches the video to the specified aspect ratio by modifying the
+                video width. Useful for anamorphic video (see above).</p>
+                <p>Show overscan mask
+                : Draws a blue &quot;mask&quot; over the image, indicating the edges of the
+                action safe (dark blue) and title safe (light blue) areas. Useful if
+                you plan on showing your subtitles on a TV without adjustable overscan
+                correction. For more information, see the Wikipedia pages on
+                <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>, <a href="https://en.wikipedia.org/wiki/Safe_area">safe
+                areas</a> and <a href="https://en.wikipedia.org/wiki/Overscan_amounts">overscan
+                amounts</a>. Aegisub
+                follows the <a href="https://www.bbc.co.uk/guidelines/dq/pdf/tv/tv_standards_london.pdf">BBC
+                guidelines</a>
+                on how big the safe areas should be.</p>
+                <h3 id="seeking-related">Seeking-related</h3>
+                <p>Jump to
+                : Seeks the video to the given time or frame.</p>
+                <p>Jump video to start
+                : Seeks the video to the start time of the currently active line.</p>
+                <p>Jump video to end
+                : Seeks the video to the end time of the currently active line.</p>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

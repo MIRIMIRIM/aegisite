@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>Furigana Tutorial - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/docs/furigana-tutorial/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/docs/furigana-tutorial/",
+        "url": "/docs/furigana-tutorial/",
+        "name": "Furigana Tutorial",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/docs/furigana-tutorial/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/docs/furigana-tutorial/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/docs/furigana-tutorial/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/docs/furigana-tutorial/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "Furigana Tutorial"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/docs/furigana-tutorial/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/docs/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>Furigana Tutorial</h1>
+                <p><img src="/img/3.2/Furigana-demo-1.png" class="img-fluid" alt="Furigana-demo-1" /></p>
+                <p><em>Furigana</em> (in Aegisub often shortened to <em>furi</em>) refers to little phonetic
+                guide characters written along the main text in Japanese, specifically using
+                the hiragana phonetic alphabet to describe how the ideographic kanji characters
+                should be pronounced. Putting smaller text next to a main line of text is in
+                general referred to as <a href="https://en.wikipedia.org/wiki/Ruby_character"><em>ruby
+                text</em></a>, but since the
+                implementation discussed here is designed specifically with Japanese furigana
+                in mind, the ruby text is also referred to as furigana everywhere.</p>
+                <p>None of the subtitle formats Aegisub supports natively support ruby text or
+                furigana, however the <a href="/docs/karaskel-lua">karaskel</a> standard include
+                implements an algorithm that can create basic furigana layouts by calculating
+                the position of every individual character.</p>
+                <p>This page describes the syntax the Automation 4 karaskel.lua script understands
+                for furigana text, and how to use the layout information it calculates to
+                actually create positioned characters.</p>
+                <p><a href="/docs/karaoke-templater">Karaoke Templater</a> also implements support for
+                furigana using the karaskel.lua algorithm and syntax.</p>
+                <p>It's important to note that the syntax is designed for karaoke, and revolves
+                around <a href="/docs/karaoke-timing-tutorial">karaoke timed</a> text. It isn't suited for typesetting
+                regular text (e.g. dialogue lines) with general purpose ruby text. A more
+                elaborate syntax and more complex layout engine would be required for that.</p>
+                <h2 id="multi-highlight-syntax">Multi-highlight syntax</h2>
+                <p>A prerequisite for an integral part of the furigana syntax is the
+                multi-highlight syntax.</p>
+                <p>If you make the text of a syllable a number sign (#, ASCII 35, Unicode U+0023)
+                that syllable will &quot;join&quot; with the previous one: The number sign is removed and
+                the timing of the two syllables are added together, producing just one
+                syllable. You can have multiple number sign syllables in a row, adding up
+                multiple timings in that way.</p>
+                <p>The timings of the individual number sign syllables are still stored in the
+                <a href="/docs/karaskel-lua#highlight-table/">highlight table</a> of the
+                generated syllable structure, but the main timing (<code>start_time</code> and <code>end_time</code>)
+                of the syllable structure reflects only the added-together timings of the
+                number sign syllables.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                This line shows how multi-highlight syntax is used to mark up kanji and groups
+                of kanji that cover multiple syllables:
+                <pre><code class="language-ass">{\k5}明日{\k10}#{\k5}#{\k10}ま{\k7}た{\k10}会{\k4}う{\k6}時{\k14}#
+                </code></pre>
+                <p>It generates the following syllable structures:</p>
+                <table class="karatable">
+                    <tr><th>Text</th><th>Syllable duration</th><th>Highlight durations</th></tr>
+                    <tr><td rowspan="3">明日</td><td rowspan="3">20</td><td>5</td></tr>
+                    <tr><td>10</td></tr>
+                    <tr><td>5</td></tr>
+                    <tr><td>ま</td><td>10</td><td>10</td></tr>
+                    <tr><td>た</td><td>7</td><td>7</td></tr>
+                    <tr><td>会</td><td>10</td><td>10</td></tr>
+                    <tr><td>う</td><td>4</td><td>4</td></tr>
+                    <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td></tr>
+                    <tr><td>14</td></tr>
+                </table>
+                </div>
+                </div>
+                <h2 id="basic-furigana">Basic furigana</h2>
+                <p>To add furigana to a syllable, you add a pipe character (|, ASCII 124, Unicode
+                U+007C) after the main syllable text, and then add the furigana text after the
+                pipe. You can also add furigana to repeat-syllables (number sign syllables for
+                multi-highlight) to have the furigana for a single main syllable span multiple
+                furigana syllables.</p>
+                <p>When multiple consecutive syllables all have furigana, the furigana for all of
+                those syllables are collected together and centered above the string of main
+                syllables they belong to. If the string of furigana is wider than the main text
+                the furigana is left-aligned with the main text. You can control this behaviour
+                with special control characters, see below.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                Adding furigana to the example above:
+                <pre><code class="language-ass">{\k5}明日|あ{\k10}#|し{\k5}#|た{\k10}ま{\k7}た{\k10}会|あ{\k4}う{\k6}時|と{\k14}#|き
+                </code></pre>
+                <p>The following syllables, highlights and furigana are produced:</p>
+                <table class="karatable">
+                    <tr><th>Text</th><th>Syllable duration</th><th>Highlight/furigana durations</th><th>Furigana</th></tr>
+                    <tr><td rowspan="3">明日</td><td rowspan="3">20</td><td>5</td><td>あ</td></tr>
+                    <tr><td>10</td><td>し</td></tr>
+                    <tr><td>5</td><td>た</td></tr>
+                    <tr><td>ま</td><td>10</td><td>10</td></tr>
+                    <tr><td>た</td><td>7</td><td>7</td></tr>
+                    <tr><td>会</td><td>10</td><td>10</td><td>あ</td></tr>
+                    <tr><td>う</td><td>4</td><td>4</td></tr>
+                    <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td><td>と</td></tr>
+                    <tr><td>14</td><td>き</td></tr>
+                </table>
+                </div>
+                </div>
+                <h2 id="controlling-the-layout">Controlling the layout</h2>
+                <p>Often the layout produced with the plain furigana syntax isn't exactly what you
+                want, or maybe even plain misleading. Because of this, there's two special
+                characters that can be used to control how the furigana are laid out.</p>
+                <p>Both of these two special characters are placed before the first character of
+                the furigana of a syllable, i.e. right after the pipe character.</p>
+                <p>First is the exclamation mark (!, ASCII 33, Unicode U+0021) which marks a
+                &quot;sequence break&quot;. This acts as a kind of invisible divider that prevents the
+                furigana in this syllable from merging with that of the previous syllable. You
+                will usually use this when you have two adjacent kanji words that both have
+                furigana, but the furigana for them need to be separate. In that case, put the
+                exclamation mark as the first character in the furigana for the first syllable
+                of the second word.</p>
+                <p>The other special character is the less-than sign (&lt;, ASCII 60, Unicode U+003C)
+                which marks a &quot;sequence break with float-left&quot;. It has the same sequence break
+                semantics as the exclamation mark, but also changes the overflow behaviour.
+                When the furigana sequence starts with a less-than sign marked furigana
+                syllable is wider than the main text it applies to, it will always center above
+                the main text, even if it means it has to extend over the left edge of it.</p>
+                <p>In all cases, if two furigana sequences extend beyond their main text such that
+                they would overlap, the main text is moved such that the furigana won't
+                overlap.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                Here is the same (rather contrived) sample text shown without layout control
+                and with each of the two layout control characters:
+                <table class="table">
+                <thead>
+                <tr>
+                <th>Result</th>
+                <th>Script</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><img src="/img/3.2/Furigana-demo-4.png" class="img-fluid" alt="Furigana-demo-4" /></td>
+                <td><code>{\k10}</code>中|ちゅ<code>{\k10}</code>#|う<code>{\k10}</code>国|ご<code>{\k10}</code>#|く<br><code>{\k10}</code><u>魂|た</u><code>{\k10}</code>#|ま<code>{\k10}</code>#|し<code>{\k10}</code>#|い</td>
+                </tr>
+                <tr>
+                <td><img src="/img/3.2/Furigana-demo-3.png" class="img-fluid" alt="Furigana-demo-3" /></td>
+                <td><code>{\k10}</code>中|ちゅ<code>{\k10}</code>#|う<code>{\k10}</code>国|ご<code>{\k10}</code>#|く<br><code>{\k10}</code><u>魂|!た</u><code>{\k10}</code>#|ま<code>{\k10}</code>#|し<code>{\k10}</code>#|い</td>
+                </tr>
+                <tr>
+                <td><img src="/img/3.2/Furigana-demo-2.png" class="img-fluid" alt="Furigana-demo-2" /></td>
+                <td><code>{\k10}</code>中|ちゅ<code>{\k10}</code>#|う<code>{\k10}</code>国|ご<code>{\k10}</code>#|く<br><code>{\k10}</code><u>魂|&lt;た</u><code>{\k10}</code>#|ま<code>{\k10}</code>#|し<code>{\k10}</code>#|い</td>
+                </tr>
+                </tbody>
+                </table>
+                <p>It <em>is</em> very hard to tell the difference between the two first as the
+                difference is only a few pixels, but it is there. In the first sample, the た
+                extends a bit over the left edge of 魂 and above 国 while it exactly
+                left-aligns with 魂 in the second. In the second, ちゅうごく is also centered
+                above 中国 while it isn't in the first.</p>
+                </div>
+                </div>
+                <h2 id="summary">Summary</h2>
+                <table class="table">
+                <thead>
+                <tr>
+                <th style="text-align: center;">Char</th>
+                <th style="text-align: center;">ASCII</th>
+                <th>Unicode</th>
+                <th>Where</th>
+                <th>Meaning</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td style="text-align: center;">#</td>
+                <td style="text-align: center;">35</td>
+                <td>U+0023<br>U+FF03</td>
+                <td>Instead of main text</td>
+                <td>Extend previous syllable with another highlight</td>
+                </tr>
+                <tr>
+                <td style="text-align: center;">|</td>
+                <td style="text-align: center;">124</td>
+                <td>U+007C<br>U+FF5C</td>
+                <td>Between main text and furigana</td>
+                <td>Separate main text and furigana text of a syllable</td>
+                </tr>
+                <tr>
+                <td style="text-align: center;">!</td>
+                <td style="text-align: center;">33</td>
+                <td>U+0021<br>U+FF01</td>
+                <td>First character of furigana</td>
+                <td>Sequence break; prevent joining furigana for this syllable with furigana from previous syllable</td>
+                </tr>
+                <tr>
+                <td style="text-align: center;">&lt;</td>
+                <td style="text-align: center;">60</td>
+                <td>U+003C<br>U+FF1C</td>
+                <td>First character of furigana</td>
+                <td>Sequence break with float-left; prevent joining furigana for this syllable with furigana from previous syllable, but allow furigana to extend left of main text</td>
+                </tr>
+                </tbody>
+                </table>
+                <p>Note that every special character can in fact be represented by two different
+                Unicode codepoints. The first is the regular character, corresponding to the
+                ASCII character, while the second (high) codepoint is the <em>full width</em> version
+                of the character. Often when using an IME (Input Method Editor) to edit
+                Japanese text it is easier to input text in full width mode than switching the
+                IME off to enter a single or two regular ASCII characters and switch it on
+                again. Therefore both the half width (ASCII) and full width versions of the
+                characters are accepted.</p>
+                <h2 id="usage-in-karaoke-templater">Usage in Karaoke Templater</h2>
+                <p>Furigana: <a href="/docs/modifiers#furi/">The <em>furi</em> template class</a></p>
+                <p>Multi-highlight: <a href="/docs/modifiers#multi/">The <em>multi</em> modifier</a></p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                The examples used earlier on this page are all generated using this kara-templater snippet:
+                <pre><code class="language-plaintext">Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template syl,{\pos(!line.left+syl.center!,!line.middle!)\an5\k!syl.start_time/10!\k$kdur}
+                Comment: 0,0:00:00.00,0:00:00.00,Default,,0000,0000,0000,template furi,{\pos(!line.left+syl.center!,!line.middle-line.height!)\an5\k!syl.start_time/10!\k$kdur}
+                Comment: 0,0:00:00.00,0:00:02.00,Default,,0000,0000,0000,karaoke,{\k15}二|ふ{\k15}#|た{\k10}人|り{\k15}だ{\k57}け{\k5}の{\k6}地|ほ{\k5}球|し{\k8}で
+                Comment: 0,0:00:02.00,0:00:04.00,Default,,0000,0000,0000,karaoke,{\k10}中|ちゅ{\k10}#|う{\k10}国|ご{\k10}#|く{\k10}魂|&lt;た{\k10}#|ま{\k10}#|し{\k10}#|い
+                Comment: 0,0:00:04.00,0:00:06.00,Default,,0000,0000,0000,karaoke,{\k10}中|ちゅ{\k10}#|う{\k10}国|ご{\k10}#|く{\k10}魂|!た{\k10}#|ま{\k10}#|し{\k10}#|い
+                Comment: 0,0:00:06.00,0:00:08.00,Default,,0000,0000,0000,karaoke,{\k10}中|ちゅ{\k10}#|う{\k10}国|ご{\k10}#|く{\k10}魂|た{\k10}#|ま{\k10}#|し{\k10}#|い
+                </code></pre>
+                <p>The font used in MS PMincho 30 pt with the furigana being 15 pt.</p>
+                </div>
+                </div>
+                <h2 id="usage-in-lua-scripts">Usage in Lua scripts</h2>
+                <p>It's all in <a href="/docs/karaskel-lua">karaskel</a>.</p>
+                <p>Furigana layout is automatically invoked by <code>karaskel.preproc_line_pos</code> if a
+                furigana style exists for a line main style. The furigana style for a main
+                style is a style with the same name, except <code>-furigana</code> appended to the name.
+                E.g. the furigana style of <code>Default</code> is <code>Default-furigana</code>.</p>
+                <p>Karaskel can generate automatic furigana styles if the <code>generate_furigana</code>
+                argument (second) to the <code>karaskel.collect_head</code> function is <code>true</code>. Automatic
+                furigana styles are identical to the main style they're based on, except the
+                font size is halved.</p>
+                <p>Furigana syllables are stored in <code>line.furi</code> and follows the same format as
+                regular syllables. You have to remember setting the style of the lines you
+                generate to the furigana style.</p>
+                <p>Multi-highlights are always processed even when furigana layout isn't done.
+                Multi-highlight data are stored in <code>syl.highlights</code>.</p>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>more details</div>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

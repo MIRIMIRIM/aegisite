@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>Karaoke Timing Tutorial - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/docs/karaoke-timing-tutorial/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/docs/karaoke-timing-tutorial/",
+        "url": "/docs/karaoke-timing-tutorial/",
+        "name": "Karaoke Timing Tutorial",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/docs/karaoke-timing-tutorial/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/docs/karaoke-timing-tutorial/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/docs/karaoke-timing-tutorial/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/docs/karaoke-timing-tutorial/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "Karaoke Timing Tutorial"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/docs/karaoke-timing-tutorial/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/docs/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>Karaoke Timing Tutorial</h1>
+                <p>This tutorial will teach you how to load a song into Aegisub, how to enter the words for the song and how to add time-codes to the words to synchronise them with the song.</p>
+                <p>You don't need to have used Aegisub before to follow this tutorial.</p>
+                <h2 id="before-we-begin">Before we begin</h2>
+                <p>There's a few things you need to have ready before starting:</p>
+                <ul>
+                <li>The song itself. This can for example be as an MP3 file or inside a video. Aegisub can read the sound from video files, you don't need to create a separate sound file if the song is on a video.</li>
+                </ul>
+                <div></div>
+                <ul>
+                <li>The words for the song. It's easiest if you have them in a plain text file (.txt file) broken into verses and stanzas already.</li>
+                </ul>
+                <div></div>
+                <p>I am using an English song for demonstration here, but many of the more advanced functions in Aegisub are designed for use with songs in Japanese and other languages that often need transcription or transliteration into Latin script. I will show how to use those in a video tutorial.</p>
+                <h2 id="loading-the-song">Loading the song</h2>
+                <p>We'll start by creating a new file. You already have that if you have just started Aegisub.</p>
+                <p><img src="/img/3.2/Karatiming-1.png" class="img-fluid" alt="Karatiming-1" /></p>
+                <p>Now open your song. Select <strong>Open Audio</strong> from the <strong>Audio</strong> menu...</p>
+                <p><img src="/img/3.2/Karatiming-2.png" class="img-fluid" alt="Karatiming-2" /></p>
+                <p>...then select your song file.</p>
+                <p><img src="/img/3.2/Karatiming-3.png" class="img-fluid" alt="Karatiming-3" /></p>
+                <p>Aegisub will now spend a short while reading the audio file.</p>
+                <p><img src="/img/3.2/Karatiming-4.png" class="img-fluid" alt="Karatiming-4" /></p>
+                <p>When it's done, you should have a waveform display (the audio display) at the top of the Aegisub window. If you've used Aegisub before things might look a little different, it might be easier to follow the rest of this tutorial if you set things to look like on this picture.</p>
+                <p><img src="/img/3.2/Karatiming-5.png" class="img-fluid" alt="Karatiming-5" /></p>
+                <p>We'll look at how to use the audio display for timing in a moment, but first let's get the lyrics for the song loaded.</p>
+                <h3 id="tips">Tips</h3>
+                <p><strong>Loading audio directly from video files:</strong> You can select to choose from video files in the Open Audio file selector. This won't actually open the video in the file, it will just read the audio from the video file, the same as if it was just the audio in a separate file.</p>
+                <p><strong>Instant loading of WAV files:</strong> If you have an uncompressed PCM WAV file, Aegisub can open it instantly without first loading it entirely into memory. This can be a great time-saver, but of course it requires a bit of extra disk space and probably also a bit of work beforehand to even create the WAV file. (Remember that this only works with <em>uncompressed PCM</em> files, things like ADPCM or MP3 in WAV files won't work and will still trigger the pre-loading.)</p>
+                <h2 id="entering-the-words">Entering the words</h2>
+                <p>Now, to get the text in, we could just start typing it in...</p>
+                <p><img src="/img/3.2/Karatiming-6.png" class="img-fluid" alt="Karatiming-6" /></p>
+                <p><strong>But don't do that!</strong> You'll get much huger success if you have it all in a text file, copy it from there and paste it into Aegisub. (You can often also just copy-paste directly from your favourite lyrics website.)</p>
+                <p>I have the lyrics in a text file, so I open that, select the text and copy it to the clipboard.</p>
+                <p><img src="/img/3.2/Karatiming-7.png" class="img-fluid" alt="Karatiming-7" /></p>
+                <p>Now things get a little complicated, but don't worry, it really isn't hard :-)</p>
+                <p>There are two different places you can paste into Aegisub: The subtitles grid and the subtitles edit box. When you paste into the subtitles grid, you create new lines in the subtitle file. When you paste into the subtitles edit box you change the currently selected subtitle line.</p>
+                <p>We want to make sure we paste into the subtitles grid, so click once inside the grid area (at the bottom of the window) to set the input focus to that.</p>
+                <p><img src="/img/3.2/Karatiming-8.png" class="img-fluid" alt="Karatiming-8" /></p>
+                <p>And now we can paste in the lyrics.</p>
+                <p><img src="/img/3.2/Karatiming-9.png" class="img-fluid" alt="Karatiming-9" /></p>
+                <p>They should appear immediately as lines in the grid. Notice that they all have start and end times set to zero. This makes it easier when we're going to time each line of the lyrics to the song.</p>
+                <p><img src="/img/3.2/Karatiming-10.png" class="img-fluid" alt="Karatiming-10" /></p>
+                <p>It might be a good idea to save your file now, just so you can easily save it later on without having to give it a name.</p>
+                <p>Remember that Aegisub automatically saves a copy of your file every minute, even if you haven't given it a name yet, so you rarely lose much work if something goes wrong.</p>
+                <p><img src="/img/3.2/Karatiming-11.png" class="img-fluid" alt="Karatiming-11" /></p>
+                <p>Now we're ready to time the individual lines in the lyrics.</p>
+                <h2 id="rough-timing-the-lines-first">Rough timing, the lines first</h2>
+                <p>Before we start with timing, you should know that the way presented here is just one of many. There's several ways you can time to audio in Aegisub and this one might not be the best one for you. Try to also explore the program and see if you can find your own best way to do it. This is just the way I (jfs) usually do it.</p>
+                <p>First let's look at how to get around the audio display and play the audio. You might already have noticed that there's no less than 6 different &quot;Play&quot; buttons. Usually you'll just use one of them, though: The one with the blue outward-pointing brackets around. That one is Play Selection, and plays the part of the audio that's currently highlighted.</p>
+                <p><img src="/img/3.2/Karatiming-12.png" class="img-fluid" alt="Karatiming-12" /></p>
+                <p>Try pressing the Play Selection button, you should hear the first 5 seconds of the song played. (Aegisub selects the first 5 seconds by default.)</p>
+                <p>Now try changing the selection: You can left-click and drag in the audio display to select the part you've dragged across. If you click and drag on the left or right edge of the selection you can change just the start or end. Finally, you can make a single left-click (without dragging!) anywhere to set the selection start right to that point, and you can make a single right-click to set the selection end.</p>
+                <p>Let's time the first line. Find the start and end of the first line of the song you're working on and make sure the audio selection matches it exactly. Notice that at first, the selection was gray but as soon as you started changing it, it became red and the word &quot;Modified&quot; appeared. This means that you have changed the selection but not saved (committed) the new timing.</p>
+                <p>To commit the timing and store it back to the subtitle line, just press the Commit button, the green check mark.</p>
+                <p><img src="/img/3.2/Karatiming-13.png" class="img-fluid" alt="Karatiming-13" /></p>
+                <p>When you commit, you will also be sent to the next line automatically, so you can immediately continue timing that.</p>
+                <p>Just continue timing like that until you have covered all the lines of the song: Find start and end of line, set the selection and then commit.</p>
+                <p>When you're done, save the file.</p>
+                <h3 id="tips-1">Tips</h3>
+                <p>Timing from audio isn't hard at all, but here's some tips to make it even easier and also a lot faster!</p>
+                <p><strong>Hotkeys:</strong> There's a number of keyboard shortcuts that can make audio timing much faster to work with.</p>
+                <p><img src="/img/3.2/Karatiming-14.png" class="img-fluid" alt="Karatiming-14" /></p>
+                <p>The most important ones are:</p>
+                <ul>
+                <li><strong>S</strong> - Play Selection: Play back the currently selected audio.</li>
+                <li><strong>A</strong> and <strong>F</strong> - Scroll Left and Right: Change the potion of the audio visible.</li>
+                <li><strong>G</strong> - Commit: Copy the start and end times of the current audio selection into the line selected in the subtitles grid and move to the next line.</li>
+                </ul>
+                <div></div>
+                <p><strong>Play near start/end:</strong> There's four buttons (hotkeys Q, W, E and D) that play half a second just before or just after the start and end of the selection. You can use these to more accurately set the start and end to exactly where the singing starts/ends.</p>
+                <p><strong>Change selection while playing:</strong> While audio is playing you can still change the selection. You won't see any difference if you change the selection start, but if you change the selection end, playback will now end when it hits the new selection end. This way you can quickly stop playback by setting the end close to the playback cursor (the white line that moves while Aegisub is playing) or extend the playback to go even further.</p>
+                <p>For example, when looking for the start of the first line, you can just start playback with the initial 5 second selection and continue extending it until you find the line. Then, while it's still playing, you can set the right start time and then the end time. When you have the line approximately down like that, you can do an extra check by playing the entire selection again, or by using the Q/W/E/D keys to play the parts right around the start and end times.</p>
+                <p><strong>Spectrum mode:</strong> Usually the audio display is in waveform mode, this is what I've shown on all the screenshots so far. But actually Aegisub has a much cooler way of showing the audio: Spectrum mode.</p>
+                <p><img src="/img/3.2/Karatiming-15.png" class="img-fluid" alt="Karatiming-15" /></p>
+                <p>The spectrum mode takes more CPU and RAM than waveform mode, but it gives a better picture of the audio and with a bit of training you can learn to tell singing from music and even how different sounds look. For example, S sounds are very easy to recognise.</p>
+                <p><strong>Zooming and scaling:</strong> You can use the slider bars to the far right of the audio display to zoom in and out on the audio and to change the volume.</p>
+                <h2 id="fine-timing-words-and-then-syllables">Fine timing, words and then syllables</h2>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>Click Karaoke button.<br>
+                Time words.<br>
+                Click Split button. Place split markers. Click Accept Split button.<br>
+                Time syllables.<br>
+                Commit.<br>
+                Repeat.</div>
+                <h2 id="styling">Styling</h2>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>a bit about styles, how basic karaoke looks, and the \kf and \ko effects</div>
+                <h2 id="wrapping-up">Wrapping up</h2>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>mention the video tutorial again and point to other relevant topics</div>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

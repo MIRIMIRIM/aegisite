@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>Registration - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/docs/registration/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/docs/registration/",
+        "url": "/docs/registration/",
+        "name": "Registration",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/docs/registration/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/docs/registration/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/docs/registration/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/docs/registration/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "Registration"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/docs/registration/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/docs/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>Registration</h1>
+                <p><strong>Registration</strong> covers presenting your <a href="/docs/lua-reference">Automation 4 Lua</a>
+                script to Aegisub, providing information about it and registering what
+                <em>features</em> it provides.</p>
+                <h2 id="features-explained">Features explained</h2>
+                <p>One of the primary concepts in Automation 4 is the <em>feature</em>. A feature is
+                something a script makes available for Aegisub to call back in response to a
+                user action.</p>
+                <p>A feature is not a plain callback. Rather, it's usually a set of several
+                callback functions as well as some information on how they should be
+                presented to the user in the GUI.</p>
+                <p>One feature is the <strong>macro</strong>. A macro is presented as an item in the
+                Automation menu. A macro has a name (the title show in the menu), a
+                description (the text shown on the status bar when hovering over the menu
+                item), a processing function (the function called when the user selects the
+                menu item) and an optional validation function (determines whether the macro
+                can even do any work in the current state.)</p>
+                <p>Another feature is the <strong>export filter</strong>. The export filter is presented in
+                the <a href="/docs/exporting-subtitles">Export</a> dialogue and can be applied during an export
+                operation. Export filters also have a name, description, processing function
+                and then an optional configuration panel provider. The configuration panel
+                provider is a function that returns a configuration dialogue definition
+                structure which will be displayed in the Export dialogue when the export
+                filter is enabled. The settings filled into the configuration panel are
+                passed to the processing function when it is run.</p>
+                <h2 id="script-information-globals">Script information globals</h2>
+                <p>A script can set a few global variables to provide metadata about the script
+                to Aegisub. The information given with these variables are displayed in the
+                <a href="/docs/automation-manager">Automation Manager</a> dialogue and the Script Info dialogue.</p>
+                <ul>
+                <li><strong>script_name</strong> (string) - Name of the script. This should be short.</li>
+                <li><strong>script_description</strong> (string) - Description of the purpose of the
+                script. Shouldn't be too long either.</li>
+                <li><strong>script_version</strong> (string or number) - Version number/name of the script.
+                This is freeform; no specific meaning is assigned to this.</li>
+                <li><strong>script_author</strong> (string) - Author credits for the script.</li>
+                </ul>
+                <p>All of these are optional; a script does not have to provide any of these.
+                If no script name is given, the file name is used instead for display
+                purposes.</p>
+                <h2 id="registration-functions">Registration functions</h2>
+                <p>The registration functions are the functions provided by Automation 4 Lua
+                you can call to make a feature available to Aegisub. You will usually call
+                these in the top level, at the very bottom of your script.</p>
+                <h3 id="aegisubregister_macro">aegisub.register_macro</h3>
+                <p>Synopsis: <code>aegisub.register_macro(name, description, processing_function, validation_function, is_active_function)</code></p>
+                <p>Register a macro feature.</p>
+                <ul>
+                <li><p><strong>name</strong> (string) - The name displayed on the Automation menu. This should
+                be very short, try three words or less, and should be in command
+                tense.</p>
+                <p>If forward slashes (/) are included in the name, the name will be
+                split on the slash, with the portion before the slash used as the name
+                of the submenu to place the macro in. For example, if you register a
+                macro named &quot;Foo/Bar&quot; and a macro named &quot;Foo/Baz&quot;, the automation menu
+                will have a submenu named &quot;Foo&quot; with &quot;Bar&quot; and &quot;Baz&quot; entries.</p>
+                <p>Menus can be nested to whatever depth is supported by the OS, but
+                nesting more than one level deep is unlikely to be a good idea.</p>
+                </li>
+                <li><p><strong>description</strong> (string) - The description displayed on the status bar
+                when the user hovers the mouse over the menu item. This should be a
+                concise description of what the macro does. Try to keep it at most 60
+                characters.</p>
+                </li>
+                <li><p><strong>processing_function</strong> (function) - The function that is called when the
+                user selects the menu item. This must be a function with the <a href="/docs/registration#macro-processing-function/">macro processing function API</a>.</p>
+                </li>
+                <li><p><strong>validation_function</strong> (function, optional) - This function is called to
+                determine whether the menu item should be available to the user or not.
+                (Grayed out or not.) If no validation function is provided the macro is
+                always available. This function must follow the <a href="/docs/registration#macro-validation-function/">macro validation function API</a>.</p>
+                </li>
+                <li><p><strong>is_active_function</strong> (function, optional) - This function is called to
+                determine whether the menu item should be shown with a check mark next to it.
+                If no function is provided the macro is never checked. This function uses the
+                same API as validation functions, and all of the same caveats apply.</p>
+                </li>
+                </ul>
+                <h3 id="aegisubregister_filter">aegisub.register_filter</h3>
+                <p>Synopsis: <code>aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)</code></p>
+                <p>Register an export filter feature.</p>
+                <ul>
+                <li><p><strong>name</strong> (string) - The name displayed in the export filters list. The
+                name should be rather short.</p>
+                </li>
+                <li><p><strong>description</strong> (string) - The description displayed in the description
+                box when the user highlights the export filter in the Export dialogue.</p>
+                </li>
+                <li><p><strong>priority</strong> (number) - Determines the initial ordering of export filter
+                application. Filters with higher priority are applied earlier than filters
+                with lower priority. The user can change the filter application order in
+                the Export dialogue. Priorities of the Aegisub built in export filters:</p>
+                <ul>
+                <li>Transform Framerate = 1000 (karaoke effects should have higher priority
+                than this)</li>
+                <li>Clean Script Info = 0 (your script might depend on the information
+                cleaned by this)</li>
+                <li>Fix Styles = -5000 (should almost always run last)</li>
+                </ul>
+                </li>
+                <li><p><strong>processing_function</strong> (function) - The function that is called when the
+                user initiates the export operation. This must be a function with the
+                <a href="/docs/registration#export-filter-processing-function/">export filter processing function API</a>.</p>
+                </li>
+                <li><p><strong>configuration_panel_provider</strong> (function, optional) - A function that
+                provides a configuration panel for the export filter. If this function is
+                not provided the export filter will not have a configuration panel. This
+                function must follow the <a href="/docs/registration#export-filter-configuration-panel-provider/">export filter configuration panel provider API</a>.</p>
+                </li>
+                </ul>
+                <h2 id="feature-callback-functions">Feature callback functions</h2>
+                <p>These are the callback functions you provide to the registration functions.</p>
+                <h3 id="macro-processing-function">Macro processing function</h3>
+                <p>Signature: <code>process_macro(subtitles, selected_lines, active_line)</code></p>
+                <p>Macro processing functions passed to
+                <a href="/docs/registration#aegisubregister_macro/"><code>aegisub.register_macro</code></a>
+                must have this signature. The name <code>process_macro</code> is a placeholder for your
+                own function name.</p>
+                <ul>
+                <li><strong>subtitles</strong> (user data) - The <a href="/docs/subtitles-object">subtitles object</a> you use to manipulate
+                the subtitles with.</li>
+                <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
+                The values in this table are line indexes in the <em>subtitles</em> object at its
+                initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
+                <li><strong>active_line</strong> (number) - The line that is currently available for
+                editing in the subtitle editing area. This is an index into the
+                <em>subtitles</em> object. This line will usually also be selected, but this is
+                not a strict requirement.</li>
+                </ul>
+                <p><strong>Return value:</strong>
+                The macro processing function can return up to two values: a new
+                <code>selected_lines</code> table containing indices of the lines to select after the
+                macro returns, and an index of the line to make the new <code>active_line</code>. If
+                set, the new active line index must be one of the lines in the new
+                <code>selected_lines</code> table.</p>
+                <h3 id="macro-validation-function">Macro validation function</h3>
+                <p>Signature: <code>validate_macro(subtitles, selected_lines, active_line)</code></p>
+                <p>Macro validation functions passed to
+                <a href="/docs/registration#aegisubregister_macro/"><code>aegisub.register_macro</code></a>
+                must have this signature. The name <code>validate_macro</code> is a placeholder for
+                your own function name.</p>
+                <p><strong>Important, execution time:</strong> Validation functions should always run very
+                fast. Do as little work as possible inside this function, because it is run
+                every time the user pulls open the Automation menu, and every millisecond
+                you spend in <code>validate_macro</code> is one millisecond delay in opening the menu.
+                Consider that the user might have very large files open. Don't block the UI.</p>
+                <ul>
+                <li><strong>subtitles</strong> (user data) - The <a href="/docs/subtitles-object">subtitles object</a> for the current subtitle
+                file. This is <strong>read-only</strong>. You cannot modify the subtitles in the
+                validation function, and attempting to do so will cause a run-time error.</li>
+                <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
+                The values in this table are line indexes in the <em>subtitles</em> object at its
+                initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
+                <li><strong>active_line</strong> (number) - The line that is currently available for
+                editing in the subtitle editing area. This is an index into the
+                <em>subtitles</em> object.</li>
+                </ul>
+                <p><strong>Return value:</strong>
+                Boolean, <code>true</code> if the macro can run given the current
+                state of <em>subtitles</em>, <em>selected_lines</em> and <em>active_line</em>, <code>false</code> if it can
+                not.</p>
+                <p>In addition to the primary return value, the validation function can return
+                a string. If it does, the description of the macro is set to the string.
+                This is intended for reporting information to the user about why the macro
+                cannot be run, but there may be more uses for it.</p>
+                <h3 id="export-filter-processing-function">Export filter processing function</h3>
+                <p>Signature: <code>process_filter(subtitles, settings)</code></p>
+                <p>Export filter processing functions passed to
+                <a href="/docs/registration#aegisubregister_filter/"><code>aegisub.register_filter</code></a>
+                must have this signature. The name <code>process_filter</code> is a placeholder for
+                your own function name.</p>
+                <p>You do not have to worry about undo issues with export filters. You always
+                work on a copy of the subtitle file.</p>
+                <ul>
+                <li><strong>subtitles</strong> (user data) - The <a href="/docs/subtitles-object">subtitles object</a> you use to manipulate
+                the subtitles with. This is a copy of the open subtitles file, so
+                modifying this subtitles object does not modify the open file and will
+                only affect the exported file.</li>
+                <li><strong>settings</strong> (table) - Configuration settings entered into the
+                configuration panel or an empty table if there is no configuration panel.
+                See the page on <a href="/docs/dialogs">configuration dialogues</a> for more information
+                on the format of this table.</li>
+                </ul>
+                <p><strong>Return value:</strong>
+                Nothing.</p>
+                <h3 id="export-filter-configuration-panel-provider">Export filter configuration panel provider</h3>
+                <p>Signature: <code>get_filter_configuration_panel(subtitles, old_settings)</code></p>
+                <p>Export filter configuration panel providers passed to
+                <a href="/docs/registration#aegisubregister_filter/"><code>aegisub.register_filter</code></a>
+                must have this signature. The name <code>get_filter_configuration_panel</code> is a
+                placeholder for your own function name.</p>
+                <p><strong>Important, execution time:</strong>
+                This function is called automatically when
+                the user opens the Export dialogue, and Aegisub blocks until it returns with
+                a configuration panel. Consider that the user might have a very large file
+                open, and that every millisecond spent creating your configuration dialogue
+                is one more millisecond the user has to wait for the Export dialogue to
+                open. Don't block the UI.</p>
+                <ul>
+                <li><strong>subtitles</strong> (user data) - The <a href="/docs/subtitles-object">subtitles object</a> for the current subtitle
+                file. This is <strong>read-only</strong>. You cannot modify the subtitles in the filter
+                configuration provider. Attempting to modify the subtitles will cause a
+                run-time error.</li>
+                <li><strong>old_settings</strong> (table) - Previous configuration settings entered into
+                the configuration panel, if any. When an Automation 4 export filter is
+                run, any configuration settings are automatically stored to the original
+                file. If any stored settings exist for this filter, they are passed as
+                <em>old_settings</em> so you can use them as a base for filling in defaults.</li>
+                </ul>
+                <p><strong>Return value:</strong>
+                A configuration dialogue table. See the page on
+                <a href="/docs/dialogs">configuration dialogues</a> for
+                more information on the format of this table.</p>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

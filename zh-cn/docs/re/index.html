@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>re - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/zh-cn/docs/re/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/zh-cn/docs/re/",
+        "url": "/zh-cn/docs/re/",
+        "name": "re",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/zh-cn/docs/re/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/zh-cn/docs/re/#/schema/image/2"
+        },
+        "inLanguage": "zh-CN",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/zh-cn/docs/re/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/zh-cn/docs/re/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "re"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/downloads/">下载</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/changelog/">更新日志</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/zh-cn/docs/">文档</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug 追踪</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/blog/">博客</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          ZH
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item" rel="alternate" href="/docs/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/zh-cn/docs/re/">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>re</h1>
+                <p><code>re</code> 模块是封装过的
+                boost::regex，加入它的意图是为了取代Lua内置的正则表达式。相比Lua内置的正则，它有两个主要优点:</p>
+                <ol>
+                <li>完整的 Unicode 支持。Lua
+                正则对字节进行操作，而不是字符，这在我们处理多字节字符时时常引起问题。</li>
+                <li>更强大和灵活的表达式。严格地说，Lua
+                不支持正则表达式；它只是拥有一个较小的模式匹配语言，只能实现正则表达式的部分功能。
+                boost::regex 则完整兼容PRCE标准的正则表达式。</li>
+                </ol>
+                <h2 id="用法">用法</h2>
+                <p>使用 <code>re = require 'aegisub.re'</code> 导入该模块。</p>
+                <p>查阅 <a href="http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html">boost.regex's
+                documentation</a>
+                以获取更多有关正则表达式的信息。总地来说，你在互联网上能找到的任何有关PRCE正则表达式的教程都可以作为这个模块的使用参考。</p>
+                <h3 id="匹配表">匹配表</h3>
+                <p>以下的几个函数会返回匹配表(以表的形式返回匹配)，表的结构如下：</p>
+                <p><code>str</code> (<code>string</code>)
+                : 匹配到的文本。</p>
+                <p><code>first</code> (<code>number</code>)
+                : 匹配到的 <code>str</code> 在原字符串中首次出现的位置。
+                这个位置是基于字节计算的，从1开始记，而不是按字符算，这是为了与Lua的字符串计数相匹配。</p>
+                <p><code>last</code> (<code>number</code>)
+                : 匹配到的 <code>str</code> 在原字符串中最后出现的位置。</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.match("b", "abc")
+                {
+                    {
+                        ["str"] = "b",
+                        ["first"] = 2,
+                        ["last"] = 2
+                    }
+                }
+                ```
+                </div>
+                </div>
+                <h3 id="flags">Flags</h3>
+                <p>The following flags may be passed to all of the static functions (including
+                <code>re.compile</code>).  Flags must come after all supplied non-flag arguments, but
+                optional arguments can be skipped.</p>
+                <p>re.ICASE
+                : Ignore case when matching.</p>
+                <p>re.NOSUB:
+                : Don't set backreferences and capture groups. Can improve performance when
+                they aren't needed.</p>
+                <p>re.NEWLINE_ALT:
+                : Treat newline characters as the alternation operator (|).</p>
+                <p>re.NO_MOD_M:
+                : ^ and $ only match the beginning and end of the string rather than newlines.</p>
+                <p>re.MOD_S:
+                : Treat newlines as normal characters, matched by '.'.</p>
+                <p>re.MOD_X:
+                : Ignore unescaped whitespace in the expression, making it possible to write
+                regular expressions that <em>aren't</em> write-only.</p>
+                <p>re.NO_EMPTY_SUBEXPRESSION:
+                : Don't match empty expressions/alternatives.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.match("a", "A")
+                nil
+                >>> re.match("a", "A", re.ICASE, re.NOSUB)
+                {
+                    {
+                        ["str"] = "A",
+                        ["first"] = 1,
+                        ["last"] = 1
+                    }
+                }
+                ```
+                </div>
+                </div>
+                <h3 id="recompile">re.compile</h3>
+                <p>Synopsis: <code class="inline-code language-lua">expr = re.compile(pattern, <a href="#flags">FLAGS</a>)</code></p>
+                <p>Compile a regular expression. Reusing a compiled regular expression is faster
+                than recompiling it each time it is used, and is usually more readable as well.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Regular expression to compile.</p>
+                <p><code>expr</code> (<code>table</code>)
+                : A table with all of the functions listed below, except without the pattern
+                and flags arguments.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> expr = re.compile("a")
+                >>> expr:split("banana")
+                {
+                    "b",
+                    "n",
+                    "n"
+                }
+                ```
+                </div>
+                </div>
+                <h3 id="resplit">re.split</h3>
+                <p>Synopsis: <code class="inline-code language-lua">chunks = re.split(str, pattern, skip_empty=false, max_splits=0)</code></p>
+                <p>Split the string at each of the occurrences of <code>pattern</code>.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to split.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Regular expression to split the string on. Capturing groups in the pattern
+                are ignored.</p>
+                <p><code>@skip_empty</code> (<code>boolean</code>)
+                : Do not include zero-length chunks in the results.</p>
+                <p><code>@max_splits</code> (<code>number</code>)
+                : If greater than zero, the maximum numbers of times to split the string (i.e.
+                <code>#chunks</code> will be at most <code>max_splits + 1</code>).</p>
+                <p><code>chunks</code> (<code>table</code>)
+                : A table containing each of the sections of <code>str</code> between the matches of
+                <code>pattern</code>.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.split(",", "a,,b,c")
+                {
+                    "a",
+                    "",
+                    "b",
+                    "c"
+                }
+                ```
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.split(",", "a,,b,c", true)
+                {
+                    "a",
+                    "b",
+                    "c"
+                }
+                ```
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.split(",", "a,,b,c", false, 1)
+                {
+                    "a",
+                    ",b,c",
+                }
+                ```
+                </div>
+                </div>
+                <h3 id="regsplit">re.gsplit</h3>
+                <p>Synopsis: <code class="inline-code language-lua">iter = re.gsplit(str, pattern, skip_empty=false, max_splits=0)</code></p>
+                <p>Iterator version of re.split.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to split.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Regular expression to split the string on. Capturing groups in the pattern
+                are ignored.</p>
+                <p><code>@skip_empty</code> (<code>boolean</code>)
+                : Do not include zero-length chunks in the results.</p>
+                <p><code>@max_splits</code> (<code>number</code>)
+                : If greater than zero, the maximum numbers of times to split the string (i.e.
+                <code>#chunks</code> will be at most <code>max_splits + 1</code>).</p>
+                <p><code>iter</code> (<code>iterator over strings</code>)
+                : An iterator over each of the sections of <code>str</code> between the matches of
+                <code>pattern</code>.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> for str in re.gsplit(",", "a,,b,c") do
+                >>>     print str
+                >>> end
+                a
+                <p>b
+                c</p>
+                <pre><code>&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                &lt;strong class=&quot;card-header&quot;&gt;Example&lt;/strong&gt;
+                &lt;div class=&quot;card-body&quot;&gt;
+                ```lua
+                &gt;&gt;&gt; for str in re.gsplit(&quot;,&quot;, &quot;a,,b,c&quot;, true) do
+                &gt;&gt;&gt;     print str
+                &gt;&gt;&gt; end
+                a
+                b
+                c
+                </code></pre>
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> for str in re.gsplit(",", "a,,b,c", false, 1) do
+                >>>     print str
+                >>> end
+                a
+                ,b,c
+                ```
+                </div>
+                </div>
+                <h3 id="refind">re.find</h3>
+                <p>Synopsis: <code class="inline-code language-lua">matches = re.find(str, pattern)</code></p>
+                <p>Find all non-overlapping substrings of <code>str</code> which match <code>pattern</code>.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to search for the pattern in.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Pattern to search for. Capturing groups in the pattern are ignored.</p>
+                <p><code>matches</code> (<code>table</code> or <code>nil</code>)
+                : A table of <a href="/zh-cn/docs/re#match-tables/">Match Tables</a> for all matches, or <code>nil</code> if
+                there were none.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.find(".", "☃☃")
+                {
+                    {
+                        ["str"] = "☃",
+                        ["first"] = 1,
+                        ["last"] = 3
+                    },
+                    {
+                        ["str"] = "☃",
+                        ["first"] = 4,
+                        ["last"] = 6
+                    }
+                }
+                ```
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                function contains_an_a(str)
+                    if re.find("a", str)
+                        print "Has an a"
+                    else
+                        print "Doesn't have an a"
+                    end
+                end
+                >>> contains_an_a("abc")
+                Has an a
+                >>> contains_an_a("def")
+                Doesn't have an a
+                ```
+                </div>
+                </div>
+                <h3 id="regfind">re.gfind</h3>
+                <p>Synopsis: <code class="inline-code language-lua">iter = re.gfind(str, pattern)</code></p>
+                <p>Iterate over all non-overlapping substrings of <code>str</code> which match <code>pattern</code>.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to search for the pattern in.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Pattern to search for. Capturing groups in the pattern are ignored.</p>
+                <p><code>iter</code> (<code>iterator over string, number, number</code>)
+                : An iterator which produces three values at each step: a matched string, the
+                started index of the match in the source string, and the inclusive end index of
+                the match in the source string.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> for str, start_idx, end_idx in re.gfind(".", "☃☃") do
+                >>>     print string.format("%d-%d: %s", start_idx, end_idx, str)
+                >>> end
+                1-3: ☃
+                4-6: ☃
+                ```
+                </div>
+                </div>
+                <h3 id="rematch">re.match</h3>
+                <p>Synopsis: <code class="inline-code language-lua">matches = re.match(str, pattern)</code></p>
+                <p>Match a pattern against a string. This differs from <code>find</code> in that <code>find</code>
+                returns all matches and does not capture subgroups, while this returns only a
+                single match along with the captured subgroups.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to search for the pattern in.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Pattern to search for.</p>
+                <p><code>matches</code> (<code>table</code> or <code>nil</code>)
+                : <code>nil</code> if the pattern did not match the string. Otherwise, a table containing
+                a <a href="/zh-cn/docs/re#match-tables/">Match Table</a> for the full match, followed by a <a href="/zh-cn/docs/re#match-tables/">Match Table</a> for each capturing subexpression in the pattern (if
+                any).</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                >>> re.match("(\d+) (\d+) (\d+)", "{250 1173 380}Help!")
+                {
+                    {
+                        ["str"] = "250 1173 380",
+                        ["first"] = 2,
+                        ["last"] = 13
+                    },
+                    {
+                        ["str"] = "250",
+                        ["first"] = 2,
+                        ["last"] = 4
+                    },
+                    {
+                        ["str"] = "1173",
+                        ["first"] = 6,
+                        ["last"] = 9,
+                    },
+                    {
+                        ["str"] = "380"
+                        ["first"] = 11,
+                        ["last"] = 13
+                    }
+                }
+                ```
+                </div>
+                </div>
+                <h3 id="regmatch">re.gmatch</h3>
+                <p>Synopsis: <code class="inline-code language-lua">iter = re.gmatch(str, pattern)</code></p>
+                <p>Iterator version of <a href="/zh-cn/docs/re#re.match/"><code>re.match</code></a>.</p>
+                <p><code>@str</code> (<code>string</code>)
+                : String to search for the pattern in.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Pattern to search for.</p>
+                <p><code>matches</code> (<code>iterator over table</code>)
+                : An iterator which returns a table containing a <a href="/zh-cn/docs/re#match-tables/">Match Table</a> for the full match (if it matched), followed by a
+                <a href="/zh-cn/docs/re#match-tables/">Match Table</a> for each capturing subexpression in the pattern
+                (if any).</p>
+                <h3 id="resub">re.sub</h3>
+                <p>Synopsis: <code class="inline-code language-lua">out_str, rep_count = re.sub(str, replace, pattern, max_count=0)</code></p>
+                <p>Replace each occurrence of <code>pattern</code> in <code>str</code> with <code>replace</code>.</p>
+                <p><code>@pattern</code> (<code>string</code>)
+                : Pattern to search for.</p>
+                <p><code>@replace</code> (<code>string</code> or <code>function</code>)
+                : Replacement for matches. This may be either a string which is inserted, or a
+                function which is called for each match.</p>
+                <p>If <code>replace</code> is a string, it may contain references to the matches. <code>&amp;</code> and
+                <code>\0</code> are replaced with the full match, and <code>\&lt;number&gt;</code> is replaced with the
+                appropriate captured subexpression.</p>
+                <p>If <code>replace</code> is a function, it is called for either the entire match (if
+                there are no capturing subexpressions), or for each captured subexpression.
+                It is passed the match string, start index of the match, and end index of
+                the match. If it returns a string, the match is replaced with the return
+                value. If it returns anything else, then the source string is left
+                unchanged.</p>
+                <p><code>@max_count</code> (<code>number</code>)
+                : If greater than zero, the maximum number of replacements to make.</p>
+                <p><code>out_str</code> (<code>string</code>)
+                : The input string, with replacements applied.</p>
+                <p><code>rep_count</code> (<code>number</code>)
+                : The number of replacements that were made.</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                Replace all instances of \\k with \\kf:
+                <pre><code class="language-lua">&gt;&gt;&gt; re.sub(&quot;{\\k10}a{\\k15}b{\\k30}c&quot;, &quot;\\\\k&quot;, &quot;\\kf&quot;)
+                {\kf10}a{\kf15}b{\kf30}c
+                </code></pre>
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                Replace all instances of \\k and \\K with \\kf:
+                <pre><code class="language-lua">&gt;&gt;&gt; re.sub(&quot;{\\K10}a{\\K15}b{\\k30}c&quot;, &quot;\\\\k&quot;, &quot;\\kf&quot;, re.ICASE)
+                {\kf10}a{\kf15}b{\kf30}c
+                </code></pre>
+                </div>
+                </div>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                Add one to each \\k duration:
+                <pre><code class="language-lua">function add_one(str)
+                    return tostring(tonumber(str) + 1)
+                end
+                &gt;&gt;&gt; re.sub(&quot;{\\k10}a{\\k15}b{\\k30}c&quot;, &quot;\\\\k(\[[:digit:]]+)&quot;, add_one)
+                {\k11}a{\k16}b{\k31}c
+                </code></pre>
+                </div>
+                </div>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/zh-cn/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

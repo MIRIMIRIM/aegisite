@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>karaskel.lua - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/docs/karaskel-lua/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/docs/karaskel-lua/",
+        "url": "/docs/karaskel-lua/",
+        "name": "karaskel.lua",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/docs/karaskel-lua/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/docs/karaskel-lua/#/schema/image/2"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/docs/karaskel-lua/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/docs/karaskel-lua/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "karaskel.lua"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/downloads/">Downloads</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/changelog/">Changelog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/docs/">Docs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug Tracker</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/blog/">Blog</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          EN
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item current" aria-current="true" href="/docs/karaskel-lua/">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/zh-cn/docs/" hreflang="zh-cn" lang="zh-cn">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>karaskel.lua</h1>
+                <p>The Automation 4 <code>karaskel.lua</code> include file contains several functions
+                intended to help the development of karaoke effects with Automation 4 Lua.
+                It also defines several new data structures, and extensions to those
+                defined by Automation 4 Lua itself.</p>
+                <p><code>karaskel.lua</code> itself includes
+                <a href="/docs/utils-lua"><code>utils.lua</code></a> and
+                <a href="/docs/unicode-lua"><code>unicode.lua</code></a> so you do not need to
+                include those yourself when using <code>karaskel.lua</code>.</p>
+                <p>Using <code>karaskel.lua</code> is strongly recommended when creating karaoke effects,
+                and it can also be useful for other tasks as it contains several text
+                layouting functions.</p>
+                <h2 id="functions">Functions</h2>
+                <h3 id="karaskelcollect_head">karaskel.collect_head</h3>
+                <p>Synopsis: <code class="inline-code language-lua">meta, styles = karaskel.collect_head(subtitles, generate_furigana)</code></p>
+                <p>Reads the subtitle file to collect all header information and style
+                definitions, and optionally also generates new styles for furigana layouts.</p>
+                <ul>
+                <li><code>subtitles</code> is the Subtitle File object defined by Automation 4 Lua.</li>
+                <li><code>generate_furigana</code> is a boolean: if it is true a style for <a href="/docs/furigana-tutorial">furigana layout</a> is generated for each style that does not have
+                one already. Generation of furigana styles will never overwrite existing
+                styles, create double style definitions or create meaningless furigana
+                styles for other furigana styles.</li>
+                </ul>
+                <p>Calling <code>collect_head</code> is usually one of the first things you do in your
+                processing function.</p>
+                <p>The returned <code>meta</code> table contains a map of all <code>Name: Value</code> pairs in the
+                <code>[Script Info]</code> section. It also always contains <code>meta.res_x</code> and
+                <code>meta.res_y</code> calculated from the <code>PlayResX</code> and <code>PlayResY</code> fields,
+                following VSFilter conventions for default values when one or both of the
+                fields are missing.</p>
+                <p>The returned <code>styles</code> table contains a map of all defined styles, along
+                with any generated furigana layout styles. The style structures stored in
+                this table have one added field, <code>style.margin_v</code> which is an alias for
+                <code>style.margin_t</code>, for convenience. <code>styles</code> can be indexed by style names
+                (case sensitive, names not mangled) and by numbers. <code>styles.n</code> is the
+                number of styles stored, and <code>styles[1]</code> is the first style defined.</p>
+                <h3 id="karaskelpreproc_line">karaskel.preproc_line</h3>
+                <p>Synopsis: <code class="inline-code language-lua">karaskel.preproc_line(subtitles, meta, styles, line)</code></p>
+                <p>Calculate sizing, positioning and various other information for a single
+                subtitle line. This function calls <code>karaskel.preproc_line_text</code>,
+                <code>karaskel.preproc_line_size</code> and <code>karaskel.preproc_line_pos</code> in order.</p>
+                <p>This function does not return a value, but rather modifies the <code>line</code>
+                table. See below for more information.</p>
+                <h3 id="karaskelpreproc_line_text">karaskel.preproc_line_text</h3>
+                <p>Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_text(meta, styles, line)</code></p>
+                <p>Preprocess the text of a single line. <code>meta</code> and <code>styles</code> are the tables
+                returned by <a href="/docs/karaskel-lua#karaskelcollect_head/"><code>karaskel.collect_head</code></a>.</p>
+                <p>This function does not return a value, but rather modifies the <code>line</code>
+                table. The following fields are added:</p>
+                <ul>
+                <li><code>line.text_stripped</code> - Line text with all override tags and vector
+                drawings removed.</li>
+                <li><code>line.duration</code> - Duration of the line in milliseconds</li>
+                <li><code>line.kara</code> and <code>line.furi</code> - Extended <a href="/docs/karaskel-lua#karaoke-and-furigana-syllable-tables/">karaoke and furigana tables</a>, without sizing and
+                position data.</li>
+                </ul>
+                <p>This function does not calculate any text sizing or positioning
+                information. (In fact it currently doesn't use the <code>meta</code> or <code>styles</code>
+                arguments at all.)</p>
+                <h3 id="karaskelpreproc_line_size">karaskel.preproc_line_size</h3>
+                <p>Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_size(meta, styles, line)</code></p>
+                <p>Calculate sizing data for a line and all karaoke syllables and furigana
+                parts. Also adds a reference to the line style.</p>
+                <p>This function does not return a value, but rather modifies the <code>line</code>
+                table. The following fields are added:</p>
+                <ul>
+                <li><code>line.styleref</code> - A reference to the Style table representing this line's
+                selected style.</li>
+                <li><code>line.furistyle</code> - A reference to the Style table representing this
+                line's furigana layout style. If there is no style with the right name,
+                this field is <code>false</code> instead.</li>
+                <li><code>line.width</code>, <code>line.height</code>, <code>line.descent</code> and <code>line.extlead</code> - Sizing</li>
+                <li>information for the stripped line text, as returned by</li>
+                <li><a href="/docs/misc-apis#aegisubtext_extents/"><code>aegisub.text_extents</code></a>.</li>
+                </ul>
+                <p>Also, this function modifies the <code>line.kara</code> and <code>line.furi</code> tables, adding
+                sizing information.</p>
+                <p>No position information is calculated here.</p>
+                <p>If the <code>line</code> table does not seem to have been processed with
+                <code>karaskel.preproc_line_text</code> yet, this will be done automatically.</p>
+                <h3 id="karaskelpreproc_line_pos">karaskel.preproc_line_pos</h3>
+                <p>Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_pos(meta, styles, line)</code></p>
+                <p>Calculate line, karaoke and furigana position information.</p>
+                <p>This function invokes <code>karaskel.do_basic_layout</code> when no furigana style is
+                available, and <code>karaskel.do_furigana_layout</code> when a furigana style is
+                defined for the line. The furigana layout algorithm might change the
+                calculated width of the line.</p>
+                <p>This function does not return a value, but rather modifies the <code>line</code>
+                table. The following fields are added:</p>
+                <ul>
+                <li><code>line.margin_v</code> - A convenience alias for <code>line.margin_t</code>.</li>
+                <li><code>line.eff_margin_l</code>, <code>line.eff_margin_r</code>, <code>line.eff_margin_t</code>,
+                <code>line.eff_margin_b</code> and <code>line.eff_margin_v</code> - Effective margin values for
+                the line. If the corresponding margin override for the line is non-zero,
+                that value is used, otherwise the value defined in the style is used.</li>
+                <li><code>line.halign</code> - One of <code>&quot;left&quot;</code>, <code>&quot;center&quot;</code> or <code>&quot;right&quot;</code>, the horizontal
+                alignment of the line, derived from <code>line.styleref.align</code>.</li>
+                <li><code>line.valign</code> - One of <code>&quot;top&quot;</code>, <code>&quot;middle&quot;</code> or <code>&quot;bottom&quot;</code>, the vertical
+                alignment of the line, derived from <code>line.styleref.align</code>.</li>
+                <li><code>line.left</code> - The left edge X coordinate for the line, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.center</code> - The line centre X coordinate, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.right</code> - The right edge X coordinate for the line, assuming its
+                given alignment, effective margins and no collision detection.</li>
+                <li><code>line.top</code> - The top edge Y coordinate for the line, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.middle</code> - The line vertical centre Y coordinate, assuming its given
+                alignment, effective margins and no collision detection. <code>line.vcenter</code> is
+                an alias for this.
+                <code>line.bottom</code> - The bottom edge Y coordinate for the line, assuming its
+                given alignment, effective margins and no collision detection.</li>
+                <li><code>line.x</code> and <code>line.y</code> - X and Y coordinates for the line, suitable for
+                using in a <code>\pos</code> override tag to get the line's original position.</li>
+                </ul>
+                <p>Furthermore, the <code>line.kara</code> and <code>line.furi</code> tables are modified by the
+                layout function called, adding positioning information.</p>
+                <p>See the part on <a href="/docs/karaskel-lua#data-structures/">data structures</a> later on
+                this page for more details on the various fields that are added.</p>
+                <p>If no line sizing information is found, <code>karaskel.preproc_line_size</code> will
+                be invoked, which might in turn also invoke <code>karaskel.preproc_line_text</code>.</p>
+                <h3 id="karaskeldo_basic_layout">karaskel.do_basic_layout</h3>
+                <p>This function is not intended to be called directly, but is rather called
+                as a helper function for <code>karaskel.preproc_line_pos</code>.</p>
+                <p>It runs a very simple layout algorithm for the <code>line.kara</code> table, which
+                simply calculates the positions of the syllables when placed in one
+                straight line with no additional spacing in between. Positioning
+                information is added to each karaoke syllable.</p>
+                <p>The <code>line.furi</code> table is not touched.</p>
+                <h3 id="karaskeldo_furigana_layout">karaskel.do_furigana_layout</h3>
+                <p>This function is not intended to be called directly, but is rather called
+                as a helper function for <code>karaskel.preproc_line_pos</code>.</p>
+                <p>It runs an advanced text layout algorithm to position karaoke syllables and
+                furigana neatly, avoiding unwanted overlapping. People interested in the
+                actual algorithm used should read the function source code. It should be
+                well enough commented.</p>
+                <p>This function adds positioning information to both the <code>line.kara</code> and
+                <code>line.furi</code> tables. It might also change the <code>line.width</code> field as the line
+                base text is expanded to make room for furigana.</p>
+                <h2 id="karaoke-skeletons">Karaoke skeletons</h2>
+                <p>A karaoke skeleton is a framework for building karaoke effects in. It
+                usually works by writing a couple of functions yourself for handling the
+                actual effect work, and these are then called at various times. The actual
+                details of what functions you need to write depends on the actual karaoke
+                skeleton.</p>
+                <h3 id="effect-library">Effect Library</h3>
+                <p>Main function: <code>karaskel.use_fx_library_furi(use_furigana, add_macro)</code></p>
+                <p>Call the <code>karaskel.use_fx_library_furi</code> function to install the Effect
+                Library skeleton for this script file. The <code>script_name</code> and
+                <code>script_description</code> globals are used to name the export filter produced.
+                If <code>use_furigana</code> is true, furigana styles are created and added as needed.
+                If <code>add_macro</code> is true, a macro is registered in addition to the export
+                filter.</p>
+                <p>The basic premise of the Effect Library skeleton is that each timed karaoke
+                line has a word in its Effect field that describes what effect to apply to
+                that line. This makes Effect Library a good choice if you want to use
+                several different effects in a single karaoke.</p>
+                <p>When Effect Library is invoked, it calls a function named <code>fx_</code><em>effect</em> for
+                each Dialogue line in the subtitle file. For example, if the Effect field
+                of a dialogue line is <em>&quot;jump&quot;</em>, the function named <code>fx_jump</code> is called. For
+                lines with empty Effect field, the function <code>fx_none</code> is called.</p>
+                <p>If an <code>fx</code> function does not exist, the original line is left in the subtitle
+                file. Otherwise, whether the original line is left depends on the return
+                value of the <code>fx</code> function, a true return value means the original line is
+                kept, a false value means it is made into a Comment line.</p>
+                <p>Signature of <code>fx</code> functions: <code>keep = fx_effect(subtitles, meta, styles, line, fxdata)</code></p>
+                <p><code>fxdata</code> is the contents of the Effect field after the initial word
+                defining the effect to be used. All output of an <code>fx</code> function should be
+                appended to the subtitle file represented by <code>subtitles</code>.</p>
+                <p>Simplified main function: <code>karaskel.use_fx_library(add_macro)</code></p>
+                <p>Identical to the <code>_furi</code> variant above, except that the <code>use_furigana</code>
+                parameter is removed; it is assumed to be false.</p>
+                <h3 id="classic-advanced">Classic Advanced</h3>
+                <p>Main function: <code>karaskel.use_classic_adv(use_furigana, add_macro)</code></p>
+                <p>Call the <code>karaskel.use_classic_adv</code> function to install the Classic
+                Advanced skeleton for this script file. The <code>script_name</code> and
+                <code>script_description</code> globals are used to name the export filter produced.
+                If <code>use_furigana</code> is true, furigana styles are created and added as needed,
+                and furigana processing is enabled. If <code>add_macro</code> is true, a macro is
+                registered in addition to the export filter.</p>
+                <p>This skeleton is created in the image of the Automation 3 <code>karaskel-adv</code>
+                skeleton, but it is <em>not</em> compatible with it. (You cannot use a
+                <code>karaskel-adv</code> script with Classic Advanced without rewriting parts of your
+                script.) The basic premise is that the <code>do_syllable</code> function is called
+                once for each syllable. Optionally, you can have a function called for each
+                line, using the <code>do_line</code> function.</p>
+                <p>Classic Advanced uses a slightly different model than the usual Automation
+                4 Lua one. Here all subtitle lines are collected first before any further
+                processing is done. They also have <code>line.prev</code> and <code>line.next</code> fields
+                added, to allow linked list style access. To add lines to the output, you
+                must still add lines to the <code>subs</code> object though. Before processing starts,
+                all original lines are <em>deleted</em> from the <code>subs</code> object.</p>
+                <p>Signature of syllable function: <code>do_syllable(subs, meta, styles, lines, line, syl)</code></p>
+                <p>The syllable function <em>must</em> be named <code>do_syllable</code>. If furigana processing
+                is enabled, you can also define a function called <code>do_furigana</code> with the
+                same signature, to process furigana syllables. Furigana still follows the
+                Automation 4 model here.</p>
+                <p>Signature of line function: <code>do_line(subs, meta, styles, lines, line, default_do_line)</code></p>
+                <p>Defining a line function is optional, and is often not required. The line
+                function <em>must</em> be named <code>do_line</code> if it exists. The <code>default_do_line</code>
+                parameter is the function that would be called if <code>do_line</code> didn't exist.
+                You can call it to run the default line processing along with your own
+                processing.</p>
+                <h2 id="data-structures">Data structures</h2>
+                <p><code>karaskel.lua</code> defines and extends several data structures. Some of the
+                changes are already listed above under the individual functions.</p>
+                <h3 id="styles-array">Styles array</h3>
+                <p>The <code>styles</code> array is produced by the <code>karaskel.collect_head</code> function and
+                should be passed to most other <code>karaskel.lua</code> functions. It contains a list
+                of all styles in the subtitle file, and can be accessed in two ways.</p>
+                <p><code>styles.n</code> is a number telling the number of styles in the array.
+                <code>styles[1]</code> is the first defined style and <code>styles[styles.n]</code> is the last
+                defined style.</p>
+                <p>The <code>styles</code> array can also be indexed by style names, such that
+                <code>styles[style.name] == style</code>. The names are not mangled and the indexing
+                is case sensitive.</p>
+                <p>Be aware that modifying the <code>styles</code> will never update the subtitles file,
+                and conversely updating the styles in the subtitle file will not
+                automatically be reflected in <code>styles</code> either.</p>
+                <h3 id="style-table">Style table</h3>
+                <p>This is a slight extension of the basic <code>style</code> class subtitle line structure.</p>
+                <p>One field is added:</p>
+                <ul>
+                <li><code>style.margin_v</code> is a convenience alias for <code>style.margin_t</code>.</li>
+                </ul>
+                <p>Full list of fields:</p>
+                <ul>
+                <li><code>style.class == &quot;style&quot;</code></li>
+                <li><code>style.raw</code> - The raw line text.</li>
+                <li><code>style.section == &quot;[V4+ Styles]&quot;</code></li>
+                <li><code>style.name</code> - Name of the style.</li>
+                <li><code>style.fontname</code> - Name of the font face used by the style.</li>
+                <li><code>style.fontsize</code> - Font size for the style.</li>
+                <li><code>style.color1</code>, <code>style.color2</code>, <code>style.color3</code> and <code>style.color4</code> - The
+                four colours used by the style, in regular order. Use
+                <a href="/docs/utils-lua#extract_color/"><code>extract_color</code></a> and family to
+                manipulate these.</li>
+                <li><code>style.bold</code> - <code>true</code>/<code>false</code> to specify bold/non-bold font face. Can
+                also be a number to specify font weight, but this is not well supported
+                and should be avoided.</li>
+                <li><code>style.italic</code> - Boolean, whether an italic/oblique version of the font
+                face is used or not.</li>
+                <li><code>style.underline</code> and <code>style.strikeout</code> - Boolean, whether to apply these
+                two decorations to the text.</li>
+                <li><code>style.scale_x</code> and <code>style.scale_y</code> - Scaling in X and Y direction, 100
+                is neutral.</li>
+                <li><code>style.spacing</code> - Additional spacing in pixels between individual
+                characters in text.</li>
+                <li><code>style.angle</code> - Z axis rotation for the text.</li>
+                <li><code>style.borderstyle</code>  - 1 (one) for regular outlined text, 3 for opaque
+                box behind subtitles.</li>
+                <li><code>style.outline</code> - Width of the extended outline around the text.</li>
+                <li><code>style.shadow</code> - Distance to the shadow behind the text.</li>
+                <li><code>style.align</code> - Numpad-style alignment for the text on screen.</li>
+                <li><code>style.margin_l</code>, <code>style.margin_r</code>, <code>style.margin_t</code> and <code>style.margin_b</code>
+                <ul>
+                <li>Margins for the style. <code>style.margin_v</code> is an alias for top margin.</li>
+                </ul>
+                </li>
+                <li><code>style.encoding</code> - Windows font encoding ID for the style.</li>
+                <li><code>style.relative_to</code> - Currently unsupported.</li>
+                <li><code>style.vertical</code> - Unsupported, tentative AS5 feature.</li>
+                </ul>
+                <h3 id="dialogue-line-table">Dialogue line table</h3>
+                <p>A large number of new fields have been added to the dialogue line class.</p>
+                <p>Basic fields:</p>
+                <ul>
+                <li><code>line.class == &quot;dialogue&quot;</code>, also for comment lines</li>
+                <li><code>line.raw</code> - The raw line text.</li>
+                <li><code>line.section</code> - Usually <code>&quot;[Events]&quot;</code>.</li>
+                <li><code>line.comment</code> - Boolean, true if the line is a Comment line rather than
+                Dialogue.</li>
+                <li><code>line.layer</code> - Layer of the line.</li>
+                <li><code>line.start_time</code>, <code>line.end_time</code> - Start and end times of the line in
+                milliseconds.</li>
+                <li><code>line.style</code> - Name of the style used for the line.</li>
+                <li><code>line.actor</code> - Actor field for the line.</li>
+                <li><code>line.margin_l</code>, <code>line.margin_r</code>, <code>line.margin_t</code> and <code>line.margin_b</code> -
+                Margin overrides for the line, a zero value means use margin from style.</li>
+                <li><code>line.effect</code> - Effect field of the line.</li>
+                <li><code>line.userdata</code> - Unused.</li>
+                <li><code>line.text</code> - Dialogue text.</li>
+                </ul>
+                <p>Basic added fields, by <code>karaskel.preproc_line_text</code>:</p>
+                <ul>
+                <li><code>line.text_stripped</code> - Line text with all override tags and vector
+                drawings removed.</li>
+                <li><code>line.duration</code> - Duration of the line in milliseconds</li>
+                <li><code>line.kara</code> and <code>line.furi</code> - Array tables of extended karaoke and
+                furigana tables, respectively. They do not contain sizing and positioning
+                data from the beginning.</li>
+                </ul>
+                <p>Added fields for sizing, by <code>karaskel.preproc_line_size</code>:</p>
+                <ul>
+                <li><code>line.styleref</code> - A reference to the Style table representing this line's
+                selected style.</li>
+                <li><code>line.furistyle</code> - A reference to the Style table representing this
+                line's furigana layout style. If there is no style with the right name,
+                this field is <code>false</code> instead.</li>
+                <li><code>line.width</code>, <code>line.height</code>, <code>line.descent</code> and <code>line.extlead</code> - Sizing
+                information for the stripped line text, as returned by
+                <code>aegisub.text_extents</code>. <code>line.width</code> may also be modified by
+                <code>karaskel.preproc_line_pos</code>.</li>
+                </ul>
+                <p>Added fields for positioning, by <code>karaskel.preproc_line_pos</code>:</p>
+                <ul>
+                <li><code>line.margin_v</code> - A convenience alias for <code>line.margin_t</code>.</li>
+                <li><code>line.eff_margin_l</code>, <code>line.eff_margin_r</code>, <code>line.eff_margin_t</code>,
+                <code>line.eff_margin_b</code> and <code>line.eff_margin_v</code> - Effective margin values for
+                the line. If the corresponding margin override for the line is non-zero,
+                that value is used, otherwise the value defined in the style is used.</li>
+                <li><code>line.halign</code> - One of <code>&quot;left&quot;</code>, <code>&quot;center&quot;</code> or <code>&quot;right&quot;</code>, the horizontal
+                alignment of the line, derived from <code>line.styleref.align</code>.</li>
+                <li><code>line.valign</code> - One of <code>&quot;top&quot;</code>, <code>&quot;middle&quot;</code> or <code>&quot;bottom&quot;</code>, the vertical
+                alignment of the line, derived from <code>line.styleref.align</code>.</li>
+                <li><code>line.left</code> - The left edge X coordinate for the line, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.center</code> - The line centre X coordinate, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.right</code> - The right edge X coordinate for the line, assuming its
+                given alignment, effective margins and no collision detection.</li>
+                <li><code>line.top</code> - The top edge Y coordinate for the line, assuming its given
+                alignment, effective margins and no collision detection.</li>
+                <li><code>line.middle</code> - The line vertical centre Y coordinate, assuming its given
+                alignment, effective margins and no collision detection <code>line.vcenter</code> is
+                an alias for this.</li>
+                <li><code>line.bottom</code> - The bottom edge Y coordinate for the line, assuming its
+                given alignment, effective margins and no collision detection.</li>
+                <li><code>line.x</code> and <code>line.y</code> - X and Y coordinates for the line, suitable for
+                using in a <code>\pos</code> override tag to get the line's original position.</li>
+                </ul>
+                <p>Added fields for linked list access, only available when using the Classic
+                Advanced skeleton:</p>
+                <ul>
+                <li><code>line.prev</code>, <code>line.next</code> - Access the dialogue line before and after this
+                one. These might be <code>nil</code> on the first/last dialogue lines. Blank lines,
+                style lines, header lines etc. are <em>not</em> included in this linked list.</li>
+                </ul>
+                <h3 id="karaoke-and-furigana-syllable-tables">Karaoke and furigana syllable tables</h3>
+                <p>Tables for regular karaoke syllables and furigana parts are identical in
+                (almost) every aspect, and can usually be processed by the same code
+                without problems. There are a few points to take note of which are marked.
+                Everywhere it says <code>syl</code> here, you can replace that with <code>furi</code> unless
+                otherwise noted.</p>
+                <p>Basic fields, defined by <code>aegisub.parse_karaoke_data</code>:</p>
+                <ul>
+                <li><code>syl.duration</code> - syllable duration in milliseconds (divide by 10 to get a
+                number suitable for <code>\k</code> tags.)</li>
+                <li><code>syl.start_time</code>, <code>syl.end_time</code> - Start and end time of the syllable in
+                milliseconds, relative to the start time of the line.</li>
+                <li><code>syl.tag</code> - The name of the tag defining this syllable, without
+                backslash. It will usually be one of <code>k</code>, <code>K</code>, <code>kf</code> or <code>ko</code>. Note that
+                <code>kt</code> is not handled. Furigana parts have the same tag as the original
+                syllable defining them.</li>
+                <li><code>syl.text</code> - Text including tags of the syllable. Same as stripped text
+                for furigana.</li>
+                <li><code>syl.text_stripped</code> - Text of the syllable with all tags removed. For
+                main syllables, this also has furigana and multi-highlight parts removed.
+                This is the text you will usually want to use.</li>
+                </ul>
+                <p>Additions by <code>karaskel.preproc_line_text</code>:</p>
+                <ul>
+                <li><code>syl.kdur</code> - Syllable duration in centiseconds, suitable for use in <code>\k</code>
+                tags.</li>
+                <li><code>syl.line</code> - Back reference to the line table containing this syllable.</li>
+                <li><code>syl.inline_fx</code> - Name of the <a href="/docs/inline-effects-tutorial"><em>inline-fx</em></a> for this
+                syllable.</li>
+                <li><code>syl.i</code> - Index number of this syllable.</li>
+                <li><code>syl.prespace</code>, <code>syl.postspace</code> - Space characaters at the start/end of
+                the syllable. Always blank for furigana. These are spaces included in
+                <code>syl.text_stripped</code>. You will usually never need this.</li>
+                <li><code>syl.text_spacestripped</code> - Syllable text stripped for tags and trimmed of
+                spaces at the start and end. This, <code>syl.prespace</code> and <code>syl.postspace</code>
+                together can produce the same as <code>syl.text_stripped</code>. You will usually
+                never need this.</li>
+                <li><code>syl.isfuri</code> - <code>true</code> if the table is a furigana table, <code>false</code> if it is
+                not. If you use a single function to process both regular and furigana
+                syllables, you can use this to do differentiated processing still.</li>
+                <li><code>syl.highlights</code> - Array table of multi-highlight data for the syllable.
+                For furigana, there is always exactly one highlight defined. See below
+                for format of highlight tables.</li>
+                </ul>
+                <p>Additions by <code>karaskel.preproc_line_size</code>:</p>
+                <ul>
+                <li><code>syl.style</code> - Reference to the style used to calculate sizing for this
+                syllable. This will be the main line style for regular syllables and the
+                furigana style for furigana. You should always set the style of the
+                generated lines to this one.</li>
+                <li><code>syl.width</code>, <code>syl.height</code> - Width and height of <code>syl.text_spacestripped</code>,
+                as returned by <code>aegisub.text_extents</code>.</li>
+                <li><code>syl.prespacewidth</code>, <code>syl.postspacewidth</code> - Width of <code>syl.prespace</code> and
+                <code>syl.postspace</code> respectively. You will usually not need these. Always
+                zero for furigana.</li>
+                </ul>
+                <p>Additions by <code>karaskel.preproc_line_pos</code>:</p>
+                <ul>
+                <li><code>syl.left</code>, <code>syl.center</code>, <code>syl.right</code> - Respectively left, center and
+                right aligned positions of the syllable/furigana, for use with different
+                alignments. The positions are <em>relative to the left edge of the line</em>,
+                meaning you will need to add a value for line positioning to use these
+                values to position syllables on screen. There is no guarantee that
+                <code>syl.right</code> for one syllable is equal to <code>syl.left</code> for the next
+                syllable.</li>
+                </ul>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                ```lua
+                line.left + syl.center
+                ```
+                <p>Calculates the default X position of a syllable, suitable for use with
+                <code>\an2</code>, <code>\an5</code> or <code>\an8</code> alignment.</p>
+                </div>
+                </div>
+                <h4 id="highlight-table">Highlight table</h4>
+                <p>A highlight table defines one highlight of a multi-highlight timed
+                syllable.</p>
+                <p>Highlight tables are entirely defined by <code>karaskel.preproc_line_text</code>, and
+                contain the following fields:</p>
+                <ul>
+                <li><code>hl.start_time</code>, <code>hl.end_time</code> - Start and end time of the highlight, in
+                milliseconds, relative to the start of the line.</li>
+                <li><code>hl.duration</code> - Duration of the highlight in milliseconds.</li>
+                </ul>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

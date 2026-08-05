@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/site-overrides.css">
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>卡拉OK模板执行环境和顺序 - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="/zh-cn/docs/卡拉ok模板执行环境和顺序/">
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://aegisub.org#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://aegisub.org",
+        "sameAs": [
+          "https://twitter.com/aegisub"
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://aegisub.org#/schema/image/1",
+            "url": "https://aegisub.org/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://aegisub.org#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aegisub.org#/schema/website/1",
+        "url": "https://aegisub.org",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/zh-cn/docs/卡拉ok模板执行环境和顺序/",
+        "url": "/zh-cn/docs/卡拉ok模板执行环境和顺序/",
+        "name": "卡拉OK模板执行环境和顺序",
+        "isPartOf": {
+          "@id": "https://aegisub.org#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://aegisub.org#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/zh-cn/docs/卡拉ok模板执行环境和顺序/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/zh-cn/docs/卡拉ok模板执行环境和顺序/#/schema/image/2"
+        },
+        "inLanguage": "zh-CN",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/zh-cn/docs/卡拉ok模板执行环境和顺序/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/zh-cn/docs/卡拉ok模板执行环境和顺序/#/schema/image/2",
+        "url": "https://aegisub.org/img/logo-1280.png",
+        "contentUrl": "https://aegisub.org/img/logo-1280.png",
+        "caption": "卡拉OK模板执行环境和顺序"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/downloads/">下载</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/changelog/">更新日志</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/zh-cn/docs/">文档</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug 追踪</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/zh-cn/blog/">博客</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          ZH
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item" rel="alternate" href="/docs/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/zh-cn/docs/卡拉ok模板执行环境和顺序/">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          <article>
+            <div class="row">
+              <div class="col-lg-12 order-1">
+                <h1>卡拉OK模板执行环境和顺序</h1>
+                <p>本页描述了许多有关 卡拉OK模板执行器(<em>kara-templater</em>)
+                的工作方式，并且会解释为什么许多东西起作用，而另一些不起作用。</p>
+                <p>大多数的细节你在卡拉OK模板执行器中是不需要用到的，但是如果你在某些脚本中看到了你不理解的行为，那么本页面可能会解释它。</p>
+                <h2 id="概念">概念</h2>
+                <p>有些术语和概念在本页全篇中都有使用。这些名称和脚本中使用的相似或者完全相同。（译者注：在使用时需要保留英文，故翻译内容保留重要英文）</p>
+                <p><code>tenv</code>
+                : <strong>t</strong>emplate <strong>env</strong>ironment(模板环境)的缩写, 或者
+                <a href="/zh-cn/docs/execution-envirionment">代码执行环境</a>。</p>
+                <p><code>varctx</code>
+                : <strong>var</strong>iable <strong>c</strong>on<strong>t</strong>e<strong>x</strong>t(内联变量环境),
+                <a href="/zh-cn/docs/%E5%86%85%E8%81%94%E5%8F%98%E9%87%8F">内联变量</a>存储在的实际区域。</p>
+                <p><code>template</code>
+                : 卡拉OK模板执行器(kara-templater)中最基本的 &quot;执行单元(execution
+                unit)&quot; , 事实上一个模板就是一个迷你程序，这个程序由
+                卡拉OK模板执行器 编译并执行。</p>
+                <p><code>code template</code>
+                : 以Lua代码块方式行使功能的模板，但是一般情况下不会直接输出字幕对象。(用
+                <em>code</em> 关键字声明)</p>
+                <p><code>output template</code>
+                : 会产生字幕行(字幕对象)的一类模板，一般以打好K值的行作为输入。(用
+                <em>template</em> 关键字声明)</p>
+                <p><code>code line</code>
+                : 字幕文件中的一行，该行定义了一个code模板(code 模板)。</p>
+                <p><code>template line</code>
+                : 字幕文件中的一行，该行定义了一个输出模板(output template),
+                或者整个输出模板中的一部分。 (一个 <em>line</em>
+                类输出模板可以对应多个模板行)</p>
+                <p><code>class(类)</code>
+                : 一个类指的是一种类型的模板。有四种基本的模板类, <em>once</em>, <em>line</em>,
+                <em>syl</em> and <em>furi</em>, 第一个类只对code模板有用。</p>
+                <p><code>modifier(修饰语)</code>
+                : 修饰语会影响模板作用的方式和作用的顺序。</p>
+                <p><code>template text</code> 或 <code>text</code>
+                : 模板的&quot;文本&quot; 部分，可以是code模板中的 Lua
+                代码，或者是输出模板中的模板代码。 <em>line</em> 类输出模板还有一个
+                <em>pre-line text</em> 。</p>
+                <h2 id="启动start-up">启动(Start-up)</h2>
+                <p>卡拉OK模板执行器(后文均简称模板应用器)做的第一件事是使用
+                <a href="/zh-cn/docs/karaskel-lua">卡拉OK框架(karaskel)</a>
+                来收集一些基础的字幕文件信息。这个过程中总是会伴随着传递 <code>真(true)</code>值给
+                <em>generate_furigana</em> (生成假名标注)，它属于<code>karaskel.collect_head</code>
+                函数，这意味着
+                [假名标注(furigana)](/zh-cn/docs/Furigana_karaoke/
+                的样式会被生成，除非它们早就存在。</p>
+                <p>然后模板应用器会收集文件中的所有模板行(template line)信息。</p>
+                <h3 id="收集解析并编译模板">收集，解析并编译模板</h3>
+                <p>文件中的每一行都会被检查是否是一行模板，例如，被打上注释并且特效栏(Effect
+                field)填写着 <em>code</em> 或者 <em>template</em> 的行会被作为模板行。</p>
+                <p>细节在这里并不重要。你要知道的是
+                特效栏关键字后的修饰语会作为一个参数起作用。</p>
+                <p>当遇到一个 <em>line</em>
+                类的模板行时，模板应用器首先会检查是否有其他和这行具有一样模板名称的行。如果没有，则会以该名称新建一行，并按照给定的修饰语进行初始化。如果已经存在这样的行,
+                <em>该模板行中的文本会被加入到当前模板行中统一成一个新模板行</em>
+                。最终应用的修饰语决定于后一个模板行的修饰语，而非当前行。应用模板的过程中，修饰语没有办法从模板中移除。特殊的是
+                <em>pre-line</em> 模板行的文本会被添加到 <em>pre-line text</em>
+                (被置于所有代码的最前面)。</p>
+                <p>不同类的模板会被分别放置到各自的 &quot;bucket&quot; 中，所以 <em>line</em> 和 <em>syl</em>
+                模板不会被一起保存。(应用模板后不会产生同类合并效果)</p>
+                <h3 id="清除clean-up">清除(Clean-up)</h3>
+                <p>在所有模板信息都被收集后。所有不需要的行会被从字幕文件中删除，最常见的情况是，第二次应用同一个模板时第一次生成的
+                <em>fx(在Effect栏)</em> 行会先被清除。</p>
+                <h3 id="初始化-tenv">初始化 <em>tenv</em></h3>
+                <p>在开始实际应用模板之前的最后一项工作就是初始化运行环境。基本上，在所有的模板运行之前，都会被放置到
+                <em>tenv</em>。详见 <a href="/zh-cn/docs/execution-envirionment">代码执行环境</a>
+                (&quot;基本上&quot;是指除了 <code>line</code>, <code>orgline</code>, <code>syl</code> 和 <code>basesyl</code>.)</p>
+                <h2 id="运行-once-模板">运行 <em>once</em> 模板</h2>
+                <p>所有的 <em>once</em>
+                类模板会被首先执行。这个过程中没有什么激动人心的事情发生，发生的仅仅是一些额外的文件被添加到了
+                <em>tenv</em>。</p>
+                <h2 id="循环访问iterate-through卡拉ok行">循环访问(Iterate through)卡拉OK行</h2>
+                <p>字幕文件中的每个非模板行都会被浏览并且按顺序应用上模板。</p>
+                <ul>
+                <li>如果一行的注释已经打勾，但是特效栏没有写着<code>Karaoke</code>，那么应用模板时这行会被跳过。</li>
+                <li>如果一行没被打上注释，并且特效栏写着除了<code>Karaoke</code>或者空白以外的文本，它也会被跳过。</li>
+                <li>模板应用器会试图匹配所有非模板行。</li>
+                </ul>
+                <p>如果通过了以上几点，剩下的每一行都会以三个步骤被应用上模板。</p>
+                <p>首先，所有的 <em>line</em>
+                类模板会试图匹配非模板行然后再逐一在karaoke行上运行。下面会给出&quot;模板匹配行的顺序&quot;的概念。</p>
+                <p>接下来，所有行内的音节会按顺序被浏览，所有的 <em>syl</em>
+                类模板最终会被应用在每个音节上。</p>
+                <p>最后，会过一遍所有注音假名的音节，来尝试将所有 <em>furi</em>
+                类模板匹配相应行，然后在注音假名上应用模板。</p>
+                <p>值得注意的是，音节和注音假名音节是会被解析并储存的音节，而不是用multi时的虚拟音节，或是用char时的虚拟音节，并且不是一个组合。</p>
+                <div class="card">
+                <strong class="card-header">Example</strong>
+                <div class="card-body">
+                假设有三个 `syl` 类模板: A, B 和 C.
+                <ul>
+                <li>A 是一个规则的模板，不带有 <em>multi</em> 或者 <em>char</em> 修饰语。</li>
+                <li>B 模板含有 <em>multi</em> 修饰语，但是不含有 <em>char</em> 修饰语。</li>
+                <li>C 含有 <em>char</em> 和 <em>multi</em> 修饰语。</li>
+                </ul>
+                <p>现在这三个模板会被应用到一行中，这行含有两个音节(syllable)。以下是过程:</p>
+                <ul>
+                <li>音节1 被选出
+                <ul>
+                <li>模板A匹配到这行，音节1被匹配。
+                <ul>
+                <li>模板A被应用到音节1。</li>
+                </ul>
+                </li>
+                <li>模板B匹配到这行，音节1被匹配。
+                <ul>
+                <li>音节1被分解为多音节标注的虚拟音节1.1 和 1.2</li>
+                <li>模板B被应用到虚拟音节1.1。</li>
+                <li>模板B被应用到虚拟音节1.2。</li>
+                </ul>
+                </li>
+                <li>模板C匹配到这行。
+                <ul>
+                <li>音节1被分解为以字符为单位的虚拟音节1.a 和 1.b</li>
+                <li>音节 1.a 和 1.b 被进一步分解为 1.a1, 1.a2, 1.b1 和 1.b2。</li>
+                <li>模板C被应用到虚拟音节 1.a1。</li>
+                <li>模板C被应用到虚拟音节 1.a2。</li>
+                <li>模板C被应用到虚拟音节 1.b1。</li>
+                <li>模板C被应用到虚拟音节 1.b2。</li>
+                </ul>
+                </li>
+                <li>音节2 被选出
+                <ul>
+                <li>进行和上面相似的过程。</li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+                <p>想知道更多有关 多音节标注 和 以字符为单位的虚拟音节的内容，请看下面。</p>
+                </div>
+                </div>
+                <p>如果任何一个模板在以上三个步骤中匹配到了&quot;打好K值的行&quot;，执行过模板后这样的行就会被打上注释，并且特效栏会显示
+                <code>karaoke</code> 。</p>
+                <h3 id="模板匹配行">模板匹配行</h3>
+                <p>模板的匹配总是以行为单位，而不是音节或其他单位。</p>
+                <ul>
+                <li>如果模板含有 <em>fxgroup</em> 修饰语，那么名字和 fxgroup
+                名相同的行会被无视。</li>
+                <li>如果模板含有 <em>all</em> 修饰语，它会匹配任何行。</li>
+                <li>如果模板和某行有一样的样式，它会匹配到这行。（这是最常见的情况）</li>
+                <li>其他情况下模板不会匹配到行。</li>
+                </ul>
+                <h2 id="应用-line-类模板">应用 <em>line</em> 类模板</h2>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>待编写(原文如此)</div>
+                <h2 id="应用-syl-和-furi-类模板">应用 <em>syl</em> 和 <em>furi</em> 类模板</h2>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>待编写(原文如此)</div>
+                <h2 id="过程描述">过程描述</h2>
+                <p>(这部分内容的具体代码可以在Aegisub安装目录下的automation/autoload/kara-templater.lua中读到)</p>
+                <pre>
+                卡拉OK模板执行器执行的主要过程:
+                1. 收集头部信息
+                   1. 找到所有的头部信息，基本有播放分辨率（X/Y）。
+                   2. 找到所有的样式。
+                   3. 生成对应样式的假名标注样式。
+                2. 收集模板并删除已存在的 "fx" 行lines。
+                3. 初始化 tenv
+                   1. 添加 "string", "math" 和 "_G" 标记
+                   2. 添加 "tenv"自引用
+                   3. 添加 "retime" 函数
+                   4. 添加空的 "fxgroup" 表
+                4. 运行每一个"code once" 模板
+                5. 对于字幕文件中每个待处理的对话行:
+                   a. 如果特效栏以 "code" 或 "template"开始:
+                      1. 跳过行
+                   b. 否则:
+                      1. 如果特效栏不是空的，也不是 "karaoke":
+                         a. 跳过行
+                      2. 如果特效栏是空的，并且该行被打上注释:
+                         a. 跳过行
+                      3. 用karaskel(卡拉OK框架)预处理行
+                      4. 初始化 varctx(内联变量环境)
+                      5. 重置 tenv
+                         1. 把 "orgline" 作为输入
+                         2. 把 "line", "syl" 和 "basesyl" 置空
+                      6. 对于每个 "line" 模板:
+                         如果样式匹配或者作用范围是"all":
+                         循环过程("template.loops")多次:
+                         1. 置 "tenv.j" 为循环计数器
+                         2. a. 如果模板是 code 行:
+                               1. 置 "tenv.line" 为输入行
+                               2. 运行 code 代码
+                            b. 否则:
+                               1. 产生输出行作为输入行的副本
+                               2. 置 "tenv.line" t为输出行
+                               3. 初始化 输出行层(output line Layer)为模板层(template Layer)
+                               4. 初始化 输出行文本为空
+                               5. 如果模板含有 pre-line:
+                                  1. 运行 pre-line 模板
+                                  2. 在输出结果上附加文本
+                               6. a. 如果模板匹配到规则的行:
+                                     对于输入行中的每个音节:
+                                     1. 置 "tenv.syl" 为音节
+                                     2. 为音节更新 varctx 
+                                     3. 运行 line 模板
+                                     4. 在输出结果上附加文本
+                                     5. 如果未设置 "notext" :
+                                        a. 如果设置 "keeptags" :
+                                           1. 在输出文本上附上 "syl.text" 
+                                        b. 否则:
+                                           1. 在输出文本上附上 "syl.text_stripped"(剥离原标签的文本)
+                                  b. 否则:
+                                     a. 如果设置了 "keeptags" :
+                                        1. 在输出文本上附上 "syl.text" 
+                                     b. 否则
+                                        1. 在输出文本上附上 "syl.text_stripped"
+                               7. 把输出行的特效栏填上 "fx"
+                               8. 把输出行整合到字幕文件中
+                      7. 对于行中每个主要的音节:
+                         对于每个 "syl" 模板:
+                         如果样式匹配或者作用范围是"all":
+                         如果模板不是在一个无效的fxgroup中:
+                         1. 置 "tenv.syl" 为音节
+                         2. 为音节更新 varctx 
+                         3. 如果音节的inlinefx(内联特效)没有匹配到对应的模板:
+                            1. 跳过音节
+                         4. 如果模板设置了 "noblank" 并且这个音节是个空格:
+                            1. 跳过音节
+                         5. 如果模板有"char"修饰:
+                            1. 建立 "charsyl" 作为音节的副本
+                            2. 置 "tenv.basesyl"(基础音节)为当前的"tenv.syl"
+                            3. 置 "tenv.syl" 为"charsyl"(字符音节)
+                            4. 对于音节中每个 Unicode 编码的字符:
+                               1. 对"charsyl"计算虚拟音节数 
+                               2. 为"字符音节"更新 varctx  
+                               3. 对虚拟音节继续进行音节的处理过程 (从 5.b.7.6.)
+                         6. 如果模板有"multi"修饰:
+                            1. 建立 "hlsyl"(音节) 作为音节的副本
+                            2. 除非 "tenv.basesyl" 早就存在,否则置为 "hlsyl"
+                            3. 置 "tenv.syl" 为 "hlsyl"
+                            4. 对于音节上每个标记:
+                               1. 对"hlsyl"计算虚拟音节数
+                               2. 为"标记音节"更新 varctx  
+                               3. 对虚拟音节继续进行音节的处理过程 (从 5.b.7.7.)
+                         7. a. 如果模板是 code 行:
+                               1. 置 "tenv.line" 为输入行
+                               2. 运行 code 代码
+                            b. 否则:
+                               1. 置 "tenv.line" 为输入行
+                               2. 运行 code 代码
+                               循环过程("template.loops")多次:
+                               1. 置 "tenv.j" 为循环计数器
+                               2. 创建输出行
+                               3. 置输出行的样式为虚拟音节样式
+                               4. 置输出行层为模板层
+                               5. 置 "tenv.line" 为输出行
+                               6. 运行模板
+                               7. 置输出行文本为结果
+                               8. a. 如果设置了 "keeptags" :
+                                     1. 在输出文本上附上 "syl.text"
+                                  b. 如果未设置 "keeptags" :
+                                     1. 在输出行文本上附上 "syl.text_stripped"
+                                  c. 其他情况下什么都不会发生
+                               9. 置输出行的特效栏内容为"fx"
+                            10. 把输出行整合到字幕文件中
+                      8. 对于行中的每个假名部分:
+                         和音节处理方式相同 (5.b.7.)
+                      9. 如果有非 code 模板应用到行:
+                         1. 把输入行置为注释
+                         2. 置输入行的特效栏文本为 "karaoke"
+                         3. 存储修饰过的输入行到字幕文件
+                
+                运行 code 行:
+                1. 编译行文本为 Lua 函数
+                2. 如果编译失败, 报告错误
+                3. 置已编译的函数的环境到 tenv
+                4. 循环过程("template.loops")多次::
+                   1. 置 "tenv.j" 为循环计数器
+                   2. 运行已编译的函数
+                   3. 如果发生错误，报告它
+                
+                运行一行单独的模板:
+                1. 置结果文本为模板
+                2. 如果存在 varctx:
+                   对于结果文本中的每个属于 "$([a-zA-Z_]+)" 的字符:
+                   1. 将捕获到的文本转化为小写
+                   2. a. 如果捕获到的名称在 varctx中:
+                         1. 替换结果文本中的这部分为 varctx中的值
+                      b. 否则:
+                         1. 警告
+                         2. 保持原文本不变
+                3. 对于结果文本中匹配到 "!(.-)!" 的情况:
+                   1. 附加 "结果 " 到捕获的代码中
+                   2. 按照Lua函数的方式编译 捕获到的代码
+                   3. 如果编译失败，报告错误
+                   4. 置已编译的函数的环境到 tenv 中
+                   5. 运行已编译的函数
+                      a. 如果已编译的函数产生了错误:
+                         1. 报告错误
+                         2. 在结果文本中保留了匹配到的内容
+                      b. 否则:
+                         1. 用函数运行的结果替换掉匹配到的内容
+                </pre>
+                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>把这变得更合理一些？(Turn this into something more reasonable?)</div>
+      
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/zh-cn/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
+  <script src="/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>
