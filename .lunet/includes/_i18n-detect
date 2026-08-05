@@ -2,7 +2,7 @@
    # translated routes, which made /zh-cn/... pages render with English chrome. ~}}
 {{~ include "_site" ~}}
 {{~ current_lang = "en" ~}}
-{{~ public_url = page.url ?? page.relative_url ?? "/" ~}}
+{{~ public_url = site_path (page.url ?? page.relative_url ?? "/") ~}}
 {{~ for lang in site.languages ~}}
   {{~ if lang == "en"; continue; end ~}}
   {{~ lang_root = "/" + lang + "/" ~}}

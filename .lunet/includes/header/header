@@ -1,5 +1,6 @@
 {{~ include "header/alert" ~}}
-{{~ current_url = current_url ?? page.url ?? "/" ~}}
+{{~# Normalize: page.url may include basepath under project Pages. ~}}
+{{~ current_url = site_path (current_url ?? page.url ?? "/") ~}}
 {{~ if current_url == "/index.html" ~}}
   {{~ current_url = "/" ~}}
 {{~ end ~}}

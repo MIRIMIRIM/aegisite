@@ -1,5 +1,6 @@
 {{~# OpenGraph meta tags ~}}
-{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+{{~ public_url = site_path (page.url == "/index.html" ? "/" : page.url) ~}}
+
 {{~ og_image = page.og_image ?? "/img/logo.png" ~}}
 {{~ og_locale = i18n.og_locale ~}}
 <meta property="og:title" content="{{ page.title }}">

@@ -1,5 +1,6 @@
 {{~# SEO meta tags ~}}
-{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+{{~ public_url = site_path (page.url == "/index.html" ? "/" : page.url) ~}}
+
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">

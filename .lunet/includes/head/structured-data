@@ -12,7 +12,8 @@
 {{~ schema_twitter = i18n.schema_twitter ~}}
 {{~ schema_locale = i18n.schema_locale ~}}
 {{~ primary_image = base_url + "/" + schema_image ~}}
-{{~ public_url = page.url == "/index.html" ? "/" : page.url ~}}
+{{~ public_url = site_path (page.url == "/index.html" ? "/" : page.url) ~}}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
