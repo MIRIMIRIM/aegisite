@@ -5,7 +5,7 @@ basepath = ""
 environment = "prod"
 
 default_language = "en"
-languages = ["en", "zh-cn", "es-us", "tr-tr"]
+languages = ["en", "zh-cn"]
 
 clip_board = true
 instant_page = true
@@ -50,19 +50,6 @@ with attributes
   match "/content/zh-cn/downloads/index.md" { url: "/zh-cn/downloads/", layout: "dl" }
   match "/content/zh-cn/privacy-policy/index.md" { url: "/zh-cn/privacy-policy/", layout: "default" }
 
-  match "/content/es-us/index.md" { url: "/es-us/", layout: "home" }
-  match "/content/es-us/docs/index.md" { url: "/es-us/docs/", layout: "docs" }
-  match "/content/es-us/docs/latest/**/*.md" { url: "/es-us/docs/:slug/", layout: "docs" }
-  match "/content/es-us/downloads/index.md" { url: "/es-us/downloads/", layout: "dl" }
-  match "/content/es-us/privacy-policy/index.md" { url: "/es-us/privacy-policy/", layout: "default" }
-
-  match "/content/tr-tr/index.md" { url: "/tr-tr/", layout: "home" }
-  match "/content/tr-tr/blog/**/*.md" { url: "/tr-tr/blog/:slug/", layout: "blog" }
-  match "/content/tr-tr/blog/index.md" { url: "/tr-tr/blog/", layout: "blog" }
-  match "/content/tr-tr/docs/**/*.md" { url: "/tr-tr/docs/:slug/", layout: "docs" }
-  match "/content/tr-tr/docs/index.md" { url: "/tr-tr/docs/", layout: "docs" }
-  match "/content/tr-tr/downloads/index.md" { url: "/tr-tr/downloads/", layout: "dl" }
-  match "/content/tr-tr/privacy-policy/index.md" { url: "/tr-tr/privacy-policy/", layout: "default" }
 end
 
 html.head.metas.add ''
