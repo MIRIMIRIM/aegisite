@@ -1,4 +1,4 @@
-{{~ i18n = i18n ?? site.data.i18n.en ~}}
+{{~ include "_i18n-detect" ~}}
 {{~# Dictionary downloads table ~}}
 {{~ dict_languages = site.data.dictionaries.dict_languages ~}}
 {{~ first_entry = true ~}}

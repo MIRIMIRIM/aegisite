@@ -1,4 +1,4 @@
-{{~ i18n = i18n ?? site.data.i18n.en ~}}
+{{~ include "_i18n-detect" ~}}
 {{~# Current version download table ~}}
 {{~ cur_version = site.data.version.current ~}}
 {{~ for version in site.data.version.previous_versions ~}}
