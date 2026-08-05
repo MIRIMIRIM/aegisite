@@ -7,7 +7,7 @@ type: simple-page
 
 <p>
 <br />
-<a href="/zh-cn/docs/主页/" class="btn btn-primary" role="button">3.4 手册</a> 3.4版本的用户手册，正在翻译。
+<a href="/zh-cn/docs/主页/" class="btn btn-primary" role="button">最新手册</a> 最新版本的用户手册，正在更新。
 </p>
 <p>
 <br />
