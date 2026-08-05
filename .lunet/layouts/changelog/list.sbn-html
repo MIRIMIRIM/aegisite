@@ -1,8 +1,6 @@
 {{~ include "_i18n-detect" ~}}
 {{~ list_pages = page.pages != null ? page.pages.by_date.reverse : site.pages.by_date.reverse ~}}
 {{~ body_class = page.section + " list" ~}}
-{{~ lang_prefix = current_lang == "en" ? "/changelog/" : "/" + current_lang + "/changelog/" ~}}
-{{~# release (default) vs beta — set on list index front matter ~}}
 {{~ list_channel = page.channel ?? "release" ~}}
 <!doctype html>
 <html lang="{{ i18n.language_tag }}">
@@ -19,39 +17,36 @@
             <div class="mb-4">{{ content }}</div>
             {{~ end ~}}
             <div class="card-list">
-              {{~ seen = {} ~}}
-              {{~ for item in list_pages ~}}
-              {{~ if item.layout_type != null && item.layout_type != "single"; continue; end ~}}
-              {{~ if !(item.url | string.starts_with lang_prefix); continue; end ~}}
-              {{~ if item.url == lang_prefix || item.url == (lang_prefix + "index.html"); continue; end ~}}
-              {{~# Skip nested list hubs (e.g. /changelog/beta/) ~}}
-              {{~ if item.layout_type == "list"; continue; end ~}}
-              {{~ if (item.channel ?? "release") != list_channel; continue; end ~}}
-              {{~ slug = item.url | string.remove lang_prefix | string.replace "/" "" ~}}
-              {{~ if slug == "" || slug == "index.html" || slug == "beta"; continue; end ~}}
-              {{~ seen[slug] = true ~}}
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="h3"><a class="stretched-link text-body" href="{{ item.url }}">{{ item.title }}</a></h2>
-                </div>
-              </div>
-              {{~ end ~}}
+              {{~# Walk English /changelog/ by date; prefer same-slug locale page when present. ~}}
+              {{~ locale_by_slug = {} ~}}
               {{~ if current_lang != "en" ~}}
-              {{~ for item in list_pages ~}}
-              {{~ if item.layout_type != null && item.layout_type != "single"; continue; end ~}}
-              {{~ if !(item.url | string.starts_with "/changelog/"); continue; end ~}}
-              {{~ if item.url == "/changelog/" || item.url == "/changelog/index.html"; continue; end ~}}
-              {{~ if item.layout_type == "list"; continue; end ~}}
-              {{~ if (item.channel ?? "release") != list_channel; continue; end ~}}
-              {{~ slug = item.url | string.remove "/changelog/" | string.replace "/" "" ~}}
-              {{~ if slug == "" || slug == "index.html" || slug == "beta"; continue; end ~}}
-              {{~ if seen[slug]; continue; end ~}}
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="h3"><a class="stretched-link text-body" href="{{ item.url }}">{{ item.title }}</a></h2>
-                </div>
-              </div>
+                {{~ locale_prefix = "/" + current_lang + "/changelog/" ~}}
+                {{~ for item in list_pages ~}}
+                  {{~ if item.layout_type != null && item.layout_type != "single"; continue; end ~}}
+                  {{~ if !(item.url | string.starts_with locale_prefix); continue; end ~}}
+                  {{~ if item.url == locale_prefix || item.url == (locale_prefix + "index.html"); continue; end ~}}
+                  {{~ if (item.channel ?? "release") != list_channel; continue; end ~}}
+                  {{~ slug = item.url | string.remove locale_prefix | string.replace "/" "" ~}}
+                  {{~ if slug == "" || slug == "index.html" || slug == "beta"; continue; end ~}}
+                  {{~ locale_by_slug[slug] = item ~}}
+                {{~ end ~}}
               {{~ end ~}}
+              {{~ for item in list_pages ~}}
+                {{~ if item.layout_type != null && item.layout_type != "single"; continue; end ~}}
+                {{~ if !(item.url | string.starts_with "/changelog/"); continue; end ~}}
+                {{~ if item.url == "/changelog/" || item.url == "/changelog/index.html"; continue; end ~}}
+                {{~ if (item.channel ?? "release") != list_channel; continue; end ~}}
+                {{~ slug = item.url | string.remove "/changelog/" | string.replace "/" "" ~}}
+                {{~ if slug == "" || slug == "index.html" || slug == "beta"; continue; end ~}}
+                {{~ show = item ~}}
+                {{~ if current_lang != "en" && locale_by_slug[slug] != null ~}}
+                  {{~ show = locale_by_slug[slug] ~}}
+                {{~ end ~}}
+                <div class="card">
+                  <div class="card-body">
+                    <h2 class="h3"><a class="stretched-link text-body" href="{{ show.url }}">{{ show.title }}</a></h2>
+                  </div>
+                </div>
               {{~ end ~}}
             </div>
           </article>
