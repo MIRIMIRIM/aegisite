@@ -12,7 +12,7 @@ Welcome to the Aegisub manual. See our [about](/docs/what-is-aegisub/) page for 
 information on the program, or browse the topics on the left bar.
 
 Documentation related to development of Aegisub and building Aegisub is located
-at [the bug tracker](https://github.com/TypesettingTools/Aegisub/issues).
+at [the bug tracker](https://github.com/AmusementClub/Aegisub/issues).
 
 ## Starting points
 

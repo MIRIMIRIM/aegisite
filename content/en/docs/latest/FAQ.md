@@ -34,7 +34,7 @@ all the checkboxes (clean script info, VFR transform etc.).
 
 ### I've found a bug!?
 
-Report it on the [bug tracker](https://github.com/TypesettingTools/Aegisub/issues). Please
+Report it on the [bug tracker](https://github.com/AmusementClub/Aegisub/issues). Please
 include as many details as possible in your report! Remember that if a
 bug is not on the bug tracker, it _does not exist_ as far as we are
 concerned.
@@ -42,7 +42,7 @@ concerned.
 ### Why doesn't Aegisub have \<feature X>? \<Program Y> has it!
 
 Quite possibly because we didn't know you wanted it. Request it on the
-[bug tracker](https://github.com/TypesettingTools/Aegisub/issues) and see what happens.
+[bug tracker](https://github.com/AmusementClub/Aegisub/issues) and see what happens.
 
 ### Where can I find more information and/or get help?
 
