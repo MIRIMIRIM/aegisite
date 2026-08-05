@@ -47,6 +47,8 @@ with attributes
   match "/content/zh-cn/blog/index.md" { url: "/zh-cn/blog/", layout: "blog" }
   match "/content/zh-cn/docs/index.md" { url: "/zh-cn/docs/", layout: "docs" }
   match "/content/zh-cn/docs/latest/**/*.md" { url: "/zh-cn/docs/:slug/", layout: "docs" }
+  match "/content/zh-cn/changelog/**/*.md" { url: "/zh-cn/changelog/:slug/", layout: "changelog" }
+  match "/content/zh-cn/changelog/index.md" { url: "/zh-cn/changelog/", layout: "changelog" }
   match "/content/zh-cn/downloads/index.md" { url: "/zh-cn/downloads/", layout: "dl" }
   match "/content/zh-cn/privacy-policy/index.md" { url: "/zh-cn/privacy-policy/", layout: "default" }
 

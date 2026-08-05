@@ -119,11 +119,16 @@
             {{~ else if base_url | string.contains "/privacy-policy/" ~}}
               {{~ alt_url = privacy_url ~}}
             {{~ else if base_url | string.contains "/changelog/" ~}}
-              {{~ alt_url = lang == "en" ? "/changelog/" : home_url ~}}
+              {{~# Map release/beta hubs and same slug between languages. ~}}
+              {{~ if lang == "en" ~}}
+                {{~ alt_url = base_url | regex.replace "^/zh-cn/changelog/" "/changelog/" ~}}
+                {{~ if !(alt_url | string.starts_with "/changelog/"); alt_url = "/changelog/"; end ~}}
+              {{~ else ~}}
+                {{~ alt_url = base_url | regex.replace "^/changelog/" "/" + lang + "/changelog/" ~}}
+                {{~ if !(alt_url | string.starts_with "/" + lang + "/changelog/"); alt_url = "/" + lang + "/changelog/"; end ~}}
+              {{~ end ~}}
             {{~ else if base_url | string.contains "/blog/" ~}}
-              {{~ if lang == "es-us" ~}}
-                {{~ alt_url = home_url ~}}
-              {{~ else if lang == "en" ~}}
+              {{~ if lang == "en" ~}}
                 {{~ alt_url = base_url ~}}
               {{~ else if base_url == "/blog/" ~}}
                 {{~ alt_url = "/" + lang + "/blog/" ~}}

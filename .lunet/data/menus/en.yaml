@@ -58,6 +58,12 @@ docs:
     identifier: miscellaneous
 
 changelogs:
+  - name: "beta"
+    weight: -99
+  - name: "3.3"
+    weight: -33
+  - name: "trunk"
+    weight: -325
   - name: "3.2"
     weight: -32
   - name: "3.1"
