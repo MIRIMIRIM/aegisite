@@ -60,6 +60,8 @@ docs:
 changelogs:
   - name: "beta"
     weight: -99
+  - name: "ac"
+    weight: -335
   - name: "3.3"
     weight: -33
   - name: "trunk"
