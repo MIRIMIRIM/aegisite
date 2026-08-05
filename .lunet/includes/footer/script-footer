@@ -1,2 +1,2 @@
-<script src="/js/site.js" defer></script>
-<script src="/js/site-defer.js" defer></script>
+<script src="{{ site_href "/js/site.js" }}" defer></script>
+<script src="{{ site_href "/js/site-defer.js" }}" defer></script>

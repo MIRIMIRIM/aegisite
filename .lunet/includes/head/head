@@ -6,7 +6,7 @@
   {{ include "head/script-header" }}
   {{ include "head/stylesheet" }}
   {{ include "head/seo" }}
-  <link rel="alternate" type="application/rss+xml" href="/index.xml">
+  <link rel="alternate" type="application/rss+xml" href="{{ site_href "/index.xml" }}">
   {{ include "head/favicons" }}
   {{ include "head/structured-data" }}
 </head>

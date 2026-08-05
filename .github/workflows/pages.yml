@@ -21,7 +21,8 @@ jobs:
       run: dotnet tool install -g lunet --version 1.0.16
 
     - name: Build production website
-      run: lunet build
+      # ghpages=1 → config.scriban sets basepath=/aegisite (local serve omits this)
+      run: lunet -d ghpages=1 build --no-threads
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4

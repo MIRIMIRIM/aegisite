@@ -1,0 +1,31 @@
+{{~# basepath: "" local, "/aegisite" when -d ghpages=1 ~}}
+{{~ bp = site.basepath ?? "" ~}}
+{{~ if bp == "/" ~}}
+  {{~ bp = "" ~}}
+{{~ end ~}}
+{{~ func site_href(p) ~}}
+  {{~ if p == null || p == "" ~}}
+    {{~ ret bp + "/" ~}}
+  {{~ end ~}}
+  {{~ if (p | string.starts_with "http://") || (p | string.starts_with "https://") || (p | string.starts_with "//") || (p | string.starts_with "#") || (p | string.starts_with "mailto:") || (p | string.starts_with "data:") ~}}
+    {{~ ret p ~}}
+  {{~ end ~}}
+  {{~ if !(p | string.starts_with "/") ~}}
+    {{~ p = "/" + p ~}}
+  {{~ end ~}}
+  {{~ ret bp + p ~}}
+{{~ end ~}}
+{{~# Absolute http(s) URL. baseurl is the public site root (may already include basepath). ~}}
+{{~ func site_abs(p) ~}}
+  {{~ if p == null || p == "" ~}}
+    {{~ p = "/" ~}}
+  {{~ end ~}}
+  {{~ if (p | string.starts_with "http://") || (p | string.starts_with "https://") ~}}
+    {{~ ret p ~}}
+  {{~ end ~}}
+  {{~ if !(p | string.starts_with "/") ~}}
+    {{~ p = "/" + p ~}}
+  {{~ end ~}}
+  {{~ root = site.baseurl ?? "" ~}}
+  {{~ ret root + p ~}}
+{{~ end ~}}

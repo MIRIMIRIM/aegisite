@@ -1,5 +1,6 @@
 {{~# Detect language from the public URL. page.relative_url is not reliable for
    # translated routes, which made /zh-cn/... pages render with English chrome. ~}}
+{{~ include "_site" ~}}
 {{~ current_lang = "en" ~}}
 {{~ public_url = page.url ?? page.relative_url ?? "/" ~}}
 {{~ for lang in site.languages ~}}

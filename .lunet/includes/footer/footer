@@ -10,7 +10,7 @@
         <ul class="list-inline">
           {{~ if current_menu != null && current_menu.footer != null ~}}
             {{~ for item in current_menu.footer ~}}
-              <li class="list-inline-item"><a href="{{ item.url }}">{{ item.name }}</a></li>
+              <li class="list-inline-item"><a href="{{ site_href item.url }}">{{ item.name }}</a></li>
             {{~ end ~}}
           {{~ end ~}}
         </ul>

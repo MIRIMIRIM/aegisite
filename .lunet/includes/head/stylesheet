@@ -1,2 +1,2 @@
-<link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/site-overrides.css">
+<link rel="stylesheet" href="{{ site_href "/css/site.css" }}">
+<link rel="stylesheet" href="{{ site_href "/css/site-overrides.css" }}">

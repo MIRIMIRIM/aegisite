@@ -3,7 +3,7 @@
 <ul class="list-unstyled collapsible-sidebar">
   {{~ for item in current_menu.changelogs ~}}
   <li class="mb-1">
-    <a class="docs-link rounded{{ page.relative_url | string.contains item.name ? " active" : "" }}" href="{{ item.url }}">{{ item.name }}</a>
+    <a class="docs-link rounded{{ page.relative_url | string.contains item.name ? " active" : "" }}" href="{{ site_href item.url }}">{{ item.name }}</a>
   </li>
   {{~ end ~}}
 </ul>

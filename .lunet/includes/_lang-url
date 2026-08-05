@@ -1,10 +1,8 @@
-{{~# Language-aware URL helper ~}}
+{{~# Language-aware URL helper (includes site.basepath). ~}}
 {{~# Usage: {{ include "_lang-url" path: "/downloads/" }} ~}}
-{{~# Returns: /downloads/ for en, /zh-cn/downloads/ for zh-cn, etc. ~}}
-{{~ result = "" ~}}
 {{~ if current_lang == "en" ~}}
   {{~ result = path ~}}
 {{~ else ~}}
   {{~ result = "/" + current_lang + path ~}}
 {{~ end ~}}
-{{~ result ~}}
+{{~ site_href result ~}}

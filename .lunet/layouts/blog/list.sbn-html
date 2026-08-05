@@ -22,7 +22,7 @@
               {{~ if current_lang != "en" && !(item.url | string.contains lang_prefix); continue; end ~}}
               <div class="card">
                 <div class="card-body">
-                  <h2 class="h3"><a class="stretched-link text-body" href="{{ item.url }}">{{ item.title }}</a></h2>
+                  <h2 class="h3"><a class="stretched-link text-body" href="{{ site_href item.url }}">{{ item.title }}</a></h2>
                   {{~ if item.lead ~}}
                   <p>{{ item.lead }}</p>
                   {{~ end ~}}

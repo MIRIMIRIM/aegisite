@@ -9,7 +9,7 @@
 <div class="header-bar"></div>
 <header class="navbar navbar-expand-md navbar-light doks-navbar">
   <nav class="container-{{ site.full_width ? "fluid" : "xxl" }} flex-wrap flex-md-nowrap" aria-label="Main navigation">
-    <a class="navbar-brand p-0 me-auto" href="/" aria-label="{{ i18n.title }}">
+    <a class="navbar-brand p-0 me-auto" href="{{ site_href "/" }}" aria-label="{{ i18n.title }}">
       {{ i18n.title }}
     </a>
     <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
@@ -18,7 +18,7 @@
     <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
       <div class="header-bar d-md-none"></div>
       <div class="offcanvas-header d-md-none">
-        <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">{{ i18n.title }}</a></h2>
+        <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="{{ site_href "/" }}">{{ i18n.title }}</a></h2>
         <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
       </div>
       <div class="offcanvas-body px-4">
@@ -39,14 +39,14 @@
                   <ul class="dropdown-menu dropdown-menu-main shadow rounded border-0" aria-labelledby="navbarDropdownMenuLink">
                     {{~ for child in item.children ~}}
                     <li>
-                      <a class="dropdown-item{{ if current_url | string.contains child.url }} active{{ end }}" href="{{ child.url }}">{{ child.name }}</a>
+                      <a class="dropdown-item{{ if current_url | string.contains child.url }} active{{ end }}" href="{{ site_href child.url }}">{{ child.name }}</a>
                     </li>
                     {{~ end ~}}
                   </ul>
                 </li>
               {{~ else if item.url != null && item.url != "" ~}}
                 <li class="nav-item">
-                  <a class="nav-link ps-0 py-1{{ if active }} active{{ end }}" href="{{ item.url }}">{{ item.name }}</a>
+                  <a class="nav-link ps-0 py-1{{ if active }} active{{ end }}" href="{{ site_href item.url }}">{{ item.name }}</a>
                 </li>
               {{~ end ~}}
             {{~ end ~}}
@@ -58,7 +58,7 @@
           {{~ if current_menu != null && current_menu.social != null ~}}
             {{~ for item in current_menu.social ~}}
               <li class="nav-item">
-                <a class="nav-link ps-0 py-1" href="{{ item.url }}" aria-label="{{ item.name }}">
+                <a class="nav-link ps-0 py-1" href="{{ site_href item.url }}" aria-label="{{ item.name }}">
                   {{~ if item.pre ~}}{{ item.pre }}{{~ end ~}}
                   <small class="ms-2 d-md-none">{{ item.name }}</small>
                 </a>
@@ -94,7 +94,7 @@
         {{~ for lang in site.languages ~}}
           {{~ lang_config = site.data.i18n[lang] ~}}
           {{~ if lang == current_lang ~}}
-            <li><a class="dropdown-item current" aria-current="true" href="{{ current_url }}">{{ lang_config.language_name }}</a></li>
+            <li><a class="dropdown-item current" aria-current="true" href="{{ site_href current_url }}">{{ lang_config.language_name }}</a></li>
           {{~ else ~}}
             {{~ base_url = current_url ~}}
             {{~ if current_lang != "en" ~}}
@@ -119,7 +119,6 @@
             {{~ else if base_url | string.contains "/privacy-policy/" ~}}
               {{~ alt_url = privacy_url ~}}
             {{~ else if base_url | string.contains "/changelog/" ~}}
-              {{~# Map release/beta hubs and same slug between languages. ~}}
               {{~ if lang == "en" ~}}
                 {{~ alt_url = base_url | regex.replace "^/zh-cn/changelog/" "/changelog/" ~}}
                 {{~ if !(alt_url | string.starts_with "/changelog/"); alt_url = "/changelog/"; end ~}}
@@ -146,7 +145,7 @@
             {{~ else if base_url | string.contains "/docs/" ~}}
               {{~ alt_url = docs_url ~}}
             {{~ end ~}}
-            <li><a class="dropdown-item" rel="alternate" href="{{ alt_url }}" hreflang="{{ lang }}" lang="{{ lang }}">{{ lang_config.language_name }}</a></li>
+            <li><a class="dropdown-item" rel="alternate" href="{{ site_href alt_url }}" hreflang="{{ lang }}" lang="{{ lang }}">{{ lang_config.language_name }}</a></li>
           {{~ end ~}}
         {{~ end ~}}
       </ul>

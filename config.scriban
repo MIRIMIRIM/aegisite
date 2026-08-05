@@ -1,7 +1,13 @@
 title = "Aegisub"
 description = "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles."
+# Local (default): empty basepath → http://localhost:4000/
+# GitHub project Pages: lunet -d ghpages=1 build → /aegisite/... 
 baseurl = baseurl ?? "https://aegisub.org"
-basepath = ""
+basepath = basepath ?? ""
+if ghpages
+  basepath = "/aegisite"
+  baseurl = "https://mirimirim.github.io/aegisite"
+end
 environment = "prod"
 
 default_language = "en"
