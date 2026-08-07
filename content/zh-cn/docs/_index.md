@@ -5,7 +5,7 @@ type: simple-page
 
 <p>
 <br />
-<a href="/zh-cn/docs/主页/" class="btn btn-primary" role="button">最新手册</a> 最新版本的用户手册，正在更新。
+<a href="主页/" class="btn btn-primary" role="button">最新手册</a> 最新版本的用户手册，正在更新。
 </p>
 <p>
 <br />
