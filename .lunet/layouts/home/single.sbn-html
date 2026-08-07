@@ -15,7 +15,7 @@ layout: base
       <a class="btn btn-primary btn-lg px-4 mb-2" href="{{ site_href "/downloads/" }}" role="button">{{ i18n.strings.get_started ?? "Get Started" }}</a>
       <p class="meta">
         <a href="https://github.com/AmusementClub/Aegisub/blob/master/LICENCE">{{ i18n.strings.bsd_license ?? "Open-source BSD-style licenses." }}</a>
-        <a href="https://github.com/AmusementClub/Aegisub">GitHub v{{ site.data.version.current }}</a>
+        <a href="https://github.com/AmusementClub/Aegisub">GitHub {{ site.data.version.current }}</a>
       </p>
     </div>
   </div>
