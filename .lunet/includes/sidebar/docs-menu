@@ -1,22 +1,147 @@
-{{~# Docs sidebar menu ~}}
-{{~ if current_menu != null && current_menu.docs != null ~}}
+{{~# Docs collapsible sidebar: sections from menus YAML, children from page menu.docs ~}}
+{{~ include "_site" ~}}
+{{~ if current_menu == null || current_menu.docs == null ~}}
+  {{~ ret ~}}
+{{~ end ~}}
+
+{{~ docs_prefix = current_lang == "en" ? "/docs/" : "/" + current_lang + "/docs/" ~}}
+{{~ cur_path = site_path (page.url ?? "/") ~}}
+{{~ cur_parent = page.menu != null && page.menu.docs != null ? page.menu.docs.parent : null ~}}
+{{~ cur_id = page.menu != null && page.menu.docs != null ? page.menu.docs.identifier : null ~}}
+
+{{~# Collect doc pages for this language (flat list with menu.docs). ~}}
+{{~ doc_pages = [] ~}}
+{{~ for p in site.pages ~}}
+  {{~ if p.menu == null || p.menu.docs == null; continue; end ~}}
+  {{~ u = site_path (p.url ?? "") ~}}
+  {{~ if !(u | string.starts_with docs_prefix); continue; end ~}}
+  {{~# Skip the docs hub index itself. ~}}
+  {{~ if u == docs_prefix || u == (docs_prefix + "index.html"); continue; end ~}}
+  {{~ doc_pages = doc_pages | array.add p ~}}
+{{~ end ~}}
+{{~ doc_pages = doc_pages | array.sort "weight" ~}}
+
+{{~# Map identifier -> parent for walking ancestry. ~}}
+{{~ id_parent = {} ~}}
+{{~ for p in doc_pages ~}}
+  {{~ ident = p.menu.docs.identifier ~}}
+  {{~ if ident != null && ident != "" ~}}
+    {{~ id_parent[ident] = p.menu.docs.parent ~}}
+  {{~ end ~}}
+{{~ end ~}}
+
+{{~# Resolve top-level section for the current page (for expand state). ~}}
+{{~ active_top = null ~}}
+{{~ if cur_parent != null ~}}
+  {{~ walk = cur_parent ~}}
+  {{~ for _ in 1..8 ~}}
+    {{~ matched_top = false ~}}
+    {{~ for section in current_menu.docs ~}}
+      {{~ if section.identifier == walk ~}}
+        {{~ active_top = walk ~}}
+        {{~ matched_top = true ~}}
+        {{~ break ~}}
+      {{~ end ~}}
+    {{~ end ~}}
+    {{~ if matched_top; break; end ~}}
+    {{~ next = id_parent[walk] ~}}
+    {{~ if next == null || next == ""; break; end ~}}
+    {{~ walk = next ~}}
+  {{~ end ~}}
+{{~ end ~}}
+
+{{~ func is_current(u) ~}}
+  {{~ p = site_path u ~}}
+  {{~ ret p == cur_path ~}}
+{{~ end ~}}
+
+{{~ func has_kids(parent_id) ~}}
+  {{~ for p in doc_pages ~}}
+    {{~ if p.menu.docs.parent == parent_id ~}}
+      {{~ ret true ~}}
+    {{~ end ~}}
+  {{~ end ~}}
+  {{~ ret false ~}}
+{{~ end ~}}
+
+{{~ func under_chain(parent_id) ~}}
+  {{~# True if current page is this node or a descendant via menu parent chain. ~}}
+  {{~ if cur_path != null && false; end ~}}
+  {{~ if cur_parent == parent_id || cur_id == parent_id ~}}
+    {{~ ret true ~}}
+  {{~ end ~}}
+  {{~ walk = cur_parent ~}}
+  {{~ for _ in 1..8 ~}}
+    {{~ if walk == null || walk == ""; break; end ~}}
+    {{~ if walk == parent_id ~}}
+      {{~ ret true ~}}
+    {{~ end ~}}
+    {{~ walk = id_parent[walk] ~}}
+  {{~ end ~}}
+  {{~ ret false ~}}
+{{~ end ~}}
+
 <ul class="list-unstyled collapsible-sidebar">
-  {{~ for section in current_menu.docs ~}}
+{{~ for section in current_menu.docs ~}}
+  {{~ sid = section.identifier ~}}
+  {{~ section_open = active_top == sid ~}}
   <li class="mb-1">
-    {{~ active = page.relative_url | string.contains section.identifier ~}}
-    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-{{ section.identifier }}" aria-expanded="{{ active ? "true" : "false" }}">
+    <button class="btn btn-toggle align-items-center rounded{{ section_open ? "" : " collapsed" }}" data-bs-toggle="collapse" data-bs-target="#section-{{ sid }}" aria-expanded="{{ section_open ? "true" : "false" }}">
       {{ section.name }}
     </button>
-    {{~ if section.children != null && section.children.size > 0 ~}}
-    <div class="collapse{{ active ? " show" : "" }}" id="section-{{ section.identifier }}">
+    <div class="collapse{{ section_open ? " show" : "" }}" id="section-{{ sid }}">
       <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-        {{~ for child in section.children ~}}
-        <li><a class="docs-link rounded{{ page.relative_url | string.contains child.url ? " active" : "" }}" href="{{ site_href child.url }}">{{ child.name }}</a></li>
+        {{~ for child in doc_pages ~}}
+          {{~ if child.menu.docs.parent != sid; continue; end ~}}
+          {{~ child_id = child.menu.docs.identifier ~}}
+          {{~ child_name = child.menu.docs.name ?? child.title ~}}
+          {{~ child_url = child.url ~}}
+          {{~ nested = child_id != null && child_id != "" && (has_kids child_id) ~}}
+          {{~ if nested ~}}
+            {{~ nest_open = under_chain child_id ~}}
+            <li class="my-1 ms-3">
+              <button class="btn btn-toggle align-items-center rounded{{ nest_open ? "" : " collapsed" }}" data-bs-toggle="collapse" data-bs-target="#section-{{ child_id }}" aria-expanded="{{ nest_open ? "true" : "false" }}">
+                {{ child_name }}
+              </button>
+              <div class="collapse{{ nest_open ? " show" : "" }}" id="section-{{ child_id }}">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded{{ is_current child_url ? " active" : "" }}" href="{{ site_href child_url }}">{{ i18n.strings.menu_overview ?? "Overview" }}</a></li>
+                  {{~ for gchild in doc_pages ~}}
+                    {{~ if gchild.menu.docs.parent != child_id; continue; end ~}}
+                    {{~ gid = gchild.menu.docs.identifier ~}}
+                    {{~ gname = gchild.menu.docs.name ?? gchild.title ~}}
+                    {{~ gurl = gchild.url ~}}
+                    {{~ deep = gid != null && gid != "" && (has_kids gid) ~}}
+                    {{~ if deep ~}}
+                      {{~ deep_open = under_chain gid ~}}
+                      <li class="my-1 ms-3">
+                        <button class="btn btn-toggle align-items-center rounded{{ deep_open ? "" : " collapsed" }}" data-bs-toggle="collapse" data-bs-target="#section-{{ gid }}" aria-expanded="{{ deep_open ? "true" : "false" }}">
+                          {{ gname }}
+                        </button>
+                        <div class="collapse{{ deep_open ? " show" : "" }}" id="section-{{ gid }}">
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a class="docs-link rounded{{ is_current gurl ? " active" : "" }}" href="{{ site_href gurl }}">{{ i18n.strings.menu_overview ?? "Overview" }}</a></li>
+                            {{~ for gg in doc_pages ~}}
+                              {{~ if gg.menu.docs.parent != gid; continue; end ~}}
+                              {{~ ggname = gg.menu.docs.name ?? gg.title ~}}
+                              <li><a class="docs-link rounded{{ is_current gg.url ? " active" : "" }}" href="{{ site_href gg.url }}">{{ ggname }}</a></li>
+                            {{~ end ~}}
+                          </ul>
+                        </div>
+                      </li>
+                    {{~ else ~}}
+                      <li><a class="docs-link rounded{{ is_current gurl ? " active" : "" }}" href="{{ site_href gurl }}">{{ gname }}</a></li>
+                    {{~ end ~}}
+                  {{~ end ~}}
+                </ul>
+              </div>
+            </li>
+          {{~ else ~}}
+            <li><a class="docs-link rounded{{ is_current child_url ? " active" : "" }}" href="{{ site_href child_url }}">{{ child_name }}</a></li>
+          {{~ end ~}}
         {{~ end ~}}
       </ul>
     </div>
-    {{~ end ~}}
   </li>
-  {{~ end ~}}
-</ul>
 {{~ end ~}}
+</ul>

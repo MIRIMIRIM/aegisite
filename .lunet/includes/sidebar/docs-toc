@@ -1,9 +1,9 @@
-{{~# Table of contents for current page ~}}
+{{~# On-this-page TOC (filled client-side; Lunet does not emit page.toc). ~}}
 {{~ if page.toc != false ~}}
-<div class="page-links">
-  <h3>{{ i18n.strings.on_this_page }}</h3>
-  {{~ if page.toc ~}}
-    {{ page.toc }}
-  {{~ end ~}}
+<div class="page-links" data-toc>
+  <h3>{{ i18n.strings.on_this_page ?? "On this page" }}</h3>
+  <nav class="toc-nav" aria-label="{{ i18n.strings.on_this_page ?? "On this page" }}">
+    <ul></ul>
+  </nav>
 </div>
 {{~ end ~}}
