@@ -288,218 +288,422 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Subtitles object</h1>
-                <p>This page describes the <strong>subtitle file interface</strong> use in Automation 4 Lua
-                scripts to manipulate subtitle files.</p>
-                <p>There is one special object (the <strong>subtitles</strong> user data object) which has a
-                number of functions, and a number of table formats defined.</p>
-                <h2 id="the-subtitles-object">The subtitles object</h2>
-                <p>Most Automation 4 Lua feature functions are passed a <strong>subtitles object</strong> when
-                called. This object is used to obtain data from and manipulate the subtitles
-                the feature is being applied on.</p>
-                <p>A subtitles object can have two special properties depending on the context it
-                is created for:</p>
-                <p>Read-only
-                : Some feature functions must not be allowed to modify the subtitle file at
-                all. This includes for example <a href="/aegisite/docs/registration#macro-validation-function/">macro validation functions</a> and <a href="/aegisite/docs/registration#export-filter-configuration-panel-provider/">export filter configuration panel providers</a>,
-                because this would be outside user expectations.</p>
-                <p>Allow undo points
-                : Only <a href="/aegisite/docs/registration#macro-processing-function/">macro processing functions</a> can set undo
-                points, as it makes no sense to do so at any other time.</p>
-                <p>To allow the most flexibility, the subtitles object represents a complete ASS
-                format file, line by line, including all meta-lines such as section headers.</p>
-                <p>The subtitles object supports the following operations:</p>
-                <ul>
-                <li>Retrieve number of lines</li>
-                <li>Read line</li>
-                <li>Append line (to end of file)</li>
-                <li>Insert line (at arbitrary position in file)</li>
-                <li>Replace line</li>
-                <li>Delete line</li>
-                <li>Create undo point</li>
-                </ul>
-                <p>These operations are described in detail below. In all operation synopses and
-                examples, <code>subtitles</code> is used for name of the subtitles object being operated
-                on.</p>
-                <h3 id="retrieve-number-of-lines">Retrieve number of lines</h3>
-                <p>Synopsis:</p>
-                <ul>
-                <li><code>num_lines = #subtitles</code></li>
-                <li><code>num_lines = subtitles.n</code></li>
-                </ul>
-                <p>This operation retrieves the total number of lines in the subtitle file
-                currently. This number only changes by using the other operations on the
-                subtitle object. It cannot change spontaneously during the execution of a
-                script.</p>
-                <p>Note that this is not a constant-time lookup, but lua does cache the value if
-                used in <code>for i = 1, #subs</code>.</p>
-                <p><code>num_lines</code> (<code>number</code>)
-                : Number of lines in the subtitle file.</p>
-                <p>The first syntax is the preferred one, per normal Lua 5.1 coding style.</p>
-                <h3 id="read-line">Read line</h3>
-                <p>Synopsis: <code>line = subtitles[i]</code></p>
-                <p>This retrieves the indexed line and creates a new table object with data about
-                it.</p>
-                <p><code>line</code> (<code>table</code>)
-                : Table with data about the retrieved line.</p>
-                <p><code>i</code> (<code>number</code>)
-                : Index into the subtitles file of the line number to retrieve. This is
-                one-based, i.e. the first line in the file has index 1.</p>
-                <p>Aegisub internally stores the subtitle file as a linked list, which means that
-                random access is slow, but sequential access is fast. While Automation 4 Lua
-                presents the subtitles as if it was an array, it internally maintains a cursor
-                used to optimise for sequential access. It is faster to access a line with an
-                index close to the one you last accessed than to access one further away. It is
-                always fast to access lines near the beginning or end of the file.</p>
-                <h3 id="append-line">Append line</h3>
-                <p>Synopsis:</p>
-                <ul>
-                <li><code>subtitles[0] = line</code></li>
-                <li><code>subtitles.append(line)</code></li>
-                <li><code>subtitles.append(line1, line2, ...)</code></li>
-                </ul>
-                <p>Append one or more lines to the end of the appropriate section of the subtitles
-                file. If the section does not exist, it will be created. In the first syntax, it
-                is the number 0 (zero) used for index. (Setting index 0 causes an append
-                operation.)</p>
-                <p>The third syntax supports appending multiple lines with one single operation.</p>
-                <p><code>line</code> (<code>table</code>)
-                : The line object table to append to the subtitles file.</p>
-                <p>The latter function-call syntax is preferred for readability. The table index
-                setting syntax is slightly faster.</p>
-                <p>Appending a line does not move the cursor otherwise used to optimise sequential
-                access.</p>
-                <h3 id="insert-line">Insert line</h3>
-                <p>Synopsis:</p>
-                <ul>
-                <li><code>subtitles[-i] = line</code></li>
-                <li><code>subtitles.insert(i, line)</code></li>
-                <li><code>subtitles.insert(i, line1, line2, ...)</code></li>
-                </ul>
-                <p>Inserts one or more lines into the subtitles file before the numbered line. In
-                the first syntax, you supply a negative index. E.g. to insert a line before
-                line 5 you supply index -5 (negative 5.)</p>
-                <p>Inserting lines will move lines after the inserted lines to move down in index,
-                such that old indexes will no longer be valid.</p>
-                <p>Inserting lines into the wrong section of the subtitle file has undefined
-                results, and may break in weird ways.</p>
-                <p><code>i</code> (<code>number</code>)
-                : Index to insert before.</p>
-                <p><code>line</code> (<code>table</code>)
-                : The line object table to insert into the subtitles file.</p>
-                <p>The latter function-call syntax is preferred for readability. The table index
-                setting syntax is slightly faster.</p>
-                <p>Inserting lines uses the list cursor and will move it.</p>
-                <h3 id="replace-line">Replace line</h3>
-                <p>Synopsis: <code>subtitles[i] = line</code></p>
-                <p>Delete the indexed line and insert the given line in its stead.</p>
-                <p><code>i</code> (<code>number</code>)
-                : The line index to replace at.</p>
-                <p><code>line</code> (<code>table</code>)
-                : The line object table to replace with.</p>
-                <p>Replacing lines uses the list cursor and will move it.</p>
-                <p>Replacing lines with lines of a different type has undefined results, and may
-                break in weird ways.</p>
-                <h3 id="delete-line">Delete line</h3>
-                <p>Synopsis:</p>
-                <ul>
-                <li><code>subtitles[i] = nil</code></li>
-                <li><code>subtitles.delete(i)</code></li>
-                <li><code>subtitles.delete(i1, i2, ...)</code></li>
-                <li><code>subtitles.delete({i1, i2, ...})</code></li>
-                <li><code>subtitles.deleterange(first, last)</code></li>
-                </ul>
-                <p>Remove one or more from the subtitles file. All lines after the deleted line(s)
-                will move up to fill the deleted indexes, so old indexes will no longer be
-                valid.</p>
-                <p>The third syntax supports deleting multiple indexed lines in one call. The
-                indexes given must all be correct for the subtitle file's state before any
-                lines are deleted.</p>
-                <p>The fourth syntax is identical to <code>subtitles.delete(unpack(tbl))</code>, but
-                supports tables which are too large to unpack and will be slightly
-                faster if you have the lines in a table anyway.</p>
-                <p>Trying to delete a nonexistent line is an error, except for with deleterange.</p>
-                <p>The fifth syntax deletes a range of lines, both indexed lines inclusive.</p>
-                <p><code>i</code> (<code>number</code>)
-                : Index of the line to delete.</p>
-                <p><code>first</code> (<code>number</code>)
-                : Index of the first line of the range to delete.</p>
-                <p><code>last</code> (<code>number</code>)
-                : Index of the last line of the range to delete.</p>
-                <p>Deleting lines uses the list cursor and will move it.</p>
-                <h3 id="creating-an-undo-point">Creating an undo point</h3>
-                <p>Synopsis: <code>aegisub.set_undo_point(description)</code></p>
-                <p>You should always create an undo point at the end of any macro which made
-                changes to the subtitles object. If you do not, one will automatically be set
-                for you, but in future versions of Aegisub this may change to rolling back any
-                changes made instead.</p>
-                <p>You can set multiple undo points in a single macro, but it is rarely a good
-                idea to.</p>
-                <p>Only available in macro processing functions, as it doesn't make sense anywhere
-                else either.</p>
-                <p><code>description</code> (<code>string</code>)
-                : Text to appear in the Edit menu for the Undo and Redo items to describe the
-                action that can be undone.</p>
-                <p>This is not really a function in the subtitles object, but it is still closely
-                tied to it.</p>
-                <h2 id="line-data-tables">Line data tables</h2>
-                <p>When you read lines from the subtitle file object they will always be one of a
-                few classes of lines, and when you write lines back to the subtitle file they
-                must also follow the format of one of those classes.</p>
-                <p>The line data objects are regular Lua tables with some specific fields defined.</p>
-                <p>Here's a list of the different classes of lines:</p>
-                <p><code>info</code>
-                : A key/value pair in the Script Info section of the file</p>
-                <p><code>style</code>
-                : a regular style definition line</p>
-                <p><code>dialogue</code>
-                : A dialogue line, which may or may not be a comment. These are the lines you
-                see in the grid in Aegisub.</p>
-                <p><code>unknown</code>
-                : An unknown kind of line.</p>
-                <p>There's three fields that always exist in all line data tables:</p>
-                <p><code>class</code> (<code>string</code>)
-                : The name of the class of line this is, see the list above.</p>
-                <p><code>raw</code> (<code>string</code>)
-                : The raw text of the line, from first to last character on the physical line.</p>
-                <p><code>section</code> (<code>string</code>)
-                : Which section of the file the line belongs to. If the line is placed before
-                the first section heading, this field is <code>nil</code>.</p>
-                <h3 id="info-class"><code>info</code> class</h3>
-                <p>This class defines two additional fields:</p>
-                <p><code>key</code> (<code>string</code>)
-                : The part of the line before the first colon, with leading and trailing spaces
-                removed.</p>
-                <p><code>value</code> (<code>string</code>)
-                : Everything after the first colon on the line, also with leading and trailing
-                spaces removed.</p>
-                <h3 id="style-class"><code>style</code> class</h3>
-                <p>This class defines a large number of additional fields. It's usually processed
-                by the <em>karaskel</em> and modified a bit by that. See the <em>karaskel.lua</em> section on
-                <a href="/aegisite/docs/karaskel-lua#style-table/">style tables</a> for more
-                information about this class.</p>
-                <h3 id="dialogue-class"><code>dialogue</code> class</h3>
-                <p>This class defines a large number of additional fields. It's usually processed
-                by the <em>karaskel</em> and has many calculated fields added by that. See the
-                <em>karaskel.lua</em> section on <a href="/aegisite/docs/karaskel-lua#dialogue-line-table/">dialogue line tables</a> for more
-                information on this class.</p>
-                <h3 id="unknown-class"><code>unknown</code> class</h3>
-                <p>No additional fields are defined by this class, due to its nature. This might
-                be things like files embedded into the subtitles. You shouldn't try to work
-                with these lines unless you really know what you're doing. Deleting, modifying
-                and inserting <code>unknown</code> lines has undefined consequences. (That means, even if
-                it works today it might not work tomorrow or in the next version of Aegisub.)</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  Automation
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="true">
+                            Lua Reference
+                          </button>
+                          <div class="collapse show" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded active" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Subtitles object</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>This page describes the <strong>subtitle file interface</strong> use in Automation 4 Lua
+          scripts to manipulate subtitle files.</p>
+          <p>There is one special object (the <strong>subtitles</strong> user data object) which has a
+          number of functions, and a number of table formats defined.</p>
+          <h2 id="the-subtitles-object">The subtitles object</h2>
+          <p>Most Automation 4 Lua feature functions are passed a <strong>subtitles object</strong> when
+          called. This object is used to obtain data from and manipulate the subtitles
+          the feature is being applied on.</p>
+          <p>A subtitles object can have two special properties depending on the context it
+          is created for:</p>
+          <p>Read-only
+          : Some feature functions must not be allowed to modify the subtitle file at
+          all. This includes for example <a href="/aegisite/docs/registration#macro-validation-function/">macro validation functions</a> and <a href="/aegisite/docs/registration#export-filter-configuration-panel-provider/">export filter configuration panel providers</a>,
+          because this would be outside user expectations.</p>
+          <p>Allow undo points
+          : Only <a href="/aegisite/docs/registration#macro-processing-function/">macro processing functions</a> can set undo
+          points, as it makes no sense to do so at any other time.</p>
+          <p>To allow the most flexibility, the subtitles object represents a complete ASS
+          format file, line by line, including all meta-lines such as section headers.</p>
+          <p>The subtitles object supports the following operations:</p>
+          <ul>
+          <li>Retrieve number of lines</li>
+          <li>Read line</li>
+          <li>Append line (to end of file)</li>
+          <li>Insert line (at arbitrary position in file)</li>
+          <li>Replace line</li>
+          <li>Delete line</li>
+          <li>Create undo point</li>
+          </ul>
+          <p>These operations are described in detail below. In all operation synopses and
+          examples, <code>subtitles</code> is used for name of the subtitles object being operated
+          on.</p>
+          <h3 id="retrieve-number-of-lines">Retrieve number of lines</h3>
+          <p>Synopsis:</p>
+          <ul>
+          <li><code>num_lines = #subtitles</code></li>
+          <li><code>num_lines = subtitles.n</code></li>
+          </ul>
+          <p>This operation retrieves the total number of lines in the subtitle file
+          currently. This number only changes by using the other operations on the
+          subtitle object. It cannot change spontaneously during the execution of a
+          script.</p>
+          <p>Note that this is not a constant-time lookup, but lua does cache the value if
+          used in <code>for i = 1, #subs</code>.</p>
+          <p><code>num_lines</code> (<code>number</code>)
+          : Number of lines in the subtitle file.</p>
+          <p>The first syntax is the preferred one, per normal Lua 5.1 coding style.</p>
+          <h3 id="read-line">Read line</h3>
+          <p>Synopsis: <code>line = subtitles[i]</code></p>
+          <p>This retrieves the indexed line and creates a new table object with data about
+          it.</p>
+          <p><code>line</code> (<code>table</code>)
+          : Table with data about the retrieved line.</p>
+          <p><code>i</code> (<code>number</code>)
+          : Index into the subtitles file of the line number to retrieve. This is
+          one-based, i.e. the first line in the file has index 1.</p>
+          <p>Aegisub internally stores the subtitle file as a linked list, which means that
+          random access is slow, but sequential access is fast. While Automation 4 Lua
+          presents the subtitles as if it was an array, it internally maintains a cursor
+          used to optimise for sequential access. It is faster to access a line with an
+          index close to the one you last accessed than to access one further away. It is
+          always fast to access lines near the beginning or end of the file.</p>
+          <h3 id="append-line">Append line</h3>
+          <p>Synopsis:</p>
+          <ul>
+          <li><code>subtitles[0] = line</code></li>
+          <li><code>subtitles.append(line)</code></li>
+          <li><code>subtitles.append(line1, line2, ...)</code></li>
+          </ul>
+          <p>Append one or more lines to the end of the appropriate section of the subtitles
+          file. If the section does not exist, it will be created. In the first syntax, it
+          is the number 0 (zero) used for index. (Setting index 0 causes an append
+          operation.)</p>
+          <p>The third syntax supports appending multiple lines with one single operation.</p>
+          <p><code>line</code> (<code>table</code>)
+          : The line object table to append to the subtitles file.</p>
+          <p>The latter function-call syntax is preferred for readability. The table index
+          setting syntax is slightly faster.</p>
+          <p>Appending a line does not move the cursor otherwise used to optimise sequential
+          access.</p>
+          <h3 id="insert-line">Insert line</h3>
+          <p>Synopsis:</p>
+          <ul>
+          <li><code>subtitles[-i] = line</code></li>
+          <li><code>subtitles.insert(i, line)</code></li>
+          <li><code>subtitles.insert(i, line1, line2, ...)</code></li>
+          </ul>
+          <p>Inserts one or more lines into the subtitles file before the numbered line. In
+          the first syntax, you supply a negative index. E.g. to insert a line before
+          line 5 you supply index -5 (negative 5.)</p>
+          <p>Inserting lines will move lines after the inserted lines to move down in index,
+          such that old indexes will no longer be valid.</p>
+          <p>Inserting lines into the wrong section of the subtitle file has undefined
+          results, and may break in weird ways.</p>
+          <p><code>i</code> (<code>number</code>)
+          : Index to insert before.</p>
+          <p><code>line</code> (<code>table</code>)
+          : The line object table to insert into the subtitles file.</p>
+          <p>The latter function-call syntax is preferred for readability. The table index
+          setting syntax is slightly faster.</p>
+          <p>Inserting lines uses the list cursor and will move it.</p>
+          <h3 id="replace-line">Replace line</h3>
+          <p>Synopsis: <code>subtitles[i] = line</code></p>
+          <p>Delete the indexed line and insert the given line in its stead.</p>
+          <p><code>i</code> (<code>number</code>)
+          : The line index to replace at.</p>
+          <p><code>line</code> (<code>table</code>)
+          : The line object table to replace with.</p>
+          <p>Replacing lines uses the list cursor and will move it.</p>
+          <p>Replacing lines with lines of a different type has undefined results, and may
+          break in weird ways.</p>
+          <h3 id="delete-line">Delete line</h3>
+          <p>Synopsis:</p>
+          <ul>
+          <li><code>subtitles[i] = nil</code></li>
+          <li><code>subtitles.delete(i)</code></li>
+          <li><code>subtitles.delete(i1, i2, ...)</code></li>
+          <li><code>subtitles.delete({i1, i2, ...})</code></li>
+          <li><code>subtitles.deleterange(first, last)</code></li>
+          </ul>
+          <p>Remove one or more from the subtitles file. All lines after the deleted line(s)
+          will move up to fill the deleted indexes, so old indexes will no longer be
+          valid.</p>
+          <p>The third syntax supports deleting multiple indexed lines in one call. The
+          indexes given must all be correct for the subtitle file's state before any
+          lines are deleted.</p>
+          <p>The fourth syntax is identical to <code>subtitles.delete(unpack(tbl))</code>, but
+          supports tables which are too large to unpack and will be slightly
+          faster if you have the lines in a table anyway.</p>
+          <p>Trying to delete a nonexistent line is an error, except for with deleterange.</p>
+          <p>The fifth syntax deletes a range of lines, both indexed lines inclusive.</p>
+          <p><code>i</code> (<code>number</code>)
+          : Index of the line to delete.</p>
+          <p><code>first</code> (<code>number</code>)
+          : Index of the first line of the range to delete.</p>
+          <p><code>last</code> (<code>number</code>)
+          : Index of the last line of the range to delete.</p>
+          <p>Deleting lines uses the list cursor and will move it.</p>
+          <h3 id="creating-an-undo-point">Creating an undo point</h3>
+          <p>Synopsis: <code>aegisub.set_undo_point(description)</code></p>
+          <p>You should always create an undo point at the end of any macro which made
+          changes to the subtitles object. If you do not, one will automatically be set
+          for you, but in future versions of Aegisub this may change to rolling back any
+          changes made instead.</p>
+          <p>You can set multiple undo points in a single macro, but it is rarely a good
+          idea to.</p>
+          <p>Only available in macro processing functions, as it doesn't make sense anywhere
+          else either.</p>
+          <p><code>description</code> (<code>string</code>)
+          : Text to appear in the Edit menu for the Undo and Redo items to describe the
+          action that can be undone.</p>
+          <p>This is not really a function in the subtitles object, but it is still closely
+          tied to it.</p>
+          <h2 id="line-data-tables">Line data tables</h2>
+          <p>When you read lines from the subtitle file object they will always be one of a
+          few classes of lines, and when you write lines back to the subtitle file they
+          must also follow the format of one of those classes.</p>
+          <p>The line data objects are regular Lua tables with some specific fields defined.</p>
+          <p>Here's a list of the different classes of lines:</p>
+          <p><code>info</code>
+          : A key/value pair in the Script Info section of the file</p>
+          <p><code>style</code>
+          : a regular style definition line</p>
+          <p><code>dialogue</code>
+          : A dialogue line, which may or may not be a comment. These are the lines you
+          see in the grid in Aegisub.</p>
+          <p><code>unknown</code>
+          : An unknown kind of line.</p>
+          <p>There's three fields that always exist in all line data tables:</p>
+          <p><code>class</code> (<code>string</code>)
+          : The name of the class of line this is, see the list above.</p>
+          <p><code>raw</code> (<code>string</code>)
+          : The raw text of the line, from first to last character on the physical line.</p>
+          <p><code>section</code> (<code>string</code>)
+          : Which section of the file the line belongs to. If the line is placed before
+          the first section heading, this field is <code>nil</code>.</p>
+          <h3 id="info-class"><code>info</code> class</h3>
+          <p>This class defines two additional fields:</p>
+          <p><code>key</code> (<code>string</code>)
+          : The part of the line before the first colon, with leading and trailing spaces
+          removed.</p>
+          <p><code>value</code> (<code>string</code>)
+          : Everything after the first colon on the line, also with leading and trailing
+          spaces removed.</p>
+          <h3 id="style-class"><code>style</code> class</h3>
+          <p>This class defines a large number of additional fields. It's usually processed
+          by the <em>karaskel</em> and modified a bit by that. See the <em>karaskel.lua</em> section on
+          <a href="/aegisite/docs/karaskel-lua#style-table/">style tables</a> for more
+          information about this class.</p>
+          <h3 id="dialogue-class"><code>dialogue</code> class</h3>
+          <p>This class defines a large number of additional fields. It's usually processed
+          by the <em>karaskel</em> and has many calculated fields added by that. See the
+          <em>karaskel.lua</em> section on <a href="/aegisite/docs/karaskel-lua#dialogue-line-table/">dialogue line tables</a> for more
+          information on this class.</p>
+          <h3 id="unknown-class"><code>unknown</code> class</h3>
+          <p>No additional fields are defined by this class, due to its nature. This might
+          be things like files embedded into the subtitles. You shouldn't try to work
+          with these lines unless you really know what you're doing. Deleting, modifying
+          and inserting <code>unknown</code> lines has undefined consequences. (That means, even if
+          it works today it might not work tomorrow or in the next version of Aegisub.)</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

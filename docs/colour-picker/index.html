@@ -288,46 +288,250 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Colour Picker</h1>
-                <p>Aegisub introduces a more advanced color picker than the default Windows one. It allows you to enter color values using various color spaces, in both HTML and ASS hex, pick colors from a mini-screenshot and use three different color spectrums for graphically picking colors.</p>
-                <h2 id="overview">Overview</h2>
-                <p><img src="/aegisite/img/3.2/Colour_picker.png#center" class="img-fluid" alt="Colour_picker" /></p>
-                <p>The color picker has the following components:</p>
-                <ul>
-                <li>Color spectrum</li>
-                <li>Parametric settings for four color-spaces</li>
-                <li>HEX input for ASS and HTML formats</li>
-                <li>Pick-from-screen control, for taking a mini-screenshot and picking a color from it</li>
-                <li>List of 32 last picked colors</li>
-                </ul>
-                <p>The last used mode of the color spectrum is remembered.</p>
-                <h2 id="using-the-pick-from-screen-function">Using the pick-from-screen function</h2>
-                <ol>
-                <li>The pick-from-screen control is located to the left of the last-used colors, in the lower part of the window.</li>
-                <li>To start using it, click on the &quot;pick color&quot; symbol.</li>
-                <li>As you drag over the screen, you'll notice that the square box beside the pick color button turns into a magnification of the area the cursor is hovering over.</li>
-                <li>When you've found the area you want to grab a color from, click the left mouse button to fixate the magnification.</li>
-                <li>Now click on the pixel you want to grab a color from in the magnification.</li>
-                </ol>
-                <p>On OS X, you have to drag the pick control to the desired spot due to clicking on it and then clicking on the spot to pick from due to technical limitations.</p>
-                <h2 id="descriptions-of-the-color-spaces">Descriptions of the color spaces</h2>
-                <p>Here's a short round-up of the three available color spaces:</p>
-                <ul>
-                <li><em>RGB</em> - Red, Green and Blue, the three component colors a computer monitor uses to display images. In RGB mode, you specify the intensity of each of those three components.</li>
-                <li><em>HSL</em> - Hue, Saturation and Luminance. Hue is the actual &quot;color of the color&quot;, that is, red, green, blue or a mix of those. Saturation is the &quot;greyness&quot; of the color, the lower the saturation, the closer to a shade of grey, the color becomes. Luminance is the lightness, max luminance means pure white, while zero luminance means pure black.</li>
-                <li><em>HSV</em> - Hue, Saturation and Value. Hue and Saturation mean the same as in HSL. Value, however, is different from the luminance in HSL. Value is the &quot;non-blackness&quot; of the color, the smaller the value, the closer the color is to pure black.</li>
-                </ul>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="true">
+                  Typesetting
+                </button>
+                <div class="collapse show" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded active" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  Automation
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Colour Picker</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>Aegisub introduces a more advanced color picker than the default Windows one. It allows you to enter color values using various color spaces, in both HTML and ASS hex, pick colors from a mini-screenshot and use three different color spectrums for graphically picking colors.</p>
+          <h2 id="overview">Overview</h2>
+          <p><img src="/aegisite/img/3.2/Colour_picker.png#center" class="img-fluid" alt="Colour_picker" /></p>
+          <p>The color picker has the following components:</p>
+          <ul>
+          <li>Color spectrum</li>
+          <li>Parametric settings for four color-spaces</li>
+          <li>HEX input for ASS and HTML formats</li>
+          <li>Pick-from-screen control, for taking a mini-screenshot and picking a color from it</li>
+          <li>List of 32 last picked colors</li>
+          </ul>
+          <p>The last used mode of the color spectrum is remembered.</p>
+          <h2 id="using-the-pick-from-screen-function">Using the pick-from-screen function</h2>
+          <ol>
+          <li>The pick-from-screen control is located to the left of the last-used colors, in the lower part of the window.</li>
+          <li>To start using it, click on the &quot;pick color&quot; symbol.</li>
+          <li>As you drag over the screen, you'll notice that the square box beside the pick color button turns into a magnification of the area the cursor is hovering over.</li>
+          <li>When you've found the area you want to grab a color from, click the left mouse button to fixate the magnification.</li>
+          <li>Now click on the pixel you want to grab a color from in the magnification.</li>
+          </ol>
+          <p>On OS X, you have to drag the pick control to the desired spot due to clicking on it and then clicking on the spot to pick from due to technical limitations.</p>
+          <h2 id="descriptions-of-the-color-spaces">Descriptions of the color spaces</h2>
+          <p>Here's a short round-up of the three available color spaces:</p>
+          <ul>
+          <li><em>RGB</em> - Red, Green and Blue, the three component colors a computer monitor uses to display images. In RGB mode, you specify the intensity of each of those three components.</li>
+          <li><em>HSL</em> - Hue, Saturation and Luminance. Hue is the actual &quot;color of the color&quot;, that is, red, green, blue or a mix of those. Saturation is the &quot;greyness&quot; of the color, the lower the saturation, the closer to a shade of grey, the color becomes. Luminance is the lightness, max luminance means pure white, while zero luminance means pure black.</li>
+          <li><em>HSV</em> - Hue, Saturation and Value. Hue and Saturation mean the same as in HSL. Value, however, is different from the luminance in HSL. Value is the &quot;non-blackness&quot; of the color, the smaller the value, the closer the color is to pure black.</li>
+          </ul>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

@@ -288,73 +288,277 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Spell Checker</h1>
-                <p>To help you with quality assurance of your subtitle scripts, Aegisub
-                features a complete spell checker. It uses the Hunspell library, which is
-                based on OpenOffice.org's MySpell, which means it's at least as good as one
-                you'd find in a sophisticated word processing program. It can be found in
-                the <em>Subtitles</em> menu -&gt; <em>Spell Checker</em>. It also spell-checks as you type
-                and can to some degree be controlled from the subtitle edit box's
-                right-click menu (see <a href="/aegisite/docs/editing-subtitles">editing subtitles</a>).</p>
-                <h3 id="the-spell-checker-dialog">The spell checker dialog</h3>
-                <p><img src="/aegisite/img/3.2/spell_checker.png#center" class="img-fluid" alt="spell_checker" /></p>
-                <p>The spell checker dialog will go through all misspelled words it can find in
-                your script. The area in the lower left of the box displays suggestions to
-                replace the misspelled word with; to the right there are a number of
-                buttons:</p>
-                <p>Skip Comments
-                : Skip over commented lines when looking for misspelled words. Useful
-                when your comments are mostly things like karaoke scripts or the
-                original script which you're translating to a new language.</p>
-                <p>Ignore UPPERCASE words
-                : Skip over words written in all caps. Useful if your subtitles have a sea of
-                made-up acronyms and you don't feel like spending the time adding them all to
-                the dictionary.</p>
-                <p>Replace
-                : Replaces the found misspelled word with the chosen replacement. Note
-                that the list box can be double-clicked to do this as well.</p>
-                <p>Replace All
-                : Replaces <em>all instances</em> of the found misspelled word <em>in the entire
-                script</em> with the chosen replacement.</p>
-                <p>Ignore
-                : Ignore <em>this instance</em> of the misspelled word, but continue to stop
-                on other places where this misspelling occurs.</p>
-                <p>Ignore All
-                : Ignore <em>all instances</em> of this word for this spell-checking session,
-                but continue to check for it in the future.</p>
-                <p>Add to dictionary
-                : Add the found word to the dictionary so it will not be detected as
-                misspelled again.</p>
-                <p>Remove from dictionary
-                : Remove the word currently in the <strong>Replace with</strong> field from the dictionary.
-                Can only remove words which were added with the <strong>Add to dictionary</strong> function
-                and not words in the standard dictionary.</p>
-                <p>At the bottom of the dialog box there is a dropdown box to choose the spell
-                checker language.</p>
-                <h3 id="dictionaries">Dictionaries</h3>
-                <p>The Windows version of Aegisub comes with a US English dictionary.
-                Installers for many other languages are available <a href="https://www.aegisub.org/downloads/#dictionaries">on our
-                website</a>. If we don't
-                supply a dictionary for your language, check <a href="https://wiki.mozilla.org/L10n:Dictionaries">Mozilla's set of
-                dictionaries</a>, or simply
-                Google for &quot;hunspell <i>&lt;language&gt;</i> dictionary&quot;. We welcome
-                submissions of additional dictionaries to package - it can sometimes be hard
-                for us to find dictionaries for languages which none of the developers speak.</p>
-                <p>The OS X version of Aegisub includes all of the dictionaries we have.</p>
-                <p>On Linux your distribution's package manager should have hunspell
-                dictionaries. You may need to set the <a href="/aegisite/docs/aegisub-options#interface/">dictionary path</a> to the location where they are installed; one
-                common location is <code>/usr/share/hunspell</code>.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="true">
+                  Working with Subtitles
+                </button>
+                <div class="collapse show" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded active" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  Automation
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Spell Checker</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>To help you with quality assurance of your subtitle scripts, Aegisub
+          features a complete spell checker. It uses the Hunspell library, which is
+          based on OpenOffice.org's MySpell, which means it's at least as good as one
+          you'd find in a sophisticated word processing program. It can be found in
+          the <em>Subtitles</em> menu -&gt; <em>Spell Checker</em>. It also spell-checks as you type
+          and can to some degree be controlled from the subtitle edit box's
+          right-click menu (see <a href="/aegisite/docs/editing-subtitles">editing subtitles</a>).</p>
+          <h3 id="the-spell-checker-dialog">The spell checker dialog</h3>
+          <p><img src="/aegisite/img/3.2/spell_checker.png#center" class="img-fluid" alt="spell_checker" /></p>
+          <p>The spell checker dialog will go through all misspelled words it can find in
+          your script. The area in the lower left of the box displays suggestions to
+          replace the misspelled word with; to the right there are a number of
+          buttons:</p>
+          <p>Skip Comments
+          : Skip over commented lines when looking for misspelled words. Useful
+          when your comments are mostly things like karaoke scripts or the
+          original script which you're translating to a new language.</p>
+          <p>Ignore UPPERCASE words
+          : Skip over words written in all caps. Useful if your subtitles have a sea of
+          made-up acronyms and you don't feel like spending the time adding them all to
+          the dictionary.</p>
+          <p>Replace
+          : Replaces the found misspelled word with the chosen replacement. Note
+          that the list box can be double-clicked to do this as well.</p>
+          <p>Replace All
+          : Replaces <em>all instances</em> of the found misspelled word <em>in the entire
+          script</em> with the chosen replacement.</p>
+          <p>Ignore
+          : Ignore <em>this instance</em> of the misspelled word, but continue to stop
+          on other places where this misspelling occurs.</p>
+          <p>Ignore All
+          : Ignore <em>all instances</em> of this word for this spell-checking session,
+          but continue to check for it in the future.</p>
+          <p>Add to dictionary
+          : Add the found word to the dictionary so it will not be detected as
+          misspelled again.</p>
+          <p>Remove from dictionary
+          : Remove the word currently in the <strong>Replace with</strong> field from the dictionary.
+          Can only remove words which were added with the <strong>Add to dictionary</strong> function
+          and not words in the standard dictionary.</p>
+          <p>At the bottom of the dialog box there is a dropdown box to choose the spell
+          checker language.</p>
+          <h3 id="dictionaries">Dictionaries</h3>
+          <p>The Windows version of Aegisub comes with a US English dictionary.
+          Installers for many other languages are available <a href="https://www.aegisub.org/downloads/#dictionaries">on our
+          website</a>. If we don't
+          supply a dictionary for your language, check <a href="https://wiki.mozilla.org/L10n:Dictionaries">Mozilla's set of
+          dictionaries</a>, or simply
+          Google for &quot;hunspell <i>&lt;language&gt;</i> dictionary&quot;. We welcome
+          submissions of additional dictionaries to package - it can sometimes be hard
+          for us to find dictionaries for languages which none of the developers speak.</p>
+          <p>The OS X version of Aegisub includes all of the dictionaries we have.</p>
+          <p>On Linux your distribution's package manager should have hunspell
+          dictionaries. You may need to set the <a href="/aegisite/docs/aegisub-options#interface/">dictionary path</a> to the location where they are installed; one
+          common location is <code>/usr/share/hunspell</code>.</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

@@ -288,73 +288,277 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>时间后续处理器</h1>
-                <p>时间后续处理器是很有用的工具，它可以通过各种方式来自动修正时间。</p>
-                <h2 id="总览">总览</h2>
-                <p>正如截图所示，该工具具有三个功能:</p>
-                <ul>
-                <li>提前开始/延后结束</li>
-                <li>使相邻字幕行连续，通过延后或者提前它们的开始和(或)结束时间</li>
-                <li>使行的开始/结束时间紧贴关键帧(只有在读取了视频的情况下才有效)</li>
-                </ul>
-                <p><img src="/aegisite/img/3.2/Dialog_timing_processor.png#center" class="img-fluid" alt="Dialog_timing_processor" /></p>
-                <p>同时选择多项时的处理顺序就像对话框中由上到下的顺序一样。
-                这就是说，首先，提前开始/延后结束操作完成，随之会检查相邻行(依照给定的阈值判断是否相邻)并实施连接相邻行操作，最后使行的开始/结束时间紧贴关键帧。</p>
-                <h2 id="应用到样式">应用到样式</h2>
-                <p>这个区域决定了哪些样式会被处理------勾选所有你想要处理的样式。这样你可以排除掉一些非对话内容比如标记或者卡拉OK。</p>
-                <h2 id="选项">选项</h2>
-                <p>勾选 &quot;仅应用于所选&quot; 来限定工具作用范围为选择的行。
-                如果未勾选，文件中所有匹配样式的行都会被影响。</p>
-                <h2 id="提前开始延后结束">提前开始/延后结束</h2>
-                <p>这个功能用来延伸行的开始/结束时间，也就是提前开始时间和延后结束时间。工具会把给定时间(毫秒)分别地应用到每行的开始和结束时间上。你可以同时选择提前开始和延后结束，仅选择一个，或者都不选。提前开始/延后结束永远也不会使行的时间重叠，除非在处理前就存在重叠状况。</p>
-                <h2 id="使相邻字幕行连续">使相邻字幕行连续</h2>
-                <p>这个功能会检查任何两行的开始和结束时间相差是否小于给定的阈值。如果足够小，一行或者多行的开始和(或)结束时间就会被修改成连续，即一行消失，另一行在下一帧出新，在视觉上是连续的，中间没有留空字幕的帧。</p>
-                <p><em>偏重</em> 滑块决定了行的时间是如何被延伸的。
-                滑块滑到最右情况下应用本功能，第一行的结束时间会完全贴近第二行的开始时间，对第二行没有任何动作。
-                滑块滑到最左情况下应用本功能，第二行的开始时间会完全贴近第一行的结束时间，对第一行没有任何动作。
-                把滑块拉到中间位置，第一行的结束时间会延后，第二行的开始时间会提前相同的量，所以最终是在两个时间中间点构成连续。
-                滑块的作用就是控制两个时间 &quot;相遇&quot; 的位置。
-                举个例子，如果阈值设定为1000，滑块滑到 3/4
-                位置(粗略看起来就像上面的截屏一样)，第一行的结束时间会被延后 750
-                ms，第二行的开始时间会被提前 250 ms。</p>
-                <p>注意，当你使用 <em>使相邻字幕行连续</em>
-                来消除重叠的时候，你也许不想(不应该)开启
-                提前开始/延后结束，因为它的应用在消除重叠之前。</p>
-                <h2 id="紧贴关键帧">紧贴关键帧</h2>
-                <p>紧贴关键帧功能是一类自动化场景定时功能。它可能是三项功能中最有用的，不过只有在读取了视频或者关键帧后才有用。有关
-                <a href="/aegisite/zh-cn/docs/%E8%A7%86%E9%A2%91#keyframes/">关键帧</a>。</p>
-                <p>紧贴关键帧功能会计算行的开始/结束时间和最近关键帧的时间差，如果时间差小于给定的阈值，时间就会被延长或缩短到关键帧所在时间。</p>
-                <p>有四项阈值是你要考虑的： (以下有关时间点的描述均以向左向右进行*)</p>
-                <p><em>开始前阈</em>
-                : 如果该行 <em>早于</em>
-                距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向右移到关键帧时间。</p>
-                <p><em>开始后阈</em>
-                : 如果该行 <em>晚于</em>
-                距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向左移到关键帧时间。</p>
-                <p><em>结束前阈</em>
-                : 如果该行 <em>早于</em>
-                距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向右移到关键帧时间。</p>
-                <p><em>结束后阈</em>
-                : 如果该行 <em>晚于</em>
-                距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向左移到关键帧时间。</p>
-                <p>当使用这个功能时，记住你的&quot;提前开始/延后结束&quot;值！你的 <em>开始前阈</em> 和
-                <em>结束后阈</em>
-                值正常情况下应该至少和这两个值一样大，不然一开始按照场景定时时所做的工作可能白做。</p>
-                <p>紧贴关键帧功能还可以用来进行逐帧时间轴的修正，十分快速。如果你的字幕脚本中的时间轴全都是逐帧的，直接把阈值设置为50，关闭
-                提前开始/延后结束 和
-                使相邻字幕行连续，选好你要应用的样式点击应用，问题立刻解决。</p>
-                <p>*forward和backward直译为向前向后会产生歧义，为方便理解，采用直观的左右来表示时间的前后。</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  导航
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  介绍
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            教程
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  制作字幕
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  排版
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="true">
+                  时间轴
+                </button>
+                <div class="collapse show" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
+                        <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  自动化
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            卡拉OK模版执行器
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua 相关
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua模块
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  杂项
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>本页目录</h3>
+            <nav class="toc-nav" aria-label="本页目录">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>时间后续处理器</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>本页目录</h3>
+              <nav class="toc-nav" aria-label="本页目录">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>时间后续处理器是很有用的工具，它可以通过各种方式来自动修正时间。</p>
+          <h2 id="总览">总览</h2>
+          <p>正如截图所示，该工具具有三个功能:</p>
+          <ul>
+          <li>提前开始/延后结束</li>
+          <li>使相邻字幕行连续，通过延后或者提前它们的开始和(或)结束时间</li>
+          <li>使行的开始/结束时间紧贴关键帧(只有在读取了视频的情况下才有效)</li>
+          </ul>
+          <p><img src="/aegisite/img/3.2/Dialog_timing_processor.png#center" class="img-fluid" alt="Dialog_timing_processor" /></p>
+          <p>同时选择多项时的处理顺序就像对话框中由上到下的顺序一样。
+          这就是说，首先，提前开始/延后结束操作完成，随之会检查相邻行(依照给定的阈值判断是否相邻)并实施连接相邻行操作，最后使行的开始/结束时间紧贴关键帧。</p>
+          <h2 id="应用到样式">应用到样式</h2>
+          <p>这个区域决定了哪些样式会被处理------勾选所有你想要处理的样式。这样你可以排除掉一些非对话内容比如标记或者卡拉OK。</p>
+          <h2 id="选项">选项</h2>
+          <p>勾选 &quot;仅应用于所选&quot; 来限定工具作用范围为选择的行。
+          如果未勾选，文件中所有匹配样式的行都会被影响。</p>
+          <h2 id="提前开始延后结束">提前开始/延后结束</h2>
+          <p>这个功能用来延伸行的开始/结束时间，也就是提前开始时间和延后结束时间。工具会把给定时间(毫秒)分别地应用到每行的开始和结束时间上。你可以同时选择提前开始和延后结束，仅选择一个，或者都不选。提前开始/延后结束永远也不会使行的时间重叠，除非在处理前就存在重叠状况。</p>
+          <h2 id="使相邻字幕行连续">使相邻字幕行连续</h2>
+          <p>这个功能会检查任何两行的开始和结束时间相差是否小于给定的阈值。如果足够小，一行或者多行的开始和(或)结束时间就会被修改成连续，即一行消失，另一行在下一帧出新，在视觉上是连续的，中间没有留空字幕的帧。</p>
+          <p><em>偏重</em> 滑块决定了行的时间是如何被延伸的。
+          滑块滑到最右情况下应用本功能，第一行的结束时间会完全贴近第二行的开始时间，对第二行没有任何动作。
+          滑块滑到最左情况下应用本功能，第二行的开始时间会完全贴近第一行的结束时间，对第一行没有任何动作。
+          把滑块拉到中间位置，第一行的结束时间会延后，第二行的开始时间会提前相同的量，所以最终是在两个时间中间点构成连续。
+          滑块的作用就是控制两个时间 &quot;相遇&quot; 的位置。
+          举个例子，如果阈值设定为1000，滑块滑到 3/4
+          位置(粗略看起来就像上面的截屏一样)，第一行的结束时间会被延后 750
+          ms，第二行的开始时间会被提前 250 ms。</p>
+          <p>注意，当你使用 <em>使相邻字幕行连续</em>
+          来消除重叠的时候，你也许不想(不应该)开启
+          提前开始/延后结束，因为它的应用在消除重叠之前。</p>
+          <h2 id="紧贴关键帧">紧贴关键帧</h2>
+          <p>紧贴关键帧功能是一类自动化场景定时功能。它可能是三项功能中最有用的，不过只有在读取了视频或者关键帧后才有用。有关
+          <a href="/aegisite/zh-cn/docs/%E8%A7%86%E9%A2%91#keyframes/">关键帧</a>。</p>
+          <p>紧贴关键帧功能会计算行的开始/结束时间和最近关键帧的时间差，如果时间差小于给定的阈值，时间就会被延长或缩短到关键帧所在时间。</p>
+          <p>有四项阈值是你要考虑的： (以下有关时间点的描述均以向左向右进行*)</p>
+          <p><em>开始前阈</em>
+          : 如果该行 <em>早于</em>
+          距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向右移到关键帧时间。</p>
+          <p><em>开始后阈</em>
+          : 如果该行 <em>晚于</em>
+          距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向左移到关键帧时间。</p>
+          <p><em>结束前阈</em>
+          : 如果该行 <em>早于</em>
+          距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向右移到关键帧时间。</p>
+          <p><em>结束后阈</em>
+          : 如果该行 <em>晚于</em>
+          距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向左移到关键帧时间。</p>
+          <p>当使用这个功能时，记住你的&quot;提前开始/延后结束&quot;值！你的 <em>开始前阈</em> 和
+          <em>结束后阈</em>
+          值正常情况下应该至少和这两个值一样大，不然一开始按照场景定时时所做的工作可能白做。</p>
+          <p>紧贴关键帧功能还可以用来进行逐帧时间轴的修正，十分快速。如果你的字幕脚本中的时间轴全都是逐帧的，直接把阈值设置为50，关闭
+          提前开始/延后结束 和
+          使相邻字幕行连续，选好你要应用的样式点击应用，问题立刻解决。</p>
+          <p>*forward和backward直译为向前向后会产生歧义，为方便理解，采用直观的左右来表示时间的前后。</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

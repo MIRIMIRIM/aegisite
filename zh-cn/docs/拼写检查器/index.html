@@ -288,62 +288,266 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>拼写检查器</h1>
-                <p>为了保障字幕的质量，Aegisub
-                特意为您准备了一个完善的拼写检查器。它采用了由 OpenOffice.org 的 MySpell
-                发展而来的 Hunspell 拼写检查库，这意味着 Aegisub
-                的纠错能力将不亚于同样使用了 Hunspell 的高级文字处理软件
-                （※译者注：例如 WPS Office、印象笔记等）
-                。您可以通过&quot;<em>字幕 -&gt; 拼写检查器</em>
-                &quot;打开它，它会在您输入内容的同时进行检查。此外，字幕编辑框的右键菜单中也有与之相关的选项（详见
-                <a href="/aegisite/zh-cn/docs/%E7%BC%96%E8%BE%91%E5%AD%97%E5%B9%95">编辑字幕</a>）。</p>
-                <h3 id="拼写检查对话框">拼写检查对话框</h3>
-                <p><img src="/aegisite/img/3.2/zh/spell_checker.png#center" class="img-fluid" alt="spell_checker" /></p>
-                <p>拼写检查对话框将会引导您逐一订正字幕中出现的拼写错误。左侧方框中展示的是针对当前误拼单词的修改建议，它的右侧有一些复选框和按钮：</p>
-                <p>忽略注释
-                : 在检查时跳过注释行。如果您的注释行主要是卡拉OK脚本、未翻译的原文之类的内容，那么建议您勾选。</p>
-                <p>忽略大写的单词
-                : 在检查时跳过大写的单词。如果您的字幕中含有大量生造的首字母缩略词（※译者注：例如仅限于汉语圈使用的&quot;ACG&quot;就会被判定为拼写错误），并且您不想花时间把它们添加到词典中，就可以勾选此项。</p>
-                <p>替换
-                : 用选中的修改建议替换当前误拼单词。直接双击某一条建议也是同样的效果。</p>
-                <p>全部替换
-                : 用选中的修改建议替换<em>整个字幕文件中</em> 与当前误拼单词相同的<em>所有</em>
-                拼写错误。</p>
-                <p>忽略
-                : 忽略<em>此次</em> 拼写错误，但在下一次发现相同错误时依然会提示。</p>
-                <p>忽略全部
-                : 忽略与当前误拼单词相同的<em>所有</em>
-                拼写错误，但在下一次启动拼写检查时依然会提示。</p>
-                <p>添加至词典
-                : 将当前误拼单词添加到词典中，从而使其不会再被判定为拼写错误。</p>
-                <p>从词典移除
-                : 将当前显示在<strong>替换为</strong>一栏的单词从词典中移除。只能移除之前<strong>添加至词典</strong>的单词，对于词典中固有的单词则无效。</p>
-                <p>对话框底部的下拉列表可以选择拼写检查的语言。</p>
-                <p>▲译者提示：以单词&quot;future&quot;为例，假设它有几次被误拼为&quot;futrue&quot;，另有几次被误拼为&quot;fuutre&quot;，那么当我们对&quot;futrue&quot;选择&quot;全部替换&quot;时，所有的&quot;futrue&quot;就会被一次性订正，而对于&quot;fuutre&quot;则需另行操作。因为这是两种不同的拼写错误，即便主观上两者对应同一个单词；&quot;忽略全部&quot;也是同理。</p>
-                <h3 id="词典">词典</h3>
-                <p>Aegisub 的 Windows
-                版本包含了英语(美国)词典，其他语种词典的安装程序可以在
-                <a href="https://aegi.vmoe.info/downloads/#dictionaries">我们的网站</a>
-                上下载。如果没有找到您所需要的语言，可以查看 <a href="https://wiki.mozilla.org/L10n:Dictionaries">Mozilla
-                词典集</a>，或者在 Google
-                中搜索&quot;hunspell <em>&lt;language&gt;</em>
-                dictionary&quot;。欢迎您协助我们扩充其他语种的词典------如果我们的开发团队中没有人使用某一种语言，那我们也许就很难找到它对应的词典。</p>
-                <p>OS X 版本则已经内置了现有的全部词典。</p>
-                <p>在各个发行版的 Linux 系统中，您可以通过软件包管理器来安装 hunspell
-                词典。您可能需要在 Aegisub 中将
-                <a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9#interface/">词典文件路径</a>
-                设置为它们实际安装的位置；常见的路径为 <code>/usr/share/hunspell</code>。</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  导航
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  介绍
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            教程
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="true">
+                  制作字幕
+                </button>
+                <div class="collapse show" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
+                        <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  排版
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  时间轴
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  自动化
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            卡拉OK模版执行器
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua 相关
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua模块
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  杂项
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>本页目录</h3>
+            <nav class="toc-nav" aria-label="本页目录">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>拼写检查器</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>本页目录</h3>
+              <nav class="toc-nav" aria-label="本页目录">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>为了保障字幕的质量，Aegisub
+          特意为您准备了一个完善的拼写检查器。它采用了由 OpenOffice.org 的 MySpell
+          发展而来的 Hunspell 拼写检查库，这意味着 Aegisub
+          的纠错能力将不亚于同样使用了 Hunspell 的高级文字处理软件
+          （※译者注：例如 WPS Office、印象笔记等）
+          。您可以通过&quot;<em>字幕 -&gt; 拼写检查器</em>
+          &quot;打开它，它会在您输入内容的同时进行检查。此外，字幕编辑框的右键菜单中也有与之相关的选项（详见
+          <a href="/aegisite/zh-cn/docs/%E7%BC%96%E8%BE%91%E5%AD%97%E5%B9%95">编辑字幕</a>）。</p>
+          <h3 id="拼写检查对话框">拼写检查对话框</h3>
+          <p><img src="/aegisite/img/3.2/zh/spell_checker.png#center" class="img-fluid" alt="spell_checker" /></p>
+          <p>拼写检查对话框将会引导您逐一订正字幕中出现的拼写错误。左侧方框中展示的是针对当前误拼单词的修改建议，它的右侧有一些复选框和按钮：</p>
+          <p>忽略注释
+          : 在检查时跳过注释行。如果您的注释行主要是卡拉OK脚本、未翻译的原文之类的内容，那么建议您勾选。</p>
+          <p>忽略大写的单词
+          : 在检查时跳过大写的单词。如果您的字幕中含有大量生造的首字母缩略词（※译者注：例如仅限于汉语圈使用的&quot;ACG&quot;就会被判定为拼写错误），并且您不想花时间把它们添加到词典中，就可以勾选此项。</p>
+          <p>替换
+          : 用选中的修改建议替换当前误拼单词。直接双击某一条建议也是同样的效果。</p>
+          <p>全部替换
+          : 用选中的修改建议替换<em>整个字幕文件中</em> 与当前误拼单词相同的<em>所有</em>
+          拼写错误。</p>
+          <p>忽略
+          : 忽略<em>此次</em> 拼写错误，但在下一次发现相同错误时依然会提示。</p>
+          <p>忽略全部
+          : 忽略与当前误拼单词相同的<em>所有</em>
+          拼写错误，但在下一次启动拼写检查时依然会提示。</p>
+          <p>添加至词典
+          : 将当前误拼单词添加到词典中，从而使其不会再被判定为拼写错误。</p>
+          <p>从词典移除
+          : 将当前显示在<strong>替换为</strong>一栏的单词从词典中移除。只能移除之前<strong>添加至词典</strong>的单词，对于词典中固有的单词则无效。</p>
+          <p>对话框底部的下拉列表可以选择拼写检查的语言。</p>
+          <p>▲译者提示：以单词&quot;future&quot;为例，假设它有几次被误拼为&quot;futrue&quot;，另有几次被误拼为&quot;fuutre&quot;，那么当我们对&quot;futrue&quot;选择&quot;全部替换&quot;时，所有的&quot;futrue&quot;就会被一次性订正，而对于&quot;fuutre&quot;则需另行操作。因为这是两种不同的拼写错误，即便主观上两者对应同一个单词；&quot;忽略全部&quot;也是同理。</p>
+          <h3 id="词典">词典</h3>
+          <p>Aegisub 的 Windows
+          版本包含了英语(美国)词典，其他语种词典的安装程序可以在
+          <a href="https://aegi.vmoe.info/downloads/#dictionaries">我们的网站</a>
+          上下载。如果没有找到您所需要的语言，可以查看 <a href="https://wiki.mozilla.org/L10n:Dictionaries">Mozilla
+          词典集</a>，或者在 Google
+          中搜索&quot;hunspell <em>&lt;language&gt;</em>
+          dictionary&quot;。欢迎您协助我们扩充其他语种的词典------如果我们的开发团队中没有人使用某一种语言，那我们也许就很难找到它对应的词典。</p>
+          <p>OS X 版本则已经内置了现有的全部词典。</p>
+          <p>在各个发行版的 Linux 系统中，您可以通过软件包管理器来安装 hunspell
+          词典。您可能需要在 Aegisub 中将
+          <a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9#interface/">词典文件路径</a>
+          设置为它们实际安装的位置；常见的路径为 <code>/usr/share/hunspell</code>。</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

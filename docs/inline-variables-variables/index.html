@@ -288,118 +288,322 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Inline-variables ($-variables)</h1>
-                <p>This page describes the <strong>inline variables</strong> also known as <strong>dollar variables</strong>
-                available in Karaoke Templater.</p>
-                <h2 id="how-to-use-inline-variables">How to use inline variables</h2>
-                <p>All inline variables start with a dollar-sign. They only work in template
-                lines, not in code lines. You can, however, use them in code blocks on template
-                lines.</p>
-                <p>Here is an example of how a template text using inline variables could look:</p>
-                <pre><code class="language-ass">{\pos($x,$y)\t($start,$end,\bord0)}
-                </code></pre>
-                <p>The <code>$x</code> <code>$y</code> <code>$start</code> <code>$end</code> parts are the inline variables in the template.</p>
-                <p>When a template is applied, the first thing that happens is that all inline
-                variables are found and replaced with their value. E.g. in the above example
-                <code>$x</code> and <code>$y</code> are replaced with the X and Y coordinates of the syllable the
-                template is being applied to, and <code>$start</code> and <code>$end</code> are replaced by the start
-                and end times of the syllable.</p>
-                <p>Case does not matter for inline variables. <code>$start</code>, <code>$START</code> and <code>$StArT</code> all
-                work and give the same result.</p>
-                <h3 id="limitations">Limitations</h3>
-                <p>Inline variables are not &quot;intelligent&quot;: they do the same no matter where you
-                place them or use them and don't &quot;know&quot; what tag it's being used with. Not
-                every variable can be used with success in all places, and the meaning of some
-                are affected by usage of e.g. the
-                <a href="/aegisite/docs/execution-environment#retime/">retime</a>
-                function. In these cases, inline variables may not be appropriate and you need
-                to use code blocks.</p>
-                <p>Because inline variables have their values determined as the very first thing
-                when a template is applied you can't affect their values in any way.</p>
-                <p>Using inline variables is an easy way to get started with an effect, but for
-                many advanced effects they might not be the best choice.</p>
-                <p>All positioning and sizing inline variables (such as <code>$y</code>, <code>$right</code> and
-                <code>$width</code> are rounded to the nearest whole pixel, unlike the values in the
-                internal data structures which you can get in code blocks, which have sub-pixel
-                precision.</p>
-                <h2 id="line-and-syllable-variables">Line and syllable variables</h2>
-                <p>The inline variables exist in both &quot;line&quot; and &quot;syllable&quot; variants. The &quot;line&quot;
-                variants contain information about the entire line being processed, the
-                &quot;syllable&quot; variants contain information about the current syllable being
-                processed.</p>
-                <p>There are also &quot;automatic&quot; variants of most of the variables, there are either
-                the line or the syllable variant depending on what kind of template they are
-                used in. In pre-line templates the automatic inline variables refer to the line
-                variants, and everywhere else they refer to the syllable variants.</p>
-                <h2 id="the-variables">The variables</h2>
-                <p>The line variables that also exist as automatic variants all start with a
-                lowercase L (&quot;ell&quot;) letter. The syllable variants start with the letter S.</p>
-                <h4 id="line-variants">Line variants</h4>
-                <p>layer
-                : line layer</p>
-                <p>lstart, lend, ldur, lmid
-                : line start time, end time, duration and midway, all absolute times in milliseconds</p>
-                <p>style
-                : name of the line style</p>
-                <p>actor
-                : name of the line actor</p>
-                <p>margin_l, margin_r
-                : effective left and right margin (line if nonzero, otherwise style)</p>
-                <p>margin_v, margin_t, margin_b
-                : effective vertical, top and bottom margin, vertical and top is same</p>
-                <p>syln
-                : number of syllables on line</p>
-                <p>li
-                : line index (first physical line in file is 1)</p>
-                <p>lleft, lcenter, lright
-                : line left, horizontal center and right edges, taking margins and alignment into account, rounded to an integer value</p>
-                <p>ltop, lmiddle, lbottom
-                : line top, vertical middle and bottom edges, taking margins and alignment into account, rounded</p>
-                <p>lx, ly
-                : line x and y position suitable for a \pos command when alignment is not overridden</p>
-                <p>lwidth, lheight
-                : line width and height in pixels, this is rounded and might not match exactly with the positioning variables</p>
-                <h4 id="syllable-variants">Syllable variants</h4>
-                <p>sstart, send, smid
-                : syllable start, end and midway times relative to start of line, suitable for putting into \t and \move</p>
-                <p>sdur, skdur
-                : syllable duration in milliseconds and centiseconds</p>
-                <p>si
-                : syllable index from start of line</p>
-                <p>sleft, scenter, sright
-                : absolute left, horizontal center and right edges for syllable from left edge of screen, suitable directly for \pos and \move</p>
-                <p>sbottom, smiddle, stop
-                : absolute bottom, vertical middle and top edges for syllable from top edge of screen, suitable directly for \pos and \move, adjusted for furigana positioning if needed</p>
-                <p>sx, sy
-                : syllable absolute x and y position in default alignment, suitable for using directly in \pos and \move</p>
-                <p>swidth, sheight
-                : syllable width and height in pixelsthis is rounded and might not match exactly with the positioning variables</p>
-                <h4 id="automatic-variants">Automatic variants</h4>
-                <p>start, end, mid
-                : start and and midway time for line/syllable; absolute for lines and relative for syllables</p>
-                <p>dur, kdur
-                : duration in milliseconds and centiseconds of line/syllable</p>
-                <p>i
-                : line or syllable index</p>
-                <p>left, center, right
-                : left, center and right edges of line/syllable, absolute from left screen edge</p>
-                <p>top, middle, bottom
-                : top middle and bottom edges of line/syllable, absolute from top screen edge</p>
-                <p>x, y
-                : x and y position of line/syllable when using default alignment</p>
-                <p>width, height
-                : width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  Automation
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="true">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse show" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded active" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Inline-variables ($-variables)</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>This page describes the <strong>inline variables</strong> also known as <strong>dollar variables</strong>
+          available in Karaoke Templater.</p>
+          <h2 id="how-to-use-inline-variables">How to use inline variables</h2>
+          <p>All inline variables start with a dollar-sign. They only work in template
+          lines, not in code lines. You can, however, use them in code blocks on template
+          lines.</p>
+          <p>Here is an example of how a template text using inline variables could look:</p>
+          <pre><code class="language-ass">{\pos($x,$y)\t($start,$end,\bord0)}
+          </code></pre>
+          <p>The <code>$x</code> <code>$y</code> <code>$start</code> <code>$end</code> parts are the inline variables in the template.</p>
+          <p>When a template is applied, the first thing that happens is that all inline
+          variables are found and replaced with their value. E.g. in the above example
+          <code>$x</code> and <code>$y</code> are replaced with the X and Y coordinates of the syllable the
+          template is being applied to, and <code>$start</code> and <code>$end</code> are replaced by the start
+          and end times of the syllable.</p>
+          <p>Case does not matter for inline variables. <code>$start</code>, <code>$START</code> and <code>$StArT</code> all
+          work and give the same result.</p>
+          <h3 id="limitations">Limitations</h3>
+          <p>Inline variables are not &quot;intelligent&quot;: they do the same no matter where you
+          place them or use them and don't &quot;know&quot; what tag it's being used with. Not
+          every variable can be used with success in all places, and the meaning of some
+          are affected by usage of e.g. the
+          <a href="/aegisite/docs/execution-environment#retime/">retime</a>
+          function. In these cases, inline variables may not be appropriate and you need
+          to use code blocks.</p>
+          <p>Because inline variables have their values determined as the very first thing
+          when a template is applied you can't affect their values in any way.</p>
+          <p>Using inline variables is an easy way to get started with an effect, but for
+          many advanced effects they might not be the best choice.</p>
+          <p>All positioning and sizing inline variables (such as <code>$y</code>, <code>$right</code> and
+          <code>$width</code> are rounded to the nearest whole pixel, unlike the values in the
+          internal data structures which you can get in code blocks, which have sub-pixel
+          precision.</p>
+          <h2 id="line-and-syllable-variables">Line and syllable variables</h2>
+          <p>The inline variables exist in both &quot;line&quot; and &quot;syllable&quot; variants. The &quot;line&quot;
+          variants contain information about the entire line being processed, the
+          &quot;syllable&quot; variants contain information about the current syllable being
+          processed.</p>
+          <p>There are also &quot;automatic&quot; variants of most of the variables, there are either
+          the line or the syllable variant depending on what kind of template they are
+          used in. In pre-line templates the automatic inline variables refer to the line
+          variants, and everywhere else they refer to the syllable variants.</p>
+          <h2 id="the-variables">The variables</h2>
+          <p>The line variables that also exist as automatic variants all start with a
+          lowercase L (&quot;ell&quot;) letter. The syllable variants start with the letter S.</p>
+          <h4 id="line-variants">Line variants</h4>
+          <p>layer
+          : line layer</p>
+          <p>lstart, lend, ldur, lmid
+          : line start time, end time, duration and midway, all absolute times in milliseconds</p>
+          <p>style
+          : name of the line style</p>
+          <p>actor
+          : name of the line actor</p>
+          <p>margin_l, margin_r
+          : effective left and right margin (line if nonzero, otherwise style)</p>
+          <p>margin_v, margin_t, margin_b
+          : effective vertical, top and bottom margin, vertical and top is same</p>
+          <p>syln
+          : number of syllables on line</p>
+          <p>li
+          : line index (first physical line in file is 1)</p>
+          <p>lleft, lcenter, lright
+          : line left, horizontal center and right edges, taking margins and alignment into account, rounded to an integer value</p>
+          <p>ltop, lmiddle, lbottom
+          : line top, vertical middle and bottom edges, taking margins and alignment into account, rounded</p>
+          <p>lx, ly
+          : line x and y position suitable for a \pos command when alignment is not overridden</p>
+          <p>lwidth, lheight
+          : line width and height in pixels, this is rounded and might not match exactly with the positioning variables</p>
+          <h4 id="syllable-variants">Syllable variants</h4>
+          <p>sstart, send, smid
+          : syllable start, end and midway times relative to start of line, suitable for putting into \t and \move</p>
+          <p>sdur, skdur
+          : syllable duration in milliseconds and centiseconds</p>
+          <p>si
+          : syllable index from start of line</p>
+          <p>sleft, scenter, sright
+          : absolute left, horizontal center and right edges for syllable from left edge of screen, suitable directly for \pos and \move</p>
+          <p>sbottom, smiddle, stop
+          : absolute bottom, vertical middle and top edges for syllable from top edge of screen, suitable directly for \pos and \move, adjusted for furigana positioning if needed</p>
+          <p>sx, sy
+          : syllable absolute x and y position in default alignment, suitable for using directly in \pos and \move</p>
+          <p>swidth, sheight
+          : syllable width and height in pixelsthis is rounded and might not match exactly with the positioning variables</p>
+          <h4 id="automatic-variants">Automatic variants</h4>
+          <p>start, end, mid
+          : start and and midway time for line/syllable; absolute for lines and relative for syllables</p>
+          <p>dur, kdur
+          : duration in milliseconds and centiseconds of line/syllable</p>
+          <p>i
+          : line or syllable index</p>
+          <p>left, center, right
+          : left, center and right edges of line/syllable, absolute from left screen edge</p>
+          <p>top, middle, bottom
+          : top middle and bottom edges of line/syllable, absolute from top screen edge</p>
+          <p>x, y
+          : x and y position of line/syllable when using default alignment</p>
+          <p>width, height
+          : width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

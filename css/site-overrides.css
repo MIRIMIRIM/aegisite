@@ -32,3 +32,83 @@ html:not([data-theme-mode]) #mode .theme-auto,
 [data-global-alert="closed"] #announcement {
   display: none !important;
 }
+
+/* Docs: restore readable sidebar + on-this-page layout after Lunet migration */
+.docs-sidebar .docs-links {
+  padding-right: 0.75rem;
+}
+
+.docs-sidebar .collapsible-sidebar {
+  margin-top: 0.5rem;
+}
+
+.docs-sidebar .btn-toggle {
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+}
+
+.docs-sidebar .docs-link.active {
+  color: var(--bs-link-color, #5d2f86);
+  font-weight: 600;
+}
+
+.docs-content {
+  min-width: 0;
+  padding-left: 0.25rem;
+}
+
+@media (min-width: 992px) {
+  .docs-content {
+    padding-left: 1.25rem;
+  }
+}
+
+.docs-toc .page-links,
+.docs-toc-mobile .page-links {
+  padding-left: 0.75rem;
+}
+
+.docs-toc .page-links h3,
+.docs-toc-mobile .page-links h3 {
+  margin-top: 0.25rem;
+  padding-top: 0;
+}
+
+.docs-toc .page-links ul,
+.docs-toc-mobile .page-links ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.docs-toc .page-links li ul,
+.docs-toc-mobile .page-links li ul {
+  padding-left: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.docs-toc .page-links a,
+.docs-toc-mobile .page-links a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.2rem 0;
+}
+
+.docs-toc .page-links a:hover,
+.docs-toc-mobile .page-links a:hover {
+  color: var(--bs-link-color, #5d2f86);
+}
+
+.docs-toc-mobile {
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+  background: var(--bs-body-bg, #fff);
+}
+
+[data-dark-mode] .docs-toc-mobile {
+  background: transparent;
+}

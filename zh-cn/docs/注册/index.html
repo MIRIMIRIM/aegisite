@@ -288,215 +288,419 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>注册</h1>
-                <p><strong>注册</strong> 涵盖了以下内容：使你自己编写的Lua脚本<a href="/aegisite/zh-cn/docs/lua-%E7%9B%B8%E5%85%B3">Automation 4
-                Lua</a>出现在Aegisub中、
-                提供和脚本有关的信息、该脚本提供了什么样的 <em>特性</em>。</p>
-                <h2 id="有关特性feature的解释">有关特性(Feature)的解释</h2>
-                <p>Automation 4 中的一个最基础的概念就是 <em>特性</em>
-                。特性决定了Aegisub如何响应用户的动作去调用脚本。</p>
-                <p>特性不是简单的回调。它通常是一组几个回调函数,以及如何在GUI中向用户呈现它们的一些信息。</p>
-                <p>一种特性的类型是 <strong>macro</strong>
-                (宏)，宏会被作为一个小项展示在自动化菜单中，它有一个名字(即菜单中显示的内容)，
-                一段描述(当鼠标悬停在该项时，状态栏显示的说明文本)，一个处理函数(当用户点按该项时执行的函数)
-                还有一个可选的有效性确认函数(决定这个宏在当前状态下是否可以运行，如：卡拉OK模板执行器就具有这个属性，如果检测不到template行，该项为灰色不可用)</p>
-                <p>另外一种特性是 <strong>export
-                filter</strong>(导出滤镜)。导出滤镜会被展示在<a href="/aegisite/zh-cn/docs/%E5%AF%BC%E5%87%BA">Export</a>
-                对话框中，在进行导出操作时被应用
-                导出滤镜也有名字、描述、处理函数，同时提供了配置面板函数。使用配置面板函数可以返回一个配置面板对话框，
-                在执行导出滤镜的时候会被展示给用户，在配置面板中输入的参数和配置可以传递给处理函数作为参数。</p>
-                <h2 id="全局脚本信息变量">全局脚本信息变量</h2>
-                <p>一个脚本中，可以设置一些全局变量，来给Aegisub提供一些元数据。
-                这些全局变量会被展示在<a href="/aegisite/zh-cn/docs/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Automation Manager</a>
-                对话框中和脚本信息对话框中。</p>
-                <ul>
-                <li><strong>script_name</strong> (脚本名，字符串) - 脚本的名称，应尽量简洁</li>
-                <li><strong>script_description</strong> (脚本描述，字符串) -
-                描述该脚本可以达成什么目的，也不建议太长。</li>
-                <li><strong>script_version</strong> (脚本版本号，字符串或数字) - 脚本的版本号</li>
-                <li><strong>script_author</strong> (脚本作者，字符串) - 脚本作者信息</li>
-                </ul>
-                <p>上述的变量均为可选项，即使一个脚本头部没有定义这些变量，Aegisub也会调取文件名来显示。</p>
-                <h2 id="注册函数">注册函数</h2>
-                <p>注册函数是指一些Automation 4 提供的现成 Lua
-                函数，可以方便你把一项特性变为Aegisub可用的形式
-                你经常会在顶部或者底部调用它。</p>
-                <h3 id="aegisubregister_macro">aegisub.register_macro</h3>
-                <p>摘要:
-                <code>aegisub.register_macro(name, description, processing_function, validation_function, is_active_function)</code></p>
-                <p>将脚本注册成为一个具有marco(宏)特性的项。</p>
-                <ul>
-                <li><p><strong>name</strong> (名称，字符串) - 自动化 菜单中显示出来的名字。尽量简洁。</p>
-                <p>如果名字中有向前斜杠(/)，名字会被斜杠分开，斜杠后的内容在自动化菜单中表现为子项。
-                例如，如果你注册了宏 &quot;Foo/Bar&quot; 和 &quot;Foo/Baz&quot;，自动化菜单中，
-                &quot;Foo&quot; 下会有 &quot;Bar&quot; 和 &quot;Baz&quot; 两个子项。</p>
-                <p>菜单可以支持多级的嵌套，不过多级嵌套不是什么好主意</p>
-                </li>
-                <li><p><strong>description</strong> (描述，字符串) -
-                当鼠标悬停在该项时，状态栏显示的说明文本。
-                建议这部分写的简明直接，描述清楚该脚本是做什么的。</p>
-                </li>
-                <li><p><strong>processing_function</strong> (处理函数，函数) -
-                当用户点击了这项时，调用的处理函数 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#macroprocessingfunction/">macro processing function
-                API</a>.。</p>
-                </li>
-                <li><p><strong>validation_function</strong> (有效性检测函数，函数, 可选) -
-                这个函数被用来检测当前项是否可用。
-                (灰色还是正常)。如果不设置该函数，宏则一直处于可用状态。
-                这个函数遵循 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#macrovalidationfunction/">macro validation function
-                API</a> 中的说明。</p>
-                </li>
-                <li><p><strong>is_active_function</strong> (活动检测函数，函数, 可选) -
-                这个函数会在当前可用项的左侧显示一个对勾。 规则同有效检测函数</p>
-                </li>
-                </ul>
-                <h3 id="aegisubregister_filter">aegisub.register_filter</h3>
-                <p>摘要:
-                <code>aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)</code></p>
-                <p>将脚本注册成为一个具有filter(滤镜)特性的项。</p>
-                <ul>
-                <li><p><strong>name</strong> (名称，字符串) - 在 导出滤镜
-                列表中呈现的名称，应尽可能简洁。</p>
-                </li>
-                <li><p><strong>description</strong> (描述，字符串) -
-                当用户选中该导出滤镜时，在描述框中显示的描述文字。</p>
-                </li>
-                <li><p><strong>priority</strong> (优先级，数字) -
-                决定导出滤镜的应用顺序。高优先级的滤镜会被优先应用。 用户可以在 导出
-                对话框中修改顺序。 Aegisub内置导出滤镜的优先级顺序:</p>
-                <ul>
-                <li>帧率转换 = 1000 (卡拉OK效果应该比这个有更高的优先级)</li>
-                <li>清除脚本信息 = 0
-                (你的脚本可能依赖于这个脚本会清理掉的信息，所以它最后被应用)</li>
-                <li>修复样式 = -5000 (一般总是最后运行)</li>
-                </ul>
-                </li>
-                <li><p><strong>processing_function</strong> (处理函数，函数) -
-                当用户执行导出操作时调用的处理函数。 这个函数需要符合 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#exportfilterprocessingfunction/">export filter
-                processing function
-                API</a>的要求。</p>
-                </li>
-                <li><p><strong>configuration_panel_provider</strong> (配置面板函数，函数，可选) -
-                为导出滤镜提供了配置面板的函数
-                如果不写这个函数，导出滤镜不会具有配置面板。需要遵循 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#exportfilterconfigurationpanelprovider/">export filter
-                configuration panel provider
-                API</a> 的要求。</p>
-                </li>
-                </ul>
-                <h2 id="feature-callback-functions">Feature callback functions</h2>
-                <p>These are the callback functions you provide to the registration functions.</p>
-                <h3 id="macro-processing-function">Macro processing function</h3>
-                <p>Signature: <code>process_macro(subtitles, selected_lines, active_line)</code></p>
-                <p>Macro processing functions passed to
-                <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_macro/"><code>aegisub.register_macro</code></a>
-                must have this signature. The name <code>process_macro</code> is a placeholder for your
-                own function name.</p>
-                <ul>
-                <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> you use to manipulate
-                the subtitles with.</li>
-                <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
-                The values in this table are line indexes in the <em>subtitles</em> object at its
-                initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
-                <li><strong>active_line</strong> (number) - The line that is currently available for
-                editing in the subtitle editing area. This is an index into the
-                <em>subtitles</em> object. This line will usually also be selected, but this is
-                not a strict requirement.</li>
-                </ul>
-                <p><strong>Return value:</strong>
-                The macro processing function can return up to two values: a new
-                <code>selected_lines</code> table containing indices of the lines to select after the
-                macro returns, and an index of the line to make the new <code>active_line</code>. If
-                set, the new active line index must be one of the lines in the new
-                <code>selected_lines</code> table.</p>
-                <h3 id="macro-validation-function">Macro validation function</h3>
-                <p>Signature: <code>validate_macro(subtitles, selected_lines, active_line)</code></p>
-                <p>Macro validation functions passed to
-                <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_macro/"><code>aegisub.register_macro</code></a>
-                must have this signature. The name <code>validate_macro</code> is a placeholder for
-                your own function name.</p>
-                <p><strong>Important, execution time:</strong> Validation functions should always run very
-                fast. Do as little work as possible inside this function, because it is run
-                every time the user pulls open the Automation menu, and every millisecond
-                you spend in <code>validate_macro</code> is one millisecond delay in opening the menu.
-                Consider that the user might have very large files open. Don't block the UI.</p>
-                <ul>
-                <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> for the current subtitle
-                file. This is <strong>read-only</strong>. You cannot modify the subtitles in the
-                validation function, and attempting to do so will cause a run-time error.</li>
-                <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
-                The values in this table are line indexes in the <em>subtitles</em> object at its
-                initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
-                <li><strong>active_line</strong> (number) - The line that is currently available for
-                editing in the subtitle editing area. This is an index into the
-                <em>subtitles</em> object.</li>
-                </ul>
-                <p><strong>Return value:</strong>
-                Boolean, <code>true</code> if the macro can run given the current
-                state of <em>subtitles</em>, <em>selected_lines</em> and <em>active_line</em>, <code>false</code> if it can
-                not.</p>
-                <p>In addition to the primary return value, the validation function can return
-                a string. If it does, the description of the macro is set to the string.
-                This is intended for reporting information to the user about why the macro
-                cannot be run, but there may be more uses for it.</p>
-                <h3 id="export-filter-processing-function">Export filter processing function</h3>
-                <p>Signature: <code>process_filter(subtitles, settings)</code></p>
-                <p>Export filter processing functions passed to
-                <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_filter/"><code>aegisub.register_filter</code></a>
-                must have this signature. The name <code>process_filter</code> is a placeholder for
-                your own function name.</p>
-                <p>You do not have to worry about undo issues with export filters. You always
-                work on a copy of the subtitle file.</p>
-                <ul>
-                <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> you use to manipulate
-                the subtitles with. This is a copy of the open subtitles file, so
-                modifying this subtitles object does not modify the open file and will
-                only affect the exported file.</li>
-                <li><strong>settings</strong> (table) - Configuration settings entered into the
-                configuration panel or an empty table if there is no configuration panel.
-                See the page on <a href="/aegisite/zh-cn/docs/%E5%AF%B9%E8%AF%9D%E6%A1%86">configuration dialogues</a> for more information
-                on the format of this table.</li>
-                </ul>
-                <p><strong>Return value:</strong>
-                Nothing.</p>
-                <h3 id="export-filter-configuration-panel-provider">Export filter configuration panel provider</h3>
-                <p>Signature: <code>get_filter_configuration_panel(subtitles, old_settings)</code></p>
-                <p>Export filter configuration panel providers passed to
-                <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_filter/"><code>aegisub.register_filter</code></a>
-                must have this signature. The name <code>get_filter_configuration_panel</code> is a
-                placeholder for your own function name.</p>
-                <p><strong>Important, execution time:</strong>
-                This function is called automatically when
-                the user opens the Export dialogue, and Aegisub blocks until it returns with
-                a configuration panel. Consider that the user might have a very large file
-                open, and that every millisecond spent creating your configuration dialogue
-                is one more millisecond the user has to wait for the Export dialogue to
-                open. Don't block the UI.</p>
-                <ul>
-                <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> for the current subtitle
-                file. This is <strong>read-only</strong>. You cannot modify the subtitles in the filter
-                configuration provider. Attempting to modify the subtitles will cause a
-                run-time error.</li>
-                <li><strong>old_settings</strong> (table) - Previous configuration settings entered into
-                the configuration panel, if any. When an Automation 4 export filter is
-                run, any configuration settings are automatically stored to the original
-                file. If any stored settings exist for this filter, they are passed as
-                <em>old_settings</em> so you can use them as a base for filling in defaults.</li>
-                </ul>
-                <p><strong>Return value:</strong>
-                A configuration dialogue table. See the page on
-                <a href="/aegisite/zh-cn/docs/%E5%AF%B9%E8%AF%9D%E6%A1%86">configuration dialogues</a> for
-                more information on the format of this table.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  导航
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  介绍
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            教程
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  制作字幕
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  排版
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  时间轴
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  自动化
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            卡拉OK模版执行器
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="true">
+                            Lua 相关
+                          </button>
+                          <div class="collapse show" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
+                                  <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua模块
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  杂项
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>本页目录</h3>
+            <nav class="toc-nav" aria-label="本页目录">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>注册</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>本页目录</h3>
+              <nav class="toc-nav" aria-label="本页目录">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p><strong>注册</strong> 涵盖了以下内容：使你自己编写的Lua脚本<a href="/aegisite/zh-cn/docs/lua-%E7%9B%B8%E5%85%B3">Automation 4
+          Lua</a>出现在Aegisub中、
+          提供和脚本有关的信息、该脚本提供了什么样的 <em>特性</em>。</p>
+          <h2 id="有关特性feature的解释">有关特性(Feature)的解释</h2>
+          <p>Automation 4 中的一个最基础的概念就是 <em>特性</em>
+          。特性决定了Aegisub如何响应用户的动作去调用脚本。</p>
+          <p>特性不是简单的回调。它通常是一组几个回调函数,以及如何在GUI中向用户呈现它们的一些信息。</p>
+          <p>一种特性的类型是 <strong>macro</strong>
+          (宏)，宏会被作为一个小项展示在自动化菜单中，它有一个名字(即菜单中显示的内容)，
+          一段描述(当鼠标悬停在该项时，状态栏显示的说明文本)，一个处理函数(当用户点按该项时执行的函数)
+          还有一个可选的有效性确认函数(决定这个宏在当前状态下是否可以运行，如：卡拉OK模板执行器就具有这个属性，如果检测不到template行，该项为灰色不可用)</p>
+          <p>另外一种特性是 <strong>export
+          filter</strong>(导出滤镜)。导出滤镜会被展示在<a href="/aegisite/zh-cn/docs/%E5%AF%BC%E5%87%BA">Export</a>
+          对话框中，在进行导出操作时被应用
+          导出滤镜也有名字、描述、处理函数，同时提供了配置面板函数。使用配置面板函数可以返回一个配置面板对话框，
+          在执行导出滤镜的时候会被展示给用户，在配置面板中输入的参数和配置可以传递给处理函数作为参数。</p>
+          <h2 id="全局脚本信息变量">全局脚本信息变量</h2>
+          <p>一个脚本中，可以设置一些全局变量，来给Aegisub提供一些元数据。
+          这些全局变量会被展示在<a href="/aegisite/zh-cn/docs/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Automation Manager</a>
+          对话框中和脚本信息对话框中。</p>
+          <ul>
+          <li><strong>script_name</strong> (脚本名，字符串) - 脚本的名称，应尽量简洁</li>
+          <li><strong>script_description</strong> (脚本描述，字符串) -
+          描述该脚本可以达成什么目的，也不建议太长。</li>
+          <li><strong>script_version</strong> (脚本版本号，字符串或数字) - 脚本的版本号</li>
+          <li><strong>script_author</strong> (脚本作者，字符串) - 脚本作者信息</li>
+          </ul>
+          <p>上述的变量均为可选项，即使一个脚本头部没有定义这些变量，Aegisub也会调取文件名来显示。</p>
+          <h2 id="注册函数">注册函数</h2>
+          <p>注册函数是指一些Automation 4 提供的现成 Lua
+          函数，可以方便你把一项特性变为Aegisub可用的形式
+          你经常会在顶部或者底部调用它。</p>
+          <h3 id="aegisubregister_macro">aegisub.register_macro</h3>
+          <p>摘要:
+          <code>aegisub.register_macro(name, description, processing_function, validation_function, is_active_function)</code></p>
+          <p>将脚本注册成为一个具有marco(宏)特性的项。</p>
+          <ul>
+          <li><p><strong>name</strong> (名称，字符串) - 自动化 菜单中显示出来的名字。尽量简洁。</p>
+          <p>如果名字中有向前斜杠(/)，名字会被斜杠分开，斜杠后的内容在自动化菜单中表现为子项。
+          例如，如果你注册了宏 &quot;Foo/Bar&quot; 和 &quot;Foo/Baz&quot;，自动化菜单中，
+          &quot;Foo&quot; 下会有 &quot;Bar&quot; 和 &quot;Baz&quot; 两个子项。</p>
+          <p>菜单可以支持多级的嵌套，不过多级嵌套不是什么好主意</p>
+          </li>
+          <li><p><strong>description</strong> (描述，字符串) -
+          当鼠标悬停在该项时，状态栏显示的说明文本。
+          建议这部分写的简明直接，描述清楚该脚本是做什么的。</p>
+          </li>
+          <li><p><strong>processing_function</strong> (处理函数，函数) -
+          当用户点击了这项时，调用的处理函数 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#macroprocessingfunction/">macro processing function
+          API</a>.。</p>
+          </li>
+          <li><p><strong>validation_function</strong> (有效性检测函数，函数, 可选) -
+          这个函数被用来检测当前项是否可用。
+          (灰色还是正常)。如果不设置该函数，宏则一直处于可用状态。
+          这个函数遵循 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#macrovalidationfunction/">macro validation function
+          API</a> 中的说明。</p>
+          </li>
+          <li><p><strong>is_active_function</strong> (活动检测函数，函数, 可选) -
+          这个函数会在当前可用项的左侧显示一个对勾。 规则同有效检测函数</p>
+          </li>
+          </ul>
+          <h3 id="aegisubregister_filter">aegisub.register_filter</h3>
+          <p>摘要:
+          <code>aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)</code></p>
+          <p>将脚本注册成为一个具有filter(滤镜)特性的项。</p>
+          <ul>
+          <li><p><strong>name</strong> (名称，字符串) - 在 导出滤镜
+          列表中呈现的名称，应尽可能简洁。</p>
+          </li>
+          <li><p><strong>description</strong> (描述，字符串) -
+          当用户选中该导出滤镜时，在描述框中显示的描述文字。</p>
+          </li>
+          <li><p><strong>priority</strong> (优先级，数字) -
+          决定导出滤镜的应用顺序。高优先级的滤镜会被优先应用。 用户可以在 导出
+          对话框中修改顺序。 Aegisub内置导出滤镜的优先级顺序:</p>
+          <ul>
+          <li>帧率转换 = 1000 (卡拉OK效果应该比这个有更高的优先级)</li>
+          <li>清除脚本信息 = 0
+          (你的脚本可能依赖于这个脚本会清理掉的信息，所以它最后被应用)</li>
+          <li>修复样式 = -5000 (一般总是最后运行)</li>
+          </ul>
+          </li>
+          <li><p><strong>processing_function</strong> (处理函数，函数) -
+          当用户执行导出操作时调用的处理函数。 这个函数需要符合 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#exportfilterprocessingfunction/">export filter
+          processing function
+          API</a>的要求。</p>
+          </li>
+          <li><p><strong>configuration_panel_provider</strong> (配置面板函数，函数，可选) -
+          为导出滤镜提供了配置面板的函数
+          如果不写这个函数，导出滤镜不会具有配置面板。需要遵循 <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#exportfilterconfigurationpanelprovider/">export filter
+          configuration panel provider
+          API</a> 的要求。</p>
+          </li>
+          </ul>
+          <h2 id="feature-callback-functions">Feature callback functions</h2>
+          <p>These are the callback functions you provide to the registration functions.</p>
+          <h3 id="macro-processing-function">Macro processing function</h3>
+          <p>Signature: <code>process_macro(subtitles, selected_lines, active_line)</code></p>
+          <p>Macro processing functions passed to
+          <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_macro/"><code>aegisub.register_macro</code></a>
+          must have this signature. The name <code>process_macro</code> is a placeholder for your
+          own function name.</p>
+          <ul>
+          <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> you use to manipulate
+          the subtitles with.</li>
+          <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
+          The values in this table are line indexes in the <em>subtitles</em> object at its
+          initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
+          <li><strong>active_line</strong> (number) - The line that is currently available for
+          editing in the subtitle editing area. This is an index into the
+          <em>subtitles</em> object. This line will usually also be selected, but this is
+          not a strict requirement.</li>
+          </ul>
+          <p><strong>Return value:</strong>
+          The macro processing function can return up to two values: a new
+          <code>selected_lines</code> table containing indices of the lines to select after the
+          macro returns, and an index of the line to make the new <code>active_line</code>. If
+          set, the new active line index must be one of the lines in the new
+          <code>selected_lines</code> table.</p>
+          <h3 id="macro-validation-function">Macro validation function</h3>
+          <p>Signature: <code>validate_macro(subtitles, selected_lines, active_line)</code></p>
+          <p>Macro validation functions passed to
+          <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_macro/"><code>aegisub.register_macro</code></a>
+          must have this signature. The name <code>validate_macro</code> is a placeholder for
+          your own function name.</p>
+          <p><strong>Important, execution time:</strong> Validation functions should always run very
+          fast. Do as little work as possible inside this function, because it is run
+          every time the user pulls open the Automation menu, and every millisecond
+          you spend in <code>validate_macro</code> is one millisecond delay in opening the menu.
+          Consider that the user might have very large files open. Don't block the UI.</p>
+          <ul>
+          <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> for the current subtitle
+          file. This is <strong>read-only</strong>. You cannot modify the subtitles in the
+          validation function, and attempting to do so will cause a run-time error.</li>
+          <li><strong>selected_lines</strong> (table) - An array with indexes of the selected lines.
+          The values in this table are line indexes in the <em>subtitles</em> object at its
+          initial state. Only <code>dialogue</code> class lines can ever be selected.</li>
+          <li><strong>active_line</strong> (number) - The line that is currently available for
+          editing in the subtitle editing area. This is an index into the
+          <em>subtitles</em> object.</li>
+          </ul>
+          <p><strong>Return value:</strong>
+          Boolean, <code>true</code> if the macro can run given the current
+          state of <em>subtitles</em>, <em>selected_lines</em> and <em>active_line</em>, <code>false</code> if it can
+          not.</p>
+          <p>In addition to the primary return value, the validation function can return
+          a string. If it does, the description of the macro is set to the string.
+          This is intended for reporting information to the user about why the macro
+          cannot be run, but there may be more uses for it.</p>
+          <h3 id="export-filter-processing-function">Export filter processing function</h3>
+          <p>Signature: <code>process_filter(subtitles, settings)</code></p>
+          <p>Export filter processing functions passed to
+          <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_filter/"><code>aegisub.register_filter</code></a>
+          must have this signature. The name <code>process_filter</code> is a placeholder for
+          your own function name.</p>
+          <p>You do not have to worry about undo issues with export filters. You always
+          work on a copy of the subtitle file.</p>
+          <ul>
+          <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> you use to manipulate
+          the subtitles with. This is a copy of the open subtitles file, so
+          modifying this subtitles object does not modify the open file and will
+          only affect the exported file.</li>
+          <li><strong>settings</strong> (table) - Configuration settings entered into the
+          configuration panel or an empty table if there is no configuration panel.
+          See the page on <a href="/aegisite/zh-cn/docs/%E5%AF%B9%E8%AF%9D%E6%A1%86">configuration dialogues</a> for more information
+          on the format of this table.</li>
+          </ul>
+          <p><strong>Return value:</strong>
+          Nothing.</p>
+          <h3 id="export-filter-configuration-panel-provider">Export filter configuration panel provider</h3>
+          <p>Signature: <code>get_filter_configuration_panel(subtitles, old_settings)</code></p>
+          <p>Export filter configuration panel providers passed to
+          <a href="/aegisite/zh-cn/docs/%E6%B3%A8%E5%86%8C#aegisub.register_filter/"><code>aegisub.register_filter</code></a>
+          must have this signature. The name <code>get_filter_configuration_panel</code> is a
+          placeholder for your own function name.</p>
+          <p><strong>Important, execution time:</strong>
+          This function is called automatically when
+          the user opens the Export dialogue, and Aegisub blocks until it returns with
+          a configuration panel. Consider that the user might have a very large file
+          open, and that every millisecond spent creating your configuration dialogue
+          is one more millisecond the user has to wait for the Export dialogue to
+          open. Don't block the UI.</p>
+          <ul>
+          <li><strong>subtitles</strong> (user data) - The <a href="/aegisite/zh-cn/docs/%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3">subtitles object</a> for the current subtitle
+          file. This is <strong>read-only</strong>. You cannot modify the subtitles in the filter
+          configuration provider. Attempting to modify the subtitles will cause a
+          run-time error.</li>
+          <li><strong>old_settings</strong> (table) - Previous configuration settings entered into
+          the configuration panel, if any. When an Automation 4 export filter is
+          run, any configuration settings are automatically stored to the original
+          file. If any stored settings exist for this filter, they are passed as
+          <em>old_settings</em> so you can use them as a base for filling in defaults.</li>
+          </ul>
+          <p><strong>Return value:</strong>
+          A configuration dialogue table. See the page on
+          <a href="/aegisite/zh-cn/docs/%E5%AF%B9%E8%AF%9D%E6%A1%86">configuration dialogues</a> for
+          more information on the format of this table.</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

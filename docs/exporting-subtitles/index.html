@@ -288,40 +288,244 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Exporting Subtitles</h1>
-                <p>In addition to the normal &quot;Save&quot; and &quot;Save as&quot; functions, Aegisub also has an &quot;Export&quot; feature, which can transform the entire script through various export filters. This is used for a number of things ranging from framerate conversions over karaoke effect generation to just saving to other formats and/or character sets.</p>
-                <h2 id="the-export-dialog">The export dialog</h2>
-                <p><img src="/aegisite/img/3.2/Export.png#center" class="img-fluid" alt="Export" /></p>
-                <p>The upper half of the window contains the available filters. Ticking one or more of them will apply them in the order they are listed; use the move up/down buttons to change the order. The lower half contains a brief description of the selected filter.</p>
-                <p>Some filters have configuration parameters; those that do will extend the window to the right and put any settings controls there.</p>
-                <p>The dropdown menu at the bottom controls what text encoding will be used for the exported file. May be useful for exporting to legacy programs that do not support Unicode.</p>
-                <p>When you click the &quot;Export&quot; button, do note that you can choose other formats than ASS to save to. Also note that this will almost always mean that a lot of formatting tags will be stripped.</p>
-                <h2 id="filters">Filters</h2>
-                <p>The following filters are available in the default installation:</p>
-                <h3 id="limit-to-visible-lines">Limit to visible lines</h3>
-                <p>Exports only the lines that are currently visible on the active video frame. Does nothing if you do not have video loaded. Script headers and styles etc. are also exported.</p>
-                <h3 id="karaoke-template">Karaoke template</h3>
-                <p>Filters the script through the automation script &quot;karaoke templater&quot; to generate karaoke effects. See the <a href="/aegisite/docs/karaoke-templater">karaoke templater</a> and <a href="/aegisite/docs/automation-overview">automation overview</a> pages for further details.</p>
-                <h3 id="transform-framerate">Transform framerate</h3>
-                <p>In &quot;constant&quot; output mode, recalculates every single timestamp in the script (including ones contained in <a href="/aegisite/docs/ass-override-tags">override tags</a>) to work with a new framerate. Note that this means that the entire script will be &quot;sped up&quot; or &quot;slowed down&quot;. Can be used for NTSC-&gt;PAL conversions or vice versa.</p>
-                <p>In &quot;variable&quot; output mode, uses the framerate of the loaded video (or the specified one, if different from the video's) and the loaded timecodes to recalculate every single timestamp in the script so that the exported subtitles can be hardsubbed on the loaded video and still sync up after timecodes are taken into account. Does nothing if you do not have timecodes loaded. See <a href="/aegisite/docs/working-with-video#variable-framerate-video/">variable framerate video</a> for further details.</p>
-                <h3 id="clean-tags">Clean tags</h3>
-                <p>Filters the script through the &quot;clean tags&quot; automation script, which tries to clean up the override tag blocks by concatenating adjacent blocks and removing redundant tags (more specifically, the second instance of tags that can only be specified once per line).</p>
-                <h3 id="clean-script-info">Clean script info</h3>
-                <p>Cleans the script headers by removing all lines that are not absolutely essential for proper display of the script. If you're paranoid, you should consider using this for scripts that you plan on distributing in the original form, since Aegisub stores things like the path to the last opened video/audio etc. in the script headers.</p>
-                <h3 id="fix-styles">Fix styles</h3>
-                <p>Goes through all the lines of the script and checks what style they use; any lines that use a style that isn't available in the current script is replaced with Default.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="true">
+                  Working with Subtitles
+                </button>
+                <div class="collapse show" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded active" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  Automation
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Exporting Subtitles</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>In addition to the normal &quot;Save&quot; and &quot;Save as&quot; functions, Aegisub also has an &quot;Export&quot; feature, which can transform the entire script through various export filters. This is used for a number of things ranging from framerate conversions over karaoke effect generation to just saving to other formats and/or character sets.</p>
+          <h2 id="the-export-dialog">The export dialog</h2>
+          <p><img src="/aegisite/img/3.2/Export.png#center" class="img-fluid" alt="Export" /></p>
+          <p>The upper half of the window contains the available filters. Ticking one or more of them will apply them in the order they are listed; use the move up/down buttons to change the order. The lower half contains a brief description of the selected filter.</p>
+          <p>Some filters have configuration parameters; those that do will extend the window to the right and put any settings controls there.</p>
+          <p>The dropdown menu at the bottom controls what text encoding will be used for the exported file. May be useful for exporting to legacy programs that do not support Unicode.</p>
+          <p>When you click the &quot;Export&quot; button, do note that you can choose other formats than ASS to save to. Also note that this will almost always mean that a lot of formatting tags will be stripped.</p>
+          <h2 id="filters">Filters</h2>
+          <p>The following filters are available in the default installation:</p>
+          <h3 id="limit-to-visible-lines">Limit to visible lines</h3>
+          <p>Exports only the lines that are currently visible on the active video frame. Does nothing if you do not have video loaded. Script headers and styles etc. are also exported.</p>
+          <h3 id="karaoke-template">Karaoke template</h3>
+          <p>Filters the script through the automation script &quot;karaoke templater&quot; to generate karaoke effects. See the <a href="/aegisite/docs/karaoke-templater">karaoke templater</a> and <a href="/aegisite/docs/automation-overview">automation overview</a> pages for further details.</p>
+          <h3 id="transform-framerate">Transform framerate</h3>
+          <p>In &quot;constant&quot; output mode, recalculates every single timestamp in the script (including ones contained in <a href="/aegisite/docs/ass-override-tags">override tags</a>) to work with a new framerate. Note that this means that the entire script will be &quot;sped up&quot; or &quot;slowed down&quot;. Can be used for NTSC-&gt;PAL conversions or vice versa.</p>
+          <p>In &quot;variable&quot; output mode, uses the framerate of the loaded video (or the specified one, if different from the video's) and the loaded timecodes to recalculate every single timestamp in the script so that the exported subtitles can be hardsubbed on the loaded video and still sync up after timecodes are taken into account. Does nothing if you do not have timecodes loaded. See <a href="/aegisite/docs/working-with-video#variable-framerate-video/">variable framerate video</a> for further details.</p>
+          <h3 id="clean-tags">Clean tags</h3>
+          <p>Filters the script through the &quot;clean tags&quot; automation script, which tries to clean up the override tag blocks by concatenating adjacent blocks and removing redundant tags (more specifically, the second instance of tags that can only be specified once per line).</p>
+          <h3 id="clean-script-info">Clean script info</h3>
+          <p>Cleans the script headers by removing all lines that are not absolutely essential for proper display of the script. If you're paranoid, you should consider using this for scripts that you plan on distributing in the original form, since Aegisub stores things like the path to the last opened video/audio etc. in the script headers.</p>
+          <h3 id="fix-styles">Fix styles</h3>
+          <p>Goes through all the lines of the script and checks what style they use; any lines that use a style that isn't available in the current script is replaced with Default.</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

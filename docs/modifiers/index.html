@@ -288,243 +288,447 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Modifiers</h1>
-                <p>Template lines and code lines can take a number of modifiers.</p>
-                <p>This is a space-separated list of words in the Effect field following the <code>template</code> or <code>code</code> keyword.</p>
-                <p>While modifiers can be combined to some extent, not all are compatible, and not all work on both code lines and for templates.</p>
-                <p>There is a special set of modifiers that declare the class of the template line or code line.</p>
-                <h2 id="class-declaring-modifiers">Class declaring modifiers</h2>
-                <p>Both template lines and code lines can be produced without having a class modifier. Having one is still recommended for clarity, however.</p>
-                <p>A template line without a class modifier is implicitly given the <code>syl</code> modifier.</p>
-                <p>A code line without a class modifier is implicitly given the <code>once</code> modifier.</p>
-                <h3 id="once">once</h3>
-                <p>This class modifier is only valid for code lines.</p>
-                <p>Code lines with the <code>once</code> modifier are run exactly once during Karaoke Templater execution, and are always run before any other code lines or templates. They are run in the order they are declared.</p>
-                <p>&quot;code once&quot; lines are primarily intended to declare functions for use in templates.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code once</u>,function setlayer(newlayer) line.layer = newlayer; return ""; end
-                ```
-                <p>This example declares a new function that changes the Layer field in the output line.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
                 </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
                 </div>
-                <h3 id="line-name">line <em>[name]</em></h3>
-                <p>This class modifier is valid for both code lines and template lines.</p>
-                <p>When used on template lines it takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.</p>
-                <p>Anonymous line templates (with no template name given) can not have pre-line template text.</p>
-                <p>Code lines can not be named, they must be anonymous.</p>
-                <p>Named line template lines append to the template text in the order they appear. The appending of template text happens at template parse time, not at execution time.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code line</u>,fxgroup.funky = line.actor == "funky"
-                ```
-                <p>This code line is run once per input line. It enables/disables an effect group named &quot;funky&quot; depending on the Actor field of the input line.</p>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
                 </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
                 </div>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line</u>,{\r\t($start,$end,\bord0)}
-                ```
-                <p>This template line declares an anonymous line template. The effect produced will transform the border of each syllable to zero during the syllable's duration.</p>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
                 </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  Automation
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="true">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse show" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded active" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
                 </div>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper</u>,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
-                ```
-                <p>This template line appends to a line template named &quot;jumper&quot;  or creates it if it doesn't exist. Together with the pre-line template example given below, this will produce a &quot;jumping&quot; effect for the syllables.</p>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
                 </div>
-                </div>
-                <h3 id="pre-line-name">pre-line <em>[name]</em></h3>
-                <p>This class modifier is only valid for template lines.</p>
-                <p>The <code>pre-line</code> modifier takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.</p>
-                <p>Anonymous line templates with only pre-line text leave the original input line text alone and just prepends the template text to the line.</p>
-                <p>Named pre-line template lines append to the pre-line template text in the order they appear. The appending of template text happens at template parse time, not at execution time.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line</u>,{\be1}
-                ```
-                <p>This template line declares an anonymous line template, that will prepend <code>{\be1}</code>&gt; to all matching lines.</p>
-                </div>
-                </div>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line jumper</u>,{\org(-10000,$y)}
-                ```
-                <p>This template line appends to the pre-line template text of a line template named &quot;jumper&quot;, or creates it if it doesn't exist. Together with the line template example given above, this will produce a &quot;jumping&quot; effect for the syllables.</p>
-                </div>
-                </div>
-                <h3 id="syl">syl</h3>
-                <p>This class modifier is valid for both code lines and template lines.</p>
-                <p>Syl templates can not be named.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\pos($x,$y)}
-                ```
-                <p>This template line declares a syl template that simply positions the syllable text.</p>
-                </div>
-                </div>
-                <h3 id="furi">furi</h3>
-                <p>This class modifier is valid for both code lines and template lines.</p>
-                <p>Furi templates can not be named.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\pos($x,$y)}
-                ```
-                <p>This template line declares a furi template that simply positions the syllable text. It's not needed to do anything further to get correct furigana formatting.</p>
-                </div>
-                </div>
-                <h3 id="syl-furi">syl furi</h3>
-                <p>It's possible to combine the <code>syl</code> and <code>furi</code> class modifiers. This results in two identical templates being generated from the template line, one syl template and one furi template.</p>
-                <p>This is the only possible combination of class modifiers, they are otherwise exclusive.</p>
-                <h2 id="other-modifiers">Other modifiers</h2>
-                <h3 id="all">all</h3>
-                <p>Apply template to all styles, not just the one of the template line.</p>
-                <p>Applicable for both code lines and templates, and for all classes.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>,{\pos($x,$y)}
-                ```
-                <p>This template will be applied to every single syllable in the entire subtitle file, regardless of the style of the line they are on.</p>
-                </div>
-                </div>
-                <h3 id="char">char</h3>
-                <p>Make the template work per-character instead of per-syllable. This changes application order semantics in a significant way, see <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
-                <p>While this will work on code lines, it is generally not useful, see the discussion on execution order.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
-                Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
-                ```
-                <p>Every single character on the line will be positioned separately. For each syllable, each template will apply for all characters in one go, and not be applied interleaved.</p>
-                <p>For example, if there are two syllables, &quot;ab&quot; and &quot;cd&quot;, and the above two templates are applied to them, the result will be 8 lines with the following text, in this order:</p>
-                <pre><code class="language-ass">{\pos($x,$y)}a
-                {\pos($x,$y)}b
-                {\pos($x,$y)\bord0}a
-                {\pos($x,$y)\bord0}b
-                {\pos($x,$y)}c
-                {\pos($x,$y)}d
-                {\pos($x,$y)\bord0}c
-                {\pos($x,$y)\bord0}d
-                </code></pre>
-                </div>
-                </div>
-                <h3 id="fx-name">fx <em>name</em></h3>
-                <p>Make template only apply to syllables that have the named <a href="/aegisite/docs/inline-effects-tutorial">inline-fx</a>. Specifying an inline-fx name is required; the name may also overlap with template modifier names though this is not recommended.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl fx drop</u>,{\move($x,$y,$x,!$y+30!,$start,$end)}
-                ```
-                <p>With this template, all syllables that have the inline-fx &quot;drop&quot; will get an additional line produced, where the syllables moves down 30 pixels during its duration.</p>
-                <p>All other template lines that don't have <em>fx</em> specified will still be applied as usual to those syllables as well.</p>
-                </div>
-                </div>
-                <h3 id="fxgroup-name">fxgroup <em>name</em></h3>
-                <p>Declare template to be in the named effect group. Specifying an effect group name is required; the name may also overlap with template modifier names and Lua reserved words, though this is not recommended.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                There is an example of _fxgroup_ on the [Code execution environment](/docs/execution-environment/#conditional-templates-with-fxgroup/) page.
-                </div>
-                </div>
-                <h3 id="keeptags">keeptags</h3>
-                <p>Specify that the original tags must be kept in the syllable after application.</p>
-                <p>This has no effect when combined with <code>char</code> or <code>multi</code>.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                template line <u>keeptags</u>: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
-                karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
-                ```
-                <p>The syllables &quot;tip&quot; back over a bit during highlight. One of them (&quot;na&quot;) is coloured differently by putting an override tag in the timed karaoke line, but the following syllables don't get it because of the customary <code>\r</code> at the start of the template.</p>
-                <p>The <em>notags</em> modifier ensures that the special colour of the special syllable gets carried over to the output.</p>
-                </div>
-                </div>
-                <h3 id="multi">multi</h3>
-                <p>Make the template apply per-highlight in <a href="/aegisite/docs/furigana-tutorial">multi-highlight</a> timed karaoke. This changes application order semantics in a significant way, see <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
-                <p>While this will work on code lines, it is generally not useful, see the discussion on execution order.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                template syl <u>multi</u>: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
-                karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
-                ```
-                <p>The timed karaoke line uses basic multi-highlight markup, the <code>#</code> syllables, to create multi-highlight syllables. Such, the 風 (ka-ze) and 花 (ha-na) kanji each get stored as a single syllable that gets two highlights each, and the <code>#</code> characters aren't displayed at all in the applied effect. (They will still display if you try to play the timed karaoke line without applying any templates.)</p>
-                <p>The template uses the <em>multi</em> modifier to signal that it wants to use multi-highlights instead of just one highlight/application per displayed syllable. The effect is a kind of simple &quot;exploding border&quot;, but it explodes twice on both the 風 and 花 kanji. If the <em>multi</em> modifier wasn't there, it would only explode once on each.</p>
-                </div>
-                </div>
-                <h3 id="noblank">noblank</h3>
-                <p>Specify that the template will not be applied to syllables considered &quot;blank&quot;. A syllable is considered blank if its tag-stripped text consists only of a combination of ASCII whitespace characters and ideographic fullwidth space characters, or is completely empty. A syllable is also considered empty if its duration is zero.</p>
-                <blockquote class="blockquote">
-                <p><em>See the <em>notext</em> modifier below for an example.</em></p>
-                </blockquote>
-                <h3 id="notext">notext</h3>
-                <p>Specify that the original text will not be appended to the output line.</p>
-                <p>This is intended for use primarily with templates that output drawing tags and similar.</p>
-                <p>Not applicable for code lines.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```plaintext
-                code once: sword_shape = "m 0 0 l 5 -5 l 5 -30 l 10 -30 l 10 -32 l 2 -32 l 2 -40 l -2 -40 l -2 -32 l -10 -32 l -10 -30 l -5 -30 l -5 -5 "
-                template syl notext noblank: {\an5\move($scenter,!$smiddle-30!,$scenter,$smiddle,!$start-20!,$start)\p2}!sword_shape!
-                ```
-                <p>The first code line defines a vector drawing shape for convenience, so it doesn't clutter up the actual template lines later on. The drawing is of a small simple sword pointing downwards. The effect itself is these small swords dropping down onto the syllables, by a move.</p>
-                <p>The template uses the <em>notext</em> modifier to avoid getting the original syllable text shown, because it's being replaced with a vector drawing here. Also the <em>noblank</em> modifier is used to avoid producing anything for &quot;invisible&quot; syllables, eg. we don't want a sword dropping down on a lone timed space, that just looks dumb.</p>
-                </div>
-                </div>
-                <h3 id="repeat-n-loop-n">repeat <em>n</em>, loop <em>n</em></h3>
-                <p>Specify that the template will be applied the given number of times. Specifying the number of loops is required. The number of loops must be a constant integer number, it can not be a variable or otherwise calculated dynamically.</p>
-                <p><code>repeat</code> and <code>loop</code> are synonymous.</p>
-                <p>Note that the execution order of looped line templates and looped syl/furi templates is different. See <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
-                <div class="card">
-                <strong class="card-header">Example</strong>
-                <div class="card-body">
-                ```ass
-                template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&Hc0&\t($start,$end,\alpha&HFF&)}
-                ```
-                <p>The <em>loop</em> modifier is used to created 4 copies of the syllable for each time this template is run. Each of those move in a random direction, up to 30 pixels away in X and Y direction. They also fade out.</p>
-                <p>The starting alpha for each copy, <code>&amp;Hc0</code> is chosen as 256 - (256 / 4), 4 being the number of loops made. This way, the opacity for each copy adds up to exactly 256. (Technically it should be 255, but that can't be achieved with an even number of loops.)</p>
-                </div>
-                </div>
-                <blockquote class="blockquote">
-                <p><em>Also see the examples on the <a href="/aegisite/docs/execution-environment#loopingtemplates/">Code execution environment</a> page for more advanced usage.</em></p>
-                </blockquote>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Modifiers</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>Template lines and code lines can take a number of modifiers.</p>
+          <p>This is a space-separated list of words in the Effect field following the <code>template</code> or <code>code</code> keyword.</p>
+          <p>While modifiers can be combined to some extent, not all are compatible, and not all work on both code lines and for templates.</p>
+          <p>There is a special set of modifiers that declare the class of the template line or code line.</p>
+          <h2 id="class-declaring-modifiers">Class declaring modifiers</h2>
+          <p>Both template lines and code lines can be produced without having a class modifier. Having one is still recommended for clarity, however.</p>
+          <p>A template line without a class modifier is implicitly given the <code>syl</code> modifier.</p>
+          <p>A code line without a class modifier is implicitly given the <code>once</code> modifier.</p>
+          <h3 id="once">once</h3>
+          <p>This class modifier is only valid for code lines.</p>
+          <p>Code lines with the <code>once</code> modifier are run exactly once during Karaoke Templater execution, and are always run before any other code lines or templates. They are run in the order they are declared.</p>
+          <p>&quot;code once&quot; lines are primarily intended to declare functions for use in templates.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code once</u>,function setlayer(newlayer) line.layer = newlayer; return ""; end
+          ```
+          <p>This example declares a new function that changes the Layer field in the output line.</p>
+          </div>
+          </div>
+          <h3 id="line-name">line <em>[name]</em></h3>
+          <p>This class modifier is valid for both code lines and template lines.</p>
+          <p>When used on template lines it takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.</p>
+          <p>Anonymous line templates (with no template name given) can not have pre-line template text.</p>
+          <p>Code lines can not be named, they must be anonymous.</p>
+          <p>Named line template lines append to the template text in the order they appear. The appending of template text happens at template parse time, not at execution time.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code line</u>,fxgroup.funky = line.actor == "funky"
+          ```
+          <p>This code line is run once per input line. It enables/disables an effect group named &quot;funky&quot; depending on the Actor field of the input line.</p>
+          </div>
+          </div>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line</u>,{\r\t($start,$end,\bord0)}
+          ```
+          <p>This template line declares an anonymous line template. The effect produced will transform the border of each syllable to zero during the syllable's duration.</p>
+          </div>
+          </div>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper</u>,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
+          ```
+          <p>This template line appends to a line template named &quot;jumper&quot;  or creates it if it doesn't exist. Together with the pre-line template example given below, this will produce a &quot;jumping&quot; effect for the syllables.</p>
+          </div>
+          </div>
+          <h3 id="pre-line-name">pre-line <em>[name]</em></h3>
+          <p>This class modifier is only valid for template lines.</p>
+          <p>The <code>pre-line</code> modifier takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.</p>
+          <p>Anonymous line templates with only pre-line text leave the original input line text alone and just prepends the template text to the line.</p>
+          <p>Named pre-line template lines append to the pre-line template text in the order they appear. The appending of template text happens at template parse time, not at execution time.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line</u>,{\be1}
+          ```
+          <p>This template line declares an anonymous line template, that will prepend <code>{\be1}</code>&gt; to all matching lines.</p>
+          </div>
+          </div>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line jumper</u>,{\org(-10000,$y)}
+          ```
+          <p>This template line appends to the pre-line template text of a line template named &quot;jumper&quot;, or creates it if it doesn't exist. Together with the line template example given above, this will produce a &quot;jumping&quot; effect for the syllables.</p>
+          </div>
+          </div>
+          <h3 id="syl">syl</h3>
+          <p>This class modifier is valid for both code lines and template lines.</p>
+          <p>Syl templates can not be named.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\pos($x,$y)}
+          ```
+          <p>This template line declares a syl template that simply positions the syllable text.</p>
+          </div>
+          </div>
+          <h3 id="furi">furi</h3>
+          <p>This class modifier is valid for both code lines and template lines.</p>
+          <p>Furi templates can not be named.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\pos($x,$y)}
+          ```
+          <p>This template line declares a furi template that simply positions the syllable text. It's not needed to do anything further to get correct furigana formatting.</p>
+          </div>
+          </div>
+          <h3 id="syl-furi">syl furi</h3>
+          <p>It's possible to combine the <code>syl</code> and <code>furi</code> class modifiers. This results in two identical templates being generated from the template line, one syl template and one furi template.</p>
+          <p>This is the only possible combination of class modifiers, they are otherwise exclusive.</p>
+          <h2 id="other-modifiers">Other modifiers</h2>
+          <h3 id="all">all</h3>
+          <p>Apply template to all styles, not just the one of the template line.</p>
+          <p>Applicable for both code lines and templates, and for all classes.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>,{\pos($x,$y)}
+          ```
+          <p>This template will be applied to every single syllable in the entire subtitle file, regardless of the style of the line they are on.</p>
+          </div>
+          </div>
+          <h3 id="char">char</h3>
+          <p>Make the template work per-character instead of per-syllable. This changes application order semantics in a significant way, see <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
+          <p>While this will work on code lines, it is generally not useful, see the discussion on execution order.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
+          Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
+          ```
+          <p>Every single character on the line will be positioned separately. For each syllable, each template will apply for all characters in one go, and not be applied interleaved.</p>
+          <p>For example, if there are two syllables, &quot;ab&quot; and &quot;cd&quot;, and the above two templates are applied to them, the result will be 8 lines with the following text, in this order:</p>
+          <pre><code class="language-ass">{\pos($x,$y)}a
+          {\pos($x,$y)}b
+          {\pos($x,$y)\bord0}a
+          {\pos($x,$y)\bord0}b
+          {\pos($x,$y)}c
+          {\pos($x,$y)}d
+          {\pos($x,$y)\bord0}c
+          {\pos($x,$y)\bord0}d
+          </code></pre>
+          </div>
+          </div>
+          <h3 id="fx-name">fx <em>name</em></h3>
+          <p>Make template only apply to syllables that have the named <a href="/aegisite/docs/inline-effects-tutorial">inline-fx</a>. Specifying an inline-fx name is required; the name may also overlap with template modifier names though this is not recommended.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl fx drop</u>,{\move($x,$y,$x,!$y+30!,$start,$end)}
+          ```
+          <p>With this template, all syllables that have the inline-fx &quot;drop&quot; will get an additional line produced, where the syllables moves down 30 pixels during its duration.</p>
+          <p>All other template lines that don't have <em>fx</em> specified will still be applied as usual to those syllables as well.</p>
+          </div>
+          </div>
+          <h3 id="fxgroup-name">fxgroup <em>name</em></h3>
+          <p>Declare template to be in the named effect group. Specifying an effect group name is required; the name may also overlap with template modifier names and Lua reserved words, though this is not recommended.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          There is an example of _fxgroup_ on the [Code execution environment](/docs/execution-environment/#conditional-templates-with-fxgroup/) page.
+          </div>
+          </div>
+          <h3 id="keeptags">keeptags</h3>
+          <p>Specify that the original tags must be kept in the syllable after application.</p>
+          <p>This has no effect when combined with <code>char</code> or <code>multi</code>.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          template line <u>keeptags</u>: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
+          karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
+          ```
+          <p>The syllables &quot;tip&quot; back over a bit during highlight. One of them (&quot;na&quot;) is coloured differently by putting an override tag in the timed karaoke line, but the following syllables don't get it because of the customary <code>\r</code> at the start of the template.</p>
+          <p>The <em>notags</em> modifier ensures that the special colour of the special syllable gets carried over to the output.</p>
+          </div>
+          </div>
+          <h3 id="multi">multi</h3>
+          <p>Make the template apply per-highlight in <a href="/aegisite/docs/furigana-tutorial">multi-highlight</a> timed karaoke. This changes application order semantics in a significant way, see <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
+          <p>While this will work on code lines, it is generally not useful, see the discussion on execution order.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          template syl <u>multi</u>: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
+          karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
+          ```
+          <p>The timed karaoke line uses basic multi-highlight markup, the <code>#</code> syllables, to create multi-highlight syllables. Such, the 風 (ka-ze) and 花 (ha-na) kanji each get stored as a single syllable that gets two highlights each, and the <code>#</code> characters aren't displayed at all in the applied effect. (They will still display if you try to play the timed karaoke line without applying any templates.)</p>
+          <p>The template uses the <em>multi</em> modifier to signal that it wants to use multi-highlights instead of just one highlight/application per displayed syllable. The effect is a kind of simple &quot;exploding border&quot;, but it explodes twice on both the 風 and 花 kanji. If the <em>multi</em> modifier wasn't there, it would only explode once on each.</p>
+          </div>
+          </div>
+          <h3 id="noblank">noblank</h3>
+          <p>Specify that the template will not be applied to syllables considered &quot;blank&quot;. A syllable is considered blank if its tag-stripped text consists only of a combination of ASCII whitespace characters and ideographic fullwidth space characters, or is completely empty. A syllable is also considered empty if its duration is zero.</p>
+          <blockquote class="blockquote">
+          <p><em>See the <em>notext</em> modifier below for an example.</em></p>
+          </blockquote>
+          <h3 id="notext">notext</h3>
+          <p>Specify that the original text will not be appended to the output line.</p>
+          <p>This is intended for use primarily with templates that output drawing tags and similar.</p>
+          <p>Not applicable for code lines.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```plaintext
+          code once: sword_shape = "m 0 0 l 5 -5 l 5 -30 l 10 -30 l 10 -32 l 2 -32 l 2 -40 l -2 -40 l -2 -32 l -10 -32 l -10 -30 l -5 -30 l -5 -5 "
+          template syl notext noblank: {\an5\move($scenter,!$smiddle-30!,$scenter,$smiddle,!$start-20!,$start)\p2}!sword_shape!
+          ```
+          <p>The first code line defines a vector drawing shape for convenience, so it doesn't clutter up the actual template lines later on. The drawing is of a small simple sword pointing downwards. The effect itself is these small swords dropping down onto the syllables, by a move.</p>
+          <p>The template uses the <em>notext</em> modifier to avoid getting the original syllable text shown, because it's being replaced with a vector drawing here. Also the <em>noblank</em> modifier is used to avoid producing anything for &quot;invisible&quot; syllables, eg. we don't want a sword dropping down on a lone timed space, that just looks dumb.</p>
+          </div>
+          </div>
+          <h3 id="repeat-n-loop-n">repeat <em>n</em>, loop <em>n</em></h3>
+          <p>Specify that the template will be applied the given number of times. Specifying the number of loops is required. The number of loops must be a constant integer number, it can not be a variable or otherwise calculated dynamically.</p>
+          <p><code>repeat</code> and <code>loop</code> are synonymous.</p>
+          <p>Note that the execution order of looped line templates and looped syl/furi templates is different. See <a href="/aegisite/docs/execution-order">Template execution and order</a> for details.</p>
+          <div class="card">
+          <strong class="card-header">Example</strong>
+          <div class="card-body">
+          ```ass
+          template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&Hc0&\t($start,$end,\alpha&HFF&)}
+          ```
+          <p>The <em>loop</em> modifier is used to created 4 copies of the syllable for each time this template is run. Each of those move in a random direction, up to 30 pixels away in X and Y direction. They also fade out.</p>
+          <p>The starting alpha for each copy, <code>&amp;Hc0</code> is chosen as 256 - (256 / 4), 4 being the number of loops made. This way, the opacity for each copy adds up to exactly 256. (Technically it should be 255, but that can't be achieved with an even number of loops.)</p>
+          </div>
+          </div>
+          <blockquote class="blockquote">
+          <p><em>Also see the examples on the <a href="/aegisite/docs/execution-environment#loopingtemplates/">Code execution environment</a> page for more advanced usage.</em></p>
+          </blockquote>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

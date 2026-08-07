@@ -288,62 +288,266 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>教程</h1>
-                <p>以下教程可供学习 Aegisub（视频使用英语讲解）：</p>
-                <h2 id="视频教程录屏">视频教程（录屏）</h2>
-                <h3 id="对白计时">对白计时</h3>
-                <ul>
-                <li><p>简介：讲解如何使用 Aegisub 制作时间轴。</p>
-                </li>
-                <li><p>作者：Karl Blomster</p>
-                </li>
-                <li><p>链接：<a href="http://mod16.org/aegisub/timingtutorialimprovisation.mkv" title="http://mod16.org/aegisub/timingtutorialimprovisation.mkv">http://mod16.org/aegisub/timingtutorialimprovisation.mkv</a></p>
-                </li>
-                <li><p>简介：展示一位经验丰富的用户使用 Aegisub 全速打轴。</p>
-                </li>
-                <li><p>作者：Karl Blomster</p>
-                </li>
-                <li><p>链接：<a href="http://mod16.org/aegisub/timing-fullspeed.mkv" title="http://mod16.org/aegisub/timing-fullspeed.mkv">http://mod16.org/aegisub/timing-fullspeed.mkv</a></p>
-                </li>
-                </ul>
-                <h3 id="汉字计时器">汉字计时器</h3>
-                <ul>
-                <li>简介：演示如何使用汉字计时器将汉字时间轴与罗马字时间轴进行同步。</li>
-                <li>作者：Niels Martin Hansen</li>
-                <li>详情：XviD MP3 AVI，5 分 20 秒，12 MB</li>
-                <li>链接：<a href="http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi" title="http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi">http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi</a></li>
-                </ul>
-                <h3 id="卡拉ok计时">卡拉OK计时</h3>
-                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>制作中</div>
-                <ul>
-                <li>作者：Niels Martin Hansen</li>
-                </ul>
-                <h3 id="可视化排版">可视化排版</h3>
-                <ul>
-                <li>简介：演示如何使用 Aegisub 2 全新的可视化排版功能。</li>
-                <li>作者：Rodrigo Braz Monteiro</li>
-                <li>详情：Matroska/XviD/Vorbis，10 分 22 秒，25 MB</li>
-                <li>字幕：英语、葡萄牙语(巴西)（by AMZ）、法语（by shawurai）、德语（by Sqall）</li>
-                <li>链接：<a href="http://www.malakith.net/amz/blah/screencast/%5bAegisub%5d_Visual_Typesetting_Tutorial_%5b8B24834E%5d.mkv">malakith.net</a></li>
-                </ul>
-                <h2 id="文字教程">文字教程</h2>
-                <ul>
-                <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E8%AE%A1%E6%97%B6">卡拉OK计时</a> --- 输入歌曲的歌词并为其添加时间码（K值）。</li>
-                <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E5%86%85%E8%81%94%E7%89%B9%E6%95%88">Karaoke Inline effects Tutorial</a></li>
-                <li><a href="/aegisite/zh-cn/docs/%E6%B3%A8%E9%9F%B3%E5%8D%A1%E6%8B%89ok">Karaoke Furigana Tutorial</a></li>
-                <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E6%A8%A1%E7%89%88%E6%89%A7%E8%A1%8C%E5%99%A8">卡拉OK模版</a> (待完善) ---  通过简单的方式为卡拉OK添加特效，从最基础的效果到非常高级的效果均有涉及。</li>
-                </ul>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  导航
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="true">
+                  介绍
+                </button>
+                <div class="collapse show" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="true">
+                            教程
+                          </button>
+                          <div class="collapse show" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  制作字幕
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  排版
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  时间轴
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  自动化
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            卡拉OK模版执行器
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua 相关
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua模块
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  杂项
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>本页目录</h3>
+            <nav class="toc-nav" aria-label="本页目录">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>教程</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>本页目录</h3>
+              <nav class="toc-nav" aria-label="本页目录">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>以下教程可供学习 Aegisub（视频使用英语讲解）：</p>
+          <h2 id="视频教程录屏">视频教程（录屏）</h2>
+          <h3 id="对白计时">对白计时</h3>
+          <ul>
+          <li><p>简介：讲解如何使用 Aegisub 制作时间轴。</p>
+          </li>
+          <li><p>作者：Karl Blomster</p>
+          </li>
+          <li><p>链接：<a href="http://mod16.org/aegisub/timingtutorialimprovisation.mkv" title="http://mod16.org/aegisub/timingtutorialimprovisation.mkv">http://mod16.org/aegisub/timingtutorialimprovisation.mkv</a></p>
+          </li>
+          <li><p>简介：展示一位经验丰富的用户使用 Aegisub 全速打轴。</p>
+          </li>
+          <li><p>作者：Karl Blomster</p>
+          </li>
+          <li><p>链接：<a href="http://mod16.org/aegisub/timing-fullspeed.mkv" title="http://mod16.org/aegisub/timing-fullspeed.mkv">http://mod16.org/aegisub/timing-fullspeed.mkv</a></p>
+          </li>
+          </ul>
+          <h3 id="汉字计时器">汉字计时器</h3>
+          <ul>
+          <li>简介：演示如何使用汉字计时器将汉字时间轴与罗马字时间轴进行同步。</li>
+          <li>作者：Niels Martin Hansen</li>
+          <li>详情：XviD MP3 AVI，5 分 20 秒，12 MB</li>
+          <li>链接：<a href="http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi" title="http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi">http://jfs.itcamefromjapan.net/aegisub/demovids/kanji-timer.avi</a></li>
+          </ul>
+          <h3 id="卡拉ok计时">卡拉OK计时</h3>
+          <div class="alert alert-warning" role="alert"><strong>TODO: </strong>制作中</div>
+          <ul>
+          <li>作者：Niels Martin Hansen</li>
+          </ul>
+          <h3 id="可视化排版">可视化排版</h3>
+          <ul>
+          <li>简介：演示如何使用 Aegisub 2 全新的可视化排版功能。</li>
+          <li>作者：Rodrigo Braz Monteiro</li>
+          <li>详情：Matroska/XviD/Vorbis，10 分 22 秒，25 MB</li>
+          <li>字幕：英语、葡萄牙语(巴西)（by AMZ）、法语（by shawurai）、德语（by Sqall）</li>
+          <li>链接：<a href="http://www.malakith.net/amz/blah/screencast/%5bAegisub%5d_Visual_Typesetting_Tutorial_%5b8B24834E%5d.mkv">malakith.net</a></li>
+          </ul>
+          <h2 id="文字教程">文字教程</h2>
+          <ul>
+          <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E8%AE%A1%E6%97%B6">卡拉OK计时</a> --- 输入歌曲的歌词并为其添加时间码（K值）。</li>
+          <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E5%86%85%E8%81%94%E7%89%B9%E6%95%88">Karaoke Inline effects Tutorial</a></li>
+          <li><a href="/aegisite/zh-cn/docs/%E6%B3%A8%E9%9F%B3%E5%8D%A1%E6%8B%89ok">Karaoke Furigana Tutorial</a></li>
+          <li><a href="/aegisite/zh-cn/docs/%E5%8D%A1%E6%8B%89ok%E6%A8%A1%E7%89%88%E6%89%A7%E8%A1%8C%E5%99%A8">卡拉OK模版</a> (待完善) ---  通过简单的方式为卡拉OK添加特效，从最基础的效果到非常高级的效果均有涉及。</li>
+          </ul>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

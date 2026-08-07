@@ -288,97 +288,301 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Typesetting Introduction</h1>
-                <p>Wikipedia's definition of
-                <a href="https://en.wikipedia.org/wiki/Typesetting">typesetting</a>: &quot;<strong>Typesetting</strong>
-                involves the presentation of textual material in graphic form on paper or some
-                other medium.&quot; In a subtitling context, this means three things:</p>
-                <ul>
-                <li>Presenting (a translation of) the spoken dialogue to the viewer in an easily
-                readable and visually pleasing form.</li>
-                <li>Translating any foreign-language background texts (such as episode titles,
-                scene information like time/place and other plot-important writings on things
-                in the background) and presenting the translation to the viewer, preferably
-                so that it appears that the translation was there all along (yet retaining
-                readability).</li>
-                <li>Designing other texts (logotypes, karaoke, etc. etc.) that should be
-                displayed on the video.</li>
-                </ul>
-                <p>Particularly in the fansub community, the word &quot;typesetting&quot; usually refers to
-                the second or third of these three.</p>
-                <p>This page will attempt to give you an introduction to subtitle typesetting.
-                Unfortunately good taste is hard to teach, but we will do our best.</p>
-                <h2 id="dialogue-typesetting">Dialogue typesetting</h2>
-                <p>The main goal of dialogue typesetting is <strong>legibility</strong>; everything else is
-                just icing on the cake. There's no point in having subtitles if the viewer
-                can't read them. Remember that subtitles frequently require quite fast reading,
-                so ease of recognition is vital. Some guidelines for good legibility:</p>
-                <ul>
-                <li>Use a plain, uncluttered, no-nonsense typeface. Sans-serif fonts (or if you
-                insist on serifs, &quot;slab serif&quot; fonts) are generally preferable, especially at
-                low video resolutions, since the serifs tend get blurred out, which naturally
-                looks bad. Too thin fonts are also to be avoided. Small caps fonts are bad
-                because the ascenders/descenders of letters help recognition of words. Using tried
-                and trusted faces such as Helvetica, Arial or Verdana is not a bad thing; if
-                you want something that looks less &quot;boring&quot; but still readable try a
-                sans-serif font of the &quot;humanist&quot; variety, such as Calibri.</li>
-                <li>Use a well-defined but not too thick border. The color is important; the
-                higher the contrast against the main color the better. The white main
-                color/black border combo is well tried and trusted. Shadow is optional; if
-                you use it consider setting it to half-transparent black; solid black tends
-                to hurt legibility.</li>
-                <li>Use big friendly letters with comfortable margins; usually subtitles need to
-                be bigger than you think to be easily readable, particularly on a TV screen
-                (since the viewing distance on a TV is usually 2-3 meters, compared to
-                0.3-0.6m for a computer screen). If you plan on showing your subtitles on a
-                TV you also need to take <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>
-                into account; Aegisub has an overscan mask feature (see <a href="/aegisite/docs/working-with-video">working with video</a>) that can help you with this. Even if the end result isn't
-                going to be viewed on a TV, subtitles which are in the overscan area are
-                usually not very readable anyway. Also consider the aspect ratio of the
-                video; 16:9 or wider aspect ratios give you the opportunity to have longer
-                lines at the expense of vertical space.</li>
-                <li>Make sure that no more than two lines of text are visible at a time
-                (exceptions can be made at times where there are a lot of people talking at
-                the same time). Sometimes you can compress the text horizontally a bit to
-                squeeze it in; at other times you just have to split the text block into two
-                different lines and display one after the other.</li>
-                </ul>
-                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>examples</div>
-                <h2 id="sign-typesetting">&quot;Sign&quot; typesetting</h2>
-                <p>Sign typesetting (translating various background text) can usually be
-                accomplished with ASS, but for more complex effects commercial programs like
-                Adobe AfterEffects are sometimes used, since the holy grail of sign typesetting
-                is to make the subtitle look like it's a part of the image that was always
-                there. How to get there from here will not be discussed in detail on this page
-                but here are some pointers:</p>
-                <ul>
-                <li>Is the sign actually important to the plot? Trying to translate every single
-                bit of text displayed on screen will rapidly make you go insane, and the end
-                result will often be unreadable anyway.</li>
-                <li>Frequently, the text of a plot-important sign (such as a letter) is actually
-                read out loud in the dialogue; if this is the case you should consider
-                skipping the sign typeset because having both text and dialogue may overload
-                the viewer with information. You should not typeset a sign just to show off
-                that you're capable of doing so.</li>
-                <li>Will you be able to make the translation easily legible? For example, if you
-                have very little space available to squeeze it in on, consider putting a
-                translation note as a normal &quot;toptitle&quot; instead.</li>
-                </ul>
-                <div class="alert alert-warning" role="alert"><strong>TODO: </strong>images</div>
-                <h2 id="further-reading">Further reading</h2>
-                <p>The Wikipedia page on <a href="https://en.wikipedia.org/wiki/Typography">typography</a> has
-                a lot of useful links and explanation of various typesetting-related terms.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="true">
+                  Typesetting
+                </button>
+                <div class="collapse show" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded active" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="false">
+                  Automation
+                </button>
+                <div class="collapse" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua Reference
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Typesetting Introduction</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>Wikipedia's definition of
+          <a href="https://en.wikipedia.org/wiki/Typesetting">typesetting</a>: &quot;<strong>Typesetting</strong>
+          involves the presentation of textual material in graphic form on paper or some
+          other medium.&quot; In a subtitling context, this means three things:</p>
+          <ul>
+          <li>Presenting (a translation of) the spoken dialogue to the viewer in an easily
+          readable and visually pleasing form.</li>
+          <li>Translating any foreign-language background texts (such as episode titles,
+          scene information like time/place and other plot-important writings on things
+          in the background) and presenting the translation to the viewer, preferably
+          so that it appears that the translation was there all along (yet retaining
+          readability).</li>
+          <li>Designing other texts (logotypes, karaoke, etc. etc.) that should be
+          displayed on the video.</li>
+          </ul>
+          <p>Particularly in the fansub community, the word &quot;typesetting&quot; usually refers to
+          the second or third of these three.</p>
+          <p>This page will attempt to give you an introduction to subtitle typesetting.
+          Unfortunately good taste is hard to teach, but we will do our best.</p>
+          <h2 id="dialogue-typesetting">Dialogue typesetting</h2>
+          <p>The main goal of dialogue typesetting is <strong>legibility</strong>; everything else is
+          just icing on the cake. There's no point in having subtitles if the viewer
+          can't read them. Remember that subtitles frequently require quite fast reading,
+          so ease of recognition is vital. Some guidelines for good legibility:</p>
+          <ul>
+          <li>Use a plain, uncluttered, no-nonsense typeface. Sans-serif fonts (or if you
+          insist on serifs, &quot;slab serif&quot; fonts) are generally preferable, especially at
+          low video resolutions, since the serifs tend get blurred out, which naturally
+          looks bad. Too thin fonts are also to be avoided. Small caps fonts are bad
+          because the ascenders/descenders of letters help recognition of words. Using tried
+          and trusted faces such as Helvetica, Arial or Verdana is not a bad thing; if
+          you want something that looks less &quot;boring&quot; but still readable try a
+          sans-serif font of the &quot;humanist&quot; variety, such as Calibri.</li>
+          <li>Use a well-defined but not too thick border. The color is important; the
+          higher the contrast against the main color the better. The white main
+          color/black border combo is well tried and trusted. Shadow is optional; if
+          you use it consider setting it to half-transparent black; solid black tends
+          to hurt legibility.</li>
+          <li>Use big friendly letters with comfortable margins; usually subtitles need to
+          be bigger than you think to be easily readable, particularly on a TV screen
+          (since the viewing distance on a TV is usually 2-3 meters, compared to
+          0.3-0.6m for a computer screen). If you plan on showing your subtitles on a
+          TV you also need to take <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>
+          into account; Aegisub has an overscan mask feature (see <a href="/aegisite/docs/working-with-video">working with video</a>) that can help you with this. Even if the end result isn't
+          going to be viewed on a TV, subtitles which are in the overscan area are
+          usually not very readable anyway. Also consider the aspect ratio of the
+          video; 16:9 or wider aspect ratios give you the opportunity to have longer
+          lines at the expense of vertical space.</li>
+          <li>Make sure that no more than two lines of text are visible at a time
+          (exceptions can be made at times where there are a lot of people talking at
+          the same time). Sometimes you can compress the text horizontally a bit to
+          squeeze it in; at other times you just have to split the text block into two
+          different lines and display one after the other.</li>
+          </ul>
+          <div class="alert alert-warning" role="alert"><strong>TODO: </strong>examples</div>
+          <h2 id="sign-typesetting">&quot;Sign&quot; typesetting</h2>
+          <p>Sign typesetting (translating various background text) can usually be
+          accomplished with ASS, but for more complex effects commercial programs like
+          Adobe AfterEffects are sometimes used, since the holy grail of sign typesetting
+          is to make the subtitle look like it's a part of the image that was always
+          there. How to get there from here will not be discussed in detail on this page
+          but here are some pointers:</p>
+          <ul>
+          <li>Is the sign actually important to the plot? Trying to translate every single
+          bit of text displayed on screen will rapidly make you go insane, and the end
+          result will often be unreadable anyway.</li>
+          <li>Frequently, the text of a plot-important sign (such as a letter) is actually
+          read out loud in the dialogue; if this is the case you should consider
+          skipping the sign typeset because having both text and dialogue may overload
+          the viewer with information. You should not typeset a sign just to show off
+          that you're capable of doing so.</li>
+          <li>Will you be able to make the translation easily legible? For example, if you
+          have very little space available to squeeze it in on, consider putting a
+          translation note as a normal &quot;toptitle&quot; instead.</li>
+          </ul>
+          <div class="alert alert-warning" role="alert"><strong>TODO: </strong>images</div>
+          <h2 id="further-reading">Further reading</h2>
+          <p>The Wikipedia page on <a href="https://en.wikipedia.org/wiki/Typography">typography</a> has
+          a lot of useful links and explanation of various typesetting-related terms.</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

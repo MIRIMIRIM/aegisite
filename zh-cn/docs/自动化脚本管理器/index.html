@@ -288,53 +288,257 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>自动化脚本管理器</h1>
-                <p>自动化管理器窗口被用来查看，读取和卸载 <a href="/aegisite/zh-cn/docs/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>脚本。</p>
-                <p>自动化管理器窗口从自动化菜单或者<img src="/aegisite/img/3.2/Automation-toolbar-icon.png" class="img-fluid" alt="Automation-toolbar-icon" />按键打开。</p>
-                <p><img src="/aegisite/img/3.2/automation_manager.png" class="img-fluid" alt="automation_manager" /></p>
-                <h2 id="脚本列表">脚本列表</h2>
-                <p>窗口的主要区域是已经被挂载的脚本文件.记住一个脚本文件可能含有几个
-                <a href="/aegisite/zh-cn/docs/automation-script-feature">features</a>，例如一个脚本文件能定义两个<a href="/aegisite/zh-cn/docs/%E5%AE%8F">宏</a>和一个输出过滤器。</p>
-                <p>脚本能以两种方式被挂载。上图中,大部分的脚本是 <em>全局的(global)</em>
-                (自动挂载)，以最左边的字母&quot;G&quot;来指明。全局脚本是被自动地加载，同Aegisub同时启动.它们位于Automation下的autoload目录。你不能卸载全局脚本，你必须将它们从自动挂载路径下移走，然后重新扫描自动读取目录.</p>
-                <p>上图中的最后一个脚本是另一个类型的脚本： <em>本地(local)</em>
-                脚本，以最左边的字母&quot;L&quot;来指明。
-                脚本通过'添加'按键，手动添加到当前的字幕文件，并自动卸载当字幕文件关闭，当您重新打开它，脚本会随字幕文件被重新加载。</p>
-                <p>有时候一个脚本文件在列表中看起来可能是红色的。这件事情只发生在脚本因为某些原因无法被读取的时候。原因会被显示在描述栏。如果描述的错误很长很难读，你可以选择该脚本，后点击显示信息，看到完整的错误提示。脚本读取失败有可能发在你自己编写的脚本中出现编程错误的时候。</p>
-                <h2 id="按键">按键</h2>
-                <p>在自动化管理器窗口有六个按键：</p>
-                <ul>
-                <li><strong>载入</strong> 按键用于加载一个本地脚本。</li>
-                <li><strong>移除</strong>
-                按键用于移除一个本地脚本，只有当本地脚本被选定时才会起作用。</li>
-                <li><strong>重新载入</strong>按键卸载然后从本地重新挂载已选择的脚本文件。你可以用这个功能去重新载入脚本，当你做开发工作时，但是也可以看看下面的方法。</li>
-                <li><strong>显示信息</strong> 按键
-                会显示出已选择脚本的详细信息，也能是完整的自动化系统。</li>
-                <li><strong>重新扫描自动载入文件夹</strong> 按键扫描 autoload
-                目录去确认是否有脚本被添加或者被移除，从Aegisub启动开始。所有autoload目录下的新脚本随后被读取。</li>
-                <li><strong>关闭</strong> 按键关闭自动化管理器窗口。</li>
-                </ul>
-                <h2 id="重新读取脚本的另外方式">重新读取脚本的另外方式</h2>
-                <p>如果你在开发脚本，你可能会发现你会回到自动化管理器窗口去重新读取你的脚本。其实还有一些快捷的方式去重读脚本：</p>
-                <ul>
-                <li>当打开<a href="/aegisite/zh-cn/docs/%E5%AF%BC%E5%87%BA">导出</a>对话框时，所有本地脚本会被重新加载。您可以在<a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9">选项</a>对话框里改变这个设定。</li>
-                <li>按住Ctrl键的同时点击工具栏里的自动化按钮可以重新扫描autoload文件夹。</li>
-                <li>同时按住Ctrl和Shift键并点击工具栏里的自动化按钮可以重新加载所有脚本，当然同时也会重新扫描autoload文件夹。</li>
-                <li>默认是没有重新加载脚本的快捷键的，不过您可以在<a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9#hotkeys/">选项对话框</a>里设置一个。</li>
-                </ul>
-                <p>不通过上面的方法，自动化脚本管理器是不会打开的，但如果有脚本载入错误的话你会看到一个错误提示对话框。
-                注意您可以在错误对话框的行上双击以获得更多信息。</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  导航
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  介绍
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            教程
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  制作字幕
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  排版
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  时间轴
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  自动化
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            卡拉OK模版执行器
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                            Lua 相关
+                          </button>
+                          <div class="collapse" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                      Lua模块
+                                    </button>
+                                    <div class="collapse" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  杂项
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>本页目录</h3>
+            <nav class="toc-nav" aria-label="本页目录">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>自动化脚本管理器</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>本页目录</h3>
+              <nav class="toc-nav" aria-label="本页目录">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>自动化管理器窗口被用来查看，读取和卸载 <a href="/aegisite/zh-cn/docs/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>脚本。</p>
+          <p>自动化管理器窗口从自动化菜单或者<img src="/aegisite/img/3.2/Automation-toolbar-icon.png" class="img-fluid" alt="Automation-toolbar-icon" />按键打开。</p>
+          <p><img src="/aegisite/img/3.2/automation_manager.png" class="img-fluid" alt="automation_manager" /></p>
+          <h2 id="脚本列表">脚本列表</h2>
+          <p>窗口的主要区域是已经被挂载的脚本文件.记住一个脚本文件可能含有几个
+          <a href="/aegisite/zh-cn/docs/automation-script-feature">features</a>，例如一个脚本文件能定义两个<a href="/aegisite/zh-cn/docs/%E5%AE%8F">宏</a>和一个输出过滤器。</p>
+          <p>脚本能以两种方式被挂载。上图中,大部分的脚本是 <em>全局的(global)</em>
+          (自动挂载)，以最左边的字母&quot;G&quot;来指明。全局脚本是被自动地加载，同Aegisub同时启动.它们位于Automation下的autoload目录。你不能卸载全局脚本，你必须将它们从自动挂载路径下移走，然后重新扫描自动读取目录.</p>
+          <p>上图中的最后一个脚本是另一个类型的脚本： <em>本地(local)</em>
+          脚本，以最左边的字母&quot;L&quot;来指明。
+          脚本通过'添加'按键，手动添加到当前的字幕文件，并自动卸载当字幕文件关闭，当您重新打开它，脚本会随字幕文件被重新加载。</p>
+          <p>有时候一个脚本文件在列表中看起来可能是红色的。这件事情只发生在脚本因为某些原因无法被读取的时候。原因会被显示在描述栏。如果描述的错误很长很难读，你可以选择该脚本，后点击显示信息，看到完整的错误提示。脚本读取失败有可能发在你自己编写的脚本中出现编程错误的时候。</p>
+          <h2 id="按键">按键</h2>
+          <p>在自动化管理器窗口有六个按键：</p>
+          <ul>
+          <li><strong>载入</strong> 按键用于加载一个本地脚本。</li>
+          <li><strong>移除</strong>
+          按键用于移除一个本地脚本，只有当本地脚本被选定时才会起作用。</li>
+          <li><strong>重新载入</strong>按键卸载然后从本地重新挂载已选择的脚本文件。你可以用这个功能去重新载入脚本，当你做开发工作时，但是也可以看看下面的方法。</li>
+          <li><strong>显示信息</strong> 按键
+          会显示出已选择脚本的详细信息，也能是完整的自动化系统。</li>
+          <li><strong>重新扫描自动载入文件夹</strong> 按键扫描 autoload
+          目录去确认是否有脚本被添加或者被移除，从Aegisub启动开始。所有autoload目录下的新脚本随后被读取。</li>
+          <li><strong>关闭</strong> 按键关闭自动化管理器窗口。</li>
+          </ul>
+          <h2 id="重新读取脚本的另外方式">重新读取脚本的另外方式</h2>
+          <p>如果你在开发脚本，你可能会发现你会回到自动化管理器窗口去重新读取你的脚本。其实还有一些快捷的方式去重读脚本：</p>
+          <ul>
+          <li>当打开<a href="/aegisite/zh-cn/docs/%E5%AF%BC%E5%87%BA">导出</a>对话框时，所有本地脚本会被重新加载。您可以在<a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9">选项</a>对话框里改变这个设定。</li>
+          <li>按住Ctrl键的同时点击工具栏里的自动化按钮可以重新扫描autoload文件夹。</li>
+          <li>同时按住Ctrl和Shift键并点击工具栏里的自动化按钮可以重新加载所有脚本，当然同时也会重新扫描autoload文件夹。</li>
+          <li>默认是没有重新加载脚本的快捷键的，不过您可以在<a href="/aegisite/zh-cn/docs/%E9%80%89%E9%A1%B9#hotkeys/">选项对话框</a>里设置一个。</li>
+          </ul>
+          <p>不通过上面的方法，自动化脚本管理器是不会打开的，但如果有脚本载入错误的话你会看到一个错误提示对话框。
+          注意您可以在错误对话框的行上双击以获得更多信息。</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">

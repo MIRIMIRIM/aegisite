@@ -288,49 +288,253 @@
   <div class="wrap container-fluid" role="document">
     <div class="content">
       
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="row">
-              <div class="col-lg-12 order-1">
-                <h1>Lua Modules</h1>
-                <p>A number of Lua modules are included with Aegisub.
-                Some of these, such as <a href="/aegisite/docs/karaskel-lua"><code>karaskel.lua</code></a> implement subtitle-specific functionality, while others such as <a href="/aegisite/docs/re">re</a> fill holes in the Lua standard library.</p>
-                <h2 id="using-modules">Using modules</h2>
-                <p>Simply write <code>modulename = require 'aegisub.modulename'</code> at the top level of a script.
-                For example, to include the <a href="/aegisite/docs/re">re</a> modules, <code>re = require 'aegisub.re'</code>.</p>
-                <p>Note that if you look at older scripts you will probably see several other methods for including modules, such as <code>include</code>.
-                These have been deprecated in favor of following the modern lua module style introduced with Lua 5.2.</p>
-                <p>To use modules in <a href="/aegisite/docs/karaoke-templater">Karaoke Templater</a>, place the require statement in a <a href="/aegisite/docs/code-lines-and-blocks#classes-of-code-lines/">code once</a> line.
-                Note that <code>karaskel.lua</code>, <code>utils.lua</code> and <code>unicode.lua</code> do not have to be <code>require</code>d in <a href="/aegisite/docs/karaoke-templater">Karaoke Templater</a>, as they are automatically imported.</p>
-                <h2 id="modules-reference">Modules reference</h2>
-                <p><a href="/aegisite/docs/utils-lua">util</a>
-                : An assorted collection of various utility functions which don't fit into any coherent categories, especially for handling colours.</p>
-                <p><a href="/aegisite/docs/karaskel-lua"><code>karaskel.lua</code></a>
-                : The karaoke skeleton is a collection of functions mainly intended to do
-                text layout of timed karaoke for creating advanced karaoke effects, as well
-                as a number of other helper functions.</p>
-                <p><a href="/aegisite/docs/unicode-lua">unicode</a>
-                : All data passed in and out of Aegisub through the Automation 4 Lua interface are encoded in UTF-8, but Lua doesn't natively provide support for this.
-                Several helper functions are provided here.</p>
-                <p><a href="/aegisite/docs/cleantags-lua"><code>cleantags.lua</code></a>
-                : A function to clean up ASS tags in a line.</p>
-                <p><a href="/aegisite/docs/clipboard">clipboard</a>
-                : Functions for copying and pasting text.</p>
-                <p><a href="/aegisite/docs/re">re</a>
-                : Bindings for ICU regular expressions via <a href="https://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/index.html">boost.regex</a>, which has full Unicode support and more features than Lua's built in regular expression.</p>
-                <p><a href="https://www.inf.puc-rio.br/%7Eroberto/lpeg/">lpeg</a>
-                : PEG library for writing parsers.</p>
-                <p><a href="https://github.com/agladysh/luabins">luabins</a>
-                : A serialization library for saving tables to extradata or config files</p>
-                <p><a href="https://lunarmodules.github.io/luafilesystem/">lfs</a>
-                : Some assorted filesystem functionality not supported by the Lua standard library.</p>
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+          <nav class="docs-links" aria-label="Docs">
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul class="list-unstyled collapsible-sidebar">
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+                  Navigation
+                </button>
+                <div class="collapse" id="section-navigation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/main-page/">Main Page</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+                  Introduction
+                </button>
+                <div class="collapse" id="section-introduction">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/what-is-aegisub/">What is Aegisub?</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/overview/">Overview</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/highlights/">Highlights</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/credits/">Credits</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/general-disclaimer/">General Disclaimer</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/support-aegisub/">Support Aegisub</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/faq/">FAQ</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                            Tutorials
+                          </button>
+                          <div class="collapse" id="section-tutorials">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/tutorials/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-timing-tutorial/">Karaoke Timing Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-effects-tutorial/">Inline effects Tutorial</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/furigana-tutorial/">Furigana Tutorial</a></li>
+                            </ul>
+                          </div>
+                        </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+                  Working with Subtitles
+                </button>
+                <div class="collapse" id="section-working-with-subtitles">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-subtitles/">Editing Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/exporting-subtitles/">Exporting Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/applying-subtitles/">Applying Subtitles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/spell-checker/">Spell Checker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/translation-assistant/">Translation Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/paste-over/">Paste Over</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/select-lines/">Select Lines</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+                  Typesetting
+                </button>
+                <div class="collapse" id="section-typesetting">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/typesetting-introduction/">Typesetting Introduction</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-video/">Working with Video</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/editing-styles/">Editing styles</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/visual-typesetting/">Visual Typesetting</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/ass-override-tags/">ASS Override Tags</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/colour-picker/">Colour Picker</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/styling-assistant/">Styling Assistant</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/resolution-resampler/">Resolution Resampler</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/fonts-collector/">Fonts Collector</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+                  Timing
+                </button>
+                <div class="collapse" id="section-timing">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/working-with-audio/">Working with Audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-subtitles-to-audio/">Timing subtitles to audio</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/shift-times/">Shift times</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/timing-post-processor/">Timing Post-Processor</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/kanji-timer/">Kanji Timer</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+                  Automation
+                </button>
+                <div class="collapse show" id="section-automation">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-overview/">Automation Overview</a></li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                            Karaoke Templater
+                          </button>
+                          <div class="collapse" id="section-karaoke-templater">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/karaoke-templater/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/declaring-templates/">Declaring templates</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-order/">Execution order</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/modifiers/">Modifiers</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/inline-variables-variables/">Inline-variables ($-variables)</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/code-lines-and-blocks/">Code lines and blocks</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/execution-environment/">Execution environment</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                      Automation Tutorials
+                                    </button>
+                                    <div class="collapse" id="section-automation-tutorials">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-tutorials/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/a-simple-example/">A simple example</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/using-math-expressions/">Using math expressions</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="my-1 ms-3">
+                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="true">
+                            Lua Reference
+                          </button>
+                          <div class="collapse show" id="section-lua-reference">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a class="docs-link rounded" href="/aegisite/docs/lua-reference/">Overview</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/registration/">Registration</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/subtitles-object/">Subtitles object</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/progress-reporting/">Progress reporting</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/dialogs/">Dialogs</a></li>
+                                  <li><a class="docs-link rounded" href="/aegisite/docs/misc-apis/">Misc. APIs</a></li>
+                                  <li class="my-1 ms-3">
+                                    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="true">
+                                      Lua Modules
+                                    </button>
+                                    <div class="collapse show" id="section-lua-modules">
+                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="docs-link rounded active" href="/aegisite/docs/lua-modules/">Overview</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/karaskel-lua/">karaskel.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/utils-lua/">utils.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/unicode-lua/">unicode.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/cleantags-lua/">cleantags.lua</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/clipboard/">clipboard</a></li>
+                                          <li><a class="docs-link rounded" href="/aegisite/docs/re/">re</a></li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/automation-manager/">Automation Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/running-macros/">Running macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/standard-macros/">Standard macros</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/history-of-automation/">History of Automation</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+                  Miscellaneous
+                </button>
+                <div class="collapse" id="section-miscellaneous">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/docs/aegisub-options/">Aegisub Options</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/autosave/">Autosave</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/path-specifiers/">Path Specifiers</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-properties/">Script Properties</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/script-resolution/">Script Resolution</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/attachment-manager/">Attachment Manager</a></li>
+                        <li><a class="docs-link rounded" href="/aegisite/docs/commands/">Commands</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
       
-              </div>
-            </div>
-          </article>
+          </nav>
         </div>
+        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+          <div class="page-links" data-toc>
+            <h3>On this page</h3>
+            <nav class="toc-nav" aria-label="On this page">
+              <ul></ul>
+            </nav>
+          </div>
+      
+        </nav>
+        <main class="docs-content col-12 col-lg-9 col-xl-7">
+          <h1>Lua Modules</h1>
+          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+            <div class="page-links" data-toc>
+              <h3>On this page</h3>
+              <nav class="toc-nav" aria-label="On this page">
+                <ul></ul>
+              </nav>
+            </div>
+      
+          </nav>
+          <p>A number of Lua modules are included with Aegisub.
+          Some of these, such as <a href="/aegisite/docs/karaskel-lua"><code>karaskel.lua</code></a> implement subtitle-specific functionality, while others such as <a href="/aegisite/docs/re">re</a> fill holes in the Lua standard library.</p>
+          <h2 id="using-modules">Using modules</h2>
+          <p>Simply write <code>modulename = require 'aegisub.modulename'</code> at the top level of a script.
+          For example, to include the <a href="/aegisite/docs/re">re</a> modules, <code>re = require 'aegisub.re'</code>.</p>
+          <p>Note that if you look at older scripts you will probably see several other methods for including modules, such as <code>include</code>.
+          These have been deprecated in favor of following the modern lua module style introduced with Lua 5.2.</p>
+          <p>To use modules in <a href="/aegisite/docs/karaoke-templater">Karaoke Templater</a>, place the require statement in a <a href="/aegisite/docs/code-lines-and-blocks#classes-of-code-lines/">code once</a> line.
+          Note that <code>karaskel.lua</code>, <code>utils.lua</code> and <code>unicode.lua</code> do not have to be <code>require</code>d in <a href="/aegisite/docs/karaoke-templater">Karaoke Templater</a>, as they are automatically imported.</p>
+          <h2 id="modules-reference">Modules reference</h2>
+          <p><a href="/aegisite/docs/utils-lua">util</a>
+          : An assorted collection of various utility functions which don't fit into any coherent categories, especially for handling colours.</p>
+          <p><a href="/aegisite/docs/karaskel-lua"><code>karaskel.lua</code></a>
+          : The karaoke skeleton is a collection of functions mainly intended to do
+          text layout of timed karaoke for creating advanced karaoke effects, as well
+          as a number of other helper functions.</p>
+          <p><a href="/aegisite/docs/unicode-lua">unicode</a>
+          : All data passed in and out of Aegisub through the Automation 4 Lua interface are encoded in UTF-8, but Lua doesn't natively provide support for this.
+          Several helper functions are provided here.</p>
+          <p><a href="/aegisite/docs/cleantags-lua"><code>cleantags.lua</code></a>
+          : A function to clean up ASS tags in a line.</p>
+          <p><a href="/aegisite/docs/clipboard">clipboard</a>
+          : Functions for copying and pasting text.</p>
+          <p><a href="/aegisite/docs/re">re</a>
+          : Bindings for ICU regular expressions via <a href="https://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/index.html">boost.regex</a>, which has full Unicode support and more features than Lua's built in regular expression.</p>
+          <p><a href="https://www.inf.puc-rio.br/%7Eroberto/lpeg/">lpeg</a>
+          : PEG library for writing parsers.</p>
+          <p><a href="https://github.com/agladysh/luabins">luabins</a>
+          : A serialization library for saving tables to extradata or config files</p>
+          <p><a href="https://lunarmodules.github.io/luafilesystem/">lfs</a>
+          : Some assorted filesystem functionality not supported by the Lua standard library.</p>
+      
+        </main>
       </div>
+
     </div>
   </div>
   <footer class="footer text-muted">
