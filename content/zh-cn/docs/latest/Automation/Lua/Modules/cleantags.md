@@ -1,5 +1,6 @@
 ---
 title: cleantags.lua
+slug: cleantags-lua
 menu:
   docs:
     parent: lua-modules

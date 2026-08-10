@@ -1,5 +1,6 @@
 ---
 title: 声明template行和code行
+slug: declaring-templates
 menu:
   docs:
     parent: karaoke-templater
@@ -37,4 +38,4 @@ weight: 6110
 
 <div></div>
 
-Template行和code行可以在template或code之后添加额外的文本，这些文本用一系列的被空格分隔的单词组成，被称作修饰语。欲了解更多请阅读[Template修饰语](/zh-cn/docs/模版修饰语/)。
+Template行和code行可以在template或code之后添加额外的文本，这些文本用一系列的被空格分隔的单词组成，被称作修饰语。欲了解更多请阅读[Template修饰语](/zh-cn/docs/modifiers/)。

@@ -1,5 +1,6 @@
 ---
 title: 汉字计时器
+slug: kanji-timer
 menu:
   docs:
     parent: timing

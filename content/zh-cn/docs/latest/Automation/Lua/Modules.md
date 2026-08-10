@@ -1,5 +1,6 @@
 ---
 title: Lua模块
+slug: lua-modules
 menu:
   docs:
     parent: lua-reference
@@ -23,10 +24,10 @@ Aegisub内置了许多lua模块。 一些模块例如
 5.2写法。
 
 想使用 [Karaoke
-Templater](/zh-cn/docs/卡拉ok模版执行器/)中的模块，你需要在 [code
-once](/zh-cn/docs/code行-和-code区/#classesofcodelines/)
+Templater](/zh-cn/docs/karaoke-templater/)中的模块，你需要在 [code
+once](/zh-cn/docs/code-lines-and-blocks/#classesofcodelines/)
 行中作声明。 注意`karaskel.lua`, `utils.lua` 和 `unicode.lua` 不必在
-[Karaoke Templater](/zh-cn/docs/卡拉ok模版执行器/)
+[Karaoke Templater](/zh-cn/docs/karaoke-templater/)
 中声明'需要'，它们已经自动被导入了。
 
 ## 模块目录
@@ -46,7 +47,7 @@ once](/zh-cn/docs/code行-和-code区/#classesofcodelines/)
 [cleantags.lua](/zh-cn/docs/cleantags-lua/)
 : 一个用来清除行内特效标签的函数。
 
-[clipboard](/zh-cn/docs/剪贴板/)
+[clipboard](/zh-cn/docs/clipboard/)
 : 用于复制粘贴文本的函数。
 
 [re](/zh-cn/docs/re/)

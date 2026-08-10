@@ -1,5 +1,6 @@
 ---
 title: 内联变量
+slug: inline-variables-variables
 menu:
   docs:
     parent: karaoke-templater

@@ -1,5 +1,6 @@
 ---
 title: 附带的宏
+slug: standard-macros
 menu:
   docs:
     parent: automation
@@ -10,7 +11,7 @@ weight: 6500
 
 ## 应用卡拉OK模版
 
-这个是卡拉OK脚本执行器的宏，用法请参见[卡拉OK脚本执行器](/zh-cn/docs/卡拉ok模版执行器/)。
+这个是卡拉OK脚本执行器的宏，用法请参见[卡拉OK脚本执行器](/zh-cn/docs/karaoke-templater/)。
 
 这个宏只有在字幕文件中至少有一行模版行时才可用。
 
@@ -137,7 +138,7 @@ Karaskel会创建这些音节结构：
 
 ## 添加边角模糊
 
-向所选行插入[`\be1`](/zh-cn/docs/ass标签/#bluredges/)\`标签。轻微模糊所有字幕行的边缘可以显著提高[内嵌字幕](/zh-cn/docs/将字幕加到视频上/)的压缩率（尤其是使用像XviD这些旧的编码时），但由于字幕格式的限制，边缘模糊无法通过样式来调整。
+向所选行插入[`\be1`](/zh-cn/docs/ass-override-tags/#bluredges/)\`标签。轻微模糊所有字幕行的边缘可以显著提高[内嵌字幕](/zh-cn/docs/applying-subtitles/)的压缩率（尤其是使用像XviD这些旧的编码时），但由于字幕格式的限制，边缘模糊无法通过样式来调整。
 
 ## 删除特效标签
 

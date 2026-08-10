@@ -1,14 +1,15 @@
 ---
 title: 卡拉OK内联特效
+slug: inline-effects-tutorial
 menu:
   docs:
     parent: tutorials
 weight: 2720
 ---
 
-卡拉OK inline-fx（内联特效）可以用来给[打过k的时间轴](/zh-cn/docs/制作时间轴/#karaoketiming/)的不同部分分配不同的特效。
+卡拉OK inline-fx（内联特效）可以用来给[打过k的时间轴](/zh-cn/docs/timing-subtitles-to-audio/#karaoketiming/)的不同部分分配不同的特效。
 
-inline-fx标记本身并不会有任何影响，只有当应用可以识别它的[卡拉ok特效脚本](/zh-cn/docs/自动化/)时才会应用于打了k的轴。
+inline-fx标记本身并不会有任何影响，只有当应用可以识别它的[卡拉ok特效脚本](/zh-cn/docs/automation-overview/)时才会应用于打了k的轴。
 
 ## 标记
 
@@ -44,7 +45,7 @@ inline-fx标记本身并不会有任何影响，只有当应用可以识别它�
 
 ## 卡拉OK模版执行器中的用法
 
-如果你用[卡拉OK模版执行器](/zh-cn/docs/卡拉ok模版执行器/)来制作特效，你可以在模版上使用
+如果你用[卡拉OK模版执行器](/zh-cn/docs/karaoke-templater/)来制作特效，你可以在模版上使用
 *fx*
 修饰语来指定其仅对特定的内联特效生效。这种方式无法（直接）匹配无内联特效标记的音节。
 

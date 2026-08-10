@@ -1,5 +1,6 @@
 ---
 title: 平移时间
+slug: shift-times
 menu:
   docs:
     parent: timing

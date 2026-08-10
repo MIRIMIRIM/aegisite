@@ -1,5 +1,6 @@
 ---
 title: 将字幕加到视频上
+slug: applying-subtitles
 menu:
   docs:
     parent: working-with-subtitles

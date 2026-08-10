@@ -1,5 +1,6 @@
 ---
 title: 剪贴板
+slug: clipboard
 menu:
   docs:
     parent: lua-modules

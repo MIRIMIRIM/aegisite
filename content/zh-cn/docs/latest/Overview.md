@@ -1,5 +1,6 @@
 ---
 title: 概述
+slug: overview
 menu:
   docs:
     parent: introduction
@@ -14,46 +15,46 @@ weight: 2100
 
 **字幕栏**显示您正在编辑的文件中的所有字幕行。所有行标有不同的颜色，这取决于他们的属性。例如，背景色为绿色的行是所选行。蓝色背景的行是注释行且不会显示在屏幕上。黄色背景的行是在当前帧能看见的行。红色字的行是与当前所选行时间重叠的行。从这里点击一行来编辑它。
 
-- [编辑字幕](/zh-cn/docs/编辑字幕/)
+- [编辑字幕](/zh-cn/docs/editing-subtitles/)
 
 <div></div>
 
 你可以使用**编辑框**直接编辑字幕行的文本以及其他一些属性。 虽然你可以在那儿的时间框里输入时间，但你几乎不会需要它的，因为在**音频框**里打轴要快得多。你也可以用视频打轴。你可以使用格式工具栏插入格式化代码到当前行。四个“AB”按钮可以改变行的不同元素的颜色。更改文本，再按下Enter键提交更改并转到下一行。按住Ctrl键的同时按下Enter键将只会提交更改但不会转到下一行
 
-- [编辑字幕](/zh-cn/docs/编辑字幕/)
+- [编辑字幕](/zh-cn/docs/editing-subtitles/)
 
 <div></div>
 
 使用**音频框**为字幕打轴（和音频同步）是个快速且准确的方法。**音频展示**能以两种不同方式————波形和频谱，来显示已加载的音频，上面的截图是它的频谱模式。
 
-- [使用音频](/zh-cn/docs/音频/)
+- [使用音频](/zh-cn/docs/working-with-audio/)
 
 <div></div>
 
 在**视频框**中，您可以看到字幕在视频里是什么样的，您也可以设置字幕行从哪一帧开始、结束的，同时您可以用鼠标来移动、旋转、剪切字幕行来做到匹配视频上的标志之类的。
 
-- [使用视频](/zh-cn/docs/视频/)
+- [使用视频](/zh-cn/docs/working-with-video/)
 
 <div></div>
 
 最后，程序中有三个栏：**状态栏**用来向您展示信息，**菜单栏**和**工具栏**用于打开Aegisub的各种工具：
 
-- [导出](/zh-cn/docs/导出/)
-- [拼写检查器](/zh-cn/docs/拼写检查器/)
-- [翻译助手](/zh-cn/docs/翻译助手/)
-- [选择性粘贴](/zh-cn/docs/选择性粘贴/)
-- [选择多行](/zh-cn/docs/选择多行/)
-- [样式管理器](/zh-cn/docs/样式/)
-- [颜色选择器](/zh-cn/docs/颜色选择器/)
-- [样式助手](/zh-cn/docs/样式助手/)
-- [重设分辨率](/zh-cn/docs/重设分辨率/)
-- [字体收集器](/zh-cn/docs/字体收集器/)
-- [平移时间](/zh-cn/docs/平移时间/)
-- [时间后续处理器](/zh-cn/docs/时间后续处理器/)
-- [汉字计时器](/zh-cn/docs/汉字计时器/)
-- [自动化](/zh-cn/docs/自动化/)
-- [选项](/zh-cn/docs/选项/)
-- [脚本配置](/zh-cn/docs/脚本配置/)
-- [附件管理器](/zh-cn/docs/附件管理器/)
+- [导出](/zh-cn/docs/exporting-subtitles/)
+- [拼写检查器](/zh-cn/docs/spell-checker/)
+- [翻译助手](/zh-cn/docs/translation-assistant/)
+- [选择性粘贴](/zh-cn/docs/paste-over/)
+- [选择多行](/zh-cn/docs/select-lines/)
+- [样式管理器](/zh-cn/docs/editing-styles/)
+- [颜色选择器](/zh-cn/docs/colour-picker/)
+- [样式助手](/zh-cn/docs/styling-assistant/)
+- [重设分辨率](/zh-cn/docs/resolution-resampler/)
+- [字体收集器](/zh-cn/docs/fonts-collector/)
+- [平移时间](/zh-cn/docs/shift-times/)
+- [时间后续处理器](/zh-cn/docs/timing-post-processor/)
+- [汉字计时器](/zh-cn/docs/kanji-timer/)
+- [自动化](/zh-cn/docs/automation-overview/)
+- [选项](/zh-cn/docs/aegisub-options/)
+- [脚本配置](/zh-cn/docs/script-properties/)
+- [附件管理器](/zh-cn/docs/attachment-manager/)
 
 <div></div>

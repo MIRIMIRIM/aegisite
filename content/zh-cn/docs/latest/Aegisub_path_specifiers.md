@@ -1,5 +1,6 @@
 ---
 title: Aegisub路径变量
+slug: path-specifiers
 menu:
   docs:
     parent: miscellaneous

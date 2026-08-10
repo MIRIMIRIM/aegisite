@@ -1,5 +1,6 @@
 ---
 title: 字幕文件接口
+slug: subtitles-object
 menu:
   docs:
     parent: lua-reference
@@ -34,21 +35,21 @@ context it is created for:
 只读
 : Some feature functions must not be allowed to modify the subtitle
   file at all. This includes for example [macro validation
-  functions](/zh-cn/docs/注册/#macrovalidationfunction/) and
+  functions](/zh-cn/docs/registration/#macrovalidationfunction/) and
   [export filter configuration panel
-  providers](/zh-cn/docs/注册/#_export_filter_configuration_panel_provider/),
+  providers](/zh-cn/docs/registration/#_export_filter_configuration_panel_provider/),
   because this would be outside user expectations.
 : 一些功能函数理应不允许其修改字幕文件。这种函数包括例如
-  [宏验证函数](/zh-cn/docs/注册/#macrovalidationfunction/)
+  [宏验证函数](/zh-cn/docs/registration/#macrovalidationfunction/)
   以及
-  [导出滤镜配置面板提供程序](/zh-cn/docs/注册/#_export_filter_configuration_panel_provider/)，因为可能会有与用户预期不符的效果。
+  [导出滤镜配置面板提供程序](/zh-cn/docs/registration/#_export_filter_configuration_panel_provider/)，因为可能会有与用户预期不符的效果。
 
 允许撤消点
 : Only [macro processing
-  functions](/zh-cn/docs/注册/#macroprocessingfunction/) can
+  functions](/zh-cn/docs/registration/#macroprocessingfunction/) can
   set undo points, as it makes no sense to do so at any other time.
 
-仅有[宏处理函数](/zh-cn/docs/注册/#macroprocessingfunction/)可设置撤销点，因为在其他任何时候设置没有意义。
+仅有[宏处理函数](/zh-cn/docs/registration/#macroprocessingfunction/)可设置撤销点，因为在其他任何时候设置没有意义。
 
 To allow the most flexibility, the subtitles object represents a
 complete ASS format file, line by line, including all meta-lines such as

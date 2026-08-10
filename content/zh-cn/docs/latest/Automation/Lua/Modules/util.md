@@ -1,5 +1,6 @@
 ---
 title: utils.lua
+slug: utils-lua
 menu:
   docs:
     parent: lua-modules

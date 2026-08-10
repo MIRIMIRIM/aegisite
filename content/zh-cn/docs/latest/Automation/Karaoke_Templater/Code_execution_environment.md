@@ -1,5 +1,6 @@
 ---
 title: Execution envirionment
+slug: execution-environment
 menu:
   docs:
     parent: karaoke-templater
@@ -11,7 +12,7 @@ weight: 6160
 为了后期使用，你可以把你的数据存放到这个环境里，例如先在code行预先计算一些数值，然后后期再用code区把它们添加进模板。
 这个环境也可以包含许多预先定义的变量和函数，它们可以让特效模板书写起更加方便。
 
-要知道，代码执行环境的内容和[内联变量](/zh-cn/docs/内联变量/)是没有什么关系的，这一点很重要。你不能通过改变代码执行环境里面的东西来改变一个内联变量的值；当然，你也不能添加新的内联变量。然而，你可以创造并且重新定义代码执行环境里面的内容。
+要知道，代码执行环境的内容和[内联变量](/zh-cn/docs/inline-variables-variables/)是没有什么关系的，这一点很重要。你不能通过改变代码执行环境里面的东西来改变一个内联变量的值；当然，你也不能添加新的内联变量。然而，你可以创造并且重新定义代码执行环境里面的内容。
 
 ## Line and syllable information
 
@@ -53,7 +54,7 @@ weight: 6160
 
 通过使用 **`_G`** (下划线+大写G)，你也可以访问到 kara-templater
 的主要执行环境，和其余的 Lua 标准库 [loaded
-modules](/zh-cn/docs/lua模块/)。比如， `_G.table.sort`
+modules](/zh-cn/docs/lua-modules/)。比如， `_G.table.sort`
 实际上调用的是 `table.sort` 函数。查看 [Lua 5.2
 手册](http://www.lua.org/manual/5.2/manual.html#6) 来获取更多有关 Lua
 标准库的信息。
@@ -330,7 +331,7 @@ variables are introduced in the code execution environment, **`j`** and
 
 If you change `j` or `maxj` while a template is executing, you can affect
 the number of iterations the loop makes. The
-[`maxloop`](/zh-cn/docs/execution-envirionment/#maxloop/)
+[`maxloop`](/zh-cn/docs/execution-environment/#maxloop/)
 function is convenient for making dynamic loops.
 
 **Example**

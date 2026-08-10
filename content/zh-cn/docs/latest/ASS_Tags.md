@@ -1,5 +1,6 @@
 ---
 title: ASS标签
+slug: ass-override-tags
 menu:
   docs:
     parent: typesetting
@@ -8,7 +9,7 @@ weight: 4400
 
 The following is a list of every tag supported by the Advanced Substation
 Alpha format. This is basically a detailed version of ass-quickref.txt. See
-the [tutorial](/zh-cn/docs/可视化排版/) for an introduction to typesetting,
+the [tutorial](/zh-cn/docs/visual-typesetting/) for an introduction to typesetting,
 using some basic tags.
 
 下面列出所有ASS格式支持的标签。这基本上算是ass-quickref.txt的一个详细版本。你可以在本教程手册的排版教程获取关于使用一些基本标签来排版文本的教程。
@@ -27,9 +28,9 @@ override blocks (i.e. not between { and }).
 ```
 
 Insert a forced line break, but only when in wrapping mode 2. (See
-[the \\q tag](/zh-cn/docs/ass标签/#wrapstyle/)). Note that this is a lowercase n.
+[the \\q tag](/zh-cn/docs/ass-override-tags/#wrapstyle/)). Note that this is a lowercase n.
 
-插入一个强制换行符，但是只在换行方式2下生效（参阅[\\q标签](/zh-cn/docs/ass标签/#wrapstyle/)）。注意这是一个小写的
+插入一个强制换行符，但是只在换行方式2下生效（参阅[\\q标签](/zh-cn/docs/ass-override-tags/#wrapstyle/)）。注意这是一个小写的
 n。
 
 In all other wrapping modes, this is replaced by a regular space. This is
@@ -212,13 +213,13 @@ disable the border entirely.
 
 改变字符周围边框的宽度。把size设为0可以使边框完全消失。
 
-If "scale border and shadow" (see [script properties](/zh-cn/docs/脚本配置/)) is
+If "scale border and shadow" (see [script properties](/zh-cn/docs/script-properties/)) is
 enabled, the value is given in script resolution pixels, otherwise it is given
 in video resolution pixels (which means the border thickness will vary
 depending on the resolution of the video on which the subtitles are rendered.)
 
 如果"比例缩放边框和阴影"(详见
-[脚本配置](/zh-cn/docs/脚本配置/))是选中的，边框宽度值将取决于脚本的分辨率，否则会由视频的分辨率决定（也就是说边框的宽度会自适应使用该字幕的视频）。
+[脚本配置](/zh-cn/docs/script-properties/))是选中的，边框宽度值将取决于脚本的分辨率，否则会由视频的分辨率决定（也就是说边框的宽度会自适应使用该字幕的视频）。
 
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
@@ -273,9 +274,9 @@ disable border in that direction.
 ```
 
 Set the distance from the text to position the shadow. Set the depth to 0
-(zero) to disable shadow entirely. Works similar to [\\bord](/zh-cn/docs/ass标签/#bordersize/).
+(zero) to disable shadow entirely. Works similar to [\\bord](/zh-cn/docs/ass-override-tags/#bordersize/).
 
-设置字符与阴影间的距离。设置深度为0使阴影完全消失。其他方面和边框宽度[\\bord](/zh-cn/docs/ass标签/#bordersize/)的设置相似。
+设置字符与阴影间的距离。设置深度为0使阴影完全消失。其他方面和边框宽度[\\bord](/zh-cn/docs/ass-override-tags/#bordersize/)的设置相似。
 
 The shadow distance can not be negative with this tag.
 
@@ -314,12 +315,12 @@ better. It is usually more visible at smaller text sizes.
 应用或取消一个字符边缘柔化的效果。这个效果并不总是很明显，但是有些时候会让字符看起来更舒服。这个效果在字符比较小的时候一般会更明显。
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
-means that if the text has a border (set with [\\bord](/zh-cn/docs/ass标签/#borderwidth/)) the
+means that if the text has a border (set with [\\bord](/zh-cn/docs/ass-override-tags/#borderwidth/)) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
 注意这个标签只会模糊文本的 *边框* ，不是整体。也就是说，如果文本有边框
-(边框设置详见 [\\bord](/zh-cn/docs/ass标签/#borderwidth/))
+(边框设置详见 [\\bord](/zh-cn/docs/ass-override-tags/#borderwidth/))
 那么边框将会被模糊，但是如果没有边框，那么文本整体就会被模糊。
 
 In the extended version, _strength_ is the number of times to apply the
@@ -337,23 +338,23 @@ generally more useful as a result. The _strength_ must be an integer number.
 \blur<strength>
 ```
 
-In general, this has the same function as the [`\be`](/zh-cn/docs/ass标签/#bluredges/) tag, but
+In general, this has the same function as the [`\be`](/zh-cn/docs/ass-override-tags/#bluredges/) tag, but
 uses a more advanced algorithm that looks better at high strengths. Unlike
 `\be`, the _strength_ can be non-integer here. Set _strength_ to 0 (zero) to
 disable the effect. Be careful, setting _strength_ too high can take a lot of
 CPU time to render.
 
-通常来说，这个标签和[\`\\be\`](/zh-cn/docs/ass标签/#bluredges/)标签的功能相似，但是它使用了一个更高级的算法让它在高强度上看起来更好。和`\be`不一样，这个
+通常来说，这个标签和[\`\\be\`](/zh-cn/docs/ass-override-tags/#bluredges/)标签的功能相似，但是它使用了一个更高级的算法让它在高强度上看起来更好。和`\be`不一样，这个
 *strength* 可以不是整数。设置 *strength* 为0使模糊效果消失。小心点，把
 *strength* 设置的太高的话，渲染时会占用大量 CPU 时间。
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
-means that if the text has a border (set with [`\bord`](/zh-cn/docs/ass标签/#borderwidth/)) the
+means that if the text has a border (set with [`\bord`](/zh-cn/docs/ass-override-tags/#borderwidth/)) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
 注意，这个标签会模糊文本的 *边框*
-，不是全部。也就是说，如果文本有边框（用[\`\\bord\`](/zh-cn/docs/ass标签/#borderwidth/)标签进行设置），那么边框会被模糊，但是如果没有边框，那么文本的主体就会被模糊。
+，不是全部。也就是说，如果文本有边框（用[\`\\bord\`](/zh-cn/docs/ass-override-tags/#borderwidth/)标签进行设置），那么边框会被模糊，但是如果没有边框，那么文本的主体就会被模糊。
 
 ### 字体名称 {#\fn}
 
@@ -439,12 +440,12 @@ rarely desirable.
 `\fs`，因为有字体微调参与的变形效果通常都不怎么好看。
 （译者注：字体微调，是对不同字号（即字体大小）的字形进行细节调整，优化其显示效果的技术。经过字体微调后，同一字符（同一字体同一字重的）不同字号的字形之间不再是严格的相似关系，变形效果会很差。所以在不同字体大小之间变形时，不能使用字体原本提供的不同大小的字形，而是仅使用一个大小的字形，用字体变形标签对其进行缩放。
 
-These tags also affect [vector drawings](/zh-cn/docs/ass标签/#drawing-commands/).
+These tags also affect [vector drawings](/zh-cn/docs/ass-override-tags/#drawing-commands/).
 
-这两个标签也会影响[矢量绘图](/zh-cn/docs/ass标签/#drawing-commands/)。
+这两个标签也会影响[矢量绘图](/zh-cn/docs/ass-override-tags/#drawing-commands/)。
 
 You can use font scaling to correct for anamorphic rendering and to specify
-text size more precisely than with [\\fs](/zh-cn/docs/ass标签/#fontsize/).
+text size more precisely than with [\\fs](/zh-cn/docs/ass-override-tags/#fontsize/).
 
 字体变形可以用来修正错误的渲染，也可以比 \\fs 更准确的指定字体大小。
 
@@ -537,13 +538,13 @@ larger than 360 degrees.
 以数学上的角度给出。如360度意味着转一整圈，转360度的倍数相当于没转。旋转角度可以使用负值和大于360度的值。
 
 The rotation is performed around the subtitle line origin point, this is
-described with the [\\org](/zh-cn/docs/ass标签/#rotationorigin/) tag.
+described with the [\\org](/zh-cn/docs/ass-override-tags/#rotationorigin/) tag.
 
-旋转的中心是当前字幕行的原点，这个点由 [`\org`](/zh-cn/docs/ass标签/#rotationorigin/) 规定。
+旋转的中心是当前字幕行的原点，这个点由 [`\org`](/zh-cn/docs/ass-override-tags/#rotationorigin/) 规定。
 
-These tags also affect [vector drawings](/zh-cn/docs/ass标签/#vectordrawings/).
+These tags also affect [vector drawings](/zh-cn/docs/ass-override-tags/#vectordrawings/).
 
-这几个标签也会影响[矢量绘图](/zh-cn/docs/ass标签/#vectordrawings/)。
+这几个标签也会影响[矢量绘图](/zh-cn/docs/ass-override-tags/#vectordrawings/)。
 
 **Example**
 
@@ -591,8 +592,8 @@ This is because 330 degrees is 30 degrees less than a full rotation of 360 degre
 \t(\frz3600)
 ```
 
-Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t](/zh-cn/docs/ass标签/#animatedtransform/) tag.
-轴旋转10圈的动画。参见 [`\t`](/zh-cn/docs/ass标签/#animatedtransform/)。
+Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t](/zh-cn/docs/ass-override-tags/#animatedtransform/) tag.
+轴旋转10圈的动画。参见 [`\t`](/zh-cn/docs/ass-override-tags/#animatedtransform/)。
 
 **Example**
 
@@ -624,10 +625,10 @@ unlikely to have desireable results.
 范围的值，效果一般都不是很好。
 
 Shearing is performed after rotation, on the rotated coordinates. The
-coordinate system used for shearing is not affected by the [rotation origin](/zh-cn/docs/ass标签/#rotationorigin/).
+coordinate system used for shearing is not affected by the [rotation origin](/zh-cn/docs/ass-override-tags/#rotationorigin/).
 
 剪切是在旋转之后应用的，以旋转后的坐标系为基准。这个剪切用的坐标系不受
-[旋转中心](/zh-cn/docs/ass标签/#rotationorigin/) 的影响。
+[旋转中心](/zh-cn/docs/ass-override-tags/#rotationorigin/) 的影响。
 
 **Example**
 
@@ -687,10 +688,10 @@ Some common font encoding IDs are:
 <strong>TODO: </strong>Is that really correct?
 </div>
 
-A more complete list can be seen the [style editor](/zh-cn/docs/样式/#thestyleeditor/)
+A more complete list can be seen the [style editor](/zh-cn/docs/editing-styles/#thestyleeditor/)
 dialog box.
 
-[样式编辑器](/zh-cn/docs/样式/#thestyleeditor/)对话框有更全面的列表。
+[样式编辑器](/zh-cn/docs/editing-styles/#thestyleeditor/)对话框有更全面的列表。
 
 In ASS files stored in non-Unicode encodings, this tag also affects what
 codepage the text following it should be interpreted in. Aegisub doesn't
@@ -798,12 +799,12 @@ and effectively leaving only the border and shadow.
 ```
 
 Specify the alignment of the line. The alignment specifies the position of the
-line when no [position override](/zh-cn/docs/ass标签/#setposition/) or
-[movement](/zh-cn/docs/ass标签/#movement/) is in effect, and otherwise specifies the
+line when no [position override](/zh-cn/docs/ass-override-tags/#setposition/) or
+[movement](/zh-cn/docs/ass-override-tags/#movement/) is in effect, and otherwise specifies the
 anchor point of positioning and rotation.
 
-选择行的对齐方式。如果没有设定 [位置](/zh-cn/docs/ass标签/#setposition/) 或
-[移动](/zh-cn/docs/ass标签/#movement/)
+选择行的对齐方式。如果没有设定 [位置](/zh-cn/docs/ass-override-tags/#setposition/) 或
+[移动](/zh-cn/docs/ass-override-tags/#movement/)
 ，对齐方式决定了行的位置。如果设定了位置或移动，对齐方式决定了位置和移动的参考点。
 
 The `\an` tag uses "numpad" values for the _pos_, ie. the alignment values
@@ -908,11 +909,11 @@ the line.
 
 The _duration_ is given in centiseconds, ie. a _duration_ of 100 is equivalent
 to 1 second. You generally don't enter `\k` tags manually but rather use
-karaoke timing tools such as [Aegisub's karaoke mode](/zh-cn/docs/教程/#karaoketiming/).
+karaoke timing tools such as [Aegisub's karaoke mode](/zh-cn/docs/tutorials/#karaoketiming/).
 
 *duration* 参数的单位是厘秒，一秒的百分之一。一般来说，\\k
 标签并不是手动输入的，而是用卡拉OK 计时工具创建，比如 [Aegisub's
-karaoke mode](/zh-cn/docs/教程/#karaoketiming/)。
+karaoke mode](/zh-cn/docs/tutorials/#karaoketiming/)。
 
 The different `\k` tags create various effects:
 
@@ -970,9 +971,9 @@ Determine how line breaking is applied to the subtitle line. The following
 ```
 
 Reset the style. This cancels all style overrides in effect, including
-[animations](/zh-cn/docs/ass标签/#animatedtransform/), for all following text.
+[animations](/zh-cn/docs/ass-override-tags/#animatedtransform/), for all following text.
 
-重置其后字符的样式，会让一切样式标签失效，包括[动画效果](/zh-cn/docs/ass标签/#animatedtransform/)。
+重置其后字符的样式，会让一切样式标签失效，包括[动画效果](/zh-cn/docs/ass-override-tags/#animatedtransform/)。
 
 The first form that does not specify a _style_ will reset to the style defined
 for the entire line, while the second form, that specifies the name of a
@@ -1005,10 +1006,10 @@ are you?"又被重设为 Default 样式。
 
 Set the position of the line. The _X_ and _Y_ coordinates must be integers and
 are given in the script resolution coordinate system. The meaning of _X_ and
-_Y_ changes slightly depending on [alignment](/zh-cn/docs/ass标签/#linealignment/).
+_Y_ changes slightly depending on [alignment](/zh-cn/docs/ass-override-tags/#linealignment/).
 
 设置一行字幕的位置。 *X* 和 *Y* 坐标必须是整数，按脚本分辨率计算。 *X*
-和 *Y* 坐标的含义视 [行对齐](/zh-cn/docs/ass标签/#linealignment/)
+和 *Y* 坐标的含义视 [行对齐](/zh-cn/docs/ass-override-tags/#linealignment/)
 的不同而略有差异。
 
 The alignment of the subtitle line is used as anchor point for the position.
@@ -1040,10 +1041,10 @@ The green cross marks the point (320,240) on the video.
 \move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>)
 ```
 
-The `\move` tag works similar to [`\pos`](/zh-cn/docs/ass标签/#setposition/) in that it
+The `\move` tag works similar to [`\pos`](/zh-cn/docs/ass-override-tags/#setposition/) in that it
 positions the subtitle line, the difference is that `\move` makes the subtitle
 move.
-`\move` 标签和 [\`\\pos\`](/zh-cn/docs/ass标签/#setposition/)
+`\move` 标签和 [\`\\pos\`](/zh-cn/docs/ass-override-tags/#setposition/)
 标签一样都指定字幕行的位置，但是与之不同的是，`\move` 还让字幕移动。
 
 The two versions of `\move` differ in that one makes the movement occur over
@@ -1056,13 +1057,13 @@ over which the movement occurs.
 The coordinates _x1_, _y1_, _x2_ and _y2_ are given in the script resolution
 coordinate system, like `\pos`. The subtitle starts out at point (_x1_,_y1_)
 and moves with constant speed so it ends up at (_x2_,_y2_).
-[Alignment](/zh-cn/docs/ass标签/#linealignment/) influences movement coordinates the same
+[Alignment](/zh-cn/docs/ass-override-tags/#linealignment/) influences movement coordinates the same
 way as it influences `\pos` coordinates.
 
 坐标 *x1* ， *y1* ， *x2* 和 *y2*
 按脚本分辨率计算，就像`\pos`一样。字幕开始在点 (*x1*, *y1*)
 处，然后匀速移动到点 (*x2*,
-*y2*)处。[行对齐方式](/zh-cn/docs/ass标签/#linealignment/)对移动的影响和对 `\pos`
+*y2*)处。[行对齐方式](/zh-cn/docs/ass-override-tags/#linealignment/)对移动的影响和对 `\pos`
 的影响相同。
 
 In the second version, the times _t1_ and _t2_ are given in milliseconds, ie.
@@ -1145,22 +1146,22 @@ first appeared on screen.
 \org(<X>,<Y>)
 ```
 
-Set the origin point used for [rotation](/zh-cn/docs/ass标签/#textrotation/). This
+Set the origin point used for [rotation](/zh-cn/docs/ass-override-tags/#textrotation/). This
 affects all rotations of the line. The _X_ and _Y_ coordinates are given in
 integer script resolution pixels.
 
-设定 [文本旋转](/zh-cn/docs/ass标签/#textrotation/)
+设定 [文本旋转](/zh-cn/docs/ass-override-tags/#textrotation/)
 使用的中心点，适用于这一行字幕的所有文本旋转， *X* 和 *Y*
 坐标按脚本分辨率像素计算。
 
 When there is no `\org` tag in a line, the rotation origin is implicitly the
-same as the [position anchor point](/zh-cn/docs/ass标签/#setposition/). This means that
+same as the [position anchor point](/zh-cn/docs/ass-override-tags/#setposition/). This means that
 the rotation origin will move if the line moves and there is no origin set
 with `\org`. Note that you can _not_ animate the `\org` tag, you are limited
 to a fixed origin if you use it.
 
 当不设定`\org`标签时，旋转中心就是
-[位置设定的参考点](/zh-cn/docs/ass标签/#setposition/)。这意味着如果不设定`\org`标签，当行的位置改变时，旋转中心也会随之改变。注意你无法给`\org`标签加上动画效果，旋转中心必须是固定的。
+[位置设定的参考点](/zh-cn/docs/ass-override-tags/#setposition/)。这意味着如果不设定`\org`标签，当行的位置改变时，旋转中心也会随之改变。注意你无法给`\org`标签加上动画效果，旋转中心必须是固定的。
 
 If the rotation origin is placed on the vanishing point in a 3D scene, 3D
 rotations of subtitle line will produce the correct perspective to match the
@@ -1257,9 +1258,9 @@ times _t1_, _t2_, _t3_ and _t4_.
 The alpha values are given in _decimal_ and are between 0 and 255, with 0
 being fully visible and 255 being invisible. The time values are given in
 milliseconds after the start of the line. All seven parameters are required.
-(For most common fade effects the [`\fad`](/zh-cn/docs/ass标签/#fade/) tag works fine.)
+(For most common fade effects the [`\fad`](/zh-cn/docs/ass-override-tags/#fade/) tag works fine.)
 
-透明度值是十进制的，介于0和255之间，当其为零时字符时完全不透明的，为255时是完全透明的。时间值单位是毫秒，是字幕行开始后经过的时间。七个参数都是需要的。（[\`\\fad\`](/zh-cn/docs/ass标签/#fade/)
+透明度值是十进制的，介于0和255之间，当其为零时字符时完全不透明的，为255时是完全透明的。时间值单位是毫秒，是字幕行开始后经过的时间。七个参数都是需要的。（[\`\\fad\`](/zh-cn/docs/ass-override-tags/#fade/)
 标签对于大部分常见的渐变特效都工作良好。）
 
 - Before _t1_, the line has alpha _a1_.
@@ -1705,9 +1706,9 @@ Closes the b-spline.
 
 闭合 b-spline。
 
-_Note: The [vector clip visual typesetting tool](/zh-cn/docs/可视化排版/#vectorial-clip/) only supports the m, l and b
+_Note: The [vector clip visual typesetting tool](/zh-cn/docs/visual-typesetting/#vectorial-clip/) only supports the m, l and b
 commands, and may corrupt drawings which use the other commands._
 
 *注意： [vector clip visual typesetting
-tool](/zh-cn/docs/可视化排版/#vectorial-clip/)只支持
+tool](/zh-cn/docs/visual-typesetting/#vectorial-clip/)只支持
 m，l，b命令，并且对于其他命令可能会绘制错误.*

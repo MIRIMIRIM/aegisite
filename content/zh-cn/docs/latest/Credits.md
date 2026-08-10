@@ -1,5 +1,6 @@
 ---
 title: 贡献者名单
+slug: credits
 menu:
   docs:
     parent: introduction

@@ -1,5 +1,6 @@
 ---
 title: re
+slug: re
 menu:
   docs:
     parent: lua-modules

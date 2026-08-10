@@ -1,5 +1,6 @@
 ---
 title: 注音卡拉OK
+slug: furigana-tutorial
 menu:
   docs:
     parent: tutorials
@@ -26,11 +27,11 @@ This page describes the syntax the Automation 4 karaskel.lua script understands
 for furigana text, and how to use the layout information it calculates to
 actually create positioned characters.
 
-[Karaoke Templater](/zh-cn/docs/卡拉ok模版执行器/) also implements support for
+[Karaoke Templater](/zh-cn/docs/karaoke-templater/) also implements support for
 furigana using the karaskel.lua algorithm and syntax.
 
 It's important to note that the syntax is designed for karaoke, and revolves
-around [karaoke timed](/zh-cn/docs/卡拉ok计时/) text. It isn't suited for typesetting
+around [karaoke timed](/zh-cn/docs/karaoke-timing-tutorial/) text. It isn't suited for typesetting
 regular text (e.g. dialogue lines) with general purpose ruby text. A more
 elaborate syntax and more complex layout engine would be required for that.
 
@@ -177,9 +178,9 @@ characters are accepted.
 
 ## Usage in Karaoke Templater
 
-Furigana: [The _furi_ template class](/zh-cn/docs/模版修饰语/#furi/)
+Furigana: [The _furi_ template class](/zh-cn/docs/modifiers/#furi/)
 
-Multi-highlight: [The _multi_ modifier](/zh-cn/docs/模版修饰语/#multi/)
+Multi-highlight: [The _multi_ modifier](/zh-cn/docs/modifiers/#multi/)
 
 **Example**
 

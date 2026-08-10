@@ -1,5 +1,6 @@
 ---
 title: Code行 和 Code区
+slug: code-lines-and-blocks
 menu:
   docs:
     parent: karaoke-templater
@@ -10,7 +11,7 @@ Code行和Code区是由卡拉OK模板执行器产生的概念，它们允许你�
 代码可以是几个数字之间的简单运算，也可以是复杂的函数，例如生成各种各样的图形和颜色。
 
 Code行和Code区的代码执行都是在一个半封闭的执行环境进行的，这意味着它们的执行几乎不会受自带的Lua运行环境影响。想知道什么样的变量可以应用在Code行/区，可以查看:
-[代码执行环境](/zh-cn/docs/execution-envirionment/)。
+[代码执行环境](/zh-cn/docs/execution-environment/)。
 
 ## Code 行
 
@@ -59,7 +60,7 @@ furi
 ## Code 区
 
 Code区是在template行中使用Lua代码的一个区块。插入一个Code区，就可以在里面使用复杂的东西，这类东西可以表述为
-[内联变量](/zh-cn/docs/内联变量/)。
+[内联变量](/zh-cn/docs/inline-variables-variables/)。
 
 Code区要求是一个单独的Lua表达式，因为
 `return`这种步骤已经预先包含在了code区的规则中。

@@ -1,5 +1,6 @@
 ---
 title: 进度报告
+slug: progress-reporting
 menu:
   docs:
     parent: lua-reference
@@ -59,7 +60,7 @@ Synopsis: `cancelled = aegisub.progress.is_cancelled()`
 Tells whether the user has clicked on the Cancel button.
 
 You should call this function regularly during long operations, and if it's
-true call [`aegisub.cancel()`](/zh-cn/docs/杂项api/#aegisub.cancel/) to
+true call [`aegisub.cancel()`](/zh-cn/docs/misc-apis/#aegisub.cancel/) to
 rollback all changes and immediately end execution of the script.
 
 `cancelled` (`boolean`)
@@ -110,7 +111,7 @@ The following severity levels are suggested:
 0: "fatal"
 : Something really bad happened and the script can't continue. Level 0 messages
   are always shown. Note that Aegisub does not automatically terminate your
-  script. Call [`aegisub.cancel()`](/zh-cn/docs/杂项api/#aegisub.cancel/)
+  script. Call [`aegisub.cancel()`](/zh-cn/docs/misc-apis/#aegisub.cancel/)
   afterwards if you want it to.
 
 1: "error"

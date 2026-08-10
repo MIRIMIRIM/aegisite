@@ -1,5 +1,6 @@
 ---
 title: 选择多行
+slug: select-lines
 menu:
   docs:
     parent: working-with-subtitles

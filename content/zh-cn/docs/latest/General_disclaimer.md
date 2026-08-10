@@ -1,5 +1,6 @@
 ---
 title: General Disclaimer
+slug: general-disclaimer
 menu:
   docs:
     parent: introduction

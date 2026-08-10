@@ -1,5 +1,6 @@
 ---
 title: unicode.lua
+slug: unicode-lua
 menu:
   docs:
     parent: lua-modules

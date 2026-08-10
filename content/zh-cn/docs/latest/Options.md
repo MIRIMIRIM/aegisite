@@ -1,5 +1,6 @@
 ---
 title: 选项
+slug: aegisub-options
 menu:
   docs:
     parent: miscellaneous
@@ -9,7 +10,7 @@ weight: 7000
 Aegisub是可高度定制的软件，因而它有大量的选项供用户选择。这些选项都在选项对话框中，您可以在"查看"菜单里找到。这个页面提供可用选项的说明。
 
 Aegisub将所有配置都以纯文本的形式储存在 *config.json*
-文件中，它默认位于[?user](/zh-cn/docs/aegisub路径变量/)目录。
+文件中，它默认位于[?user](/zh-cn/docs/path-specifiers/)目录。
 如果您想恢复默认设置而不想重装Aegisub的话，您只需把config.json删掉并重启Aegisub即可。
 
 ## 通用
@@ -68,7 +69,7 @@ Aegisub将所有配置都以纯文本的形式储存在 *config.json*
 
 默认提前开始时间长度
 默认延后结束时间长度
-: 使用"开始时间提前"和"结束时间延后"功能所增加的时间长度。同时也可在[时间后续处理器](/zh-cn/docs/时间后续处理器/)里使用和设置。
+: 使用"开始时间提前"和"结束时间延后"功能所增加的时间长度。同时也可在[时间后续处理器](/zh-cn/docs/timing-post-processor/)里使用和设置。
 
 标记拖动灵敏度
 : 能够视为拖动的鼠标移动的像素距离。较高的值可以降低误操作的可能，不过响应能力会降低。
@@ -149,7 +150,7 @@ Aegisub将所有配置都以纯文本的形式储存在 *config.json*
   Alt+有方向键）时一步"跳"多远。以帧为单位。
 
 截图保存路径
-: 决定Aegisub把截图保存到哪。默认位置是`?video`，就是存到视频文件所在的文件夹，但您可以改成您想要的路径。支持[Aegisub路径表示符](/zh-cn/docs/aegisub路径变量/)；下拉菜单里另一个可选选项是`?script`，即保存到字幕文件的位置。
+: 决定Aegisub把截图保存到哪。默认位置是`?video`，就是存到视频文件所在的文件夹，但您可以改成您想要的路径。支持[Aegisub路径表示符](/zh-cn/docs/path-specifiers/)；下拉菜单里另一个可选选项是`?script`，即保存到字幕文件的位置。
 
 ### 脚本分辨率
 
@@ -165,7 +166,7 @@ Aegisub将所有配置都以纯文本的形式储存在 *config.json*
 ![preferences-interface](/img/3.2/preferences-interface.png#center)
 
 启用提示
-: 当启用时，Aegisub将自动识别您打的[特效标签](/zh-cn/docs/ass标签/)，并显示一个这个标签的语法提示框，直至您闭合这个标签。这个功能叫做"语法提示"，和一些编程集成开发环境(IDE)的体验相似。
+: 当启用时，Aegisub将自动识别您打的[特效标签](/zh-cn/docs/ass-override-tags/)，并显示一个这个标签的语法提示框，直至您闭合这个标签。这个功能叫做"语法提示"，和一些编程集成开发环境(IDE)的体验相似。
 
 时间框内覆盖写入
 : 控制这个程序里所有时间编辑框的行为。默认情况下，Aegisub的所有时间编辑框就像您按下Insert键一样，所以您输入的每个数字都会覆盖已经存在的数字，并且无法删除已存在的数字，您只能覆盖它们。取消这个选项来禁用这个功能，并让所有时间编辑框像（大部分）常规文本编辑框一样。
@@ -334,7 +335,7 @@ name](/zh-cn/docs/commands/), then set the hotkey as when editing them.
   对于Windows 7系统。实际的默认路径为
   `%UserProfile%\AppData\Roaming\Aegisub\autosave`
   （对于其他系统，请参考[Aegisub path
-  specifiers](/zh-cn/docs/aegisub路径变量/)）
+  specifiers](/zh-cn/docs/path-specifiers/)）
 
 每次更改后自动保存
 : 如果启用此设定，Aegisub将在每次更改后自动保存文件。
@@ -351,7 +352,7 @@ name](/zh-cn/docs/commands/), then set the hotkey as when editing them.
   对于Windows 7系统。实际的默认路径为
   `%UserProfile%\AppData\Roaming\Aegisub\autoback`
   （对于其他系统，请参考[Aegisub path
-  specifiers](/zh-cn/docs/aegisub路径变量/) ）
+  specifiers](/zh-cn/docs/path-specifiers/) ）
 
 ## 自动化
 
@@ -380,9 +381,9 @@ name](/zh-cn/docs/commands/), then set the hotkey as when editing them.
 
 自动重新载入导出
 : Automatically reloads the specified sets of scripts when the
-  [Exporting](/zh-cn/docs/导出/) dialogue is opened. In that
+  [Exporting](/zh-cn/docs/exporting-subtitles/) dialogue is opened. In that
   case you will have to enter the
-  [Automation/Manager](/zh-cn/docs/自动化脚本管理器/) window and
+  [Automation/Manager](/zh-cn/docs/automation-manager/) window and
   determine the cause of the error.
 
 ## 高级音频设置

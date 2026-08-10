@@ -1,5 +1,6 @@
 ---
 title: History of Automation
+slug: history-of-automation
 menu:
   docs:
     parent: automation

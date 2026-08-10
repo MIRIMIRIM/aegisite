@@ -1,5 +1,6 @@
 ---
 title: 支持
+slug: support-aegisub
 menu:
   docs:
     parent: introduction

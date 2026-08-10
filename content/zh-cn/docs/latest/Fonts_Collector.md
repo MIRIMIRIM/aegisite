@@ -1,5 +1,6 @@
 ---
 title: 字体收集器
+slug: fonts-collector
 menu:
   docs:
     parent: typesetting

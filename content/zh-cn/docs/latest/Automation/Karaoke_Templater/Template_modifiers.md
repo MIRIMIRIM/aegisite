@@ -1,5 +1,6 @@
 ---
 title: 模版修饰语
+slug: modifiers
 menu:
   docs:
     parent: karaoke-templater
@@ -169,7 +170,7 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl all,{\pos(
 ### char
 
 使模板的工作对象变为每个字符，而不是每个音节。它会以值得注意的方式改变应用顺序，查看
-[模板执行和执行顺序](/zh-cn/docs/卡拉ok模板执行环境和顺序/)
+[模板执行和执行顺序](/zh-cn/docs/execution-order/)
 来获取相信信息。
 
 它用于 code行时，一般没什么意义，在上面的链接中可以了解到。
@@ -200,7 +201,7 @@ Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl char,{\pos
 ### fx *name*
 
 使模板只应用于含有内联特效
-[(inline-fx)](/zh-cn/docs/卡拉ok内联特效/)
+[(inline-fx)](/zh-cn/docs/inline-effects-tutorial/)
 的音节。指定内联特效名称是必要的；内联特效名称也不建议和修饰语重复。
 
 **Example**
@@ -221,7 +222,7 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl fx drop,{\
 **Example**
 
 有一个 *fxgroup* 的例子，见 [代码执行环境Code execution
-environment](/zh-cn/docs/execution-envirionment/#conditionaltemplateswithfxgroup/)
+environment](/zh-cn/docs/execution-environment/#conditionaltemplateswithfxgroup/)
 
 ### keeptags
 
@@ -244,9 +245,9 @@ karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 ### multi
 
 使模板对每个高亮应用一次
-，见[多次高亮](/zh-cn/docs/注音卡拉ok/)
+，见[多次高亮](/zh-cn/docs/furigana-tutorial/)
 。它会改变模板执行顺序，详见
-[模板执行顺序](/zh-cn/docs/卡拉ok模板执行环境和顺序/)) 。
+[模板执行顺序](/zh-cn/docs/execution-order/)) 。
 
 当它被用于 code行时，基本没什么卵用，具体可以参照执行顺序。
 
@@ -307,7 +308,7 @@ code行为了方便定义了一个矢量绘图。这个图形是一个简单的�
 
 注意 loop 修饰的行模板和 loop 修饰的
 音节/假名标记(syl/furi)模板执行顺序不同。详见
-[模板执行顺序](/zh-cn/docs/卡拉ok模板执行环境和顺序/) 。
+[模板执行顺序](/zh-cn/docs/execution-order/) 。
 
 **Example**
 
@@ -323,5 +324,5 @@ template syl loop 4: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,3
 (更科学的数字应该是255，但是靠偶数次循环实现不了)
 
 > *可以在
-> [代码执行环境](/zh-cn/docs/execution-envirionment/#loopingtemplates/)
+> [代码执行环境](/zh-cn/docs/execution-environment/#loopingtemplates/)
 > 页面看到更多高级用法。*

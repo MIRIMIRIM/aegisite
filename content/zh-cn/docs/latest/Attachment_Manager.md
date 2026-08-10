@@ -1,5 +1,6 @@
 ---
 title: 附件管理器
+slug: attachment-manager
 menu:
   docs:
     parent: miscellaneous

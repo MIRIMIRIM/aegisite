@@ -1,5 +1,6 @@
 ---
 title: 样式助手
+slug: styling-assistant
 menu:
   docs:
     parent: typesetting

@@ -1,5 +1,6 @@
 ---
 title: Automation Tutorials
+slug: automation-tutorials
 menu:
   docs:
     parent: karaoke-templater
@@ -7,5 +8,5 @@ menu:
 weight: 6170
 ---
 
-- [教程一](/zh-cn/docs/教程一/)
-- [教程二](/zh-cn/docs/教程二/)
+- [教程一](/zh-cn/docs/a-simple-example/)
+- [教程二](/zh-cn/docs/using-math-expressions/)

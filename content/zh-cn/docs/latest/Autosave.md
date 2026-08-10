@@ -1,5 +1,6 @@
 ---
 title: 自动保存
+slug: autosave
 menu:
   docs:
     parent: miscellaneous

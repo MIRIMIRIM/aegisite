@@ -1,5 +1,6 @@
 ---
 title: 翻译助手
+slug: translation-assistant
 menu:
   docs:
     parent: working-with-subtitles

@@ -1,5 +1,6 @@
 ---
 title: 拼写检查器
+slug: spell-checker
 menu:
   docs:
     parent: working-with-subtitles
@@ -13,7 +14,7 @@ weight: 3300
 （※译者注：例如 WPS Office、印象笔记等）
 。您可以通过"*字幕 -> 拼写检查器*
 "打开它，它会在您输入内容的同时进行检查。此外，字幕编辑框的右键菜单中也有与之相关的选项（详见
-[编辑字幕](/zh-cn/docs/编辑字幕/)）。
+[编辑字幕](/zh-cn/docs/editing-subtitles/)）。
 
 ### 拼写检查对话框
 
@@ -65,5 +66,5 @@ OS X 版本则已经内置了现有的全部词典。
 
 在各个发行版的 Linux 系统中，您可以通过软件包管理器来安装 hunspell
 词典。您可能需要在 Aegisub 中将
-[词典文件路径](/zh-cn/docs/选项/#interface/)
+[词典文件路径](/zh-cn/docs/aegisub-options/#interface/)
 设置为它们实际安装的位置；常见的路径为 `/usr/share/hunspell`。

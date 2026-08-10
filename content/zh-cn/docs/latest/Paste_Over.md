@@ -1,5 +1,6 @@
 ---
 title: 选择性粘贴
+slug: paste-over
 menu:
   docs:
     parent: working-with-subtitles

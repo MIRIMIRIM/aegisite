@@ -1,5 +1,6 @@
 ---
 title: 亮点
+slug: highlights
 menu:
   docs:
     parent: introduction

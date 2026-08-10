@@ -1,5 +1,6 @@
 ---
 title: karaskel.lua
+slug: karaskel-lua
 menu:
   docs:
     parent: lua-modules
@@ -28,7 +29,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 - `subtitles` 指的是Automation 4 Lua定义的字幕文件对象。
 - `generate_furigana` 是在这种逻辑下进行的操作: 它会为没有对应
-  [假名布局](/zh-cn/docs/注音卡拉ok/)
+  [假名布局](/zh-cn/docs/furigana-tutorial/)
   的样式单独生成样式。生成的假名样式永远也不会覆盖存在的样式。
 
 使用 `collect_head` 一般情况下是你在处理函数中做的第一步。
@@ -86,7 +87,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
   `false` (假)
 - `line.width`, `line.height`, `line.descent` 和 `line.extlead` -
   原文本的尺寸信息，由
-  [\`aegisub.text_extents\`](/zh-cn/docs/杂项api/#aegisub.text_extents/)
+  [\`aegisub.text_extents\`](/zh-cn/docs/misc-apis/#aegisub.text_extents/)
   返回。 这个函数也修饰 `line.kara` 和 `line.furi` 表, 增加尺寸信息。
 
 这一部分不涉及位置信息的计算。
@@ -270,7 +271,7 @@ Full list of fields:
 - `style.fontsize` - Font size for the style.
 - `style.color1`, `style.color2`, `style.color3` and `style.color4` - The
   four colours used by the style, in regular order. Use
-  [`extract_color`](/zh-cn/docs/lua模块/#extractcolor/) and family to
+  [`extract_color`](/zh-cn/docs/lua-modules/#extractcolor/) and family to
   manipulate these.
 - `style.bold` - `true`/`false` to specify bold/non-bold font face. Can
   also be a number to specify font weight, but this is not well supported
@@ -401,7 +402,7 @@ Additions by `karaskel.preproc_line_text`:
 - `syl.kdur` - Syllable duration in centiseconds, suitable for use in `\k`
   tags.
 - `syl.line` - Back reference to the line table containing this syllable.
-- `syl.inline_fx` - Name of the [_inline-fx_](/zh-cn/docs/卡拉ok内联特效/) for this
+- `syl.inline_fx` - Name of the [_inline-fx_](/zh-cn/docs/inline-effects-tutorial/) for this
   syllable.
 - `syl.i` - Index number of this syllable.
 - `syl.prespace`, `syl.postspace` - Space characaters at the start/end of

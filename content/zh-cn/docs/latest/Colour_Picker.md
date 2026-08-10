@@ -1,5 +1,6 @@
 ---
 title: 颜色选择器
+slug: colour-picker
 menu:
   docs:
     parent: typesetting

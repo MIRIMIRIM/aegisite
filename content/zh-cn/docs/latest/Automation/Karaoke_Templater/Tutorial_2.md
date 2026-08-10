@@ -1,12 +1,13 @@
 ---
 title: 教程二
+slug: using-math-expressions
 menu:
   docs:
     parent: automation-tutorials
 weight: 6172
 ---
 
-在 [前一篇教程](/zh-cn/docs/教程一/)
+在 [前一篇教程](/zh-cn/docs/a-simple-example/)
 中，我们了解了如何使用卡拉OK模板执行器的基本特性，并且能创作简单的卡拉OK效果。
 本篇中，我们将继续走下去，拓展一些知识。
 

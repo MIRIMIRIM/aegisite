@@ -1,5 +1,6 @@
 ---
 title: 教程
+slug: tutorials
 menu:
   docs:
     parent: introduction
@@ -48,7 +49,7 @@ weight: 2700
 
 ## 文字教程
 
-- [卡拉OK计时](/zh-cn/docs/卡拉ok计时/) --- 输入歌曲的歌词并为其添加时间码（K值）。
-- [Karaoke Inline effects Tutorial](/zh-cn/docs/卡拉ok内联特效/)
-- [Karaoke Furigana Tutorial](/zh-cn/docs/注音卡拉ok/)
-- [卡拉OK模版](/zh-cn/docs/卡拉ok模版执行器/) (待完善) ---  通过简单的方式为卡拉OK添加特效，从最基础的效果到非常高级的效果均有涉及。
+- [卡拉OK计时](/zh-cn/docs/karaoke-timing-tutorial/) --- 输入歌曲的歌词并为其添加时间码（K值）。
+- [Karaoke Inline effects Tutorial](/zh-cn/docs/inline-effects-tutorial/)
+- [Karaoke Furigana Tutorial](/zh-cn/docs/furigana-tutorial/)
+- [卡拉OK模版](/zh-cn/docs/karaoke-templater/) (待完善) ---  通过简单的方式为卡拉OK添加特效，从最基础的效果到非常高级的效果均有涉及。
