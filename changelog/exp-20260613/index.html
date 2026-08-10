@@ -287,62 +287,63 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>exp-20260613</h1>
-            <p>The first official release of the <code>exp</code> branch; currently, this branch is guaranteed to work only on Windows.</p>
-            <p>Revision at tag: <strong>r9730</strong>. Assets: <a href="https://github.com/AmusementClub/Aegisub/releases/tag/exp-20260613">release</a>.</p>
-            <h3 id="major-changes">Major changes</h3>
-            <ul>
-            <li>Upgrade C++ and major dependencies, and split some dependencies into dynamic loading</li>
-            <li>Support LayoutRes X/Y</li>
-            <li>Rewrite and split font collector (Windows)</li>
-            <li>Support preview HDR and Dolby Vision, provided by libplacebo and lsmasnative</li>
-            <li>Support generate keyframe, provided by scenechange_native and lsmasnative</li>
-            <li>Support pan in attached video</li>
-            <li>Using pffft instead of FFTW3 for audio spectrum mode</li>
-            <li>Audio spectrum mode add more rendering styles</li>
-            <li>Lua add luasocket and a debugging feature</li>
-            <li>Introduce libmatroska for mkv info parsing, and use the fonts in the attachment to render embedded subtitle correctly</li>
-            <li>Add secondary subtitle in attached video</li>
-            <li>Performance optimizations, bug fixes, and new bugs</li>
-            </ul>
-            <h3 id="major-deps--build-info">Major deps / build info</h3>
-            <ul>
-            <li>C++ 20</li>
-            <li>wxWidgets: 3.3.1</li>
-            <li>libass: <a href="https://github.com/libass/libass/releases/tag/0.17.4">0.17.4</a></li>
-            <li>Boost: 1.90.0</li>
-            <li>pffft: 1.1.0</li>
-            <li>Lua: LuaJIT 2.1.0-beta3, luabins, <a href="https://github.com/lunarmodules/luasocket/releases/tag/v3.1.0">luasocket v3.1.0</a></li>
-            <li>libmatroska: 1.7.1</li>
-            </ul>
-            <h3 id="dynamic-loading-deps">Dynamic loading deps</h3>
-            <h4 id="video--audio-source-filters">Video / Audio source filters</h4>
-            <ul>
-            <li>avisynth: <a href="https://github.com/AviSynth/AviSynthPlus/releases/tag/v3.7.5">AviSynthPlus v3.7.5</a></li>
-            <li>ffms2: <a href="https://github.com/FFMS/ffms2/releases/tag/5.0">5.0</a></li>
-            <li>lsmasnative: <a href="https://github.com/MIRIMIRIM/LsmasSharp/releases/tag/202606">LsmasSharp/202606</a>, base <a href="https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/tag/1282">L-SMASH-Works/20260326</a></li>
-            <li>ragbag-subtitle-ffmpeg：<a href="https://github.com/MIRIMIRIM/RagbagSubtitle/commit/645c55032b85955066622ee8cd774d1334976745">RagbagSubtitle v0.1.0</a></li>
-            </ul>
-            <h4 id="other-filters">Other filters</h4>
-            <ul>
-            <li>libplacebo: <a href="https://github.com/MIRIMIRIM/build-libplacebo/releases/tag/v7.360.1-20260318">v7.360.1-20260318</a></li>
-            <li>scenechange_native: <a href="https://github.com/MIRIMIRIM/SceneChangeSharp/releases/tag/v0.0.2">SceneChangeSharp v0.0.2</a></li>
-            </ul>
-            <h4 id="subtitle-filters">Subtitle filters</h4>
-            <ul>
-            <li>assrender_textsub / assrender_ob_textsub: <a href="https://github.com/AmusementClub/assrender/releases/tag/0.38.4">assrender/0.38.4</a></li>
-            <li>pf-xy-vsfilter_textsub: <a href="https://github.com/pinterf/xy-VSFilter/releases/tag/3.2.0.810">pinterf/xy-VSFilter 3.2.0.810</a></li>
-            <li>vsfiltermod_textsub: <a href="https://github.com/AmusementClub/VSFilterMod/releases/tag/r5.2.7-beta-2">VSFilterMod r5.2.7-beta-2</a></li>
-            <li>vsfilter_textsub: <a href="https://github.com/HomeOfVapourSynthEvolution/xy-VSFilter/releases/tag/r3">xy-VSFilter r3</a></li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>exp-20260613</h1>
+      <p>The first official release of the <code>exp</code> branch; currently, this branch is guaranteed to work only on Windows.</p>
+      <p>Revision at tag: <strong>r9730</strong>. Assets: <a href="https://github.com/AmusementClub/Aegisub/releases/tag/exp-20260613">release</a>.</p>
+      <h3 id="major-changes">Major changes</h3>
+      <ul>
+      <li>Upgrade C++ and major dependencies, and split some dependencies into dynamic loading</li>
+      <li>Support LayoutRes X/Y</li>
+      <li>Rewrite and split font collector (Windows)</li>
+      <li>Support preview HDR and Dolby Vision, provided by libplacebo and lsmasnative</li>
+      <li>Support generate keyframe, provided by scenechange_native and lsmasnative</li>
+      <li>Support pan in attached video</li>
+      <li>Using pffft instead of FFTW3 for audio spectrum mode</li>
+      <li>Audio spectrum mode add more rendering styles</li>
+      <li>Lua add luasocket and a debugging feature</li>
+      <li>Introduce libmatroska for mkv info parsing, and use the fonts in the attachment to render embedded subtitle correctly</li>
+      <li>Add secondary subtitle in attached video</li>
+      <li>Performance optimizations, bug fixes, and new bugs</li>
+      </ul>
+      <h3 id="major-deps--build-info">Major deps / build info</h3>
+      <ul>
+      <li>C++ 20</li>
+      <li>wxWidgets: 3.3.1</li>
+      <li>libass: <a href="https://github.com/libass/libass/releases/tag/0.17.4">0.17.4</a></li>
+      <li>Boost: 1.90.0</li>
+      <li>pffft: 1.1.0</li>
+      <li>Lua: LuaJIT 2.1.0-beta3, luabins, <a href="https://github.com/lunarmodules/luasocket/releases/tag/v3.1.0">luasocket v3.1.0</a></li>
+      <li>libmatroska: 1.7.1</li>
+      </ul>
+      <h3 id="dynamic-loading-deps">Dynamic loading deps</h3>
+      <h4 id="video--audio-source-filters">Video / Audio source filters</h4>
+      <ul>
+      <li>avisynth: <a href="https://github.com/AviSynth/AviSynthPlus/releases/tag/v3.7.5">AviSynthPlus v3.7.5</a></li>
+      <li>ffms2: <a href="https://github.com/FFMS/ffms2/releases/tag/5.0">5.0</a></li>
+      <li>lsmasnative: <a href="https://github.com/MIRIMIRIM/LsmasSharp/releases/tag/202606">LsmasSharp/202606</a>, base <a href="https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/tag/1282">L-SMASH-Works/20260326</a></li>
+      <li>ragbag-subtitle-ffmpeg：<a href="https://github.com/MIRIMIRIM/RagbagSubtitle/commit/645c55032b85955066622ee8cd774d1334976745">RagbagSubtitle v0.1.0</a></li>
+      </ul>
+      <h4 id="other-filters">Other filters</h4>
+      <ul>
+      <li>libplacebo: <a href="https://github.com/MIRIMIRIM/build-libplacebo/releases/tag/v7.360.1-20260318">v7.360.1-20260318</a></li>
+      <li>scenechange_native: <a href="https://github.com/MIRIMIRIM/SceneChangeSharp/releases/tag/v0.0.2">SceneChangeSharp v0.0.2</a></li>
+      </ul>
+      <h4 id="subtitle-filters">Subtitle filters</h4>
+      <ul>
+      <li>assrender_textsub / assrender_ob_textsub: <a href="https://github.com/AmusementClub/assrender/releases/tag/0.38.4">assrender/0.38.4</a></li>
+      <li>pf-xy-vsfilter_textsub: <a href="https://github.com/pinterf/xy-VSFilter/releases/tag/3.2.0.810">pinterf/xy-VSFilter 3.2.0.810</a></li>
+      <li>vsfiltermod_textsub: <a href="https://github.com/AmusementClub/VSFilterMod/releases/tag/r5.2.7-beta-2">VSFilterMod r5.2.7-beta-2</a></li>
+      <li>vsfilter_textsub: <a href="https://github.com/HomeOfVapourSynthEvolution/xy-VSFilter/releases/tag/r3">xy-VSFilter r3</a></li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

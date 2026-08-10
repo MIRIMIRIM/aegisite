@@ -287,33 +287,34 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>3.3.0</h1>
-            <p><a href="https://github.com/wangqr/Aegisub/releases/tag/v3.3.0">wangqr/Aegisub</a> release, based on upstream trunk <strong><a href="/aegisite/changelog/r8942">r8942</a></strong>.</p>
-            <p>For changes from v3.2.2 to r8942, see <a href="http://plorkyeran.com/aegisub/">plorkyeran trunk builds</a> or <a href="/aegisite/changelog/r8942">r8942</a>.</p>
-            <h3 id="changes-after-r8942">Changes after r8942</h3>
-            <ul>
-            <li>Added the &quot;align to hardsub in video&quot; function (thanks to @cqjjjzr)</li>
-            <li>Allow user change color for visual typesetting tool (thanks to @CoffeeFlux)</li>
-            <li>Bug fixes about HiDPI display issues</li>
-            <li>Bug fixes about timing calculation for video frame and audio FFT</li>
-            <li>Updated default configs (thanks to @CoffeeFlux)</li>
-            <li>Other fixes for building issues with updated dependencies</li>
-            <li>Experimental CMake build</li>
-            </ul>
-            <h3 id="notes">Notes</h3>
-            <ul>
-            <li><strong>2019-09-10:</strong> Rebuilt due to <a href="https://github.com/wangqr/Aegisub/issues/16">wangqr/Aegisub#16</a></li>
-            <li><strong>2019-10-02:</strong> Added win32 build. Keep in mind that if you use 32-bit builds, you will NOT be able to use more than 4GiB memory, and performance will suffer due to the additional WoW64 emulation layer, and lack of SIMD instructions. The performance impact is especially noticeable in fftw (for audio spectrum) and AviSynth. Unless you are using some legacy tools that either no longer maintained, or for some reason cannot use 64-bit, or you are actually using a 32-bit CPU, please use the 64-bit version. SSE2 is still REQUIRED to run the 32-bit version</li>
-            <li><strong>2019-11-11:</strong> Rebuilt win32 build due to missing uchardet.dll. Moved old builds to <a href="https://ftp.wangqr.tk/aegisub/backup/">https://ftp.wangqr.tk/aegisub/backup/</a> (They are not for daily use, only for audit purpose).</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>3.3.0</h1>
+      <p><a href="https://github.com/wangqr/Aegisub/releases/tag/v3.3.0">wangqr/Aegisub</a> release, based on upstream trunk <strong><a href="/aegisite/changelog/r8942">r8942</a></strong>.</p>
+      <p>For changes from v3.2.2 to r8942, see <a href="http://plorkyeran.com/aegisub/">plorkyeran trunk builds</a> or <a href="/aegisite/changelog/r8942">r8942</a>.</p>
+      <h3 id="changes-after-r8942">Changes after r8942</h3>
+      <ul>
+      <li>Added the &quot;align to hardsub in video&quot; function (thanks to @cqjjjzr)</li>
+      <li>Allow user change color for visual typesetting tool (thanks to @CoffeeFlux)</li>
+      <li>Bug fixes about HiDPI display issues</li>
+      <li>Bug fixes about timing calculation for video frame and audio FFT</li>
+      <li>Updated default configs (thanks to @CoffeeFlux)</li>
+      <li>Other fixes for building issues with updated dependencies</li>
+      <li>Experimental CMake build</li>
+      </ul>
+      <h3 id="notes">Notes</h3>
+      <ul>
+      <li><strong>2019-09-10:</strong> Rebuilt due to <a href="https://github.com/wangqr/Aegisub/issues/16">wangqr/Aegisub#16</a></li>
+      <li><strong>2019-10-02:</strong> Added win32 build. Keep in mind that if you use 32-bit builds, you will NOT be able to use more than 4GiB memory, and performance will suffer due to the additional WoW64 emulation layer, and lack of SIMD instructions. The performance impact is especially noticeable in fftw (for audio spectrum) and AviSynth. Unless you are using some legacy tools that either no longer maintained, or for some reason cannot use 64-bit, or you are actually using a 32-bit CPU, please use the 64-bit version. SSE2 is still REQUIRED to run the 32-bit version</li>
+      <li><strong>2019-11-11:</strong> Rebuilt win32 build due to missing uchardet.dll. Moved old builds to <a href="https://ftp.wangqr.tk/aegisub/backup/">https://ftp.wangqr.tk/aegisub/backup/</a> (They are not for daily use, only for audit purpose).</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

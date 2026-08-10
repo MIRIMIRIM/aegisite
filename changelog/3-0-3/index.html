@@ -287,63 +287,64 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>3.0.3</h1>
-            <h3 id="audio">Audio</h3>
-            <ul>
-            <li>Fix crash when playing audio before time 0 (<a href="http://devel.aegisub.org/ticket/1556">#1556</a>)</li>
-            <li>Round syllable durations to centiseconds when splitting syllables</li>
-            <li>Save the horizontal zoom correctly (<a href="http://devel.aegisub.org/ticket/1597">#1597</a>)</li>
-            <li>Uninvert horizontal scrolling on OS X (<a href="http://devel.aegisub.org/ticket/1612">#1612</a>)</li>
-            </ul>
-            <h3 id="automation">Automation</h3>
-            <ul>
-            <li>Fix bug where FloatEdit controls would sometimes not report the selected value (<a href="http://devel.aegisub.org/ticket/1610">#1610</a>)</li>
-            <li>Actually select the correct things in the Select Overlaps macro (<a href="http://devel.aegisub.org/ticket/1594">#1594</a>)</li>
-            </ul>
-            <h3 id="file-io">File IO</h3>
-            <ul>
-            <li>Give temporary files proper extensions to make it easier to open them when something goes wrong</li>
-            <li>Show an error message when writing a file fails</li>
-            <li>Fix reading subtitles from Matroska</li>
-            <li>Fix a case where unicode characters would result in inconsistent and baffling errors when loading Lua scripts (<a href="http://devel.aegisub.org/ticket/1576">#1576</a>)</li>
-            <li>Fix loading non-ascii actor names from plain-text files</li>
-            <li>Obey the option for setting the number of recently opened subtitle files to remember (<a href="http://devel.aegisub.org/ticket/1592">#1592</a>)</li>
-            </ul>
-            <h3 id="linux">Linux</h3>
-            <ul>
-            <li>Disable Ubuntu's global menu bar for Aegisub, since there's a pile of issues with it (<a href="http://devel.aegisub.org/ticket/1531">#1531</a>)</li>
-            <li>Use Lua 5.1 when both it and 5.2 are available (<a href="http://devel.aegisub.org/ticket/1559">#1559</a>)</li>
-            </ul>
-            <h3 id="os-x">OS X</h3>
-            <ul>
-            <li>Fix a capitalization error in Info.plist (<a href="http://devel.aegisub.org/ticket/1547">#1547</a>)</li>
-            <li>Fix crash when trying to set hotkeys (<a href="http://devel.aegisub.org/ticket/1589">#1589</a>)</li>
-            </ul>
-            <h3 id="subtitles-editing">Subtitles Editing</h3>
-            <ul>
-            <li>Commit pending audio changes on Enter in the edit box (<a href="http://devel.aegisub.org/ticket/1544">#1544</a>)</li>
-            </ul>
-            <h3 id="translations">Translations</h3>
-            <ul>
-            <li>Add Dutch translation</li>
-            <li>Update Finnish translation</li>
-            <li>Update Arabic translation</li>
-            </ul>
-            <h3 id="video">Video</h3>
-            <ul>
-            <li>Fix some cases where the detached video dialog would get set to bogus sizes</li>
-            <li>Add .m4v to the list of video file extensions</li>
-            <li>Fix loading y4m files</li>
-            <li>Release mouse capture from the visual tools when the zoom is changed</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>3.0.3</h1>
+      <h3 id="audio">Audio</h3>
+      <ul>
+      <li>Fix crash when playing audio before time 0 (<a href="http://devel.aegisub.org/ticket/1556">#1556</a>)</li>
+      <li>Round syllable durations to centiseconds when splitting syllables</li>
+      <li>Save the horizontal zoom correctly (<a href="http://devel.aegisub.org/ticket/1597">#1597</a>)</li>
+      <li>Uninvert horizontal scrolling on OS X (<a href="http://devel.aegisub.org/ticket/1612">#1612</a>)</li>
+      </ul>
+      <h3 id="automation">Automation</h3>
+      <ul>
+      <li>Fix bug where FloatEdit controls would sometimes not report the selected value (<a href="http://devel.aegisub.org/ticket/1610">#1610</a>)</li>
+      <li>Actually select the correct things in the Select Overlaps macro (<a href="http://devel.aegisub.org/ticket/1594">#1594</a>)</li>
+      </ul>
+      <h3 id="file-io">File IO</h3>
+      <ul>
+      <li>Give temporary files proper extensions to make it easier to open them when something goes wrong</li>
+      <li>Show an error message when writing a file fails</li>
+      <li>Fix reading subtitles from Matroska</li>
+      <li>Fix a case where unicode characters would result in inconsistent and baffling errors when loading Lua scripts (<a href="http://devel.aegisub.org/ticket/1576">#1576</a>)</li>
+      <li>Fix loading non-ascii actor names from plain-text files</li>
+      <li>Obey the option for setting the number of recently opened subtitle files to remember (<a href="http://devel.aegisub.org/ticket/1592">#1592</a>)</li>
+      </ul>
+      <h3 id="linux">Linux</h3>
+      <ul>
+      <li>Disable Ubuntu's global menu bar for Aegisub, since there's a pile of issues with it (<a href="http://devel.aegisub.org/ticket/1531">#1531</a>)</li>
+      <li>Use Lua 5.1 when both it and 5.2 are available (<a href="http://devel.aegisub.org/ticket/1559">#1559</a>)</li>
+      </ul>
+      <h3 id="os-x">OS X</h3>
+      <ul>
+      <li>Fix a capitalization error in Info.plist (<a href="http://devel.aegisub.org/ticket/1547">#1547</a>)</li>
+      <li>Fix crash when trying to set hotkeys (<a href="http://devel.aegisub.org/ticket/1589">#1589</a>)</li>
+      </ul>
+      <h3 id="subtitles-editing">Subtitles Editing</h3>
+      <ul>
+      <li>Commit pending audio changes on Enter in the edit box (<a href="http://devel.aegisub.org/ticket/1544">#1544</a>)</li>
+      </ul>
+      <h3 id="translations">Translations</h3>
+      <ul>
+      <li>Add Dutch translation</li>
+      <li>Update Finnish translation</li>
+      <li>Update Arabic translation</li>
+      </ul>
+      <h3 id="video">Video</h3>
+      <ul>
+      <li>Fix some cases where the detached video dialog would get set to bogus sizes</li>
+      <li>Add .m4v to the list of video file extensions</li>
+      <li>Fix loading y4m files</li>
+      <li>Release mouse capture from the visual tools when the zoom is changed</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

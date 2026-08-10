@@ -287,62 +287,63 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>exp-20260613</h1>
-            <p>exp分支的第一个正式版本，本分支目前仅保证windows可用。</p>
-            <p>标签时版本号：<strong>r9730</strong>。下载见 <a href="https://github.com/AmusementClub/Aegisub/releases/tag/exp-20260613">Release</a>。</p>
-            <h3 id="主要变更">主要变更</h3>
-            <ul>
-            <li>升级 C++ 与主要依赖，部分依赖改为动态加载</li>
-            <li>支持 LayoutRes X/Y</li>
-            <li>重写并拆分字体收集器（仅 Windows）</li>
-            <li>支持 HDR / Dolby Vision 预览（需要 libplacebo 和 lsmasnative）</li>
-            <li>支持生成关键帧（需要 scenechange_native 和 lsmasnative）</li>
-            <li>支持视频画面平移 / pan 功能（拆分视频暂不支持）</li>
-            <li>音频频谱改用 pffft（替代 FFTW3）</li>
-            <li>音频频谱增加多种渲染样式，修复了一些抵消不可见的问题</li>
-            <li>Lua 增加 luasocket 与调试相关能力</li>
-            <li>引入 libmatroska 解析 MKV，并使用附件字体正确渲染内嵌字幕</li>
-            <li>支持副字幕 / secondary subtitle 预览（拆分视频暂不支持）</li>
-            <li>性能优化、修 bug，以及新的 bug</li>
-            </ul>
-            <h3 id="主要依赖--构建信息">主要依赖 / 构建信息</h3>
-            <ul>
-            <li>C++ 20</li>
-            <li>wxWidgets: 3.3.1</li>
-            <li>libass: <a href="https://github.com/libass/libass/releases/tag/0.17.4">0.17.4</a></li>
-            <li>Boost: 1.90.0</li>
-            <li>pffft: 1.1.0</li>
-            <li>Lua: LuaJIT 2.1.0-beta3、luabins、<a href="https://github.com/lunarmodules/luasocket/releases/tag/v3.1.0">luasocket v3.1.0</a></li>
-            <li>libmatroska: 1.7.1</li>
-            </ul>
-            <h3 id="动态加载依赖">动态加载依赖</h3>
-            <h4 id="视频--音频源滤镜">视频 / 音频源滤镜</h4>
-            <ul>
-            <li>avisynth: <a href="https://github.com/AviSynth/AviSynthPlus/releases/tag/v3.7.5">AviSynthPlus v3.7.5</a></li>
-            <li>ffms2: <a href="https://github.com/FFMS/ffms2/releases/tag/5.0">5.0</a></li>
-            <li>lsmasnative: <a href="https://github.com/MIRIMIRIM/LsmasSharp/releases/tag/202606">LsmasSharp/202606</a>，基于 <a href="https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/tag/1282">L-SMASH-Works/20260326</a></li>
-            <li>ragbag-subtitle-ffmpeg：<a href="https://github.com/MIRIMIRIM/RagbagSubtitle/commit/645c55032b85955066622ee8cd774d1334976745">RagbagSubtitle v0.1.0</a></li>
-            </ul>
-            <h4 id="其它滤镜">其它滤镜</h4>
-            <ul>
-            <li>libplacebo: <a href="https://github.com/MIRIMIRIM/build-libplacebo/releases/tag/v7.360.1-20260318">v7.360.1-20260318</a></li>
-            <li>scenechange_native: <a href="https://github.com/MIRIMIRIM/SceneChangeSharp/releases/tag/v0.0.2">SceneChangeSharp v0.0.2</a></li>
-            </ul>
-            <h4 id="字幕滤镜">字幕滤镜</h4>
-            <ul>
-            <li>assrender_textsub / assrender_ob_textsub: <a href="https://github.com/AmusementClub/assrender/releases/tag/0.38.4">assrender/0.38.4</a></li>
-            <li>pf-xy-vsfilter_textsub: <a href="https://github.com/pinterf/xy-VSFilter/releases/tag/3.2.0.810">pinterf/xy-VSFilter 3.2.0.810</a></li>
-            <li>vsfiltermod_textsub: <a href="https://github.com/AmusementClub/VSFilterMod/releases/tag/r5.2.7-beta-2">VSFilterMod r5.2.7-beta-2</a></li>
-            <li>vsfilter_textsub: <a href="https://github.com/HomeOfVapourSynthEvolution/xy-VSFilter/releases/tag/r3">xy-VSFilter r3</a></li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>exp-20260613</h1>
+      <p>exp分支的第一个正式版本，本分支目前仅保证windows可用。</p>
+      <p>标签时版本号：<strong>r9730</strong>。下载见 <a href="https://github.com/AmusementClub/Aegisub/releases/tag/exp-20260613">Release</a>。</p>
+      <h3 id="主要变更">主要变更</h3>
+      <ul>
+      <li>升级 C++ 与主要依赖，部分依赖改为动态加载</li>
+      <li>支持 LayoutRes X/Y</li>
+      <li>重写并拆分字体收集器（仅 Windows）</li>
+      <li>支持 HDR / Dolby Vision 预览（需要 libplacebo 和 lsmasnative）</li>
+      <li>支持生成关键帧（需要 scenechange_native 和 lsmasnative）</li>
+      <li>支持视频画面平移 / pan 功能（拆分视频暂不支持）</li>
+      <li>音频频谱改用 pffft（替代 FFTW3）</li>
+      <li>音频频谱增加多种渲染样式，修复了一些抵消不可见的问题</li>
+      <li>Lua 增加 luasocket 与调试相关能力</li>
+      <li>引入 libmatroska 解析 MKV，并使用附件字体正确渲染内嵌字幕</li>
+      <li>支持副字幕 / secondary subtitle 预览（拆分视频暂不支持）</li>
+      <li>性能优化、修 bug，以及新的 bug</li>
+      </ul>
+      <h3 id="主要依赖--构建信息">主要依赖 / 构建信息</h3>
+      <ul>
+      <li>C++ 20</li>
+      <li>wxWidgets: 3.3.1</li>
+      <li>libass: <a href="https://github.com/libass/libass/releases/tag/0.17.4">0.17.4</a></li>
+      <li>Boost: 1.90.0</li>
+      <li>pffft: 1.1.0</li>
+      <li>Lua: LuaJIT 2.1.0-beta3、luabins、<a href="https://github.com/lunarmodules/luasocket/releases/tag/v3.1.0">luasocket v3.1.0</a></li>
+      <li>libmatroska: 1.7.1</li>
+      </ul>
+      <h3 id="动态加载依赖">动态加载依赖</h3>
+      <h4 id="视频--音频源滤镜">视频 / 音频源滤镜</h4>
+      <ul>
+      <li>avisynth: <a href="https://github.com/AviSynth/AviSynthPlus/releases/tag/v3.7.5">AviSynthPlus v3.7.5</a></li>
+      <li>ffms2: <a href="https://github.com/FFMS/ffms2/releases/tag/5.0">5.0</a></li>
+      <li>lsmasnative: <a href="https://github.com/MIRIMIRIM/LsmasSharp/releases/tag/202606">LsmasSharp/202606</a>，基于 <a href="https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works/releases/tag/1282">L-SMASH-Works/20260326</a></li>
+      <li>ragbag-subtitle-ffmpeg：<a href="https://github.com/MIRIMIRIM/RagbagSubtitle/commit/645c55032b85955066622ee8cd774d1334976745">RagbagSubtitle v0.1.0</a></li>
+      </ul>
+      <h4 id="其它滤镜">其它滤镜</h4>
+      <ul>
+      <li>libplacebo: <a href="https://github.com/MIRIMIRIM/build-libplacebo/releases/tag/v7.360.1-20260318">v7.360.1-20260318</a></li>
+      <li>scenechange_native: <a href="https://github.com/MIRIMIRIM/SceneChangeSharp/releases/tag/v0.0.2">SceneChangeSharp v0.0.2</a></li>
+      </ul>
+      <h4 id="字幕滤镜">字幕滤镜</h4>
+      <ul>
+      <li>assrender_textsub / assrender_ob_textsub: <a href="https://github.com/AmusementClub/assrender/releases/tag/0.38.4">assrender/0.38.4</a></li>
+      <li>pf-xy-vsfilter_textsub: <a href="https://github.com/pinterf/xy-VSFilter/releases/tag/3.2.0.810">pinterf/xy-VSFilter 3.2.0.810</a></li>
+      <li>vsfiltermod_textsub: <a href="https://github.com/AmusementClub/VSFilterMod/releases/tag/r5.2.7-beta-2">VSFilterMod r5.2.7-beta-2</a></li>
+      <li>vsfilter_textsub: <a href="https://github.com/HomeOfVapourSynthEvolution/xy-VSFilter/releases/tag/r3">xy-VSFilter r3</a></li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

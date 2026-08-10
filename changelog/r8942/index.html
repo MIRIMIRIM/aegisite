@@ -287,48 +287,49 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>r8942</h1>
-            <p>Upstream <strong>trunk</strong> snapshot builds by plorkyeran after official <strong>3.2.2</strong>. This is the common base for the <a href="https://github.com/wangqr/Aegisub">wangqr/Aegisub</a> fork (and thus this fork).</p>
-            <p>Source / downloads (historical): <a href="http://plorkyeran.com/aegisub/">plorkyeran.com/aegisub</a> (<a href="https://web.archive.org/web/20210109053403/http://plorkyeran.com/aegisub/">archive</a>).</p>
-            <h3 id="new-things-since-322">New things since 3.2.2</h3>
-            <ul>
-            <li>fontconfig has been dropped on OS X and Windows in favor of GDI/CoreText-based solutions</li>
-            <li>libass on Windows does not perform font substitutions when a font is missing glyphs to make it more obvious that you need to pick a font for those characters. This may become an option on other platforms in the future</li>
-            <li>Opening multiple documents at once is now supported on OS X, and in general Aegisub tries to behave like a proper document-based application. This is a work in progress.</li>
-            <li>A bunch of the automation machinery has been rewritten to work via LuaJIT's ffi rather than the C API</li>
-            <li>A bunch of bug fixes</li>
-            </ul>
-            <h3 id="changes-in-r8942-2018-06-09">Changes in r8942 (2018-06-09)</h3>
-            <ul>
-            <li>Update to Visual Studio 2017</li>
-            <li>Drop Windows XP support</li>
-            <li>Fix typo in Italian translation</li>
-            <li>Update Simplified Chinese translation (#55)</li>
-            <li>Add support for reading waveform selection in Lua</li>
-            <li>Fix joining as karaoke</li>
-            <li>Update moonscript version</li>
-            <li>macOS: destroy context when not in use so the system does not always think audio is playing</li>
-            <li>find/replace: handle Enter in input fields</li>
-            <li>find/replace: bring window to front when activated</li>
-            <li>Fix audio volume (etc.) slider heights being zero on recent macOS</li>
-            <li>Bump minimum macOS version to 10.8</li>
-            <li>Update Catalan translation</li>
-            <li>Properly set colorspace when loading video</li>
-            <li>Fix STL header writing</li>
-            </ul>
-            <h3 id="lineage">Lineage</h3>
-            <ul>
-            <li>Previous stable: <a href="/aegisite/changelog/3-2-2">3.2.2</a></li>
-            <li>Next tagged fork releases: <a href="/aegisite/changelog/3-3-0">wangqr 3.3.0</a> → <a href="/aegisite/changelog/3-3-3">3.3.3</a></li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>r8942</h1>
+      <p>Upstream <strong>trunk</strong> snapshot builds by plorkyeran after official <strong>3.2.2</strong>. This is the common base for the <a href="https://github.com/wangqr/Aegisub">wangqr/Aegisub</a> fork (and thus this fork).</p>
+      <p>Source / downloads (historical): <a href="http://plorkyeran.com/aegisub/">plorkyeran.com/aegisub</a> (<a href="https://web.archive.org/web/20210109053403/http://plorkyeran.com/aegisub/">archive</a>).</p>
+      <h3 id="new-things-since-322">New things since 3.2.2</h3>
+      <ul>
+      <li>fontconfig has been dropped on OS X and Windows in favor of GDI/CoreText-based solutions</li>
+      <li>libass on Windows does not perform font substitutions when a font is missing glyphs to make it more obvious that you need to pick a font for those characters. This may become an option on other platforms in the future</li>
+      <li>Opening multiple documents at once is now supported on OS X, and in general Aegisub tries to behave like a proper document-based application. This is a work in progress.</li>
+      <li>A bunch of the automation machinery has been rewritten to work via LuaJIT's ffi rather than the C API</li>
+      <li>A bunch of bug fixes</li>
+      </ul>
+      <h3 id="changes-in-r8942-2018-06-09">Changes in r8942 (2018-06-09)</h3>
+      <ul>
+      <li>Update to Visual Studio 2017</li>
+      <li>Drop Windows XP support</li>
+      <li>Fix typo in Italian translation</li>
+      <li>Update Simplified Chinese translation (#55)</li>
+      <li>Add support for reading waveform selection in Lua</li>
+      <li>Fix joining as karaoke</li>
+      <li>Update moonscript version</li>
+      <li>macOS: destroy context when not in use so the system does not always think audio is playing</li>
+      <li>find/replace: handle Enter in input fields</li>
+      <li>find/replace: bring window to front when activated</li>
+      <li>Fix audio volume (etc.) slider heights being zero on recent macOS</li>
+      <li>Bump minimum macOS version to 10.8</li>
+      <li>Update Catalan translation</li>
+      <li>Properly set colorspace when loading video</li>
+      <li>Fix STL header writing</li>
+      </ul>
+      <h3 id="lineage">Lineage</h3>
+      <ul>
+      <li>Previous stable: <a href="/aegisite/changelog/3-2-2">3.2.2</a></li>
+      <li>Next tagged fork releases: <a href="/aegisite/changelog/3-3-0">wangqr 3.3.0</a> → <a href="/aegisite/changelog/3-3-3">3.3.3</a></li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

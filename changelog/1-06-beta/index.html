@@ -287,37 +287,38 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>1.06 beta</h1>
-            <ul>
-            <li>Fixed severe audio stability issues (AMZ)</li>
-            <li>Fixed size of last character in editbox with syntax highlight off (AMZ)</li>
-            <li>Fixed audio stopping issue (e.g. forcing you to press <code>S</code> or <code>Space</code> twice) (AMZ)</li>
-            <li>Five splash screens are now available. Set &quot;Splash number&quot; to 0 in config.dat to get a random one. Defaults to Akari. (AMZ)
-            <ul>
-            <li>(1) Misuzu from Air TV</li>
-            <li>(2) Lucy from Elfen Lied</li>
-            <li>(3) Kozue from Mahoraba</li>
-            <li>(4) Lamhirh (aka Lafiel) from Crest of the Stars</li>
-            <li>(5) Akari from Aria</li>
-            </ul>
-            </li>
-            <li>Added function (Ctrl+6) to shift selection so first line goes to current frame (AMZ)</li>
-            <li>Automation now loads scripts both with and without UTF-8 BOM. They are still required to be UTF-8 encoded. (jfs)</li>
-            <li>Fixed crash-bug in Automation related to internal item-count in tables used as arrays (jfs)</li>
-            <li>Automation now displays a proper progress-bar during processing</li>
-            <li>New function in Automation: aegisub.set_status(text), displays a status message below the progress bar during processing. aegisub.output_debug(text) also does that, but additionally adds the message to the debug log. Debug log is only shown if output_debug was actually called. (jfs)</li>
-            <li>New functions in Automation: aegisub.frame_from_ms(ms) and aegisub.ms_from_frame(frame) for doing per-frame effects (jfs)</li>
-            <li>Modified some of the example scripts for Automation. Scripts based on karaskel.lua might break now! (jfs)</li>
-            <li>Added some UTF-8 handling functions to utils.lua (jfs)</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>1.06 beta</h1>
+      <ul>
+      <li>Fixed severe audio stability issues (AMZ)</li>
+      <li>Fixed size of last character in editbox with syntax highlight off (AMZ)</li>
+      <li>Fixed audio stopping issue (e.g. forcing you to press <code>S</code> or <code>Space</code> twice) (AMZ)</li>
+      <li>Five splash screens are now available. Set &quot;Splash number&quot; to 0 in config.dat to get a random one. Defaults to Akari. (AMZ)
+      <ul>
+      <li>(1) Misuzu from Air TV</li>
+      <li>(2) Lucy from Elfen Lied</li>
+      <li>(3) Kozue from Mahoraba</li>
+      <li>(4) Lamhirh (aka Lafiel) from Crest of the Stars</li>
+      <li>(5) Akari from Aria</li>
+      </ul>
+      </li>
+      <li>Added function (Ctrl+6) to shift selection so first line goes to current frame (AMZ)</li>
+      <li>Automation now loads scripts both with and without UTF-8 BOM. They are still required to be UTF-8 encoded. (jfs)</li>
+      <li>Fixed crash-bug in Automation related to internal item-count in tables used as arrays (jfs)</li>
+      <li>Automation now displays a proper progress-bar during processing</li>
+      <li>New function in Automation: aegisub.set_status(text), displays a status message below the progress bar during processing. aegisub.output_debug(text) also does that, but additionally adds the message to the debug log. Debug log is only shown if output_debug was actually called. (jfs)</li>
+      <li>New functions in Automation: aegisub.frame_from_ms(ms) and aegisub.ms_from_frame(frame) for doing per-frame effects (jfs)</li>
+      <li>Modified some of the example scripts for Automation. Scripts based on karaskel.lua might break now! (jfs)</li>
+      <li>Added some UTF-8 handling functions to utils.lua (jfs)</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

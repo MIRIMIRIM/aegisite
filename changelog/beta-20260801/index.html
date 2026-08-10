@@ -287,92 +287,93 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>beta 20260801</h1>
-            <p><strong>Beta channel</strong> GHA snapshot (no GitHub Release). Changes since tagged <a href="/aegisite/changelog/exp-20260613">exp-20260613</a>.</p>
-            <p>Download <code>aegisub-win-x64-portable.zip</code> from <a href="https://github.com/AmusementClub/Aegisub/actions/runs/30692940546">Actions run</a>.</p>
-            <h3 id="editing-and-ui">Editing and UI</h3>
-            <ul>
-            <li>Style manager: clearing margin / outline / shadow restores <code>0</code> instead of style defaults</li>
-            <li>Edit box: more stable command bar</li>
-            <li>Edit box (wxSTC): highlight matching parentheses / braces</li>
-            <li>Edit box (wxSTC): trim UTF-8 spaces when splitting at cursor</li>
-            <li>Edit box (wxSTC): live preview when dragging selected text</li>
-            <li>Edit box (wxSTC): display markers (View menu / Interface options); hover explains invalid characters</li>
-            <li>Edit box: editable margin step (default 1); range matches VSFilter, including negative margins</li>
-            <li>Subtitle grid: show negative margins</li>
-            <li>Subtitle grid: selection-anchor navigation (<code>grid/selection/back</code>, <code>grid/selection/forward</code>)</li>
-            <li>Commands / hotkeys: mouse side buttons 1/2 (default bound to selection back/forward)</li>
-            <li>“Reload external changes” is a runtime option (no restart)</li>
-            </ul>
-            <h3 id="fonts">Fonts</h3>
-            <p>Style editor, edit-box font picker, font collector, and font-name normalization.</p>
-            <ul>
-            <li>Prefer localized font family names (General / ASS Font Names; on by default); off shows English family names</li>
-            <li>With prefer-localized off, always use the custom font dialog (builds Windows font cache first)</li>
-            <li>Font collector: collection logic improvements</li>
-            </ul>
-            <h3 id="find--replace">Find / Replace</h3>
-            <ul>
-            <li>Fix match-case and occasional wrong matches</li>
-            <li>Filter by style</li>
-            <li>Find-all / replace-all open a results dialog; double-click jumps to the line</li>
-            </ul>
-            <h3 id="secondary-subtitle">Secondary subtitle</h3>
-            <ul>
-            <li>Load from video (autoload off by default); switch loaded sources in-session</li>
-            <li>Detached video support; lifecycle/state hardening</li>
-            <li>VobSub IDX/SUB support</li>
-            <li>Higher-quality downscale</li>
-            </ul>
-            <h3 id="visual-typesetting">Visual typesetting</h3>
-            <ul>
-            <li>Persistent measurement guides; measure tool arrows, selectable label, fax/fay/angle readouts</li>
-            <li>Keyboard nudge, vector-clip submodes, hotkeys</li>
-            <li>Keep multi-selection on double-click positioning</li>
-            <li>Shared drag pipeline optimizations</li>
-            <li>Skia visual tools: overlay cache/lifecycle; legacy-aligned drag when needed</li>
-            </ul>
-            <h3 id="video--scene-change">Video / scene change</h3>
-            <ul>
-            <li>libplacebo: fix garbage frames in some environments; stability</li>
-            <li>ffms2: SIMD BGRA transform</li>
-            <li>Video details: exact FPS (e.g. 24000/1001) instead of rounded values</li>
-            <li>Video box: jump to frame number</li>
-            <li>Align-to-hardsub: better color matching</li>
-            <li>Scene change: scxvid support; default backend wwxd</li>
-            <li>Commands: <code>video/reset_pan</code> → <code>video/pan_reset</code></li>
-            <li>Long multi-track chooser scrolls instead of overflowing</li>
-            </ul>
-            <h3 id="audio">Audio</h3>
-            <ul>
-            <li>Skia audio display pipeline (off by default; enable + restart)</li>
-            <li>Marker drag dead zone (configurable, default 5px)</li>
-            <li>Preferences for <code>audio/play/section/*</code> ranges (default 500ms)</li>
-            </ul>
-            <h3 id="automation">Automation</h3>
-            <ul>
-            <li>Skia-based shape API (replacing Qt-dependent a3shape)</li>
-            </ul>
-            <h3 id="cli">CLI</h3>
-            <ul>
-            <li>Font collector CLI merged into the main binary: <code>Aegisub fontcollector</code></li>
-            <li>CLI11 for command parsing</li>
-            </ul>
-            <h3 id="packaging--runtime">Packaging / runtime</h3>
-            <ul>
-            <li>assdraw3 x64 HiDPI build</li>
-            <li>libass loaded dynamically</li>
-            <li>Updated packaged lsmasnative, scenechange_*, ragbag_subtitle, etc.</li>
-            <li>Windows target: <code>_WIN32_WINNT</code> / <code>WINVER</code> 0x0A00 (Windows 10 1703+)</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>beta 20260801</h1>
+      <p><strong>Beta channel</strong> GHA snapshot (no GitHub Release). Changes since tagged <a href="/aegisite/changelog/exp-20260613">exp-20260613</a>.</p>
+      <p>Download <code>aegisub-win-x64-portable.zip</code> from <a href="https://github.com/AmusementClub/Aegisub/actions/runs/30692940546">Actions run</a>.</p>
+      <h3 id="editing-and-ui">Editing and UI</h3>
+      <ul>
+      <li>Style manager: clearing margin / outline / shadow restores <code>0</code> instead of style defaults</li>
+      <li>Edit box: more stable command bar</li>
+      <li>Edit box (wxSTC): highlight matching parentheses / braces</li>
+      <li>Edit box (wxSTC): trim UTF-8 spaces when splitting at cursor</li>
+      <li>Edit box (wxSTC): live preview when dragging selected text</li>
+      <li>Edit box (wxSTC): display markers (View menu / Interface options); hover explains invalid characters</li>
+      <li>Edit box: editable margin step (default 1); range matches VSFilter, including negative margins</li>
+      <li>Subtitle grid: show negative margins</li>
+      <li>Subtitle grid: selection-anchor navigation (<code>grid/selection/back</code>, <code>grid/selection/forward</code>)</li>
+      <li>Commands / hotkeys: mouse side buttons 1/2 (default bound to selection back/forward)</li>
+      <li>“Reload external changes” is a runtime option (no restart)</li>
+      </ul>
+      <h3 id="fonts">Fonts</h3>
+      <p>Style editor, edit-box font picker, font collector, and font-name normalization.</p>
+      <ul>
+      <li>Prefer localized font family names (General / ASS Font Names; on by default); off shows English family names</li>
+      <li>With prefer-localized off, always use the custom font dialog (builds Windows font cache first)</li>
+      <li>Font collector: collection logic improvements</li>
+      </ul>
+      <h3 id="find--replace">Find / Replace</h3>
+      <ul>
+      <li>Fix match-case and occasional wrong matches</li>
+      <li>Filter by style</li>
+      <li>Find-all / replace-all open a results dialog; double-click jumps to the line</li>
+      </ul>
+      <h3 id="secondary-subtitle">Secondary subtitle</h3>
+      <ul>
+      <li>Load from video (autoload off by default); switch loaded sources in-session</li>
+      <li>Detached video support; lifecycle/state hardening</li>
+      <li>VobSub IDX/SUB support</li>
+      <li>Higher-quality downscale</li>
+      </ul>
+      <h3 id="visual-typesetting">Visual typesetting</h3>
+      <ul>
+      <li>Persistent measurement guides; measure tool arrows, selectable label, fax/fay/angle readouts</li>
+      <li>Keyboard nudge, vector-clip submodes, hotkeys</li>
+      <li>Keep multi-selection on double-click positioning</li>
+      <li>Shared drag pipeline optimizations</li>
+      <li>Skia visual tools: overlay cache/lifecycle; legacy-aligned drag when needed</li>
+      </ul>
+      <h3 id="video--scene-change">Video / scene change</h3>
+      <ul>
+      <li>libplacebo: fix garbage frames in some environments; stability</li>
+      <li>ffms2: SIMD BGRA transform</li>
+      <li>Video details: exact FPS (e.g. 24000/1001) instead of rounded values</li>
+      <li>Video box: jump to frame number</li>
+      <li>Align-to-hardsub: better color matching</li>
+      <li>Scene change: scxvid support; default backend wwxd</li>
+      <li>Commands: <code>video/reset_pan</code> → <code>video/pan_reset</code></li>
+      <li>Long multi-track chooser scrolls instead of overflowing</li>
+      </ul>
+      <h3 id="audio">Audio</h3>
+      <ul>
+      <li>Skia audio display pipeline (off by default; enable + restart)</li>
+      <li>Marker drag dead zone (configurable, default 5px)</li>
+      <li>Preferences for <code>audio/play/section/*</code> ranges (default 500ms)</li>
+      </ul>
+      <h3 id="automation">Automation</h3>
+      <ul>
+      <li>Skia-based shape API (replacing Qt-dependent a3shape)</li>
+      </ul>
+      <h3 id="cli">CLI</h3>
+      <ul>
+      <li>Font collector CLI merged into the main binary: <code>Aegisub fontcollector</code></li>
+      <li>CLI11 for command parsing</li>
+      </ul>
+      <h3 id="packaging--runtime">Packaging / runtime</h3>
+      <ul>
+      <li>assdraw3 x64 HiDPI build</li>
+      <li>libass loaded dynamically</li>
+      <li>Updated packaged lsmasnative, scenechange_*, ragbag_subtitle, etc.</li>
+      <li>Windows target: <code>_WIN32_WINNT</code> / <code>WINVER</code> 0x0A00 (Windows 10 1703+)</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

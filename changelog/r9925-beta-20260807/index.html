@@ -287,56 +287,57 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>r9925 beta 20260807</h1>
-            <p><strong>Beta channel</strong> GHA snapshot (no GitHub Release). r9925; changes since <a href="/aegisite/changelog/beta-20260804">r9903 beta-20260804</a>.</p>
-            <p>Download <code>aegisub-win-x64-portable.zip</code> from <a href="https://github.com/AmusementClub/Aegisub/actions/runs/31174221631">Actions run</a>.</p>
-            <h3 id="editing-and-ui">Editing and UI</h3>
-            <ul>
-            <li>Edit box (wxSTC): double-click tag selection now also covers <code>\N</code>, <code>\n</code>, and <code>\h</code></li>
-            <li>Edit box (wxSTC): experimental <code>Subtitle/Edit Box/Use DirectWrite</code> — can fix some performance and rendering issues; needs testing on Windows 10, RDP, and similar setups</li>
-            <li>Edit box (wxSTC): performance work (avoid full rebuilds, etc.)</li>
-            <li>Reload external changes: fix change prompt still appearing on close</li>
-            <li>Markers: fix incorrect menu state</li>
-            </ul>
-            <h3 id="fonts">Fonts</h3>
-            <p>Style editor and edit-box font selection.</p>
-            <ul>
-            <li>Style editor / font picker: fix keyboard selection picking the wrong item</li>
-            <li>Style editor / font picker: fix cursor display when the dropdown auto-opens (Windows API limits mean the correct cursor only shows after the list closes)</li>
-            <li>Style editor / font picker: fix the dropdown re-opening repeatedly when auto-expand is on</li>
-            <li>Font picker: fix showing the font from the previous tag block</li>
-            <li>Font picker: with “prefer localized” on, also use the custom dialog instead of the native Windows dialog</li>
-            </ul>
-            <h3 id="find--replace">Find / Replace</h3>
-            <ul>
-            <li>Results dialog: rename the Line column to Line number (avoids bad Chinese translations)</li>
-            </ul>
-            <h3 id="secondary-subtitle">Secondary subtitle</h3>
-            <ul>
-            <li>Secondary subtitle: more stable SRT style use and rendering</li>
-            </ul>
-            <h3 id="visual-tools">Visual tools</h3>
-            <ul>
-            <li>Measurement guides: style pass — smaller endpoints to reduce occlusion, smaller arrows, thinner lines</li>
-            <li>Performance improvements</li>
-            </ul>
-            <h3 id="plugins-experimental">Plugins (experimental)</h3>
-            <ul>
-            <li>Enable the bridge so more APIs can be exposed as plugins. Currently supports .NET CoreCLR JIT and NativeAOT; the latter uses C ABI and should work with any language that can interop via C ABI</li>
-            </ul>
-            <h3 id="build--packaging--runtime">Build / packaging / runtime</h3>
-            <ul>
-            <li>Windows version-string script: better PowerShell 5.1 compatibility</li>
-            <li>plugin: add dependency-control v0.1.0 (NativeAOT)</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>r9925 beta 20260807</h1>
+      <p><strong>Beta channel</strong> GHA snapshot (no GitHub Release). r9925; changes since <a href="/aegisite/changelog/beta-20260804">r9903 beta-20260804</a>.</p>
+      <p>Download <code>aegisub-win-x64-portable.zip</code> from <a href="https://github.com/AmusementClub/Aegisub/actions/runs/31174221631">Actions run</a>.</p>
+      <h3 id="editing-and-ui">Editing and UI</h3>
+      <ul>
+      <li>Edit box (wxSTC): double-click tag selection now also covers <code>\N</code>, <code>\n</code>, and <code>\h</code></li>
+      <li>Edit box (wxSTC): experimental <code>Subtitle/Edit Box/Use DirectWrite</code> — can fix some performance and rendering issues; needs testing on Windows 10, RDP, and similar setups</li>
+      <li>Edit box (wxSTC): performance work (avoid full rebuilds, etc.)</li>
+      <li>Reload external changes: fix change prompt still appearing on close</li>
+      <li>Markers: fix incorrect menu state</li>
+      </ul>
+      <h3 id="fonts">Fonts</h3>
+      <p>Style editor and edit-box font selection.</p>
+      <ul>
+      <li>Style editor / font picker: fix keyboard selection picking the wrong item</li>
+      <li>Style editor / font picker: fix cursor display when the dropdown auto-opens (Windows API limits mean the correct cursor only shows after the list closes)</li>
+      <li>Style editor / font picker: fix the dropdown re-opening repeatedly when auto-expand is on</li>
+      <li>Font picker: fix showing the font from the previous tag block</li>
+      <li>Font picker: with “prefer localized” on, also use the custom dialog instead of the native Windows dialog</li>
+      </ul>
+      <h3 id="find--replace">Find / Replace</h3>
+      <ul>
+      <li>Results dialog: rename the Line column to Line number (avoids bad Chinese translations)</li>
+      </ul>
+      <h3 id="secondary-subtitle">Secondary subtitle</h3>
+      <ul>
+      <li>Secondary subtitle: more stable SRT style use and rendering</li>
+      </ul>
+      <h3 id="visual-tools">Visual tools</h3>
+      <ul>
+      <li>Measurement guides: style pass — smaller endpoints to reduce occlusion, smaller arrows, thinner lines</li>
+      <li>Performance improvements</li>
+      </ul>
+      <h3 id="plugins-experimental">Plugins (experimental)</h3>
+      <ul>
+      <li>Enable the bridge so more APIs can be exposed as plugins. Currently supports .NET CoreCLR JIT and NativeAOT; the latter uses C ABI and should work with any language that can interop via C ABI</li>
+      </ul>
+      <h3 id="build--packaging--runtime">Build / packaging / runtime</h3>
+      <ul>
+      <li>Windows version-string script: better PowerShell 5.1 compatibility</li>
+      <li>plugin: add dependency-control v0.1.0 (NativeAOT)</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

@@ -287,84 +287,85 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="blog-header">
-              <h1>Universal Subtitle Format: a post-mortem?</h1>
-              <p class="meta">
-                  23 Jul 2008
-              </p>
-      
-            </div>
-            <p>The Universal Subtitle Format (USF) was an ambitious project. It was a XML-based subtitle format, supposed to replace the old and problematic community standard, Advanced Substation Alpha (ASS). It was chosen as the default subtitle format for the <a href="http://www.matroska.org">Matroska</a> multimedia container, and was the primary format of Medusa's unfortunate successor, ChronoSub.</p>
-            <p>It failed to achieve that goal.</p>
-            <p>This is what its page on CoreForge has to say:</p>
-            <blockquote class="blockquote">
-            <p>The format is based on XML for many reasons: flexibility, human readability, portability, Unicode support, hierarchical system and easier management.</p>
-            </blockquote>
-            <p>While I can certainly understand &quot;flexibility&quot; and &quot;portability&quot;, I don't see why you need XML to have a portable format, or Unicode support. But they go ahead and claim human readability and easier management. Is that supposed to be a joke? It sure is human readable - compared to binary formats. But it's still an incredibly verbose format that no sane person would try to edit by hand. And how is it easier to manage? Only if they mean that it's easier to avoid horribly misshapen subtitle files (you know, the kind of file that's always floating around the community and that VSFilter will happily eat). And what's with &quot;hierarchical system&quot;? It is true, but isn't it also completely irrelevant? Subtitles are NOT intrinsically hierarchical - forcing them to be only complicates matters.</p>
-            <p>But let's have a look at the format itself. This is a simple &quot;Hello World&quot; in USF:</p>
-            <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-            &lt;!-- DOCTYPE USFSubtitles SYSTEM &quot;USFV100.dtd&quot; --&gt;
-            &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;USFV100.xsl&quot;?&gt;
-            
-            &lt;USFSubtitles version=&quot;1.0&quot;&gt;
-            
-              &lt;styles&gt;
-                &lt;style name=&quot;NarratorSpeaking&quot;&gt;
-                  &lt;fontstyle italic=&quot;yes&quot; color=&quot;#FFEEEE&quot; outline-color=&quot;#FF4444&quot;/&gt;
-                &lt;/style&gt;
-              &lt;/styles&gt;
-            
-              &lt;subtitles&gt;
-                &lt;subtitle start=&quot;6.100&quot; duration=&quot;4.900&quot;&gt;
-                  &lt;text style=&quot;NarratorSpeaking&quot;&gt;This is a demo of&lt;br/&gt;The Core Media Player&lt;br/&gt;subtitle format&lt;/text&gt;
-                &lt;/subtitle&gt;
-                &lt;subtitle start=&quot;00:00:11.000&quot; stop=&quot;00:00:15.000&quot;&gt;
-                  &lt;text style=&quot;NarratorSpeaking&quot;&gt;What can be done ?&lt;/text&gt;
-                &lt;/subtitle&gt;
-              &lt;/subtitles&gt;
-            
-            &lt;/USFSubtitles&gt;
-            </code></pre>
-            <p>The above sample is the &quot;official&quot; sample included with the specs, stripped down to make a suitable &quot;hello world&quot;. For comparison, I've re-created the script in ASS:</p>
-            <pre><code class="language-ass">[Script Info]
-            ScriptType: v4.00+
-            PlayResX: 640
-            PlayResY: 480
-            
-            [V4+ Styles]
-            Style: NarratorSpeaking,Arial,20,&amp;H00EEEEFF,&amp;H000000FF,&amp;H004444FF,&amp;H00000000,0,-1,0,0,100,100,0,0,1,2,0,2,10,10,10,0
-            
-            [Events]
-            Dialogue: 0,0:00:06.10,0:00:11.00,NarratorSpeaking,,0000,0000,0000,,This is a demo of\NThe Core Media Player\Nsubtitle format
-            Dialogue: 0,0:00:11.00,0:00:15.00,NarratorSpeaking,,0000,0000,0000,,What can be done ?
-            </code></pre>
-            <p><strong>Note</strong>: I removed the &quot;Format:&quot; lines from the above file. This is because, to the best of my knowledge, Sabbu is the only program that actually cares about those lines. Neither VSFilter nor Aegisub care if it's there or not, and both will, in fact, ignore it.</p>
-            <p>For further comparison, this is what the same script would look like in the current draft of AS5:</p>
-            <pre><code class="language-ass">[AS5]
-            ScriptType: AS5
-            Resolution: 640x480
-            
-            [Styles]
-            Style: NarratorSpeaking,,\i1\1c#FFEEEE\3c#FF4444
-            
-            [Events]
-            Line: 0:00:06.10,0:00:11.00,NarratorSpeaking,,This is a demo of\NThe Core Media Player\Nsubtitle format
-            Line: 0:00:11.00,0:00:15.00,NarratorSpeaking,,What can be done ?
-            </code></pre>
-            <p>The first thing that we can notice there is that ASS is a much more &quot;compact&quot; format, and USF is more &quot;readable&quot; in the sense that you'll easily know what each thing does if you aren't familiar with the format - unless you are very familiar with the ASS format, the &quot;Style&quot; line should be incomprehensible. ASS is also more &quot;horizontal&quot; - that is, unless you cram things into the same line in USF, ASS will take less lines but those lines will be longer.</p>
-            <p>Here's the important point: USF is <strong>NOT</strong> designed to be written by hand. It's just too much effort to write all of that, and if you forget to close some tag somewhere, you'll break the entire file, which isn't an issue in an ASS-like format. And this is exactly where the problem is: there is no good editor that supports USF!</p>
-            <p>Lately, there has been a trend for XML-based subtitle formats. This is probably because XML is relatively easy to parse by a machine, and also because of the &quot;buzz&quot; associated with XML. But let's face it: subtitles are not best modeled by XML. The ASS format is a strange hybrid of an <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, a <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV list</a>, and <a href="http://en.wikipedia.org/wiki/TeX">TeX</a>, and that works astonishingly well - that's why we have decided to base AS5 on the same combination, although that is a subject for another post.</p>
-            <p>So here's the situation that USF faced: there was no real editor that could deal with it and nobody wants to write or maintain USF files by hand. Because of that, nobody actually uses USF, so there is no renderer that accepts it. Finally, USF offers very few real benefits over ASS, feature-wise. All in all, it just wasn't interesting to support it, and it faded into oblivion.</p>
-            <p>But here's an idea: Athenasub (the library that will be the backend of Aegisub 3.x series) will be completely format-agnostic. That would make it feasible to make Aegisub fully support USF, even its fanciest features, except that there is no renderer to display it. Should we bother? Is there still any interest in this format? At the moment, I have little interest in attempting to resurrect it (especially since we have our own plans with AS5), but if there is popular demand for it, I might reconsider. Last time I checked, not even the Matroska team seemed to care much for it anymore.</p>
-            <p>AS5. USF. And let's not forget Gabest's SSF. Do any of those formats have a future in the community? Or will fansubbers linger to ASS until the rest of their days?</p>
-      
-          </article>
-        </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <div class="blog-header">
+        <h1>Universal Subtitle Format: a post-mortem?</h1>
+        <p class="meta">
+            23 Jul 2008
+        </p>
+
       </div>
+      <p>The Universal Subtitle Format (USF) was an ambitious project. It was a XML-based subtitle format, supposed to replace the old and problematic community standard, Advanced Substation Alpha (ASS). It was chosen as the default subtitle format for the <a href="http://www.matroska.org">Matroska</a> multimedia container, and was the primary format of Medusa's unfortunate successor, ChronoSub.</p>
+      <p>It failed to achieve that goal.</p>
+      <p>This is what its page on CoreForge has to say:</p>
+      <blockquote class="blockquote">
+      <p>The format is based on XML for many reasons: flexibility, human readability, portability, Unicode support, hierarchical system and easier management.</p>
+      </blockquote>
+      <p>While I can certainly understand &quot;flexibility&quot; and &quot;portability&quot;, I don't see why you need XML to have a portable format, or Unicode support. But they go ahead and claim human readability and easier management. Is that supposed to be a joke? It sure is human readable - compared to binary formats. But it's still an incredibly verbose format that no sane person would try to edit by hand. And how is it easier to manage? Only if they mean that it's easier to avoid horribly misshapen subtitle files (you know, the kind of file that's always floating around the community and that VSFilter will happily eat). And what's with &quot;hierarchical system&quot;? It is true, but isn't it also completely irrelevant? Subtitles are NOT intrinsically hierarchical - forcing them to be only complicates matters.</p>
+      <p>But let's have a look at the format itself. This is a simple &quot;Hello World&quot; in USF:</p>
+      <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+      &lt;!-- DOCTYPE USFSubtitles SYSTEM &quot;USFV100.dtd&quot; --&gt;
+      &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;USFV100.xsl&quot;?&gt;
+      
+      &lt;USFSubtitles version=&quot;1.0&quot;&gt;
+      
+        &lt;styles&gt;
+          &lt;style name=&quot;NarratorSpeaking&quot;&gt;
+            &lt;fontstyle italic=&quot;yes&quot; color=&quot;#FFEEEE&quot; outline-color=&quot;#FF4444&quot;/&gt;
+          &lt;/style&gt;
+        &lt;/styles&gt;
+      
+        &lt;subtitles&gt;
+          &lt;subtitle start=&quot;6.100&quot; duration=&quot;4.900&quot;&gt;
+            &lt;text style=&quot;NarratorSpeaking&quot;&gt;This is a demo of&lt;br/&gt;The Core Media Player&lt;br/&gt;subtitle format&lt;/text&gt;
+          &lt;/subtitle&gt;
+          &lt;subtitle start=&quot;00:00:11.000&quot; stop=&quot;00:00:15.000&quot;&gt;
+            &lt;text style=&quot;NarratorSpeaking&quot;&gt;What can be done ?&lt;/text&gt;
+          &lt;/subtitle&gt;
+        &lt;/subtitles&gt;
+      
+      &lt;/USFSubtitles&gt;
+      </code></pre>
+      <p>The above sample is the &quot;official&quot; sample included with the specs, stripped down to make a suitable &quot;hello world&quot;. For comparison, I've re-created the script in ASS:</p>
+      <pre><code class="language-ass">[Script Info]
+      ScriptType: v4.00+
+      PlayResX: 640
+      PlayResY: 480
+      
+      [V4+ Styles]
+      Style: NarratorSpeaking,Arial,20,&amp;H00EEEEFF,&amp;H000000FF,&amp;H004444FF,&amp;H00000000,0,-1,0,0,100,100,0,0,1,2,0,2,10,10,10,0
+      
+      [Events]
+      Dialogue: 0,0:00:06.10,0:00:11.00,NarratorSpeaking,,0000,0000,0000,,This is a demo of\NThe Core Media Player\Nsubtitle format
+      Dialogue: 0,0:00:11.00,0:00:15.00,NarratorSpeaking,,0000,0000,0000,,What can be done ?
+      </code></pre>
+      <p><strong>Note</strong>: I removed the &quot;Format:&quot; lines from the above file. This is because, to the best of my knowledge, Sabbu is the only program that actually cares about those lines. Neither VSFilter nor Aegisub care if it's there or not, and both will, in fact, ignore it.</p>
+      <p>For further comparison, this is what the same script would look like in the current draft of AS5:</p>
+      <pre><code class="language-ass">[AS5]
+      ScriptType: AS5
+      Resolution: 640x480
+      
+      [Styles]
+      Style: NarratorSpeaking,,\i1\1c#FFEEEE\3c#FF4444
+      
+      [Events]
+      Line: 0:00:06.10,0:00:11.00,NarratorSpeaking,,This is a demo of\NThe Core Media Player\Nsubtitle format
+      Line: 0:00:11.00,0:00:15.00,NarratorSpeaking,,What can be done ?
+      </code></pre>
+      <p>The first thing that we can notice there is that ASS is a much more &quot;compact&quot; format, and USF is more &quot;readable&quot; in the sense that you'll easily know what each thing does if you aren't familiar with the format - unless you are very familiar with the ASS format, the &quot;Style&quot; line should be incomprehensible. ASS is also more &quot;horizontal&quot; - that is, unless you cram things into the same line in USF, ASS will take less lines but those lines will be longer.</p>
+      <p>Here's the important point: USF is <strong>NOT</strong> designed to be written by hand. It's just too much effort to write all of that, and if you forget to close some tag somewhere, you'll break the entire file, which isn't an issue in an ASS-like format. And this is exactly where the problem is: there is no good editor that supports USF!</p>
+      <p>Lately, there has been a trend for XML-based subtitle formats. This is probably because XML is relatively easy to parse by a machine, and also because of the &quot;buzz&quot; associated with XML. But let's face it: subtitles are not best modeled by XML. The ASS format is a strange hybrid of an <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, a <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV list</a>, and <a href="http://en.wikipedia.org/wiki/TeX">TeX</a>, and that works astonishingly well - that's why we have decided to base AS5 on the same combination, although that is a subject for another post.</p>
+      <p>So here's the situation that USF faced: there was no real editor that could deal with it and nobody wants to write or maintain USF files by hand. Because of that, nobody actually uses USF, so there is no renderer that accepts it. Finally, USF offers very few real benefits over ASS, feature-wise. All in all, it just wasn't interesting to support it, and it faded into oblivion.</p>
+      <p>But here's an idea: Athenasub (the library that will be the backend of Aegisub 3.x series) will be completely format-agnostic. That would make it feasible to make Aegisub fully support USF, even its fanciest features, except that there is no renderer to display it. Should we bother? Is there still any interest in this format? At the moment, I have little interest in attempting to resurrect it (especially since we have our own plans with AS5), but if there is popular demand for it, I might reconsider. Last time I checked, not even the Matroska team seemed to care much for it anymore.</p>
+      <p>AS5. USF. And let's not forget Gabest's SSF. Do any of those formats have a future in the community? Or will fansubbers linger to ASS until the rest of their days?</p>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

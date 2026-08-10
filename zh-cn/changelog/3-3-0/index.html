@@ -287,33 +287,34 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>3.3.0</h1>
-            <p><a href="https://github.com/wangqr/Aegisub/releases/tag/v3.3.0">wangqr/Aegisub</a> 发布，基于上游 trunk <strong><a href="/aegisite/zh-cn/changelog/r8942">r8942</a></strong>。</p>
-            <p>v3.2.2 至 r8942 见 <a href="/aegisite/en/changelog/r8942">r8942</a> 或 <a href="http://plorkyeran.com/aegisub/">plorkyeran trunk</a>。</p>
-            <h3 id="r8942-之后的更新">r8942 之后的更新</h3>
-            <ul>
-            <li>添加「自动对帧 / align to hardsub in video」（@cqjjjzr）</li>
-            <li>允许自定义可视化排版工具标志颜色（@CoffeeFlux）</li>
-            <li>高分屏支持</li>
-            <li>修正设置视频位置为起止时间、音频频谱模式中的时间偏移</li>
-            <li>更新默认配置（@CoffeeFlux）</li>
-            <li>修正更新依赖造成的编译错误</li>
-            <li>实验性 CMake 工程</li>
-            </ul>
-            <h3 id="说明">说明</h3>
-            <ul>
-            <li><strong>2019-09-10：</strong> 为解决 <a href="https://github.com/wangqr/Aegisub/issues/16">wangqr/Aegisub#16</a> 而重新构建</li>
-            <li><strong>2019-10-02：</strong> 增加了 win32 版本。请注意win32版本至多使用4GiB内存，且存在由WoW64模拟层和缺乏现代指令集带来的性能损失。性能损失主要体现在音频频谱FFT计算和AviSynth中。除非您使用无人维护或因种种原因不支持64位的插件，或者您的CPU确实是32位，否则您应当使用64位版本。即使您使用32位版本，您的CPU也需要支持SSE2指令集</li>
-            <li><strong>2019-11-11：</strong> 重新构建 win32 版本以解决 uchardet.dll 缺失问题。不能正常使用的版本已移至 <a href="https://ftp.wangqr.tk/aegisub/backup/">https://ftp.wangqr.tk/aegisub/backup/</a> 。这些版本仅为审计而保留，请不要使用它们。</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>3.3.0</h1>
+      <p><a href="https://github.com/wangqr/Aegisub/releases/tag/v3.3.0">wangqr/Aegisub</a> 发布，基于上游 trunk <strong><a href="/aegisite/zh-cn/changelog/r8942">r8942</a></strong>。</p>
+      <p>v3.2.2 至 r8942 见 <a href="/aegisite/en/changelog/r8942">r8942</a> 或 <a href="http://plorkyeran.com/aegisub/">plorkyeran trunk</a>。</p>
+      <h3 id="r8942-之后的更新">r8942 之后的更新</h3>
+      <ul>
+      <li>添加「自动对帧 / align to hardsub in video」（@cqjjjzr）</li>
+      <li>允许自定义可视化排版工具标志颜色（@CoffeeFlux）</li>
+      <li>高分屏支持</li>
+      <li>修正设置视频位置为起止时间、音频频谱模式中的时间偏移</li>
+      <li>更新默认配置（@CoffeeFlux）</li>
+      <li>修正更新依赖造成的编译错误</li>
+      <li>实验性 CMake 工程</li>
+      </ul>
+      <h3 id="说明">说明</h3>
+      <ul>
+      <li><strong>2019-09-10：</strong> 为解决 <a href="https://github.com/wangqr/Aegisub/issues/16">wangqr/Aegisub#16</a> 而重新构建</li>
+      <li><strong>2019-10-02：</strong> 增加了 win32 版本。请注意win32版本至多使用4GiB内存，且存在由WoW64模拟层和缺乏现代指令集带来的性能损失。性能损失主要体现在音频频谱FFT计算和AviSynth中。除非您使用无人维护或因种种原因不支持64位的插件，或者您的CPU确实是32位，否则您应当使用64位版本。即使您使用32位版本，您的CPU也需要支持SSE2指令集</li>
+      <li><strong>2019-11-11：</strong> 重新构建 win32 版本以解决 uchardet.dll 缺失问题。不能正常使用的版本已移至 <a href="https://ftp.wangqr.tk/aegisub/backup/">https://ftp.wangqr.tk/aegisub/backup/</a> 。这些版本仅为审计而保留，请不要使用它们。</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

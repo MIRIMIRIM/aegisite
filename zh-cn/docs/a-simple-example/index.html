@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="zh-CN" data-basepath="/aegisite" data-lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#fff">
+
+  <script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var mode = stored === 'dark' || stored === 'light' ? stored : 'auto';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = mode === 'dark' || (mode === 'auto' && prefersDark);
+      document.documentElement.setAttribute('data-theme-mode', mode);
+      document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+      document.documentElement.toggleAttribute('data-dark-mode', dark);
+    } catch (error) {}
+  })();
+  </script>
+  <script>
+  (function () {
+    try {
+      var STORAGE = 'aegisite-lang';
+      var basepath = "/aegisite";
+      var supported = ["en", "zh-cn"];
+      var defaultLang = "en";
+  
+      function stripBase(pathname) {
+        if (basepath && pathname.indexOf(basepath) === 0) {
+          pathname = pathname.slice(basepath.length) || '/';
+        }
+        return pathname || '/';
+      }
+  
+      function withBase(path) {
+        if (!path) path = '/';
+        if (path.charAt(0) !== '/') path = '/' + path;
+        return (basepath || '') + path;
+      }
+  
+      function langFromPath(pathname) {
+        var p = stripBase(pathname);
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p.indexOf('/' + lang + '/') === 0) return lang;
+        }
+        return defaultLang;
+      }
+  
+      function homePath(lang) {
+        if (lang === defaultLang) return '/';
+        return '/' + lang + '/';
+      }
+  
+      function isHomePath(pathname) {
+        var p = stripBase(pathname);
+        if (p === '/' || p === '/index.html') return true;
+        for (var i = 0; i < supported.length; i++) {
+          var lang = supported[i];
+          if (lang === defaultLang) continue;
+          if (p === '/' + lang || p === '/' + lang + '/' || p === '/' + lang + '/index.html') return true;
+        }
+        return false;
+      }
+  
+      function detectBrowserLang() {
+        var list = [];
+        if (navigator.languages && navigator.languages.length) {
+          list = navigator.languages;
+        } else if (navigator.language) {
+          list = [navigator.language];
+        }
+        for (var i = 0; i < list.length; i++) {
+          var tag = String(list[i] || '').toLowerCase().replace(/_/g, '-');
+          if (!tag) continue;
+          if (tag === 'zh-cn' || tag === 'zh-hans' || tag === 'zh-sg' || tag.indexOf('zh-cn') === 0 || tag.indexOf('zh-hans') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'zh' || tag.indexOf('zh-') === 0) {
+            if (supported.indexOf('zh-cn') !== -1) return 'zh-cn';
+          }
+          if (tag === 'en' || tag.indexOf('en-') === 0) {
+            if (supported.indexOf('en') !== -1) return 'en';
+          }
+          if (supported.indexOf(tag) !== -1) return tag;
+        }
+        return defaultLang;
+      }
+  
+      var path = location.pathname || '/';
+      var current = langFromPath(path);
+      var stored = null;
+      try { stored = localStorage.getItem(STORAGE); } catch (e) {}
+  
+      if (stored && supported.indexOf(stored) === -1) stored = null;
+  
+      // First visit: remember browser preference.
+      if (!stored) {
+        stored = detectBrowserLang();
+        try { localStorage.setItem(STORAGE, stored); } catch (e) {}
+      }
+  
+      // Soft auto-switch: only on language home pages, avoid breaking deep EN/ZH links.
+      if (stored && stored !== current && isHomePath(path)) {
+        var target = withBase(homePath(stored));
+        if (target !== path && target !== path + '/') {
+          location.replace(target);
+          return;
+        }
+      }
+  
+      // Visiting a language page updates the preference (covers manual switcher clicks).
+      try { localStorage.setItem(STORAGE, current); } catch (e) {}
+    } catch (error) {}
+  })();
+  </script>
+
+  <link rel="stylesheet" href="/aegisite/css/site.css">
+  <link rel="stylesheet" href="/aegisite/css/site-overrides.css">
+
+  
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <title>教程一 - Aegisub</title>
+  
+  <meta name="description" content="Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.">
+  
+  <link rel="canonical" href="https://mirimirim.github.io/aegisite/zh-cn/docs/a-simple-example/">
+
+  <link rel="alternate" type="application/rss+xml" href="/aegisite/index.xml">
+  <link rel="icon" href="/aegisite/favicon.ico" sizes="any">
+  <link rel="icon" href="/aegisite/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/aegisite/apple-touch-icon.png">
+  <link rel="manifest" href="/aegisite/site.webmanifest">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+          "@type": "Organization",
+          "@id": "https://mirimirim.github.io/aegisite#/schema/organization/1",
+        "name": "Aegisub",
+        "url": "https://mirimirim.github.io/aegisite",
+        "sameAs": [
+          ""
+          , "https://github.com/AmusementClub/Aegisub"
+        ],
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://mirimirim.github.io/aegisite#/schema/image/1",
+            "url": "https://mirimirim.github.io/aegisite/logo-aegisub.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Aegisub"
+          },
+          "image": {
+            "@id": "https://mirimirim.github.io/aegisite#/schema/image/1"
+          }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mirimirim.github.io/aegisite#/schema/website/1",
+        "url": "https://mirimirim.github.io/aegisite",
+        "name": "Aegisub",
+        "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles. Aegisub makes it quick and easy to time subtitles to audio, and features many powerful tools for styling them, including a built-in real-time video preview.",
+          "publisher": {
+            "@id": "https://mirimirim.github.io/aegisite#/schema/organization/1"
+          }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "/zh-cn/docs/a-simple-example/",
+        "url": "/zh-cn/docs/a-simple-example/",
+        "name": "教程一",
+        "isPartOf": {
+          "@id": "https://mirimirim.github.io/aegisite#/schema/website/1"
+        },
+          "about": {
+            "@id": "https://mirimirim.github.io/aegisite#/schema/organization/1"
+          },
+        "breadcrumb": {
+          "@id": "/zh-cn/docs/a-simple-example/#/schema/breadcrumb/1"
+        },
+        "primaryImageOfPage": {
+          "@id": "/zh-cn/docs/a-simple-example/#/schema/image/2"
+        },
+        "inLanguage": "zh-CN",
+        "potentialAction": [{
+          "@type": "ReadAction", "target": ["/zh-cn/docs/a-simple-example/"]
+        }]
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "/zh-cn/docs/a-simple-example/#/schema/image/2",
+        "url": "https://mirimirim.github.io/aegisite/img/logo-1280.png",
+        "contentUrl": "https://mirimirim.github.io/aegisite/img/logo-1280.png",
+        "caption": "教程一"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body class="content list">
+  <div class="sticky-top">
+  <div class="header-bar"></div>
+  <header class="navbar navbar-expand-md navbar-light doks-navbar">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-auto" href="/aegisite/" aria-label="Aegisub">
+        Aegisub
+      </a>
+      <button class="btn btn-menu d-block d-md-none order-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="offcanvas offcanvas-end border-0 py-md-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+        <div class="header-bar d-md-none"></div>
+        <div class="offcanvas-header d-md-none">
+          <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/aegisite/">Aegisub</a></h2>
+          <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+        </div>
+        <div class="offcanvas-body px-4">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+          <ul class="nav flex-column flex-md-row ms-md-n3">
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/aegisite/zh-cn/downloads/">下载</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/aegisite/zh-cn/changelog/">更新日志</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1 active" href="/aegisite/zh-cn/docs/">文档</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub/issues">Bug 追踪</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link ps-0 py-1" href="/aegisite/zh-cn/blog/">博客</a>
+                  </li>
+          </ul>
+          <hr class="text-black-50 my-4 d-md-none">
+          <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
+          <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-4">
+                <li class="nav-item">
+                  <a class="nav-link ps-0 py-1" href="https://github.com/AmusementClub/Aegisub" aria-label="GitHub">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-cap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>                  <small class="ms-2 d-md-none">GitHub</small>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dropdown order-md-1 theme-switcher">
+        <button id="mode" class="btn btn-doks-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Theme: Auto" title="Theme: Auto" data-mode="auto">
+          <span class="theme-icon theme-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><line x1="8" y1="20" x2="16" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg></span>
+          <span class="theme-icon theme-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="theme-icon theme-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="theme-label d-none d-lg-inline" data-theme-label>Auto</span>
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0 theme-menu" aria-labelledby="mode">
+          <li><button class="dropdown-item theme-option current" type="button" data-theme-value="auto" aria-current="true">Auto</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="dark">Dark</button></li>
+          <li><button class="dropdown-item theme-option" type="button" data-theme-value="light">Light</button></li>
+        </ul>
+      </div>
+      <div class="dropdown order-md-2">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          ZH
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+              <li><a class="dropdown-item" rel="alternate" href="/aegisite/docs/a-simple-example/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item current" aria-current="true" href="/aegisite/zh-cn/docs/a-simple-example/">简体中文</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </div>
+
+
+  <div class="wrap container-fluid" role="document">
+    <div class="content">
+
+
+<div class="row flex-xl-nowrap">
+  <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+    <nav class="docs-links" aria-label="Docs">
+      
+      
+      
+      
+      
+      
+      
+      
+      <ul class="list-unstyled collapsible-sidebar">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+            导航
+          </button>
+          <div class="collapse" id="section-navigation">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/main-page/">主页</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+            介绍
+          </button>
+          <div class="collapse" id="section-introduction">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/what-is-aegisub/">Aegisub 是什么？</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/overview/">概述</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/highlights/">亮点</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/credits/">贡献者</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/support-aegisub/">支持 Aegisub</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                      教程
+                    </button>
+                    <div class="collapse" id="section-tutorials">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/tutorials/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaoke-timing-tutorial/">卡拉OK计时</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/inline-effects-tutorial/">卡拉OK内联特效</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/furigana-tutorial/">注音卡拉OK</a></li>
+                      </ul>
+                    </div>
+                  </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+            制作字幕
+          </button>
+          <div class="collapse" id="section-working-with-subtitles">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/editing-subtitles/">编辑字幕</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/exporting-subtitles/">导出字幕</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/applying-subtitles/">将字幕加到视频上</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/spell-checker/">拼写检查器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/translation-assistant/">翻译助手</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/paste-over/">选择性粘贴</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/select-lines/">选择多行</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+            排版
+          </button>
+          <div class="collapse" id="section-typesetting">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/typesetting-introduction/">介绍</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/working-with-video/">视频</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/editing-styles/">样式</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/visual-typesetting/">可视化排版</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass-override-tags/">ASS标签</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/colour-picker/">颜色选择器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/styling-assistant/">样式助手</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/resolution-resampler/">重设分辨率</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/fonts-collector/">字体收集器</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+            时间轴
+          </button>
+          <div class="collapse" id="section-timing">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/working-with-audio/">音频</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/timing-subtitles-to-audio/">制作时间轴</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/shift-times/">平移时间</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/timing-post-processor/">时间后续处理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/kanji-timer/">汉字计时器</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+            自动化
+          </button>
+          <div class="collapse show" id="section-automation">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-overview/">自动化</a></li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="true">
+                      卡拉OK模版执行器
+                    </button>
+                    <div class="collapse show" id="section-karaoke-templater">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaoke-templater/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/declaring-templates/">声明template行和code行</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-order/">卡拉OK模板执行环境和顺序</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/modifiers/">模版修饰语</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/inline-variables-variables/">内联变量</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code-lines-and-blocks/">Code行 和 Code区</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-environment/">Execution envirionment</a></li>
+                            <li class="my-1 ms-3">
+                              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="true">
+                                Automation Tutorials
+                              </button>
+                              <div class="collapse show" id="section-automation-tutorials">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                    <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/a-simple-example/">教程一</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/using-math-expressions/">教程二</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="false">
+                      Lua 相关
+                    </button>
+                    <div class="collapse" id="section-lua-reference">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-reference/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/registration/">注册</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/subtitles-object/">字幕文件接口</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/progress-reporting/">进度报告</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/dialogs/">对话框</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/misc-apis/">杂项API</a></li>
+                            <li class="my-1 ms-3">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="false">
+                                Lua模块
+                              </button>
+                              <div class="collapse" id="section-lua-modules">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-modules/">概述</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/clipboard/">剪贴板</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-manager/">自动化脚本管理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/running-macros/">运行宏</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/standard-macros/">附带的宏</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+            杂项
+          </button>
+          <div class="collapse" id="section-miscellaneous">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub-options/">选项</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/autosave/">自动保存</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/path-specifiers/">Aegisub路径变量</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/script-properties/">脚本配置</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/script-resolution/">脚本分辨率</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/attachment-manager/">附件管理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+  <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+    <div class="page-links" data-toc>
+      <h3>本页目录</h3>
+      <nav class="toc-nav" aria-label="本页目录">
+        <ul></ul>
+      </nav>
+    </div>
+
+  </nav>
+  <main class="docs-content col-12 col-lg-9 col-xl-7">
+    <h1>教程一</h1>
+    <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+      <div class="page-links" data-toc>
+        <h3>本页目录</h3>
+        <nav class="toc-nav" aria-label="本页目录">
+          <ul></ul>
+        </nav>
+      </div>
+
+    </nav>
+
+<p>欢迎来到这里！这是有关卡拉OK模板执行器的第一篇教程，它可以帮助你创作
+<a href="/aegisite/zh-cn/docs/karaoke-effect">卡拉OK特效</a>。在一系列教程里，我们由简单到复杂来进行教学。</p>
+<h2 id="找到卡拉ok模板执行器karaoke-templater">找到卡拉OK模板执行器(Karaoke Templater)</h2>
+<p>你可以用两种方式运行卡拉OK模板应用器。我们主要讲解其中一种。</p>
+<p>在Aegisub中的自动化菜单下找到卡拉OK模板应用器。</p>
+<p><img src="/aegisite/img/3.2/Automation-menu-kara-templater-gray.png" class="img-fluid" alt="Automation-menu-kara-templater-gray" /></p>
+<p>你可以看见一个叫做 <em>应用卡拉OK模板</em>
+的选项，现在它应该是灰色的不可用状态。点击它可以应用写好的卡拉OK模板，然而现在它是不可用的，因为你还没有写好模板，跟随着教程，你会写出自己的卡拉OK模板。</p>
+<p>如果你没有这个选项，你的Aegisub可能没有安装完整，或者损坏了。你需要修复安装才能使用卡拉OK模板执行器。</p>
+<p>但是还有其他的东西需要确认。</p>
+<h2 id="获取打好k值的行">获取打好K值的行</h2>
+<p>卡拉OK模板执行能做许多事，但是它没办法猜到歌曲的歌词，也没办法猜测歌词和音乐的同步信息。你不得不亲自给歌词制作卡拉OK时间。你可以在
+<a href="/aegisite/zh-cn/docs/karaoke-timing-tutorial">Karaoke Timing Tutorial</a>
+中找到给歌词制作卡拉OK时间（K值）的方法。</p>
+<p>我们把基础的含有卡拉OK时间信息的歌词称为K值歌词(\k
+timing)，但它们不含有特效，对于 <em>k值歌词</em>
+。当它被应用了卡拉OK特效后，我们称它 <em>styled karaoke</em> 。</p>
+<p>如果你是从头开始这项工作，在已经有歌词文本的情况下，你需要在歌词所在的窗口点击
+<em>编辑</em>→<em>复制</em>，然后到Aegisub中点击
+<em>编辑</em>→<em>粘贴</em>，这样就把歌词导入了Aegisub。</p>
+<pre><code class="language-ass">Dialogue: 0,0:00:01.85,0:00:09.06,Default,,0000,0000,0000,,{\k97}shi{\k41}ta{\k0} {\k20}no{\k10} {\k30}u{\k80}e{\k53} {\k23}a{\k21}ma{\k39}ku{\k7}  {\k24}to{\k24}ke{\k31}ru{\k0} {\k37}wa{\k23}ta{\k92}gu{\k69}mo
+Dialogue: 0,0:00:09.28,0:00:16.21,Default,,0000,0000,0000,,{\k79}ki{\k61}su{\k0} {\k9}o{\k0} {\k37}shi{\k98}te{\k40}  {\k23}ku{\k25}ro{\k40}i{\k0} {\k28}tsu{\k19}ba{\k51}sa{\k0} {\k11}no{\k0} {\k34}shi{\k138}ta
+</code></pre>
+<p>如果你已经给歌词打好K值，那么我们可以开始下一步了。</p>
+<h3 id="读取视频">读取视频</h3>
+<p>你不必读取任何音频，但是读取视频是个好主意。如果你没有可用的视频，可以使用
+<em>视频</em>→<em>使用空白视频</em> 。这不是个有趣的视频，但在它上面可以预览你的字幕。</p>
+<h2 id="编写一个-k值替换-模板">编写一个 <em>K值替换</em> 模板</h2>
+<p>目前，我们有了除了确切的模板以外的一切，现在我们来编写它。
+首先，介绍如何添加一行模板。你做的每一步的意义后面都有相应的解释。</p>
+<ol>
+<li>选中字幕文件中的第一行。</li>
+<li>选择 <em>字幕</em>→<em>插入行</em>→<em>当前行之前</em>
+来建立一个新行。这一行将会是我们的&quot;卡拉OK模板行&quot;。它 <em>不需要</em>
+作为文件中的第一行，但是写在文件的开头有助于你自己保持清晰的思路。</li>
+<li>确认新建的行样式与你想要应用模板的行(打好K值的行)有相同的 <em>样式</em> 。</li>
+<li>把这行的 <em>注释</em> 打上勾。你在字幕栏会看到这行颜色改变。</li>
+<li>找到 <em>特效</em> 栏，它位于 <em>样式和说话人</em> 栏的右侧。在里面键入
+&quot;<code>template line</code>&quot; 。(别打上引号!) 敲 <em>回车</em> 来保存特效栏内容。</li>
+<li>最后，键入文本作为模板行的内容，再次按 <em>回车</em> 保存。例如
+<code>{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}</code></li>
+</ol>
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>插入一张截屏来展示做完这几步后看起来是什么样子。</div>
+<p>现在再看看 <em>自动化</em> 菜单。如果你正确地编写了模板， <em>应用卡拉OK模板</em>
+看起来是可用的。如果还是灰色的，请按上述步骤检查。</p>
+<p>点击 <em>应用卡拉OK模板</em> 来观察卡拉OK模板执行器如何工作。</p>
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>另一张截图，展示应用完模板的效果.</div>
+<p>如果你已经读取了视频，那么现在应该能在Aegisub里预览到效果了。</p>
+<p>注意到模板行还在它原来的位置，打好K值的行变成了注释行，这些行的特效栏会被填写上
+<em>karaoke</em> 。
+卡拉OK模板执行器会保留原来的行，所以你不必担心丢失它们。但是它还有另外的功能。</p>
+<h2 id="有关特效的拓展内容">有关特效的拓展内容</h2>
+<p>如果上面这些读懂了，也做成功了，那就看看下面:</p>
+<ol>
+<li>把模板行的文本改成:
+<code>{\r\k$kdur\t($start,$end,\1c&amp;H00FF00&amp;)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}</code></li>
+<li>再次应用模板</li>
+</ol>
+<div class="alert alert-warning" role="alert"><strong>TODO: </strong>再添加一张截图</div>
+<p>卡拉OK模板执行器重新利用了打好K值的行，并且赋予它们特效。你也可以尝试改变被注释的打好K的行，然后重新应用模板。</p>
+<p>像这样，你可以逐渐制作出理想的特效，并且随之预览它。</p>
+<h2 id="所以这意味着什么">所以这意味着什么?</h2>
+<p>学习每部分的教程有何意义？下面的解释虽然没能涵盖所有的事情，但是对现在的你来说应该是足够了。</p>
+<ul>
+<li><em>模板行</em> 是字幕文件中以特殊方式标记出来的行。
+它们总是以注释行的形式出现，并且在它们的特效栏文本中，第一个单词必须是
+<code>template</code>。</li>
+<li>存在着几种类别的模板行。在这篇教程中我们只展示了其中一种的用法，这种模板行类型(
+<em>template class</em> )，被称作 <em>行模板(line template)</em>
+。是的，这可能有点令人迷惑。它之所以叫这个名字是因为它使用一行打好K的行，对应生成一个结果行(结果行包含原来行的所有音节)。特效栏的第二个单词声明了这个模板的类型为
+<code>line(行)</code>。(译者注：如果你使用 <code>syl</code> 替换掉
+<code>line</code>，那么生成的结果行数目与原行含有的\k数目，即音节数相同，起到拆行为音节的效果)</li>
+<li>所以，<code>template line</code> 意味着这是一个 <em>行类型</em> 的 <em>模板行</em> 。</li>
+</ul>
+<!-- -->
+<ul>
+<li>模板行只会对具有相同样式的打好K的行生效。</li>
+</ul>
+<!-- -->
+<ul>
+<li>卡拉OK模板执行器执行模板后，结果行的特效栏将会带有 <code>fx</code>
+。这两个字母用来提醒卡拉OK模板执行器，下一次应用模板时，这行应当被替换(事实上是被移除)。</li>
+</ul>
+<!-- -->
+<ul>
+<li>模板行中的主文本被称为 <em>模板内容</em> 。在 <em>line</em> 类模板中，每个 \k
+标签会被模板内容匹配替换一次。</li>
+<li>模板内容中可以使用几种 <em>变量</em>
+。这些变量是短小的单词，有着美元标志＄比如 <code>$start</code>, <code>$end</code>, <code>$mid</code>
+和 <code>$kdur</code>。
+变量在应用模板时会被具体音节的属性值(位置时间信息等)替换。
+<ul>
+<li><code>$start</code>
+会被音节的开始时间替换掉。它以毫秒为单位，相对于行的开始时间计算，可以用来配合具有时间参数的特效标签例如
+\t, \move 和 \fade 等。</li>
+<li>相似地，<code>$end</code> 是音节相对于行开始时间的结束时间，以毫秒为单位。</li>
+<li>稍微有些特殊的是 <code>$mid</code>，它是音节的 <em>中间时间</em> ，处于 <code>$start</code>
+和 <code>$end</code>
+中间。在上面的示例模板中，我们让音节在前半时间变高(事实上，我们总是使音节在前半段产生这种变化)。
+并在后半段时间恢复到原来的大小。它也是以毫秒为单位的。</li>
+<li><code>$kdur</code> 变量，它比较特殊，因为是以厘秒为单位。它等同于 \k
+标签后面的数字，使用它的目的几乎都是把 \k标签
+放回到行中，就像我们上面的模板中写的。</li>
+</ul>
+</li>
+</ul>
+<p>知道了这些，你应该已经可以创作许多特效啦。配合着
+<a href="/aegisite/zh-cn/docs/ass-override-tags">ASS特效标签</a>
+，发挥想象，会有更丰富的效果。</p>
+<p>你也可以
+<a href="/aegisite/zh-cn/docs/using-math-expressions">继续下一篇教程</a>，在那里你可以了解如何对变量做一些数学上的调整，来获取一些变型。</p>
+
+  </main>
+</div>
+
+    </div>
+  </div>
+  <footer class="footer text-muted">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 order-last order-lg-first">
+          <ul class="list-inline">
+            <li class="list-inline-item">Powered by <a class="text-muted" href="https://lunet.io/">Lunet</a>. <br/> Copyright (c) AegiSite <a href="https://github.com/Aegisub/aegisite/graphs/contributors">contributors</a>.</li>
+          </ul>
+        </div>
+        <div class="col-lg-8 order-first order-lg-last text-lg-end">
+          <ul class="list-inline">
+                <li class="list-inline-item"><a href="/aegisite/zh-cn/privacy-policy/">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/aegisite/js/site.js" defer></script>
+  <script src="/aegisite/js/site-defer.js" defer></script>
+
+  
+</body>
+</html>

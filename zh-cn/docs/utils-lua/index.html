@@ -276,7 +276,7 @@
           <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
-              <li><a class="dropdown-item" rel="alternate" href="/aegisite/docs/" hreflang="en" lang="en">English</a></li>
+              <li><a class="dropdown-item" rel="alternate" href="/aegisite/docs/utils-lua/" hreflang="en" lang="en">English</a></li>
               <li><a class="dropdown-item current" aria-current="true" href="/aegisite/zh-cn/docs/utils-lua/">简体中文</a></li>
         </ul>
       </div>
@@ -287,319 +287,316 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
+
+
+<div class="row flex-xl-nowrap">
+  <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
+    <nav class="docs-links" aria-label="Docs">
       
-      <div class="row flex-xl-nowrap">
-        <div class="col-12 col-lg-3 col-xl-3 docs-sidebar d-none d-lg-block">
-          <nav class="docs-links" aria-label="Docs">
-            
-            
-            
-            
-            
-            
-            
-            
-            <ul class="list-unstyled collapsible-sidebar">
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
-                  导航
-                </button>
-                <div class="collapse" id="section-navigation">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/主页/">主页</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
-                  介绍
-                </button>
-                <div class="collapse" id="section-introduction">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/关于/">Aegisub 是什么？</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/概述/">概述</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/亮点/">亮点</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/贡献者名单/">贡献者</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/支持/">支持 Aegisub</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
-                        <li class="my-1 ms-3">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
-                            教程
-                          </button>
-                          <div class="collapse" id="section-tutorials">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程/">概述</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok计时/">卡拉OK计时</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok内联特效/">卡拉OK内联特效</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注音卡拉ok/">注音卡拉OK</a></li>
-                            </ul>
-                          </div>
-                        </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
-                  制作字幕
-                </button>
-                <div class="collapse" id="section-working-with-subtitles">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/编辑字幕/">编辑字幕</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/导出/">导出字幕</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/将字幕加到视频上/">将字幕加到视频上</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/拼写检查器/">拼写检查器</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/翻译助手/">翻译助手</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择性粘贴/">选择性粘贴</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选择多行/">选择多行</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
-                  排版
-                </button>
-                <div class="collapse" id="section-typesetting">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/排版/">介绍</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/视频/">视频</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式/">样式</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/可视化排版/">可视化排版</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass标签/">ASS标签</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/颜色选择器/">颜色选择器</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/样式助手/">样式助手</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/重设分辨率/">重设分辨率</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字体收集器/">字体收集器</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
-                  时间轴
-                </button>
-                <div class="collapse" id="section-timing">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/音频/">音频</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/制作时间轴/">制作时间轴</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/平移时间/">平移时间</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/时间后续处理器/">时间后续处理器</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/汉字计时器/">汉字计时器</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
-                  自动化
-                </button>
-                <div class="collapse show" id="section-automation">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化/">自动化</a></li>
-                        <li class="my-1 ms-3">
-                          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
-                            卡拉OK模版执行器
-                          </button>
-                          <div class="collapse" id="section-karaoke-templater">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模版执行器/">概述</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/声明template行和code行/">声明template行和code行</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/卡拉ok模板执行环境和顺序/">卡拉OK模板执行环境和顺序</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/模版修饰语/">模版修饰语</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/内联变量/">内联变量</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code行-和-code区/">Code行 和 Code区</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-envirionment/">Execution envirionment</a></li>
-                                  <li class="my-1 ms-3">
-                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
-                                      Automation Tutorials
-                                    </button>
-                                    <div class="collapse" id="section-automation-tutorials">
-                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程一/">教程一</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/教程二/">教程二</a></li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="my-1 ms-3">
-                          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="true">
-                            Lua 相关
-                          </button>
-                          <div class="collapse show" id="section-lua-reference">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-相关/">概述</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/注册/">注册</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/字幕文件接口/">字幕文件接口</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/进度报告/">进度报告</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/对话框/">对话框</a></li>
-                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/杂项api/">杂项API</a></li>
-                                  <li class="my-1 ms-3">
-                                    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="true">
-                                      Lua模块
-                                    </button>
-                                    <div class="collapse show" id="section-lua-modules">
-                                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua模块/">概述</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
-                                          <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/剪贴板/">剪贴板</a></li>
-                                          <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
-                                      </ul>
-                                    </div>
-                                  </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动化脚本管理器/">自动化脚本管理器</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/运行宏/">运行宏</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附带的宏/">附带的宏</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
-                  杂项
-                </button>
-                <div class="collapse" id="section-miscellaneous">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/选项/">选项</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/自动保存/">自动保存</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub路径变量/">Aegisub路径变量</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本配置/">脚本配置</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/脚本分辨率/">脚本分辨率</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/附件管理器/">附件管理器</a></li>
-                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
-                  </ul>
-                </div>
-              </li>
+      
+      
+      
+      
+      
+      
+      
+      <ul class="list-unstyled collapsible-sidebar">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-navigation" aria-expanded="false">
+            导航
+          </button>
+          <div class="collapse" id="section-navigation">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/main-page/">主页</a></li>
             </ul>
-      
-          </nav>
-        </div>
-        <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
-          <div class="page-links" data-toc>
-            <h3>本页目录</h3>
-            <nav class="toc-nav" aria-label="本页目录">
-              <ul></ul>
-            </nav>
           </div>
-      
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-introduction" aria-expanded="false">
+            介绍
+          </button>
+          <div class="collapse" id="section-introduction">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/what-is-aegisub/">Aegisub 是什么？</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/overview/">概述</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/highlights/">亮点</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/credits/">贡献者</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/general-disclaimer/">General Disclaimer</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/support-aegisub/">支持 Aegisub</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/faq/">FAQ</a></li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-tutorials" aria-expanded="false">
+                      教程
+                    </button>
+                    <div class="collapse" id="section-tutorials">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/tutorials/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaoke-timing-tutorial/">卡拉OK计时</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/inline-effects-tutorial/">卡拉OK内联特效</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/furigana-tutorial/">注音卡拉OK</a></li>
+                      </ul>
+                    </div>
+                  </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-working-with-subtitles" aria-expanded="false">
+            制作字幕
+          </button>
+          <div class="collapse" id="section-working-with-subtitles">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/editing-subtitles/">编辑字幕</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/exporting-subtitles/">导出字幕</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/applying-subtitles/">将字幕加到视频上</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/spell-checker/">拼写检查器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/translation-assistant/">翻译助手</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/paste-over/">选择性粘贴</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/select-lines/">选择多行</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-typesetting" aria-expanded="false">
+            排版
+          </button>
+          <div class="collapse" id="section-typesetting">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/typesetting-introduction/">介绍</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/working-with-video/">视频</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/editing-styles/">样式</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/visual-typesetting/">可视化排版</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/ass-override-tags/">ASS标签</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/colour-picker/">颜色选择器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/styling-assistant/">样式助手</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/resolution-resampler/">重设分辨率</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/fonts-collector/">字体收集器</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-timing" aria-expanded="false">
+            时间轴
+          </button>
+          <div class="collapse" id="section-timing">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/working-with-audio/">音频</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/timing-subtitles-to-audio/">制作时间轴</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/shift-times/">平移时间</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/timing-post-processor/">时间后续处理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/kanji-timer/">汉字计时器</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-automation" aria-expanded="true">
+            自动化
+          </button>
+          <div class="collapse show" id="section-automation">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-overview/">自动化</a></li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-karaoke-templater" aria-expanded="false">
+                      卡拉OK模版执行器
+                    </button>
+                    <div class="collapse" id="section-karaoke-templater">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaoke-templater/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/declaring-templates/">声明template行和code行</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-order/">卡拉OK模板执行环境和顺序</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/modifiers/">模版修饰语</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/inline-variables-variables/">内联变量</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/code-lines-and-blocks/">Code行 和 Code区</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/execution-environment/">Execution envirionment</a></li>
+                            <li class="my-1 ms-3">
+                              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-automation-tutorials" aria-expanded="false">
+                                Automation Tutorials
+                              </button>
+                              <div class="collapse" id="section-automation-tutorials">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-tutorials/">概述</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/a-simple-example/">教程一</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/using-math-expressions/">教程二</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-reference" aria-expanded="true">
+                      Lua 相关
+                    </button>
+                    <div class="collapse show" id="section-lua-reference">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-reference/">概述</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/registration/">注册</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/subtitles-object/">字幕文件接口</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/progress-reporting/">进度报告</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/dialogs/">对话框</a></li>
+                            <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/misc-apis/">杂项API</a></li>
+                            <li class="my-1 ms-3">
+                              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#section-lua-modules" aria-expanded="true">
+                                Lua模块
+                              </button>
+                              <div class="collapse show" id="section-lua-modules">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/lua-modules/">概述</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/karaskel-lua/">karaskel.lua</a></li>
+                                    <li><a class="docs-link rounded active" href="/aegisite/zh-cn/docs/utils-lua/">utils.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/unicode-lua/">unicode.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/cleantags-lua/">cleantags.lua</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/clipboard/">剪贴板</a></li>
+                                    <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/re/">re</a></li>
+                                </ul>
+                              </div>
+                            </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/automation-manager/">自动化脚本管理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/running-macros/">运行宏</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/standard-macros/">附带的宏</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/history-of-automation/">History of Automation</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-miscellaneous" aria-expanded="false">
+            杂项
+          </button>
+          <div class="collapse" id="section-miscellaneous">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/aegisub-options/">选项</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/autosave/">自动保存</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/path-specifiers/">Aegisub路径变量</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/script-properties/">脚本配置</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/script-resolution/">脚本分辨率</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/attachment-manager/">附件管理器</a></li>
+                  <li><a class="docs-link rounded" href="/aegisite/zh-cn/docs/commands/">Commands</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+  <nav class="docs-toc d-none d-xl-block col-xl-2" aria-label="On this page">
+    <div class="page-links" data-toc>
+      <h3>本页目录</h3>
+      <nav class="toc-nav" aria-label="本页目录">
+        <ul></ul>
+      </nav>
+    </div>
+
+  </nav>
+  <main class="docs-content col-12 col-lg-9 col-xl-7">
+    <h1>utils.lua</h1>
+    <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
+      <div class="page-links" data-toc>
+        <h3>本页目录</h3>
+        <nav class="toc-nav" aria-label="本页目录">
+          <ul></ul>
         </nav>
-        <main class="docs-content col-12 col-lg-9 col-xl-7">
-          <h1>utils.lua</h1>
-          <nav class="d-xl-none docs-toc-mobile mb-3" aria-label="On this page">
-            <div class="page-links" data-toc>
-              <h3>本页目录</h3>
-              <nav class="toc-nav" aria-label="本页目录">
-                <ul></ul>
-              </nav>
-            </div>
-      
-          </nav>
-          <p>Automation 4 Lua include的文件 <code>utils.lua</code>
-          包括了多种不同的辅助函数来帮助你写Lua脚本。 这个文件并没有统一的主题。</p>
-          <h2 id="用法">用法</h2>
-          <p>使用 <code>util = require 'aegisub.util'</code> 来导入这个模块。</p>
-          <h2 id="table-functions">Table functions</h2>
-          <p>以多种方式复制一个table是经常要做的工作之一。 <code>util</code>
-          提供了一些函数来解决这些问题。</p>
-          <h3 id="copy">copy</h3>
-          <p>摘要: <code>newtable = util.copy(oldtable)</code></p>
-          <p>制作参数table的浅拷贝。 浅拷贝意味着它不会访问和复制table中的table。
-          举个例子, 如果 <code>oldtable.st</code> 指某table, <code>newtable.st</code> 指某相同table, 对
-          <code>newtable.st</code>的更改也会反映到 <code>oldtable.st</code> 中，反之亦然。</p>
-          <h3 id="deep_copy">deep_copy</h3>
-          <p>摘要: <code>newtable = util.deep_copy(oldtable)</code></p>
-          <p>制作参数table的深拷贝。
-          虽然这个函数试图处理循环引用而不是对它们进行无限递归，但它可能不适用于所有情况。
-          你基本用不到这个函数。 如果你认为需要进行深拷贝，请考虑任务额外时间。</p>
-          <h2 id="颜色函数">颜色函数</h2>
-          <p>这类函数对于不同类型的颜色数据转换来说是十分有用的。 有以下这些函数</p>
-          <h3 id="ass_color">ass_color</h3>
-          <p>摘要: <code>colorstring = util.ass_color(r, g, b)</code></p>
-          <p>给定 <code>r</code>, <code>g</code> , <code>b</code> 数值，返回ASS的 <code>&amp;HBBGGRR</code> 颜色格式字符串。</p>
-          <p>警告:本函数并不含有颜色输入范围检查功能。
-          如果你用了0~255之外的数值，返回的是什么鬼就不一定了。</p>
-          <h3 id="ass_alpha">ass_alpha</h3>
-          <p>摘要: <code>alphastring = util.ass_alpha(a)</code></p>
-          <p>给定 <code>a</code> 数值，返回ASS的 <code>&amp;HAA&amp;</code> 透明度格式字符串。</p>
-          <p>不具有输入范围检查(0~255)</p>
-          <h3 id="ass_style_color">ass_style_color</h3>
-          <p>摘要: <code>colorstring = util.ass_style_color(r, g, b, a)</code></p>
-          <p>生成ASS样式使用的颜色格式字符串，也就是<code>&amp;HAABBGGRR</code>。</p>
-          <p>不具有输入范围检查。</p>
-          <h3 id="extract_color">extract_color</h3>
-          <p>摘要: <code>r, g, b, a = util.extract_color(colorstring)</code></p>
-          <p>从一个颜色字符串中导出色值。支持识别以下几种:</p>
-          <ul>
-          <li>样式定义: <code>&amp;HAABBGGRR</code></li>
-          <li>行内颜色标签: <code>&amp;HBBGGRR&amp;</code></li>
-          <li>行内透明度标签: <code>&amp;HAA&amp;</code></li>
-          <li>带透明度的HTML: <code>#RRGGBBAA</code></li>
-          </ul>
-          <p>注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
-          无用的部分会被置0。 无法识别的的颜色字符串会返回<code>nil</code>。</p>
-          <div class="card">
-          <strong class="card-header">Example</strong>
-          <div class="card-body">
-          ```lua
-          r, g, b, a = extract_color("&H7F&")
-          ```
-          <p><code>r</code>, <code>g</code>,  <code>b</code> 都是 0; <code>a</code> 是 127.</p>
-          </div>
-          </div>
-          <h3 id="alpha_from_style">alpha_from_style</h3>
-          <p>摘要: <code>alphastring = util.alpha_from_style(coloralphastring)</code></p>
-          <p>返回一个颜色字符串的透明度部分，作为一个透明度标签，<code>&amp;HAA&amp;</code> 格式。
-          这个函数是 <code>extract_color</code> 和 <code>ass_alpha</code> 的组成部分。</p>
-          <h3 id="color_from_style">color_from_style</h3>
-          <p>摘要: <code>colorstring = util.color_from_style(coloralphastring)</code></p>
-          <p>返回一个颜色字符串的颜色部分，作为一个颜色标签， <code>&amp;HBBGGRR&amp;</code> 格式。
-          这个函数是 <code>extract_color</code> 和 <code>ass_color</code> 的组成部分。</p>
-          <h3 id="hsv_to_rgb">HSV_to_RGB</h3>
-          <p>摘要: <code>r, g, b = util.HSV_to_RGB(h, s, v)</code></p>
-          <p>将输入的色相，饱和度和明度转化为RGB值。 <code>h</code> 是角度定义，范围
-          0..359，不在范围内的值会被转换回360以内 <code>s</code> 和 <code>v</code> 范围在 0..1 之间。
-          无输入范围检查 输出的 <code>r</code>, <code>g</code> , <code>b</code> 范围是 0..255。</p>
-          <h2 id="字符串函数">字符串函数</h2>
-          <p>因为lua标准的 <code>string</code> 库功能十分有限, 这里提供了一些额外的辅助函数。
-          可以参见 <a href="/aegisite/zh-cn/docs/unicode-lua">unicode</a> 。</p>
-          <h3 id="stringtrim">string.trim</h3>
-          <p>摘要: <code>outstring = util.trim(instring)</code></p>
-          <p>移除输入字符串中首尾的空格。</p>
-          <p>警告: 这个函数和 UTF-8 的兼容性并未完全确认。 它使用 Lua 的正则 <code>%s</code>
-          类来匹配空格，当遇到一些传统的编码时可能会出现问题。</p>
-          <h3 id="stringheadtail">string.headtail</h3>
-          <p>摘要: <code>head, tail = util.headtail(instring)</code></p>
-          <p>利用字符串中首个空格将其分割成 &quot;头&quot; 和 &quot;尾&quot; 两部分。</p>
-          <p>如果 <code>instring</code> 中不含有空格，则会返回 <code>instring, &quot;&quot;</code>.</p>
-          <h3 id="stringwords">string.words</h3>
-          <p>摘要: <code>for word in util.words(instring) do ... end</code></p>
-          <p>返回一个迭代器函数，可以用于 for 循环中，本质是使用 <code>string.headtail</code>
-          多次。</p>
-          <h2 id="数学函数">数学函数</h2>
-          <p>一些用来对数字进行操作的函数。</p>
-          <h3 id="clamp">clamp</h3>
-          <p>摘要: <code>outval = util.clamp(inval, min, max)</code></p>
-          <p>返回的outval介于min、max之间，若inval小于min，返回min，若大于max，返回max。</p>
-          <h3 id="interpolate">interpolate</h3>
-          <p>摘要: <code>outval = util.interpolate(t, a, b)</code></p>
-          <p>在 <code>a</code> 和 <code>b</code>之间插值 <code>t</code> 代指倾向a还是b，取值范围0-1。
-          如果取值到了[a,b]范围外，则会被clamp。</p>
-          <h3 id="interpolate_color">interpolate_color</h3>
-          <p>摘要: <code>outcolor = util.interpolate_color(t, color1, color2)</code></p>
-          <p>在 <code>color1</code> 和 <code>color2</code> 之间插值， <code>t</code> 含义与上文相同。 <code>color1</code>,
-          <code>color2</code> 和 <code>outcolor</code> 是颜色字符串， <code>outcolour</code> 是ASS格式颜色字符串。</p>
-          <h3 id="interpolate_alpha">interpolate_alpha</h3>
-          <p>摘要: <code>outalpha = util.interpolate_alpha(t, alpha1, alpha2)</code></p>
-          <p>和 <code>interpolate_color</code> 相似，但是对象是透明度字符串。</p>
-      
-        </main>
       </div>
+
+    </nav>
+
+<p>Automation 4 Lua include的文件 <code>utils.lua</code>
+包括了多种不同的辅助函数来帮助你写Lua脚本。 这个文件并没有统一的主题。</p>
+<h2 id="用法">用法</h2>
+<p>使用 <code>util = require 'aegisub.util'</code> 来导入这个模块。</p>
+<h2 id="table-functions">Table functions</h2>
+<p>以多种方式复制一个table是经常要做的工作之一。 <code>util</code>
+提供了一些函数来解决这些问题。</p>
+<h3 id="copy">copy</h3>
+<p>摘要: <code>newtable = util.copy(oldtable)</code></p>
+<p>制作参数table的浅拷贝。 浅拷贝意味着它不会访问和复制table中的table。
+举个例子, 如果 <code>oldtable.st</code> 指某table, <code>newtable.st</code> 指某相同table, 对
+<code>newtable.st</code>的更改也会反映到 <code>oldtable.st</code> 中，反之亦然。</p>
+<h3 id="deep_copy">deep_copy</h3>
+<p>摘要: <code>newtable = util.deep_copy(oldtable)</code></p>
+<p>制作参数table的深拷贝。
+虽然这个函数试图处理循环引用而不是对它们进行无限递归，但它可能不适用于所有情况。
+你基本用不到这个函数。 如果你认为需要进行深拷贝，请考虑任务额外时间。</p>
+<h2 id="颜色函数">颜色函数</h2>
+<p>这类函数对于不同类型的颜色数据转换来说是十分有用的。 有以下这些函数</p>
+<h3 id="ass_color">ass_color</h3>
+<p>摘要: <code>colorstring = util.ass_color(r, g, b)</code></p>
+<p>给定 <code>r</code>, <code>g</code> , <code>b</code> 数值，返回ASS的 <code>&amp;HBBGGRR</code> 颜色格式字符串。</p>
+<p>警告:本函数并不含有颜色输入范围检查功能。
+如果你用了0~255之外的数值，返回的是什么鬼就不一定了。</p>
+<h3 id="ass_alpha">ass_alpha</h3>
+<p>摘要: <code>alphastring = util.ass_alpha(a)</code></p>
+<p>给定 <code>a</code> 数值，返回ASS的 <code>&amp;HAA&amp;</code> 透明度格式字符串。</p>
+<p>不具有输入范围检查(0~255)</p>
+<h3 id="ass_style_color">ass_style_color</h3>
+<p>摘要: <code>colorstring = util.ass_style_color(r, g, b, a)</code></p>
+<p>生成ASS样式使用的颜色格式字符串，也就是<code>&amp;HAABBGGRR</code>。</p>
+<p>不具有输入范围检查。</p>
+<h3 id="extract_color">extract_color</h3>
+<p>摘要: <code>r, g, b, a = util.extract_color(colorstring)</code></p>
+<p>从一个颜色字符串中导出色值。支持识别以下几种:</p>
+<ul>
+<li>样式定义: <code>&amp;HAABBGGRR</code></li>
+<li>行内颜色标签: <code>&amp;HBBGGRR&amp;</code></li>
+<li>行内透明度标签: <code>&amp;HAA&amp;</code></li>
+<li>带透明度的HTML: <code>#RRGGBBAA</code></li>
+</ul>
+<p>注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
+无用的部分会被置0。 无法识别的的颜色字符串会返回<code>nil</code>。</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-lua">r, g, b, a = extract_color(&quot;&amp;H7F&amp;&quot;)
+</code></pre>
+<p><code>r</code>, <code>g</code>,  <code>b</code> 都是 0; <code>a</code> 是 127.</p>
+<h3 id="alpha_from_style">alpha_from_style</h3>
+<p>摘要: <code>alphastring = util.alpha_from_style(coloralphastring)</code></p>
+<p>返回一个颜色字符串的透明度部分，作为一个透明度标签，<code>&amp;HAA&amp;</code> 格式。
+这个函数是 <code>extract_color</code> 和 <code>ass_alpha</code> 的组成部分。</p>
+<h3 id="color_from_style">color_from_style</h3>
+<p>摘要: <code>colorstring = util.color_from_style(coloralphastring)</code></p>
+<p>返回一个颜色字符串的颜色部分，作为一个颜色标签， <code>&amp;HBBGGRR&amp;</code> 格式。
+这个函数是 <code>extract_color</code> 和 <code>ass_color</code> 的组成部分。</p>
+<h3 id="hsv_to_rgb">HSV_to_RGB</h3>
+<p>摘要: <code>r, g, b = util.HSV_to_RGB(h, s, v)</code></p>
+<p>将输入的色相，饱和度和明度转化为RGB值。 <code>h</code> 是角度定义，范围
+0..359，不在范围内的值会被转换回360以内 <code>s</code> 和 <code>v</code> 范围在 0..1 之间。
+无输入范围检查 输出的 <code>r</code>, <code>g</code> , <code>b</code> 范围是 0..255。</p>
+<h2 id="字符串函数">字符串函数</h2>
+<p>因为lua标准的 <code>string</code> 库功能十分有限, 这里提供了一些额外的辅助函数。
+可以参见 <a href="/aegisite/zh-cn/docs/unicode-lua">unicode</a> 。</p>
+<h3 id="stringtrim">string.trim</h3>
+<p>摘要: <code>outstring = util.trim(instring)</code></p>
+<p>移除输入字符串中首尾的空格。</p>
+<p>警告: 这个函数和 UTF-8 的兼容性并未完全确认。 它使用 Lua 的正则 <code>%s</code>
+类来匹配空格，当遇到一些传统的编码时可能会出现问题。</p>
+<h3 id="stringheadtail">string.headtail</h3>
+<p>摘要: <code>head, tail = util.headtail(instring)</code></p>
+<p>利用字符串中首个空格将其分割成 &quot;头&quot; 和 &quot;尾&quot; 两部分。</p>
+<p>如果 <code>instring</code> 中不含有空格，则会返回 <code>instring, &quot;&quot;</code>.</p>
+<h3 id="stringwords">string.words</h3>
+<p>摘要: <code>for word in util.words(instring) do ... end</code></p>
+<p>返回一个迭代器函数，可以用于 for 循环中，本质是使用 <code>string.headtail</code>
+多次。</p>
+<h2 id="数学函数">数学函数</h2>
+<p>一些用来对数字进行操作的函数。</p>
+<h3 id="clamp">clamp</h3>
+<p>摘要: <code>outval = util.clamp(inval, min, max)</code></p>
+<p>返回的outval介于min、max之间，若inval小于min，返回min，若大于max，返回max。</p>
+<h3 id="interpolate">interpolate</h3>
+<p>摘要: <code>outval = util.interpolate(t, a, b)</code></p>
+<p>在 <code>a</code> 和 <code>b</code>之间插值 <code>t</code> 代指倾向a还是b，取值范围0-1。
+如果取值到了[a,b]范围外，则会被clamp。</p>
+<h3 id="interpolate_color">interpolate_color</h3>
+<p>摘要: <code>outcolor = util.interpolate_color(t, color1, color2)</code></p>
+<p>在 <code>color1</code> 和 <code>color2</code> 之间插值， <code>t</code> 含义与上文相同。 <code>color1</code>,
+<code>color2</code> 和 <code>outcolor</code> 是颜色字符串， <code>outcolour</code> 是ASS格式颜色字符串。</p>
+<h3 id="interpolate_alpha">interpolate_alpha</h3>
+<p>摘要: <code>outalpha = util.interpolate_alpha(t, alpha1, alpha2)</code></p>
+<p>和 <code>interpolate_color</code> 相似，但是对象是透明度字符串。</p>
+
+  </main>
+</div>
 
     </div>
   </div>

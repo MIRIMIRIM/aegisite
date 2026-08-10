@@ -287,134 +287,135 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>2.1.9</h1>
-            <blockquote class="blockquote">
-            <p>This should list all changes in Aegisub between version 2.1.8 and 2.1.9. A few minor things may have been missed, but it shouldn't be anything important.</p>
-            </blockquote>
-            <h2 id="overview">Overview</h2>
-            <ul>
-            <li>The release mainly consist of bug-fixes.</li>
-            <li>Completely rewritten SRT parser, much more robust and handles formatting codes much better.</li>
-            <li>Karaskel (and thus kara-templater) now correct for script/video resolution mismatch. You no longer have to make sure they match to get correct positioning in karaoke effects.</li>
-            <li>The Windows installer no longer includes spell checker and thesaurus dictionaries. This has made it about 10 MB smaller. Dictionaries are now instead offered as separate downloads.</li>
-            <li>Autocommit in audio karaoke mode works again.</li>
-            <li>We now ship with FFmpegSource 2.17 on Windows which has much improved media support, including 10 bit H.264 and MKV header removal compression.</li>
-            <li>After numerous complaints, the splash screen is completely gone now.</li>
-            <li>Rewritten ALSA audio player, meaning much more stable audio playback on Linux. Also fixed the PulseAudio player.</li>
-            <li>The Mac OS X build should be more stable overall, largely due to bug-fixes and improvements in wxWidgets.</li>
-            <li>Added translations to Farsi and Polish.</li>
-            </ul>
-            <h2 id="details">Details</h2>
-            <h3 id="attachments">Attachments</h3>
-            <ul>
-            <li>The Attachments dialogue will now properly set undo points</li>
-            <li>When closing the Attachments dialogue, any empty attachment sections are cleaned up from the file</li>
-            </ul>
-            <h3 id="audio">Audio</h3>
-            <ul>
-            <li>Fix a handle leak and a rare deadlock in the DirectSound audio player</li>
-            <li>Might be a little faster when displaying keyframe markers (pink lines)</li>
-            <li>No more &quot;You pressed cancel!&quot; pseudo-errors when canceling audio loading</li>
-            </ul>
-            <h3 id="automation">Automation</h3>
-            <ul>
-            <li>Fix for rare furigana layout issue in karaskel</li>
-            <li>The append operation for the subtitle object now intelligently appends dialogue lines to the end of the Events section instead of absolute end of file, solving issues with appending dialogue after attachments</li>
-            <li>Returning selections from Lua macros now works correctly, no longer shifts the selection down by one from the intended</li>
-            <li>The table.copy_deep function in utils.lua now works as advertised and handles self-referencing tables and circular references</li>
-            <li>Added new &quot;remember/recall&quot; suite of functions to Karaoke Templater</li>
-            </ul>
-            <h3 id="file-io">File i/o</h3>
-            <ul>
-            <li>Selecting charset/text encoding after opening a non-Unicode file now properly respects your choice</li>
-            <li>Added support for writing the EBU STL (tech 3264) subtitle data exchange format</li>
-            <li>Warn if trying to load a binary .sub file, which is likely a VobSub file (which is not supported)</li>
-            </ul>
-            <h3 id="general">General</h3>
-            <ul>
-            <li>Changed compilation settings to make the Windows binaries smaller without sacrificing speed or functionality</li>
-            <li>VSFilter is now linked as a normal DLL dependency instead of dynamically discovered at runtime, using alternative CSRI renderers no longer possible, this should make loading a wrong vsfilter almost impossible</li>
-            <li>Various input methods on Linux should work more reliably now</li>
-            <li>Fixed a variety of memory leaks</li>
-            </ul>
-            <h3 id="help-system">Help system</h3>
-            <ul>
-            <li>The locally installed help would never actually get used when using Help buttons or the Help menu</li>
-            </ul>
-            <h3 id="hotkeys">Hotkeys</h3>
-            <ul>
-            <li>Fixed a bug where having a hotkeyable item having no hotkey would cause wrong key combinations (try to) activate that anyway</li>
-            </ul>
-            <h3 id="installer">Installer</h3>
-            <ul>
-            <li>Various changes making it more stable, issues with Kapersky Internet Security 8 should be solved now</li>
-            <li>The portable version is now (again) a self-extracting RAR archive, rather than an InnoSetup installer</li>
-            </ul>
-            <h3 id="select-lines">Select Lines</h3>
-            <ul>
-            <li>The active line is now always one of the selected lines after using the Select Lines dialog</li>
-            </ul>
-            <h3 id="shift-times">Shift Times</h3>
-            <ul>
-            <li>Made the shift times history display one-based frame numbers when shifting the selection onwards</li>
-            </ul>
-            <h3 id="spell-checker">Spell checker</h3>
-            <ul>
-            <li>Updated list of &quot;word separator&quot; characters, meaning punctuation such as hyphens should now behave better</li>
-            <li>You now get an appropriate message when no dictionaries are installed and you try to spell check</li>
-            </ul>
-            <h3 id="style-manager">Style Manager</h3>
-            <ul>
-            <li>Duplicating a style and renaming the copy no longer gives a rename warning</li>
-            <li>Fixes to copying styles between storage and script</li>
-            <li>All controls are now dynamically resized, as a result it is overall a little larger and adjusts size to fit translated texts</li>
-            </ul>
-            <h3 id="subtitle-grid">Subtitle grid</h3>
-            <ul>
-            <li>The subtitle grid now also takes the width of column title texts into account when calculating column sizes, allowing translations more freedom in choice of column texts</li>
-            <li>Fixed the &quot;clicking near top/bottom of grid selects multiple lines&quot; issue, and other row selection issues</li>
-            </ul>
-            <h3 id="timing-post-processor">Timing post-processor</h3>
-            <ul>
-            <li>The &quot;make adjacent&quot; threshold now has the end of the range be inclusive</li>
-            </ul>
-            <h3 id="translation-assistant">Translation Assistant</h3>
-            <ul>
-            <li>Fixed a control layout issue on Mac, preventing it from working properly there</li>
-            </ul>
-            <h3 id="translations">Translations</h3>
-            <ul>
-            <li>Added Polish</li>
-            <li>Added Farsi (Persian)</li>
-            </ul>
-            <h3 id="update-checker">Update checker</h3>
-            <ul>
-            <li>Fix a possible crash</li>
-            </ul>
-            <h3 id="video">Video</h3>
-            <ul>
-            <li>Canceling FFmpegSource indexing now stops video loading, instead of trying another video provider</li>
-            <li>Fixed a bug related to first loading timecodes, then loading a video, causing subtitle rendering to break</li>
-            </ul>
-            <h3 id="video-display">Video display</h3>
-            <ul>
-            <li>Detached mode should work properly (again?)</li>
-            <li>Zooming video in works correctly again, it no longer compresses the video</li>
-            <li>As a side effect of the above, there is now no longer a sunken border around the video</li>
-            <li>The video display was consistently a little too small in each direction, causing blurry display</li>
-            <li>Other minor optimisations and improvements to error reporting</li>
-            <li>Fixed minor bugs with opening a new video without closing an already open one</li>
-            <li>The visual typesetting tools are now hidden when video is playing</li>
-            <li>Maybe made the OpenGL initialisation for the video display more reliable on poor drivers, might fix issues with some ATI/AMD and Intel driver versions</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>2.1.9</h1>
+      <blockquote class="blockquote">
+      <p>This should list all changes in Aegisub between version 2.1.8 and 2.1.9. A few minor things may have been missed, but it shouldn't be anything important.</p>
+      </blockquote>
+      <h2 id="overview">Overview</h2>
+      <ul>
+      <li>The release mainly consist of bug-fixes.</li>
+      <li>Completely rewritten SRT parser, much more robust and handles formatting codes much better.</li>
+      <li>Karaskel (and thus kara-templater) now correct for script/video resolution mismatch. You no longer have to make sure they match to get correct positioning in karaoke effects.</li>
+      <li>The Windows installer no longer includes spell checker and thesaurus dictionaries. This has made it about 10 MB smaller. Dictionaries are now instead offered as separate downloads.</li>
+      <li>Autocommit in audio karaoke mode works again.</li>
+      <li>We now ship with FFmpegSource 2.17 on Windows which has much improved media support, including 10 bit H.264 and MKV header removal compression.</li>
+      <li>After numerous complaints, the splash screen is completely gone now.</li>
+      <li>Rewritten ALSA audio player, meaning much more stable audio playback on Linux. Also fixed the PulseAudio player.</li>
+      <li>The Mac OS X build should be more stable overall, largely due to bug-fixes and improvements in wxWidgets.</li>
+      <li>Added translations to Farsi and Polish.</li>
+      </ul>
+      <h2 id="details">Details</h2>
+      <h3 id="attachments">Attachments</h3>
+      <ul>
+      <li>The Attachments dialogue will now properly set undo points</li>
+      <li>When closing the Attachments dialogue, any empty attachment sections are cleaned up from the file</li>
+      </ul>
+      <h3 id="audio">Audio</h3>
+      <ul>
+      <li>Fix a handle leak and a rare deadlock in the DirectSound audio player</li>
+      <li>Might be a little faster when displaying keyframe markers (pink lines)</li>
+      <li>No more &quot;You pressed cancel!&quot; pseudo-errors when canceling audio loading</li>
+      </ul>
+      <h3 id="automation">Automation</h3>
+      <ul>
+      <li>Fix for rare furigana layout issue in karaskel</li>
+      <li>The append operation for the subtitle object now intelligently appends dialogue lines to the end of the Events section instead of absolute end of file, solving issues with appending dialogue after attachments</li>
+      <li>Returning selections from Lua macros now works correctly, no longer shifts the selection down by one from the intended</li>
+      <li>The table.copy_deep function in utils.lua now works as advertised and handles self-referencing tables and circular references</li>
+      <li>Added new &quot;remember/recall&quot; suite of functions to Karaoke Templater</li>
+      </ul>
+      <h3 id="file-io">File i/o</h3>
+      <ul>
+      <li>Selecting charset/text encoding after opening a non-Unicode file now properly respects your choice</li>
+      <li>Added support for writing the EBU STL (tech 3264) subtitle data exchange format</li>
+      <li>Warn if trying to load a binary .sub file, which is likely a VobSub file (which is not supported)</li>
+      </ul>
+      <h3 id="general">General</h3>
+      <ul>
+      <li>Changed compilation settings to make the Windows binaries smaller without sacrificing speed or functionality</li>
+      <li>VSFilter is now linked as a normal DLL dependency instead of dynamically discovered at runtime, using alternative CSRI renderers no longer possible, this should make loading a wrong vsfilter almost impossible</li>
+      <li>Various input methods on Linux should work more reliably now</li>
+      <li>Fixed a variety of memory leaks</li>
+      </ul>
+      <h3 id="help-system">Help system</h3>
+      <ul>
+      <li>The locally installed help would never actually get used when using Help buttons or the Help menu</li>
+      </ul>
+      <h3 id="hotkeys">Hotkeys</h3>
+      <ul>
+      <li>Fixed a bug where having a hotkeyable item having no hotkey would cause wrong key combinations (try to) activate that anyway</li>
+      </ul>
+      <h3 id="installer">Installer</h3>
+      <ul>
+      <li>Various changes making it more stable, issues with Kapersky Internet Security 8 should be solved now</li>
+      <li>The portable version is now (again) a self-extracting RAR archive, rather than an InnoSetup installer</li>
+      </ul>
+      <h3 id="select-lines">Select Lines</h3>
+      <ul>
+      <li>The active line is now always one of the selected lines after using the Select Lines dialog</li>
+      </ul>
+      <h3 id="shift-times">Shift Times</h3>
+      <ul>
+      <li>Made the shift times history display one-based frame numbers when shifting the selection onwards</li>
+      </ul>
+      <h3 id="spell-checker">Spell checker</h3>
+      <ul>
+      <li>Updated list of &quot;word separator&quot; characters, meaning punctuation such as hyphens should now behave better</li>
+      <li>You now get an appropriate message when no dictionaries are installed and you try to spell check</li>
+      </ul>
+      <h3 id="style-manager">Style Manager</h3>
+      <ul>
+      <li>Duplicating a style and renaming the copy no longer gives a rename warning</li>
+      <li>Fixes to copying styles between storage and script</li>
+      <li>All controls are now dynamically resized, as a result it is overall a little larger and adjusts size to fit translated texts</li>
+      </ul>
+      <h3 id="subtitle-grid">Subtitle grid</h3>
+      <ul>
+      <li>The subtitle grid now also takes the width of column title texts into account when calculating column sizes, allowing translations more freedom in choice of column texts</li>
+      <li>Fixed the &quot;clicking near top/bottom of grid selects multiple lines&quot; issue, and other row selection issues</li>
+      </ul>
+      <h3 id="timing-post-processor">Timing post-processor</h3>
+      <ul>
+      <li>The &quot;make adjacent&quot; threshold now has the end of the range be inclusive</li>
+      </ul>
+      <h3 id="translation-assistant">Translation Assistant</h3>
+      <ul>
+      <li>Fixed a control layout issue on Mac, preventing it from working properly there</li>
+      </ul>
+      <h3 id="translations">Translations</h3>
+      <ul>
+      <li>Added Polish</li>
+      <li>Added Farsi (Persian)</li>
+      </ul>
+      <h3 id="update-checker">Update checker</h3>
+      <ul>
+      <li>Fix a possible crash</li>
+      </ul>
+      <h3 id="video">Video</h3>
+      <ul>
+      <li>Canceling FFmpegSource indexing now stops video loading, instead of trying another video provider</li>
+      <li>Fixed a bug related to first loading timecodes, then loading a video, causing subtitle rendering to break</li>
+      </ul>
+      <h3 id="video-display">Video display</h3>
+      <ul>
+      <li>Detached mode should work properly (again?)</li>
+      <li>Zooming video in works correctly again, it no longer compresses the video</li>
+      <li>As a side effect of the above, there is now no longer a sunken border around the video</li>
+      <li>The video display was consistently a little too small in each direction, causing blurry display</li>
+      <li>Other minor optimisations and improvements to error reporting</li>
+      <li>Fixed minor bugs with opening a new video without closing an already open one</li>
+      <li>The visual typesetting tools are now hidden when video is playing</li>
+      <li>Maybe made the OpenGL initialisation for the video display more reliable on poor drivers, might fix issues with some ATI/AMD and Intel driver versions</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

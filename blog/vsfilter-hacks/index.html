@@ -287,52 +287,53 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="blog-header">
-              <h1>VSFilter hacks</h1>
-              <p class="meta">
-                  24 Jul 2008
-              </p>
-      
-            </div>
-            <p>There's lots of versions of Gabest's VSFilter subtitle renderer around, some people are even still using versions that are several years old and are missing features and bugfixes. There's cases of people still distributing these old versions around, sometimes as part of a package with other software such as <a href="http://www.virtualdub.org/">VirtualDub</a>.</p>
-            <p>Now it happens that some time in 2006, Gabest seems to have lost interest in working on VSFilter, so nothing has happened from his side, not even bugfixes. Fortunately VSFilter is open source, so we have picked it up and made a <a href="http://en.wikipedia.org/wiki/Fork_%28software_development%29">fork</a>. We have included both some existing bugfixes and improvements that existed as patches, and also made our own bugfixes and further improvements.</p>
-            <p>I'm going to talk about some of the improvements we have made throughout this post.</p>
-            <hr />
-            <p>First, I'm going to assume you're familiar with most regular ASS override tags, if not you can get a refresher in <a href="http://aegisub.cellosoft.com/docs/ASS_Tags">our manual</a>. Second, not all of these improvements are available in the version of VSFilter we ship with the current release (2.1.2) of Aegisub, but they should all be in the next one (which will be 2.1.3 or 2.2.0, depending on circumstances.)</p>
-            <p><img src="/aegisite/img/blog/old/floatpos-demo.png" class="img-fluid" alt="Four lines of text, each positioned 0.2 pixels further to the right, showing the effect of sub-pixel positioning" /></p>
-            <p>Sometimes you need sub-pixel precision when positioning text and drawings. Normally you've only been able to get this by setting the script resolution (PlayResX and PlayResY) to something larger than the video resolution, but the &quot;float \pos&quot; patch changes this. It allows you to use decimal/floating point numbers for positioning lines and gives you up to 1/8th pixel precision.</p>
-            <p>The image to the left shows four lines of text positioned at different X coordinates. You can see how they move ever so slightly, although not a full pixel.</p>
-            <hr />
-            <p>The tags <strong>\fax</strong> and <strong>\fay</strong> allow you to do <em>shearing</em> operations on your text. This is a bit like rotations, except that it's not. They are especially useful for doing perspective correction when you are typesetting signs rotated in 3D.</p>
-            <p><img src="/aegisite/img/blog/old/faxfay-demo.png" class="img-fluid" alt="Demonstration of \fax and \fay tags" /></p>
-            <hr />
-            <p>Shortly before Gabest dropped development of VSFilter, he introduced the &quot;ASS2&quot; format. This isn't very well known, and it only has minor changes over the original ASS format. One of the things was a new karaoke timing tag, <strong>\kt</strong>. While Aegisub can read ASS2 files it can't write them, so if you edit them in Aegisub you will lose some information. It doesn't have support for timing with the \kt tag either, but you can of course still use that and use all the additional features of ASS2 if you edit the file with a text editor.</p>
-            <p>So what <em>is</em> \kt? It's &quot;set absolute timing&quot;, it allows you to move both back and forth in time of highlight without highlighting other syllables. It is probably best illustrated with an example:</p>
-            <pre><code class="language-ass">{\kf10}ABC {\kt20\kf10}DEF {\kt10\kf10}GHI
-            </code></pre>
-            <p>When you render this example, you will first see ABC highlight. Then GHI will follow, because its highlight is set to start at time 10 by \kt. Finally, DEF will highlight because its start time was set to 20 by \kt. You can also use \kt to make karaoke syllables overlap in timing.</p>
-            <hr />
-            <p>Originally the <strong>\be</strong> tag (Blur Edges) only allowed blurring to be turned on or off, and was very &quot;weak&quot;, the blur effect was hard to notice at all. We have updated it so it supports variable strength blur effects now, and you can also use it with \t to animate the blur strength.</p>
-            <p>Because \be doesn't look very high at high values we have also introduced the alternate <strong>\blur</strong> tag, which performs the blur effect using a two-pass gaussian blur algorithm. This gives a much nicer and wider blur, especially at high values.</p>
-            <p><img src="/aegisite/img/blog/old/be-blur-demo.png" class="img-fluid" alt="Demonstration and comparison of \be and \blur tags with different parameters" /></p>
-            <p>I will discuss why \be and \blur are &quot;blur edges&quot; effects and not &quot;blur everything&quot; effects tomorrow.</p>
-            <hr />
-            <p><img src="/aegisite/img/blog/old/xshad-yshad-demo.png" class="img-fluid" alt="Demonstration of \xshad and \yshad tags" /></p>
-            <p>If you've ever wanted the shadow to be positioned differently than just &quot;X down and X right&quot;, the <strong>\xshad</strong> and <strong>\yshad</strong> tags are probably just what you want. These work like \shad except that they set only the X or Y displacement. You can even use negative values with them!</p>
-            <hr />
-            <p><img src="/aegisite/img/blog/old/xbord-ybord-demo.png" class="img-fluid" alt="Demonstration of \xshad and \yshad tags" /></p>
-            <p>Finally there's the <strong>\xbord</strong> and <strong>\ybord</strong> tags. They can be useful for various things, but one of the intentions was to better support anamorphic video: The \xbord and \ybord tags allows you to control the border width in X and Y direction separately. You can even disable border in one direction entirely!</p>
-            <p>You can also combine this with strong \be or \blur and maybe some shadow for other interesting effects.</p>
-            <hr />
-            <p>Again, remember that many of these tags require a very new version of VSFilter. For example, the \blur tag was only added yesterday..! The next release of Aegisub will ship with a VSFilter version that supports all of them, so if you want to safe you can wait until then. If you're impatient, you can <a href="http://malakith.net/aegisub/index.php?topic=651.0">follow development on the Aegisub forum</a>.</p>
-      
-          </article>
-        </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <div class="blog-header">
+        <h1>VSFilter hacks</h1>
+        <p class="meta">
+            24 Jul 2008
+        </p>
+
       </div>
+      <p>There's lots of versions of Gabest's VSFilter subtitle renderer around, some people are even still using versions that are several years old and are missing features and bugfixes. There's cases of people still distributing these old versions around, sometimes as part of a package with other software such as <a href="http://www.virtualdub.org/">VirtualDub</a>.</p>
+      <p>Now it happens that some time in 2006, Gabest seems to have lost interest in working on VSFilter, so nothing has happened from his side, not even bugfixes. Fortunately VSFilter is open source, so we have picked it up and made a <a href="http://en.wikipedia.org/wiki/Fork_%28software_development%29">fork</a>. We have included both some existing bugfixes and improvements that existed as patches, and also made our own bugfixes and further improvements.</p>
+      <p>I'm going to talk about some of the improvements we have made throughout this post.</p>
+      <hr />
+      <p>First, I'm going to assume you're familiar with most regular ASS override tags, if not you can get a refresher in <a href="http://aegisub.cellosoft.com/docs/ASS_Tags">our manual</a>. Second, not all of these improvements are available in the version of VSFilter we ship with the current release (2.1.2) of Aegisub, but they should all be in the next one (which will be 2.1.3 or 2.2.0, depending on circumstances.)</p>
+      <p><img src="/aegisite/img/blog/old/floatpos-demo.png" class="img-fluid" alt="Four lines of text, each positioned 0.2 pixels further to the right, showing the effect of sub-pixel positioning" /></p>
+      <p>Sometimes you need sub-pixel precision when positioning text and drawings. Normally you've only been able to get this by setting the script resolution (PlayResX and PlayResY) to something larger than the video resolution, but the &quot;float \pos&quot; patch changes this. It allows you to use decimal/floating point numbers for positioning lines and gives you up to 1/8th pixel precision.</p>
+      <p>The image to the left shows four lines of text positioned at different X coordinates. You can see how they move ever so slightly, although not a full pixel.</p>
+      <hr />
+      <p>The tags <strong>\fax</strong> and <strong>\fay</strong> allow you to do <em>shearing</em> operations on your text. This is a bit like rotations, except that it's not. They are especially useful for doing perspective correction when you are typesetting signs rotated in 3D.</p>
+      <p><img src="/aegisite/img/blog/old/faxfay-demo.png" class="img-fluid" alt="Demonstration of \fax and \fay tags" /></p>
+      <hr />
+      <p>Shortly before Gabest dropped development of VSFilter, he introduced the &quot;ASS2&quot; format. This isn't very well known, and it only has minor changes over the original ASS format. One of the things was a new karaoke timing tag, <strong>\kt</strong>. While Aegisub can read ASS2 files it can't write them, so if you edit them in Aegisub you will lose some information. It doesn't have support for timing with the \kt tag either, but you can of course still use that and use all the additional features of ASS2 if you edit the file with a text editor.</p>
+      <p>So what <em>is</em> \kt? It's &quot;set absolute timing&quot;, it allows you to move both back and forth in time of highlight without highlighting other syllables. It is probably best illustrated with an example:</p>
+      <pre><code class="language-ass">{\kf10}ABC {\kt20\kf10}DEF {\kt10\kf10}GHI
+      </code></pre>
+      <p>When you render this example, you will first see ABC highlight. Then GHI will follow, because its highlight is set to start at time 10 by \kt. Finally, DEF will highlight because its start time was set to 20 by \kt. You can also use \kt to make karaoke syllables overlap in timing.</p>
+      <hr />
+      <p>Originally the <strong>\be</strong> tag (Blur Edges) only allowed blurring to be turned on or off, and was very &quot;weak&quot;, the blur effect was hard to notice at all. We have updated it so it supports variable strength blur effects now, and you can also use it with \t to animate the blur strength.</p>
+      <p>Because \be doesn't look very high at high values we have also introduced the alternate <strong>\blur</strong> tag, which performs the blur effect using a two-pass gaussian blur algorithm. This gives a much nicer and wider blur, especially at high values.</p>
+      <p><img src="/aegisite/img/blog/old/be-blur-demo.png" class="img-fluid" alt="Demonstration and comparison of \be and \blur tags with different parameters" /></p>
+      <p>I will discuss why \be and \blur are &quot;blur edges&quot; effects and not &quot;blur everything&quot; effects tomorrow.</p>
+      <hr />
+      <p><img src="/aegisite/img/blog/old/xshad-yshad-demo.png" class="img-fluid" alt="Demonstration of \xshad and \yshad tags" /></p>
+      <p>If you've ever wanted the shadow to be positioned differently than just &quot;X down and X right&quot;, the <strong>\xshad</strong> and <strong>\yshad</strong> tags are probably just what you want. These work like \shad except that they set only the X or Y displacement. You can even use negative values with them!</p>
+      <hr />
+      <p><img src="/aegisite/img/blog/old/xbord-ybord-demo.png" class="img-fluid" alt="Demonstration of \xshad and \yshad tags" /></p>
+      <p>Finally there's the <strong>\xbord</strong> and <strong>\ybord</strong> tags. They can be useful for various things, but one of the intentions was to better support anamorphic video: The \xbord and \ybord tags allows you to control the border width in X and Y direction separately. You can even disable border in one direction entirely!</p>
+      <p>You can also combine this with strong \be or \blur and maybe some shadow for other interesting effects.</p>
+      <hr />
+      <p>Again, remember that many of these tags require a very new version of VSFilter. For example, the \blur tag was only added yesterday..! The next release of Aegisub will ship with a VSFilter version that supports all of them, so if you want to safe you can wait until then. If you're impatient, you can <a href="http://malakith.net/aegisub/index.php?topic=651.0">follow development on the Aegisub forum</a>.</p>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

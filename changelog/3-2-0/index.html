@@ -287,110 +287,111 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>3.2.0</h1>
-            <h3 id="audio-and-timing">Audio and Timing</h3>
-            <ul>
-            <li>Audio caching is now done in the background rather than popping up a modal progress dialog (<a href="http://devel.aegisub.org/ticket/112">#112</a>)</li>
-            <li>The audio display is automatically scrolled to the active line when audio is first opened (if that option is enabled)</li>
-            <li>Drag all selected lines when Alt is held down when dragging in the audio display (<a href="http://devel.aegisub.org/ticket/691">#691</a>)</li>
-            </ul>
-            <h3 id="automation">Automation</h3>
-            <ul>
-            <li>Automation now uses <a href="http://luajit.org/extensions.html">LuaJIT in Lua 5.2 mode</a> rather than Lua 5.1</li>
-            <li>Text controls are &quot;infinite&quot; length rather than limited to 30k bytes</li>
-            <li>subs.delete can be passed a table of row numbers to delete</li>
-            <li>Add the luabins and lfs libraries to the automation environment</li>
-            <li>Filter out redundant progress updates so that they don't make everything incredibly slow</li>
-            <li>Add support for submenus in the automation menu (insert / in the macro name) (<a href="http://devel.aegisub.org/ticket/852">#852</a>)</li>
-            <li>Add unicode case conversion functions to the automation module (unicode.to_upper_case, unicode.to_lower_case, unicode.to_fold_case)</li>
-            <li>Only process selected lines in the Select Overlaps macro if more than one line is selected (<a href="http://devel.aegisub.org/ticket/1751">#1751</a>)</li>
-            <li>Add aegisub.project_properties() to get a table with stuff that used to be in the script info section of the file (but unlike the old script info entries, it's actually always up to date) (<a href="http://devel.aegisub.org/ticket/1747">#1747</a>)</li>
-            <li>Fix loading automation scripts when Aegisub is installed to a path with non-ascii characters in it (<a href="http://devel.aegisub.org/ticket/1760">#1760</a>)</li>
-            <li>Lua functions which take a path have been patched to support UTF-8 on Windows</li>
-            </ul>
-            <h3 id="fonts-collector">Fonts Collector</h3>
-            <ul>
-            <li>Add a warning when a script using a bold or italic variant of a font that doesn't actually exist, as emboldening done by the renderer may not match what is seen in Aegisub</li>
-            </ul>
-            <h3 id="internationalization">Internationalization</h3>
-            <ul>
-            <li>Make the installer translatable and use the language selected in the installer for Aegisub's UI language</li>
-            <li>Fix locale issues that could lead to find/replace stripping all non-ascii characters from a file (<a href="http://devel.aegisub.org/ticket/1587">#1587</a>)</li>
-            <li>Use localized names for languages everywhere they're displayed rather than the English names</li>
-            <li>Fix a bunch of issues with RTL locales on Windows (but unfortunately there's still some major ones remaining) (<a href="http://devel.aegisub.org/ticket/1354">#1354</a>)</li>
-            </ul>
-            <h3 id="os-x">OS X</h3>
-            <ul>
-            <li>Improve HiDPI support</li>
-            <li>Add support for IMEs in the main edit box (<a href="http://devel.aegisub.org/ticket/1247">#1247</a>, <a href="http://devel.aegisub.org/ticket/1672">#1672</a>, <a href="http://devel.aegisub.org/ticket/1695">#1695</a>)</li>
-            <li>Fix crash when pasting emoji into the edit box</li>
-            <li>Use the OS spellchecker service rather than Hunspell.</li>
-            </ul>
-            <h3 id="performance">Performance</h3>
-            <ul>
-            <li>Make fontconfig indexing about four times as fast</li>
-            <li>Significantly speed up passing subtitles to the subtitle renderer (as much as 10x faster), making the video display less laggy with large files</li>
-            <li>Speed up indexing Matroska files</li>
-            <li>Significantly speed up reading subtitles from Matroska files</li>
-            <li>Cut idle CPU usage when Aegisub is in the background by about 90%</li>
-            <li>Cut down the disk space used a bit</li>
-            </ul>
-            <h3 id="resolution-resampler">Resolution Resampler</h3>
-            <ul>
-            <li>Resample \be and \blur tags</li>
-            <li>Add support for converting between YCbCr matricies</li>
-            <li>Make the handling for AR-changing resampling a bit smarter</li>
-            <li>Use prettier string formatting for resampled numbers</li>
-            <li>Fix resampling drawings with AR changes</li>
-            </ul>
-            <h3 id="stuff">Stuff</h3>
-            <ul>
-            <li>List the files which will be opened or closed in the Load/Unload files dialog</li>
-            <li>Support loading keyframes and timecodes files via drag-and-drop (<a href="http://devel.aegisub.org/ticket/1749">#1749</a>)</li>
-            </ul>
-            <h3 id="subtitle-editing">Subtitle editing</h3>
-            <ul>
-            <li>The edit box buttons (bold, italic, colors, etc.) try to do the right thing when multiple lines are selected, rather than just setting all of the lines to the active line's text</li>
-            <li>The subtitles grid has gained as Characters Per Second column, with customizable warning and error thresholds (<a href="http://devel.aegisub.org/ticket/609">#609</a>)</li>
-            <li>Undo now restores the selected lines and cursor position that were active when the change being undone occured</li>
-            <li>Double-clicking on a word which is right next to a \N no longer selects the \N along with the word</li>
-            <li>Make default subtitle styles customizable: when creating a new file or importing from a format without style information, the styles from a catalog of your choice are automatically imported into the script (<a href="http://devel.aegisub.org/ticket/962">#962</a>)</li>
-            <li>Add a button to open directly open the style editor for the current line's style (<a href="http://devel.aegisub.org/ticket/1746">#1746</a>)</li>
-            <li>Add Comment to the files which can be pasted over</li>
-            <li>Insert \N on shift-enter in the edit box</li>
-            <li>Fix incorrect cursor positions when using non-BMP unicode characters</li>
-            <li>The edit box's background color is now customizable</li>
-            </ul>
-            <h3 id="subtitle-formats">Subtitle Formats</h3>
-            <ul>
-            <li>Fix crash when trying to open compressed tracks from Matroska</li>
-            <li>Add support for opening subtitle tracks with utterly insane CodecPrivate sections</li>
-            </ul>
-            <h3 id="video">Video</h3>
-            <ul>
-            <li>Fix rounding error in the framerate calculations for CFR formats that sometimes lead to significantly wrong timestamps for long files</li>
-            <li>Add support for uncompressed RGB(A) files</li>
-            <li>Fix some of the issues with open-gop h264 files</li>
-            <li>Fix infinite loop when opening indexless matroska files (such as files written by x264 and not remuxed)</li>
-            <li>Fix some issues with interlaced h264</li>
-            <li>Add support for HEVC</li>
-            <li>Add option to resample the script rather than just changing the script resolution when opening a video with different resolution (<a href="http://devel.aegisub.org/ticket/1382">#1382</a>)</li>
-            </ul>
-            <h3 id="visualtypesettingtools">Visual<br>Typesetting<br>Tools</h3>
-            <ul>
-            <li>Several of the tools have been somewhat restyled to make them less obstructive</li>
-            <li>Hide drag handles for commented lines</li>
-            <li>Don't automatically select all control handle in the vector clip tool when switching to it, as there's now box selection of handles</li>
-            <li>Update all selected lines when the origin is dragged in the rotate tools</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>3.2.0</h1>
+      <h3 id="audio-and-timing">Audio and Timing</h3>
+      <ul>
+      <li>Audio caching is now done in the background rather than popping up a modal progress dialog (<a href="http://devel.aegisub.org/ticket/112">#112</a>)</li>
+      <li>The audio display is automatically scrolled to the active line when audio is first opened (if that option is enabled)</li>
+      <li>Drag all selected lines when Alt is held down when dragging in the audio display (<a href="http://devel.aegisub.org/ticket/691">#691</a>)</li>
+      </ul>
+      <h3 id="automation">Automation</h3>
+      <ul>
+      <li>Automation now uses <a href="http://luajit.org/extensions.html">LuaJIT in Lua 5.2 mode</a> rather than Lua 5.1</li>
+      <li>Text controls are &quot;infinite&quot; length rather than limited to 30k bytes</li>
+      <li>subs.delete can be passed a table of row numbers to delete</li>
+      <li>Add the luabins and lfs libraries to the automation environment</li>
+      <li>Filter out redundant progress updates so that they don't make everything incredibly slow</li>
+      <li>Add support for submenus in the automation menu (insert / in the macro name) (<a href="http://devel.aegisub.org/ticket/852">#852</a>)</li>
+      <li>Add unicode case conversion functions to the automation module (unicode.to_upper_case, unicode.to_lower_case, unicode.to_fold_case)</li>
+      <li>Only process selected lines in the Select Overlaps macro if more than one line is selected (<a href="http://devel.aegisub.org/ticket/1751">#1751</a>)</li>
+      <li>Add aegisub.project_properties() to get a table with stuff that used to be in the script info section of the file (but unlike the old script info entries, it's actually always up to date) (<a href="http://devel.aegisub.org/ticket/1747">#1747</a>)</li>
+      <li>Fix loading automation scripts when Aegisub is installed to a path with non-ascii characters in it (<a href="http://devel.aegisub.org/ticket/1760">#1760</a>)</li>
+      <li>Lua functions which take a path have been patched to support UTF-8 on Windows</li>
+      </ul>
+      <h3 id="fonts-collector">Fonts Collector</h3>
+      <ul>
+      <li>Add a warning when a script using a bold or italic variant of a font that doesn't actually exist, as emboldening done by the renderer may not match what is seen in Aegisub</li>
+      </ul>
+      <h3 id="internationalization">Internationalization</h3>
+      <ul>
+      <li>Make the installer translatable and use the language selected in the installer for Aegisub's UI language</li>
+      <li>Fix locale issues that could lead to find/replace stripping all non-ascii characters from a file (<a href="http://devel.aegisub.org/ticket/1587">#1587</a>)</li>
+      <li>Use localized names for languages everywhere they're displayed rather than the English names</li>
+      <li>Fix a bunch of issues with RTL locales on Windows (but unfortunately there's still some major ones remaining) (<a href="http://devel.aegisub.org/ticket/1354">#1354</a>)</li>
+      </ul>
+      <h3 id="os-x">OS X</h3>
+      <ul>
+      <li>Improve HiDPI support</li>
+      <li>Add support for IMEs in the main edit box (<a href="http://devel.aegisub.org/ticket/1247">#1247</a>, <a href="http://devel.aegisub.org/ticket/1672">#1672</a>, <a href="http://devel.aegisub.org/ticket/1695">#1695</a>)</li>
+      <li>Fix crash when pasting emoji into the edit box</li>
+      <li>Use the OS spellchecker service rather than Hunspell.</li>
+      </ul>
+      <h3 id="performance">Performance</h3>
+      <ul>
+      <li>Make fontconfig indexing about four times as fast</li>
+      <li>Significantly speed up passing subtitles to the subtitle renderer (as much as 10x faster), making the video display less laggy with large files</li>
+      <li>Speed up indexing Matroska files</li>
+      <li>Significantly speed up reading subtitles from Matroska files</li>
+      <li>Cut idle CPU usage when Aegisub is in the background by about 90%</li>
+      <li>Cut down the disk space used a bit</li>
+      </ul>
+      <h3 id="resolution-resampler">Resolution Resampler</h3>
+      <ul>
+      <li>Resample \be and \blur tags</li>
+      <li>Add support for converting between YCbCr matricies</li>
+      <li>Make the handling for AR-changing resampling a bit smarter</li>
+      <li>Use prettier string formatting for resampled numbers</li>
+      <li>Fix resampling drawings with AR changes</li>
+      </ul>
+      <h3 id="stuff">Stuff</h3>
+      <ul>
+      <li>List the files which will be opened or closed in the Load/Unload files dialog</li>
+      <li>Support loading keyframes and timecodes files via drag-and-drop (<a href="http://devel.aegisub.org/ticket/1749">#1749</a>)</li>
+      </ul>
+      <h3 id="subtitle-editing">Subtitle editing</h3>
+      <ul>
+      <li>The edit box buttons (bold, italic, colors, etc.) try to do the right thing when multiple lines are selected, rather than just setting all of the lines to the active line's text</li>
+      <li>The subtitles grid has gained as Characters Per Second column, with customizable warning and error thresholds (<a href="http://devel.aegisub.org/ticket/609">#609</a>)</li>
+      <li>Undo now restores the selected lines and cursor position that were active when the change being undone occured</li>
+      <li>Double-clicking on a word which is right next to a \N no longer selects the \N along with the word</li>
+      <li>Make default subtitle styles customizable: when creating a new file or importing from a format without style information, the styles from a catalog of your choice are automatically imported into the script (<a href="http://devel.aegisub.org/ticket/962">#962</a>)</li>
+      <li>Add a button to open directly open the style editor for the current line's style (<a href="http://devel.aegisub.org/ticket/1746">#1746</a>)</li>
+      <li>Add Comment to the files which can be pasted over</li>
+      <li>Insert \N on shift-enter in the edit box</li>
+      <li>Fix incorrect cursor positions when using non-BMP unicode characters</li>
+      <li>The edit box's background color is now customizable</li>
+      </ul>
+      <h3 id="subtitle-formats">Subtitle Formats</h3>
+      <ul>
+      <li>Fix crash when trying to open compressed tracks from Matroska</li>
+      <li>Add support for opening subtitle tracks with utterly insane CodecPrivate sections</li>
+      </ul>
+      <h3 id="video">Video</h3>
+      <ul>
+      <li>Fix rounding error in the framerate calculations for CFR formats that sometimes lead to significantly wrong timestamps for long files</li>
+      <li>Add support for uncompressed RGB(A) files</li>
+      <li>Fix some of the issues with open-gop h264 files</li>
+      <li>Fix infinite loop when opening indexless matroska files (such as files written by x264 and not remuxed)</li>
+      <li>Fix some issues with interlaced h264</li>
+      <li>Add support for HEVC</li>
+      <li>Add option to resample the script rather than just changing the script resolution when opening a video with different resolution (<a href="http://devel.aegisub.org/ticket/1382">#1382</a>)</li>
+      </ul>
+      <h3 id="visualtypesettingtools">Visual<br>Typesetting<br>Tools</h3>
+      <ul>
+      <li>Several of the tools have been somewhat restyled to make them less obstructive</li>
+      <li>Hide drag handles for commented lines</li>
+      <li>Don't automatically select all control handle in the vector clip tool when switching to it, as there's now box selection of handles</li>
+      <li>Update all selected lines when the origin is dragged in the rotate tools</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

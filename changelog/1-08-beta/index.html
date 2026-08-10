@@ -287,52 +287,53 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>1.08 beta</h1>
-            <ul>
-            <li>Fixed crash when trying to shift times of selected rows with none selected (AMZ)</li>
-            <li>Added option to make audio autocommit only work when SSA mode is disabled (AMZ)</li>
-            <li>Implemented exporting to SSA (Substation Alpha) subtitles format (AMZ)</li>
-            <li>Added *.mka to list of recognized audio formats (AMZ)</li>
-            <li>Fixed (harmless) unhandled exception when cancelling audio loading (AMZ)</li>
-            <li>Added recent lists to video and audio (AMZ)</li>
-            <li>Added option to allow user to disable jumping to next line when commiting in SSA mode (AMZ)</li>
-            <li>Fixed line jump to in SSA mode (AMZ)</li>
-            <li>Aegisub no longer tries to open .vob files with mpeg2source (Myrsloik)</li>
-            <li>Implemented saving of PNG snapshots from video (AMZ)</li>
-            <li>Implemented customizeable hotkeys for most shortcuts (AMZ)</li>
-            <li>Added hotkey customizing dialog (AMZ)</li>
-            <li>Bugfix: simple-k-replacer.lua never worked (jfs)</li>
-            <li>Added &quot;apply only to this style&quot; options to simple-k-replacer.lua and line-per-syllable.lua (jfs)</li>
-            <li>Fixed selection being reset after lines were joined (AMZ)</li>
-            <li>Duplicated lines are now created after selection, and first one is selected (AMZ)</li>
-            <li>Added duplicate and shift by one frame option for easier frame-by-frame typesetting (AMZ)</li>
-            <li>Fixed crash related to setting style overrides via buttons (AMZ)</li>
-            <li>Main program window can now be freely resized (AMZ)</li>
-            <li>Zoom slider under video was replaced with a drop-down box on toolbar (AMZ)</li>
-            <li>Drawing command blocks are now parsed properly (not that it matters much) (AMZ)</li>
-            <li>Video slider is now a custom control (AMZ)</li>
-            <li>Automation: The frame_from_ms and ms_from_frame functions weren't actually available. They are now. Oops... (jfs)</li>
-            <li>Automation: Fixed error reporting during script execution so you have a chance to see the error messages again (jfs)</li>
-            <li>Mouse wheel now scrolls the audio display, or zooms if shift is held down (you can invert the two in config.dat) (AMZ)</li>
-            <li>New lines now keep the style of 'parent' line (AMZ)</li>
-            <li>First line of script will now be selected when it's loaded (AMZ)</li>
-            <li>Renamed &quot;Audio Draw Boundary Lines&quot; into &quot;Audio Draw Secondary Lines&quot; (AMZ)</li>
-            <li>Added Undo/Cut/Copy/Paste/Select All to subtitles edit box context menu (AMZ)</li>
-            <li>Added a &quot;OK&quot; button to style editor dialog, and now &quot;Apply&quot; applies changes without closing it (AMZ)</li>
-            <li>Paths to video/audio/timecodes files are now stored relative to subtitles (instead of as absolute paths) in [Script Info] (AMZ)</li>
-            <li>Audio display now shows previous line in grey (this feature can be disabled (0) or extended to every line (2) with &quot;Audio Inactive Lines Display Mode&quot; on config.dat) (AMZ)</li>
-            <li>Audio display height can now be adjusted by drawing the sash under it (AMZ)</li>
-            <li>Holding shift while clicking on video seek bar now snaps to keyframes (AMZ)</li>
-            <li>Fixed positioning of subs on video while shift is held down (AMZ)</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>1.08 beta</h1>
+      <ul>
+      <li>Fixed crash when trying to shift times of selected rows with none selected (AMZ)</li>
+      <li>Added option to make audio autocommit only work when SSA mode is disabled (AMZ)</li>
+      <li>Implemented exporting to SSA (Substation Alpha) subtitles format (AMZ)</li>
+      <li>Added *.mka to list of recognized audio formats (AMZ)</li>
+      <li>Fixed (harmless) unhandled exception when cancelling audio loading (AMZ)</li>
+      <li>Added recent lists to video and audio (AMZ)</li>
+      <li>Added option to allow user to disable jumping to next line when commiting in SSA mode (AMZ)</li>
+      <li>Fixed line jump to in SSA mode (AMZ)</li>
+      <li>Aegisub no longer tries to open .vob files with mpeg2source (Myrsloik)</li>
+      <li>Implemented saving of PNG snapshots from video (AMZ)</li>
+      <li>Implemented customizeable hotkeys for most shortcuts (AMZ)</li>
+      <li>Added hotkey customizing dialog (AMZ)</li>
+      <li>Bugfix: simple-k-replacer.lua never worked (jfs)</li>
+      <li>Added &quot;apply only to this style&quot; options to simple-k-replacer.lua and line-per-syllable.lua (jfs)</li>
+      <li>Fixed selection being reset after lines were joined (AMZ)</li>
+      <li>Duplicated lines are now created after selection, and first one is selected (AMZ)</li>
+      <li>Added duplicate and shift by one frame option for easier frame-by-frame typesetting (AMZ)</li>
+      <li>Fixed crash related to setting style overrides via buttons (AMZ)</li>
+      <li>Main program window can now be freely resized (AMZ)</li>
+      <li>Zoom slider under video was replaced with a drop-down box on toolbar (AMZ)</li>
+      <li>Drawing command blocks are now parsed properly (not that it matters much) (AMZ)</li>
+      <li>Video slider is now a custom control (AMZ)</li>
+      <li>Automation: The frame_from_ms and ms_from_frame functions weren't actually available. They are now. Oops... (jfs)</li>
+      <li>Automation: Fixed error reporting during script execution so you have a chance to see the error messages again (jfs)</li>
+      <li>Mouse wheel now scrolls the audio display, or zooms if shift is held down (you can invert the two in config.dat) (AMZ)</li>
+      <li>New lines now keep the style of 'parent' line (AMZ)</li>
+      <li>First line of script will now be selected when it's loaded (AMZ)</li>
+      <li>Renamed &quot;Audio Draw Boundary Lines&quot; into &quot;Audio Draw Secondary Lines&quot; (AMZ)</li>
+      <li>Added Undo/Cut/Copy/Paste/Select All to subtitles edit box context menu (AMZ)</li>
+      <li>Added a &quot;OK&quot; button to style editor dialog, and now &quot;Apply&quot; applies changes without closing it (AMZ)</li>
+      <li>Paths to video/audio/timecodes files are now stored relative to subtitles (instead of as absolute paths) in [Script Info] (AMZ)</li>
+      <li>Audio display now shows previous line in grey (this feature can be disabled (0) or extended to every line (2) with &quot;Audio Inactive Lines Display Mode&quot; on config.dat) (AMZ)</li>
+      <li>Audio display height can now be adjusted by drawing the sash under it (AMZ)</li>
+      <li>Holding shift while clicking on video seek bar now snaps to keyframes (AMZ)</li>
+      <li>Fixed positioning of subs on video while shift is held down (AMZ)</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

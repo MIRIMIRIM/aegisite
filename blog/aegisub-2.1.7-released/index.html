@@ -287,58 +287,59 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <div class="blog-header">
-              <h1>Aegisub 2.1.7 released</h1>
-              <p class="meta">
-                  14 Jul 2009
-              </p>
-      
-            </div>
-            <p>Finally!</p>
-            <p>It's been almost a month since the 4 year anniversary and the promise of 2.1.7 &quot;within a few days&quot;, but lots of stuff happened, people were travelling and otherwise not reachable. But I dare say it's not a bad thing, this version of Aegisub we are releasing now is certainly more polished than what we could have managed four weeks ago.</p>
-            <p>So far, this release is just for Windows. <strong>Use the Download button above to get the new version.</strong> Release notes and more on what to expect after the break.</p>
-            <p>A lot of things have changed since version 2.1.6, and sure, it has also been a long time: More than half a year! Here's a summary of the more important changes.</p>
-            <p>Update: We now also have <a href="http://www.mod16.org/aegisub/aegisub-changelog-217.html">a complete changelog since 2.1.6</a> available, courtesy of TheFluff/rhx.</p>
-            <ul>
-            <li><p>DirectSound audio player has been completely rewritten (again) - this should give much better stability of audio playback. Note that the old DirectSound player is still available, you can change to it in Options. If you're using Windows 7, the old one seems to be more reliable.</p>
-            </li>
-            <li><p>PCM WAV audio provider actually works again, and with files of any size. (No more crashing with files bigger than 256 MB.)</p>
-            </li>
-            <li><p>Tip of the Day has been removed.</p>
-            </li>
-            <li><p>Loads of changes to FFmpegSource2 (FFMS2) giving better support for almost everything, making it more stable and so on.</p>
-            </li>
-            <li><p>Lots of memory leaks have been fixed, Aegisub should use less memory now.</p>
-            </li>
-            <li><p>Bug fixes in many file format readers and writers. Loading and saving subtitles to foreign formats should be more reliable now. Problems with frame-based/SMPTE timecode-based formats fixed.</p>
-            </li>
-            <li><p>The Kanji Timer function has been almost completely rewritten, squashing all known bugs and giving a prettier GUI. The use is the same.</p>
-            </li>
-            <li><p>OpenGL errors in the video display are no longer fatal. You will get an error message, and video won't open if Aegisub doesn't support your graphics card/driver, but it shouldn't crash. See below for a workaround if video doesn't work for you.</p>
-            </li>
-            <li><p>Some additions to Karaoke Templater, you can now create loops with variable iteration counts (including infinite!) making a lot of effects more feasible.</p>
-            </li>
-            <li><p>The &quot;Local configuration&quot; option was removed from Options. If you want a &quot;portable&quot; version of Aegisub (as it was intended for making) we now have a separate download package for that. It also actually works as advertised now. See the download page for details.</p>
-            </li>
-            <li><p>An innumerable amount of other minor, cosmetic changes that just makes everyday use more convenient and smoother.</p>
-            </li>
-            </ul>
-            <hr />
-            <p><strong>Read this if video doesn't work:</strong></p>
-            <p>One of the most common problems with Aegisub is video mode not working with a wide range of graphics cards and graphics drivers, this especially seems to hit users of ATI/AMD graphics cards hard.</p>
-            <p>Until we can make our usage of OpenGL more robust (or make an alternative implementation of the video display in software and/or Direct3D) we have a workaround that involves forcing Aegisub to use a software OpenGL implementation instead of the one supplied by your graphics card driver.</p>
-            <p>Before you try this, first try updating your graphics card driver. Get the latest driver directly from the maker of your graphics chip (usually NVidia, ATI/AMD or Intel) if possible, otherwise look at the support site for your computer vendor.</p>
-            <p><a href="http://www.animereactor.dk/aegisub/mesa-742-wgl.zip">Download MesaGL 7.4.2 for Windows</a> — Unpack this archive to your Aegisub installation folder, next to the <em>aegisub32.exe</em> file. Aegisub should then use software rendering for the video display. It will be very slow/sluggish, but should work in all cases.</p>
-            <hr />
-            <p>If you have any questions about Aegisub, first see our manual, it covers most of the program. Lots of common problems have also already been covered on the forum, try searching the forum, there's a good chance someone has had your problem before.</p>
-      
-          </article>
-        </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <div class="blog-header">
+        <h1>Aegisub 2.1.7 released</h1>
+        <p class="meta">
+            14 Jul 2009
+        </p>
+
       </div>
+      <p>Finally!</p>
+      <p>It's been almost a month since the 4 year anniversary and the promise of 2.1.7 &quot;within a few days&quot;, but lots of stuff happened, people were travelling and otherwise not reachable. But I dare say it's not a bad thing, this version of Aegisub we are releasing now is certainly more polished than what we could have managed four weeks ago.</p>
+      <p>So far, this release is just for Windows. <strong>Use the Download button above to get the new version.</strong> Release notes and more on what to expect after the break.</p>
+      <p>A lot of things have changed since version 2.1.6, and sure, it has also been a long time: More than half a year! Here's a summary of the more important changes.</p>
+      <p>Update: We now also have <a href="http://www.mod16.org/aegisub/aegisub-changelog-217.html">a complete changelog since 2.1.6</a> available, courtesy of TheFluff/rhx.</p>
+      <ul>
+      <li><p>DirectSound audio player has been completely rewritten (again) - this should give much better stability of audio playback. Note that the old DirectSound player is still available, you can change to it in Options. If you're using Windows 7, the old one seems to be more reliable.</p>
+      </li>
+      <li><p>PCM WAV audio provider actually works again, and with files of any size. (No more crashing with files bigger than 256 MB.)</p>
+      </li>
+      <li><p>Tip of the Day has been removed.</p>
+      </li>
+      <li><p>Loads of changes to FFmpegSource2 (FFMS2) giving better support for almost everything, making it more stable and so on.</p>
+      </li>
+      <li><p>Lots of memory leaks have been fixed, Aegisub should use less memory now.</p>
+      </li>
+      <li><p>Bug fixes in many file format readers and writers. Loading and saving subtitles to foreign formats should be more reliable now. Problems with frame-based/SMPTE timecode-based formats fixed.</p>
+      </li>
+      <li><p>The Kanji Timer function has been almost completely rewritten, squashing all known bugs and giving a prettier GUI. The use is the same.</p>
+      </li>
+      <li><p>OpenGL errors in the video display are no longer fatal. You will get an error message, and video won't open if Aegisub doesn't support your graphics card/driver, but it shouldn't crash. See below for a workaround if video doesn't work for you.</p>
+      </li>
+      <li><p>Some additions to Karaoke Templater, you can now create loops with variable iteration counts (including infinite!) making a lot of effects more feasible.</p>
+      </li>
+      <li><p>The &quot;Local configuration&quot; option was removed from Options. If you want a &quot;portable&quot; version of Aegisub (as it was intended for making) we now have a separate download package for that. It also actually works as advertised now. See the download page for details.</p>
+      </li>
+      <li><p>An innumerable amount of other minor, cosmetic changes that just makes everyday use more convenient and smoother.</p>
+      </li>
+      </ul>
+      <hr />
+      <p><strong>Read this if video doesn't work:</strong></p>
+      <p>One of the most common problems with Aegisub is video mode not working with a wide range of graphics cards and graphics drivers, this especially seems to hit users of ATI/AMD graphics cards hard.</p>
+      <p>Until we can make our usage of OpenGL more robust (or make an alternative implementation of the video display in software and/or Direct3D) we have a workaround that involves forcing Aegisub to use a software OpenGL implementation instead of the one supplied by your graphics card driver.</p>
+      <p>Before you try this, first try updating your graphics card driver. Get the latest driver directly from the maker of your graphics chip (usually NVidia, ATI/AMD or Intel) if possible, otherwise look at the support site for your computer vendor.</p>
+      <p><a href="http://www.animereactor.dk/aegisub/mesa-742-wgl.zip">Download MesaGL 7.4.2 for Windows</a> — Unpack this archive to your Aegisub installation folder, next to the <em>aegisub32.exe</em> file. Aegisub should then use software rendering for the video display. It will be very slow/sluggish, but should work in all cases.</p>
+      <hr />
+      <p>If you have any questions about Aegisub, first see our manual, it covers most of the program. Lots of common problems have also already been covered on the forum, try searching the forum, there's a good chance someone has had your problem before.</p>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">

@@ -287,70 +287,71 @@
 
   <div class="wrap container-fluid" role="document">
     <div class="content">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <article>
-            <h1>1.07 beta</h1>
-            <ul>
-            <li>Aegisub is now Open Source under the 3-clause BSD license</li>
-            <li>Bugfix: Crash in Styles Manager related to copying styles (jfs)</li>
-            <li>Automation: Fixed progress-reporting in karaskel.lua (jfs)</li>
-            <li>Installer now shows the icon in add/remove programs (Myrsloik)</li>
-            <li>Installer defaults to the directory of the previous install (Myrsloik)</li>
-            <li>Fixed behavior of &quot;Don't create start menu shortcuts&quot; in installer (Myrsloik)</li>
-            <li>Bugfix: The actor dropdown list didn't always work, it's hopefully fixed now (jfs)</li>
-            <li>Automation: Yet another attempt at fixing the slowdown bug (jfs)</li>
-            <li>Added option &quot;Audio Draw Boundary Lines&quot;, if disabled, no vertical lines (except for current selection) are drawn on the audio waveform. Karaoke syllable boundaries are always drawn (jfs)</li>
-            <li>Added option &quot;Audio Draw Selection Background&quot;, if disabled, the background and waveform color isn't changed for the selection in waveform display mode (jfs)</li>
-            <li>SSA Mode: Committing changes now switches to next line and sets the selection to the part following the old selection (jfs)</li>
-            <li>SSA Mode: Selecting another line in the grid no longer changes the audio selection (jfs)</li>
-            <li>SSA Mode: &quot;Play current line&quot; sets the selection to the current line (jfs)</li>
-            <li>SSA Mode: Committing works even when no changes were made (just go to next row) and negative timings are accepted (jfs)</li>
-            <li>When loading video, if the video and subs resolution don't match, ask to change the subs resolution (jfs)</li>
-            <li>New config option to control the above, &quot;Video Check Script Res&quot; (jfs), it can take the following values
-            <ul>
-            <li>(0) Never change subs resolution to match video</li>
-            <li>(1) Ask to change subs resolution on mismatch</li>
-            <li>(2) Always change subs resolution on mismatch (never ask)</li>
-            </ul>
-            </li>
-            <li>New subs have default resolution 640x480 (to match most common videos) (jfs)</li>
-            <li>New config option: &quot;Audio Line boundaries Thickness&quot; controls the thickness of the lines marking the start/end of the current selection (jfs)</li>
-            <li>Bugfix: Loading audio files of different sample rates without closing the program resulted in audio playing too slow/fast (jfs)</li>
-            <li>New color picker dialog (jfs)
-            <ul>
-            <li>Graphically pick colors from different colorspaces (RGB, PC-YUV, HSL, HSV)</li>
-            <li>Manually enter color values in those colorspaces</li>
-            <li>ASS and HTML hex input</li>
-            <li>24 recently-used colors (automatically managed)</li>
-            <li>&quot;Screen eyedropper&quot; to make a screengrab and pick a color from that</li>
-            </ul>
-            </li>
-            <li>The following windows remember their last used position (not across program restarts, though) (jfs)
-            <ul>
-            <li>Styles Manager</li>
-            <li>Styling Assistant</li>
-            <li>Translation Assistant</li>
-            </ul>
-            </li>
-            <li>Most dialog windows now center on the window behind them (jfs)</li>
-            <li>The start and end markers for audio selection can now have different colors, use the &quot;Audio Line boundary start&quot; and &quot;Audio Line boundary end&quot; options to change them, the old &quot;Audio Line boundaries&quot; option is no longer used (jfs)</li>
-            <li>Blank script resolution will now be interpreted as 384x288 (VSFilter's default) if script res is blank (AMZ)</li>
-            <li>Audio playing of selection will now play until new end time when it's changed during playback (AMZ)</li>
-            <li>Aegisub will now display a proper error message if it attempts to load an outdated avisynth.dll, instead of just crashing (Myrsloik)</li>
-            <li>Automation: Changed the result array from process_lines to use one-based indexes, instead of zero-based indexes, to follow Lua standards. Zero-based indexes still work. The input arrays are still zero-based. (jfs)</li>
-            <li>Automation: Added new factorybrew script, line-per-syllable.lua. Allows you to make line-per-syllable karaoke effects by using variable substitution and calculation. Built off karaskel-adv.lua (jfs)</li>
-            <li>Automation: Updated simple-k-replacer.lua to also allow for calculations, and it is based on karaskel.lua now (jfs)</li>
-            <li>Fixed count of matches in Replace All dialog (AMZ)</li>
-            <li>Fixed extra line breaks bug in importing from txt (AMZ)</li>
-            <li>The automation samples are now always installed (Myrsloik)</li>
-            <li>Aegisub will now install VSFilter 2.37 (AMZ)</li>
-            </ul>
-      
-          </article>
-        </div>
-      </div>
+
+
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>1.07 beta</h1>
+      <ul>
+      <li>Aegisub is now Open Source under the 3-clause BSD license</li>
+      <li>Bugfix: Crash in Styles Manager related to copying styles (jfs)</li>
+      <li>Automation: Fixed progress-reporting in karaskel.lua (jfs)</li>
+      <li>Installer now shows the icon in add/remove programs (Myrsloik)</li>
+      <li>Installer defaults to the directory of the previous install (Myrsloik)</li>
+      <li>Fixed behavior of &quot;Don't create start menu shortcuts&quot; in installer (Myrsloik)</li>
+      <li>Bugfix: The actor dropdown list didn't always work, it's hopefully fixed now (jfs)</li>
+      <li>Automation: Yet another attempt at fixing the slowdown bug (jfs)</li>
+      <li>Added option &quot;Audio Draw Boundary Lines&quot;, if disabled, no vertical lines (except for current selection) are drawn on the audio waveform. Karaoke syllable boundaries are always drawn (jfs)</li>
+      <li>Added option &quot;Audio Draw Selection Background&quot;, if disabled, the background and waveform color isn't changed for the selection in waveform display mode (jfs)</li>
+      <li>SSA Mode: Committing changes now switches to next line and sets the selection to the part following the old selection (jfs)</li>
+      <li>SSA Mode: Selecting another line in the grid no longer changes the audio selection (jfs)</li>
+      <li>SSA Mode: &quot;Play current line&quot; sets the selection to the current line (jfs)</li>
+      <li>SSA Mode: Committing works even when no changes were made (just go to next row) and negative timings are accepted (jfs)</li>
+      <li>When loading video, if the video and subs resolution don't match, ask to change the subs resolution (jfs)</li>
+      <li>New config option to control the above, &quot;Video Check Script Res&quot; (jfs), it can take the following values
+      <ul>
+      <li>(0) Never change subs resolution to match video</li>
+      <li>(1) Ask to change subs resolution on mismatch</li>
+      <li>(2) Always change subs resolution on mismatch (never ask)</li>
+      </ul>
+      </li>
+      <li>New subs have default resolution 640x480 (to match most common videos) (jfs)</li>
+      <li>New config option: &quot;Audio Line boundaries Thickness&quot; controls the thickness of the lines marking the start/end of the current selection (jfs)</li>
+      <li>Bugfix: Loading audio files of different sample rates without closing the program resulted in audio playing too slow/fast (jfs)</li>
+      <li>New color picker dialog (jfs)
+      <ul>
+      <li>Graphically pick colors from different colorspaces (RGB, PC-YUV, HSL, HSV)</li>
+      <li>Manually enter color values in those colorspaces</li>
+      <li>ASS and HTML hex input</li>
+      <li>24 recently-used colors (automatically managed)</li>
+      <li>&quot;Screen eyedropper&quot; to make a screengrab and pick a color from that</li>
+      </ul>
+      </li>
+      <li>The following windows remember their last used position (not across program restarts, though) (jfs)
+      <ul>
+      <li>Styles Manager</li>
+      <li>Styling Assistant</li>
+      <li>Translation Assistant</li>
+      </ul>
+      </li>
+      <li>Most dialog windows now center on the window behind them (jfs)</li>
+      <li>The start and end markers for audio selection can now have different colors, use the &quot;Audio Line boundary start&quot; and &quot;Audio Line boundary end&quot; options to change them, the old &quot;Audio Line boundaries&quot; option is no longer used (jfs)</li>
+      <li>Blank script resolution will now be interpreted as 384x288 (VSFilter's default) if script res is blank (AMZ)</li>
+      <li>Audio playing of selection will now play until new end time when it's changed during playback (AMZ)</li>
+      <li>Aegisub will now display a proper error message if it attempts to load an outdated avisynth.dll, instead of just crashing (Myrsloik)</li>
+      <li>Automation: Changed the result array from process_lines to use one-based indexes, instead of zero-based indexes, to follow Lua standards. Zero-based indexes still work. The input arrays are still zero-based. (jfs)</li>
+      <li>Automation: Added new factorybrew script, line-per-syllable.lua. Allows you to make line-per-syllable karaoke effects by using variable substitution and calculation. Built off karaskel-adv.lua (jfs)</li>
+      <li>Automation: Updated simple-k-replacer.lua to also allow for calculations, and it is based on karaskel.lua now (jfs)</li>
+      <li>Fixed count of matches in Replace All dialog (AMZ)</li>
+      <li>Fixed extra line breaks bug in importing from txt (AMZ)</li>
+      <li>The automation samples are now always installed (Myrsloik)</li>
+      <li>Aegisub will now install VSFilter 2.37 (AMZ)</li>
+      </ul>
+
+    </article>
+  </div>
+</div>
     </div>
   </div>
   <footer class="footer text-muted">
