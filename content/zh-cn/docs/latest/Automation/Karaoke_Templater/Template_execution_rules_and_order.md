@@ -124,9 +124,8 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
 
 值得注意的是，音节和注音假名音节是会被解析并储存的音节，而不是用multi时的虚拟音节，或是用char时的虚拟音节，并且不是一个组合。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 假设有三个 `syl` 类模板: A, B 和 C.
 
 - A 是一个规则的模板，不带有 *multi* 或者 *char* 修饰语。
@@ -153,8 +152,6 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
     - 进行和上面相似的过程。
 
 想知道更多有关 多音节标注 和 以字符为单位的虚拟音节的内容，请看下面。
-</div>
-</div>
 
 如果任何一个模板在以上三个步骤中匹配到了"打好K值的行"，执行过模板后这样的行就会被打上注释，并且特效栏会显示
 `karaoke` 。
@@ -181,7 +178,7 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
 
 (这部分内容的具体代码可以在Aegisub安装目录下的automation/autoload/kara-templater.lua中读到)
 
-<pre>
+```plaintext
 卡拉OK模板执行器执行的主要过程:
 1. 收集头部信息
    1. 找到所有的头部信息，基本有播放分辨率（X/Y）。
@@ -324,6 +321,6 @@ field)填写着 *code* 或者 *template* 的行会被作为模板行。
          2. 在结果文本中保留了匹配到的内容
       b. 否则:
          1. 用函数运行的结果替换掉匹配到的内容
-</pre>
+```
 
 <div class="alert alert-warning" role="alert"><strong>TODO: </strong>把这变得更合理一些？(Turn this into something more reasonable?)</div>

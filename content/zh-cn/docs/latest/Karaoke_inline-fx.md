@@ -19,9 +19,8 @@ inline-fx标记本身并不会有任何影响，只有当应用可以识别它�
 
 一行的开始会重设为无内联特效。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 这是一行带内联特效标签的卡拉OK字幕：
 
 ```ass
@@ -42,8 +41,6 @@ inline-fx标记本身并不会有任何影响，只有当应用可以识别它�
 | ta                 | `paint`   |
 | yu                 | `cloud`   |
 | me                 | `cloud`   |
-</div>
-</div>
 
 ## 卡拉OK模版执行器中的用法
 
@@ -51,9 +48,8 @@ inline-fx标记本身并不会有任何影响，只有当应用可以识别它�
 *fx*
 修饰语来指定其仅对特定的内联特效生效。这种方式无法（直接）匹配无内联特效标记的音节。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 接着之前的卡拉OK行的例子，你可以写出下面的模版：
 
 ```plaintext
@@ -63,12 +59,9 @@ template syl fx cloud: {仅对“cloud”音节叠加生效的效果}
 ```
 
 这里的想法是先有一个基本的效果，然后为某些音节设计更多的效果。
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 通过使用一个基于内联特效而启用或禁用的
 *fxgroup*，可以在卡拉OK模版执行器中匹配空白内联特效的音节。
 您也可以使用多个 \_fxgroup_来执行多个内联特效的模板。
@@ -79,8 +72,6 @@ template syl fxgroup blankfx: {仅对空内联特效音节叠加生效的效果}
 ```
 
 重要的是，code行在每个音节都会执行，并且会在每个需要使用它的对音节生效的模版之前执行。
-</div>
-</div>
 
 ## Lua脚本中的用法
 
@@ -92,9 +83,8 @@ pre-processing on your subtitle lines.
 The inline-fx for a syllable is then available as `syl.inline_fx`, which
 you can compare to a string to conditionally apply effects.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 In some code that runs per-syllable in your script:
 
 ```lua
@@ -109,12 +99,9 @@ end
 
 Simply compare the inline-fx name to the various possibilities and run
 the right effect code.
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 In some code that runs per-syllable in your script: At top-level of your
 script:
 
@@ -141,5 +128,4 @@ First, a table is created and filled with functions for applying the
 different effects. The keys used for the table are the names of the
 possible inline-fx. When the effect has to be applied, the right
 function is looked up in the effect table and then called.
-</div>
-</div>
+

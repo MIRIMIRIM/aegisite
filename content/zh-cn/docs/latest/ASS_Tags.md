@@ -20,8 +20,12 @@ override blocks (i.e. not between { and }).
 
 下列标签写在文本中，而不是特效区域中（即不在 { 和 } 中）。
 
-<h3 id="\n">软换行（软空格)</h3>
-<pre><code class="language-plaintext">\\n</code></pre>
+### 软换行（软空格) {#\n}
+
+```plaintext
+\n
+```
+
 Insert a forced line break, but only when in wrapping mode 2. (See
 [the \\q tag](/zh-cn/docs/ass标签/#wrapstyle/)). Note that this is a lowercase n.
 
@@ -35,15 +39,23 @@ rarely (if ever) actually useful. If you're not sure whether you want this or
 在所有其他的换行方式下，它被当作一个空格对待。这个真的不常用（即使用过）。如果你不确定你想要的效果的是
 \\n 还是 \\N ，那么十有八九是 \\N。
 
-<h3 id="\N">硬换行符</h3>
-<pre><code class="language-plaintext">\\N</code></pre>
+### 硬换行符 {#\N}
+
+```plaintext
+\N
+```
+
 Insert a forced line break, regardless of wrapping mode. Note that this is an
 uppercase N.
 
 插入一个强制换行符，在所有换行方式下都生效。注意这是一个大写的 N。
 
-<h3 id="\h">硬空格</h3>
-<pre><code class="language-plaintext">\\h</code></pre>
+### 硬空格 {#\h}
+
+```plaintext
+\h
+```
+
 Insert a non-breaking "hard" space. The line will never break automatically
 right before or after a hard space, and hard spaces are not folded when they
 appear at the start or end of a displayed line.
@@ -106,26 +118,34 @@ all tags in how they look.
 在这一页，所有在 `<`尖括号`>` 中的 *斜体*
 文字都是参数，需要你用数值代替。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解如何设定这些标签的参数。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
 
-<h3 id="\i">斜体</h3>
-<pre><code class="language-plaintext">\\i1
-\\i0</code></pre>
+### 斜体 {#\i}
+
+```plaintext
+\i1
+\i0
+```
+
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
 
 打开或关闭 *斜体*
 选项。利用`\i1`对后面的字符应用斜体，并且可以用`\i0`使后面的字符取消斜体。
 
-<h3 id="\b">粗体</h3>
-<pre><code class="language-plaintext">\\b1
-\\b0
-\\b<i>\<weight></i></code></pre>
+### 粗体 {#\b}
+
+```plaintext
+\b1
+\b0
+\b<weight>
+```
+
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
 
 打开或关闭 **粗体**
 选项。利用`\b1`对后面的字符应用加粗，并且可以用`\b0`使后面的字符取消加粗。
 
-The <code>\\b<i>\<weight></i></code> form allows you to specify an
+The `\b<weight>` form allows you to specify an
 explicit weight to use. Note that most fonts only support one or two weights
 so you rarely need to use this. Font weights are multiples of 100, such that
 100 is the lowest, 400 is "normal", 700 is "bold" and 900 is the heaviest.
@@ -133,9 +153,8 @@ so you rarely need to use this. Font weights are multiples of 100, such that
 这个 `\b<字重>`
 形式允许你具体使用一个字重值。注意大多数字体仅支持一到两个字重，所以这种用途并不常见。字重值都是100的倍数，例如：100是最细，400是"normal"，700是"bold"，900是最粗。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 I am {\b1}not{\b0} amused.
 ```
@@ -143,12 +162,9 @@ I am {\b1}not{\b0} amused.
 The word "not" is written in boldface.
 
 其中"not"就是用的粗体。
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 {\b100}How {\b300}bold {\b500}can {\b700}you {\b900}get?
 ```
@@ -158,29 +174,39 @@ do not have more than one or two different weights and you will only be able
 to see "not bold" and "bold" in that case.
 
 这些单词是逐渐加粗的。注意，大部分字体没有超过一到两个不同的字重值，所以那种情况下你只能看到"未加粗"和"加粗"两种效果。
-</div>
-</div>
 
-<h3 id="\u">下划线</h3>
-<pre><code class="language-plaintext">\\u1
-\\u0</code></pre>
+### 下划线 {#\u}
+
+```plaintext
+\u1
+\u0
+```
+
 Switch <u>underlined</u> text on or off. Use `\u1` to enable underlining for
 the following text and `\u0` to disable underlining again.
 
 打开或关闭 <u>\_\_下划线</u>
 选项。利用`\u1`对后面的字符应用下划线，并且可以用`\u0`使后面的字符取消下划线。
 
-<h3 id="\s">删除线</h3>
-<pre><code class="language-plaintext">\\s1
-\\s0</code></pre>
+### 删除线 {#\s}
+
+```plaintext
+\s1
+\s0
+```
+
 Switch <s>striked out</s> text on or off. Use `\s1` to enable strikeout for
 the following text and `\s0` to disable strikeout again.
 
 打开或关闭 ~~删除线~~
 选项。利用`\s1`对后面的字符应用删除线，并且可以用`\s0`使后面的字符取消删除线。
 
-<h3 id="\bord">边框宽度</h3>
-<pre><code class="language-plaintext">\\bord<i>\<size></i></code></pre>
+### 边框宽度 {#\bord}
+
+```plaintext
+\bord<size>
+```
+
 Change the width of the border around the text. Set the size to 0 (zero) to
 disable the border entirely.
 
@@ -199,30 +225,29 @@ Border width cannot be negative.
 
 宽度值不必须是整数。它也可以是小数，但不能是负数。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \bord0
 ```
 
 Disable border entirely. 完全隐藏边框。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \bord3.7
 ```
 
 Set the border width to 3.7 pixels 设置边框宽度为3.7个像素
-</div>
-</div>
 
-<h3 id="\xbord">边框宽度 (补充)</h3>
-<pre><code class="language-plaintext">\\xbord<i>\<size></i>
-\\ybord<i>\<size></i></code></pre>
+### 边框宽度 (补充) {#\xbord}
+
+```plaintext
+\xbord<size>
+\ybord<size>
+```
+
 Use the `\xbord` `\ybord` tags to set the border size in X and Y direction
 separately. This can be useful for correcting the border size for anamorphic
 rendering of subtitles.
@@ -241,8 +266,12 @@ disable border in that direction.
 
 你可以把某个方向上的边框宽度设为0，这个方向的边框就完全消失。
 
-<h3 id="\shad">阴影距离</h3>
-<pre><code class="language-plaintext">\\shad<i>\<depth></i></code></pre>
+### 阴影距离 {#\shad}
+
+```plaintext
+\shad<depth>
+```
+
 Set the distance from the text to position the shadow. Set the depth to 0
 (zero) to disable shadow entirely. Works similar to [\\bord](/zh-cn/docs/ass标签/#bordersize/).
 
@@ -252,9 +281,13 @@ The shadow distance can not be negative with this tag.
 
 阴影距离也不能设置为负数值。
 
-<h3 id="\xshad">阴影距离 (补充)</h3>
-<pre><code class="language-plaintext">\\xshad<i>\<depth></i>
-\\yshad<i>\<depth></i></code></pre>
+### 阴影距离 (补充) {#\xshad}
+
+```plaintext
+\xshad<depth>
+\yshad<depth>
+```
+
 Set the distance from the text to position the shadow at, with X and Y
 position set separately. Shadow is only disabled if both X and Y distance is
 0\.
@@ -266,10 +299,14 @@ position the shadow to the top or left of the text.
 
 注意它和`\shad`不同，你可以设置距离值为负数让阴影显示在字符的上方或者左方。
 
-<h3 id="\be">边框模糊</h3>
-<pre><code class="language-plaintext">\\be0
-\\be1
-\\be<i>\<strength></i></code></pre>
+### 边框模糊 {#\be}
+
+```plaintext
+\be0
+\be1
+\be<strength>
+```
+
 Enable or disable a subtle softening-effect for the edges of the text. The
 effect isn't always very visible, but it can in some cases make the text look
 better. It is usually more visible at smaller text sizes.
@@ -294,8 +331,12 @@ generally more useful as a result. The _strength_ must be an integer number.
 是循环叠加效果的次数。注意数值给的比较大的时候就会把边框整个糊掉，并且通常情况下并没有什么卵用。对于高强度模糊，`\blur`通常结果更有用。
 *strength* 必须是一个整数。
 
-<h3 id="\blur">边缘模糊 (高斯函数)</h3>
-<pre><code class="language-plaintext">\\blur<i>\<strength></i></code></pre>
+### 边缘模糊 (高斯函数) {#\blur}
+
+```plaintext
+\blur<strength>
+```
+
 In general, this has the same function as the [`\be`](/zh-cn/docs/ass标签/#bluredges/) tag, but
 uses a more advanced algorithm that looks better at high strengths. Unlike
 `\be`, the _strength_ can be non-integer here. Set _strength_ to 0 (zero) to
@@ -314,17 +355,20 @@ blurred instead.
 注意，这个标签会模糊文本的 *边框*
 ，不是全部。也就是说，如果文本有边框（用[\`\\bord\`](/zh-cn/docs/ass标签/#borderwidth/)标签进行设置），那么边框会被模糊，但是如果没有边框，那么文本的主体就会被模糊。
 
-<h3 id="\fn">字体名称</h3>
-<pre><code class="language-plaintext">\\fn<i>\<字体名称></i></code></pre>
+### 字体名称 {#\fn}
+
+```plaintext
+\fn<字体名称>
+```
+
 Set the font face to use for the following text. There should be no space
 between `\fn` and the font name, and you should not put parentheses or similar
 around the font name either.
 
 设置其后字符的显示字体。在`\fn`和字体名称之间不能有空格，字体名称两边也不应当有括号或类似的东西。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fnArial
 ```
@@ -332,11 +376,9 @@ around the font name either.
 The text following this tag will be in Arial font.
 
 标签后的字符将会以 Arial 字体显示。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fnTimes New Roman
 ```
@@ -344,11 +386,13 @@ The text following this tag will be in Arial font.
 The text following this tag will be in Times New Roman font.
 
 标签后的字符将会以 Times New Roman 字体显示。
-</div>
-</div>
 
-<h3 id="\fs">字体大小</h3>
-<pre><code class="language-plaintext">\\fs<i>\<大小></i></code></pre>
+### 字体大小 {#\fs}
+
+```plaintext
+\fs<大小>
+```
+
 Set the size of the font. The size specified is the height in script pixels,
 so at font size 40 one line of text is 40 pixels tall. (Technical note: it's
 really typographic (desktop publishing) points, not script pixels, but since
@@ -362,9 +406,8 @@ You can only specify integer font sizes.
 
 字体的大小值必须是整数。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fs10
 ```
@@ -372,12 +415,14 @@ You can only specify integer font sizes.
 The following text will use a size 10 font.
 
 其后字符的字体大小值将是10。
-</div>
-</div>
 
-<h3 id="\fscx">Font scale</h3>
-<pre><code class="language-plaintext">\\fscx<i>\<scale></i>
-\\fscy<i>\<scale></i></code></pre>
+### Font scale {#\fscx}
+
+```plaintext
+\fscx<scale>
+\fscy<scale>
+```
+
 Adjust the size of the text in X (`\fscx` or Y (`\fscy`) direction. The
 _scale_ given is in percent, so 100 means "original size".
 
@@ -407,9 +452,8 @@ Note that older versions of VSFitler will truncate non-integer scales.
 
 注意旧版的 VSFitler 会忽略非整数参数的小数部分。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fscx150
 ```
@@ -417,11 +461,9 @@ Note that older versions of VSFitler will truncate non-integer scales.
 Make the text 50% wider than normal.
 
 其后的字符会比正常的宽50%。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fscy50
 ```
@@ -429,11 +471,9 @@ Make the text 50% wider than normal.
 Make the text half height.
 
 其后的字符只有正常的一半高度。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fscx200\fscy200
 ```
@@ -441,11 +481,13 @@ Make the text half height.
 Make the text double size.
 
 其后的字符字体大小会变为正常的两倍。
-</div>
-</div>
 
-<h3 id="\fsp">Letter spacing</h3>
-<pre><code class="language-plaintext">\\fsp<i>\<spacing></i></code></pre>
+### Letter spacing {#\fsp}
+
+```plaintext
+\fsp<spacing>
+```
+
 Changes the spacing between the individual letters in the text. You can use
 this to spread the text more out visually. The _spacing_ is given in script
 resolution pixels.
@@ -457,11 +499,15 @@ Spacing can be negative and can have decimals.
 
 间距可以是负值，也可以含有小数。
 
-<h3 id="\frx">文本旋转</h3>
-<pre><code class="language-plaintext">\\frx<i>\<amount></i>
-\\fry<i>\<amount></i>
-\\frz<i>\<amount></i>
-\\fr<i>\<amount></i></code></pre>
+### 文本旋转 {#\frx}
+
+```plaintext
+\frx<amount>
+\fry<amount>
+\frz<amount>
+\fr<amount>
+```
+
 Rotates the text along the X, Y or Z axis. The `\fr` tag is a shortcut for `\frz`.
 
 沿 X，Y，Z 轴旋转文本。`\fr`标签是`\frz`的简写。
@@ -499,42 +545,35 @@ These tags also affect [vector drawings](/zh-cn/docs/ass标签/#vectordrawings/)
 
 这几个标签也会影响[矢量绘图](/zh-cn/docs/ass标签/#vectordrawings/)。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \frx45
 ```
 
 Rotate the text 45 degrees on the X axis.
 把文本沿 X 轴方向旋转45度。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fry-45
 ```
 
 Rotate the text 45 degrees in opposite direction on the Y axis.
 把文本沿 Y 轴反方向旋转45度。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \frz180
 ```
 
 Rotate the text 180 degrees on the Z axis, making it upside-down.
 把文本沿 Z 轴旋转180度，即上下翻转。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 The following two rotations produce the same result:
 下面两个旋转效果相同：
 
@@ -545,22 +584,18 @@ The following two rotations produce the same result:
 
 This is because 330 degrees is 30 degrees less than a full rotation of 360 degrees.
 因为330度比旋转一圈刚好少30度。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \t(\frz3600)
 ```
 
 Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t](/zh-cn/docs/ass标签/#animatedtransform/) tag.
 轴旋转10圈的动画。参见 [`\t`](/zh-cn/docs/ass标签/#animatedtransform/)。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 The following screenshots illustrate the effect of rotating on the different axes:
 下面几个图演示了沿不同轴旋转的效果。
 
@@ -569,12 +604,14 @@ The following screenshots illustrate the effect of rotating on the different axe
 ![Fr_sample02](/img/3.2/Fr_sample02.jpg)
 
 ![Fr_sample03](/img/3.2/Fr_sample03.jpg)
-</div>
-</div>
 
-<h3 id="\fax">文本剪切变换</h3>
-<pre><code class="language-plaintext">\\fax<i>\<factor></i>
-\\fay<i>\<factor></i></code></pre>
+### 文本剪切变换 {#\fax}
+
+```plaintext
+\fax<factor>
+\fay<factor>
+```
+
 Perform a shearing (perspective distortion) transformation of the text. A
 _factor_ of 0 (zero) means no distortion.
 
@@ -592,15 +629,16 @@ coordinate system used for shearing is not affected by the [rotation origin](/zh
 剪切是在旋转之后应用的，以旋转后的坐标系为基准。这个剪切用的坐标系不受
 [旋转中心](/zh-cn/docs/ass标签/#rotationorigin/) 的影响。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
-![shearing](/img/3.2/shearing.png)
-</div>
-</div>
+**Example**
 
-<h3 id="\fe">字体字符集</h3>
-<pre><code class="language-plaintext">\\fe<i>\<id></i></code></pre>
+![shearing](/img/3.2/shearing.png)
+
+### 字体字符集 {#\fe}
+
+```plaintext
+\fe<id>
+```
+
 Set the Windows font encoding used to select the font mapping table used to
 translate Unicode codepoints to glyph indices in the font. For some fonts
 without a Unicode mapping table this might be required to get text in certain
@@ -665,12 +703,16 @@ Unicode encoding. (Aegisub stores files in Unicode UTF-8 by default.)
 不支持这个用法，一些渲染器可能也不支持。所以建议你不要依赖这个功能，而是始终以
 Unicode 编码保存 ASS 文件。（Aegisub 保存 ASS 文件的默认编码是 UTF-8）
 
-<h3 id="\c">设置颜色</h3>
-<pre><code class="language-plaintext">\\c&H<i>\<bb>\<gg>\<rr></i>&
-\\1c&H<i>\<bb>\<gg>\<rr></i>&
-\\2c&H<i>\<bb>\<gg>\<rr></i>&
-\\3c&H<i>\<bb>\<gg>\<rr></i>&
-\\4c&H<i>\<bb>\<gg>\<rr></i>&</code></pre>
+### 设置颜色 {#\c}
+
+```plaintext
+\c&H<bb><gg><rr>&
+\1c&H<bb><gg><rr>&
+\2c&H<bb><gg><rr>&
+\3c&H<bb><gg><rr>&
+\4c&H<bb><gg><rr>&
+```
+
 Set the color of the following text. The `\c` tag is an abbreviation of `\1c`.
 
 设置其后字符的颜色。`\c` 标签是 `\1c` 的缩写。
@@ -698,12 +740,16 @@ assist in picking colors and entering the color codes.
 
 取色器工具栏按钮![pick-color-toolbar-buttons](/img/3.2/pick-color-toolbar-buttons.png)可以帮助你选择颜色和填写颜色代码。
 
-<h3 id="\alpha">设置透明度</h3>
-<pre><code class="language-plaintext">\\alpha&H<i>\<aa></i>
-\\1a&H<i>\<aa></i>
-\\2a&H<i>\<aa></i>
-\\3a&H<i>\<aa></i>
-\\4a&H<i>\<aa></i></code></pre>
+### 设置透明度 {#\alpha}
+
+```plaintext
+\alpha&H<aa>
+\1a&H<aa>
+\2a&H<aa>
+\3a&H<aa>
+\4a&H<aa>
+```
+
 Set the alpha (transparency) of the text. 设置字符的透明度。
 
 - `\alpha` sets the alpha of all components at once.
@@ -723,9 +769,8 @@ in decimal) is fully transparent/invisible.
 
 alpha 值为00意味着完全不透明，而为FF（十进制的255）即为完全透明。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \alpha&H80&
 ```
@@ -734,11 +779,9 @@ Set the alpha of all components to hexadecimal 80, decimal 128, making the
 text 50% transparent in general.
 
 设置所有元素的透明度为十六进制的80，即十进制的128，各元素的透明度都是50%。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \1a&HFF&
 ```
@@ -747,11 +790,13 @@ Set the primary fill alpha to hexadecimal FF, decimal 255, making it invisible
 and effectively leaving only the border and shadow.
 
 设置主要填充透明度为十六进制的FF，十进制的255，即完全不透明。这时只能看见边框和阴影。
-</div>
-</div>
 
-<h3 id="\an">行对齐方式</h3>
-<pre><code class="language-plaintext">\\an<i>\<pos></i></code></pre>
+### 行对齐方式 {#\an}
+
+```plaintext
+\an<pos>
+```
+
 Specify the alignment of the line. The alignment specifies the position of the
 line when no [position override](/zh-cn/docs/ass标签/#setposition/) or
 [movement](/zh-cn/docs/ass标签/#movement/) is in effect, and otherwise specifies the
@@ -790,8 +835,12 @@ keyboard:
 1. 屏幕顶部中间
 1. 屏幕右上角
 
-<h3 id="\a">行对齐方式 (传统)</h3>
-<pre><code class="language-plaintext">\\a<i>\<pos></i></code></pre>
+### 行对齐方式 (传统) {#\a}
+
+```plaintext
+\a<pos>
+```
+
 Specify the alignment of the line using legacy alignment codes from SubStation
 Alpha. This tag is supported but considered deprecated; you should usually use
 `\an` in new scripts instead, as it is more intuitive.
@@ -835,11 +884,14 @@ top-titles, add 4 to the number, to get mid-titles add 8 to the number:
 - 10：屏幕正中央
 - 11：屏幕中间右侧
 
-<h3 id="\k">卡拉OK 效果</h3>
-<pre><code class="language-plaintext">\\k<i>\<duration></i>
-\\K<i>\<duration></i>
-\\kf<i>\<duration></i>
-\\ko<i>\<duration></i></code></pre>
+### 卡拉OK 效果 {#\k}
+
+```plaintext
+\k<duration>
+\K<duration>
+\kf<duration>
+\ko<duration>
+```
 
 > _Please note that these tags alone only create some very specific effects
 > and all other effects are created with a combination of multiple different
@@ -887,8 +939,12 @@ it is not documented._
 *注意：还有一个额外的卡拉OK 标签，`\kt`。它和其他卡拉OK
 标签十分不同。因为它很少用到，Aegisub 也不支持它，所以这里就不说他了。*
 
-<h3 id="\q">换行风格</h3>
-<pre><code class="language-plaintext">\\q<i>\<style></i></code></pre>
+### 换行风格 {#\q}
+
+```plaintext
+\q<style>
+```
+
 Determine how line breaking is applied to the subtitle line. The following
 \_style_s are available:
 
@@ -906,8 +962,13 @@ Determine how line breaking is applied to the subtitle line. The following
 - 2：不换行，多余的字符会超过屏幕边缘。遇到`\n`和`\N`都会强制换行。
 - 3：智能换行，与参数1相似，但是会选择让靠近底部的行更宽。
 
-<h3 id="\r">重置样式</h3>
-<pre><code class="language-plaintext">\\r<br>\\r<i>\<style></i></code></pre>
+### 重置样式 {#\r}
+
+```plaintext
+\r
+\r<style>
+```
+
 Reset the style. This cancels all style overrides in effect, including
 [animations](/zh-cn/docs/ass标签/#animatedtransform/), for all following text.
 
@@ -921,9 +982,8 @@ _style_, will reset the style to that specific style.
 参数，它将会重设其后字符的样式为这一行的默认样式。第二种形式指定了一个具体的
 *style* 值，即一种样式的名称，它会将其后字符的样式设定为指定的这个样式。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 -Hey\N{\rAlternate}-Huh?\N{\r}-Who are you?
 ```
@@ -936,11 +996,13 @@ text.
 假设这一行字幕的样式是"Default"，那么开头的"Hey"就是 Default
 样式，然后紧接着第二行的"Huh?"则是 Alternate 样式，然后后面第三行的"Who
 are you?"又被重设为 Default 样式。
-</div>
-</div>
 
-<h3 id="\pos">位置设定</h3>
-<pre><code class="language-plaintext">\\pos(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+### 位置设定 {#\pos}
+
+```plaintext
+\pos(<X>,<Y>)
+```
+
 Set the position of the line. The _X_ and _Y_ coordinates must be integers and
 are given in the script resolution coordinate system. The meaning of _X_ and
 _Y_ changes slightly depending on [alignment](/zh-cn/docs/ass标签/#linealignment/).
@@ -959,9 +1021,8 @@ given.
 `\pos`
 指定的位置，对于底部中间对齐来说，字幕的底部中间位置将会被放置在指定的坐标上。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 The following screenshots illustrate the way alignment affects positioning.
 The green cross marks the point (320,240) on the video.
 
@@ -971,12 +1032,14 @@ The green cross marks the point (320,240) on the video.
 ![Pos_sample01](/img/3.2/Pos_sample01.jpg)
 ![Pos_sample02](/img/3.2/Pos_sample02.jpg)
 ![Pos_sample03](/img/3.2/Pos_sample03.jpg)
-</div>
-</div>
 
-<h3 id="\move">移动设定</h3>
-<pre><code class="language-plaintext">\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>,<i>\<t1</i>>,<i>\<t2</i>>)</code></pre>
+### 移动设定 {#\move}
+
+```plaintext
+\move(<x1>,<y1>,<x2>,<y2>)
+\move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>)
+```
+
 The `\move` tag works similar to [`\pos`](/zh-cn/docs/ass标签/#setposition/) in that it
 positions the subtitle line, the difference is that `\move` makes the subtitle
 move.
@@ -1049,9 +1112,8 @@ the scope of this page.)
 
 如果你需要这两种效果。那么你得把字幕分成几行，然后分别设定移动效果，让它们衔接起来。这就不是本文要涉及的内容了。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \move(100,150,300,350)
 ```
@@ -1062,11 +1124,9 @@ point (300,350) at the same time it disappears.
 
 这行字幕开始被显示时的位置时在 (100, 150)，从被显示时开始，匀速移动到
 (300, 350)，到达时间即是字幕消失的时间。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \move(100,150,300,350,500,1500)
 ```
@@ -1078,11 +1138,13 @@ first appeared on screen.
 
 这行字幕开始被显示时的位置在 (100,
 150)。在被显示0.5秒后，它开始移动，在被显示1.5秒时移动到 (300, 350)。
-</div>
-</div>
 
-<h3 id="\org">旋转中心</h3>
-<pre><code class="language-plaintext">\\org(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+### 旋转中心 {#\org}
+
+```plaintext
+\org(<X>,<Y>)
+```
+
 Set the origin point used for [rotation](/zh-cn/docs/ass标签/#textrotation/). This
 affects all rotations of the line. The _X_ and _Y_ coordinates are given in
 integer script resolution pixels.
@@ -1121,9 +1183,8 @@ in a single line, only the first is used.
 
 一行最多能放置一个`\org`标签，如果你放了好几个，那么只有第一个会被使用。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \org(320,240)
 ```
@@ -1131,11 +1192,9 @@ in a single line, only the first is used.
 Fix the rotation origin at point (320,240).
 把旋转中心固定为 (320,
 240)。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \org(10000,0)
 ```
@@ -1146,11 +1205,13 @@ without seeming to rotate.
 
 把旋转中心放在一个很远的点，这样轻微的 `\frz`
 旋转会看起来像"跳跃"效果，文本将上下移动，但是看起来并不像旋转。
-</div>
-</div>
 
-<h3 id="\fad">渐变</h3>
-<pre><code class="language-plaintext">\\fad(<i>\<fadein></i>,<i>\<fadeout></i>)</code></pre>
+### 渐变 {#\fad}
+
+```plaintext
+\fad(<fadein>,<fadeout>)
+```
+
 Produce a fade-in and fade-out effect. The _fadein_ and _fadeout_ times are
 given in milliseconds, ie. 1000 means one second. You can specify _fadein_ or
 _fadeout_ as 0 (zero) to not have any fade effect on that end.
@@ -1170,9 +1231,8 @@ of _fadein_+_fadeout_ should not be greater than 4000.
 参数没有超过字幕的持续时间。例如，如果一个字幕行显示时间是4秒，那么
 *fadein* 和 *fadeout* 的和不应该超过4000。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fad(1200,250)
 ```
@@ -1181,11 +1241,13 @@ Fade in the line in the first 1.2 seconds it is to be displayed, and fade it
 out for the last one quarter second it is displayed.
 
 在字幕显示时间的头1.2秒淡入，在尾部0.25秒淡出。
-</div>
-</div>
 
-<h3 id="\fade">渐变（复杂）</h3>
-<pre><code class="language-plaintext">\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>>,<i>\<t4</i>>)</code></pre>
+### 渐变（复杂） {#\fade}
+
+```plaintext
+\fade(<a1>,<a2>,<a3>,<t1>,<t2>,<t3>,<t4>)
+```
+
 Perform a five-part fade using three alpha values _a1_, _a2_ and _a3_ and four
 times _t1_, _t2_, _t3_ and _t4_.
 
@@ -1211,9 +1273,8 @@ milliseconds after the start of the line. All seven parameters are required.
 - 在 t3 和 t4 之间，文本从透明度 a2 渐变到透明度 a3。
 - 在 t4 之后，文本透明度是 a3。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fade(255,32,224,0,500,2000,2200)
 ```
@@ -1223,14 +1284,15 @@ invisible. First fade starts when the line starts and lasts 500 milliseconds.
 Second fade starts 1500 milliseconds later, and lasts 200 milliseconds.
 
 从完全透明，渐变到几乎完全不透明，然后渐变到几乎完全透明。第一个渐变开始于字幕开始时，持续500毫秒。第二个渐变开始于1500毫秒后，持续200毫秒。
-</div>
-</div>
 
-<h3 id="\t">动画效果</h3>
-<pre><code class="language-plaintext">\\t(<i>\<style modifiers></i>)
-\\t(<i>\<accel></i>,<i>\<style modifiers></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<style modifiers></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<accel></i>,<i>\<style modifiers></i>)</code></pre>
+### 动画效果 {#\t}
+
+```plaintext
+\t(<style modifiers>)
+\t(<accel>,<style modifiers>)
+\t(<t1>,<t2>,<style modifiers>)
+\t(<t1>,<t2>,<accel>,<style modifiers>)
+```
 
 Perform a gradual, animated transformation from one style to another. The
 _style modifiers_ are other override tags as specified in this reference. Only
@@ -1241,33 +1303,33 @@ a limited set of the override tags are animateable with `\t`:
 
 | Font    | Geometry | Other effects |
 | ------- | -------- | ------------- |
-| \\fs    | \\fscx   | \\bord        |
-| \\fsp   | \\fscy   | \\xbord       |
-| \\c     | \\frx    | \\ybord       |
-| \\1c    | \\fry    | \\shad        |
-| \\2c    | \\frz    | \\xshad       |
-| \\3c    | \\fr     | \\yshad       |
-| \\4c    | \\fax    | \\clip        |
-| \\alpha | \\fay    | \\iclip       |
-| \\1a    |          | \\be          |
-| \\2a    |          | \\blur        |
-| \\3a    |          |               |
-| \\4a    |          |               |
+| \fs    | \fscx   | \bord        |
+| \fsp   | \fscy   | \xbord       |
+| \c     | \frx    | \ybord       |
+| \1c    | \fry    | \shad        |
+| \2c    | \frz    | \xshad       |
+| \3c    | \fr     | \yshad       |
+| \4c    | \fax    | \clip        |
+| \alpha | \fay    | \iclip       |
+| \1a    |          | \be          |
+| \2a    |          | \blur        |
+| \3a    |          |               |
+| \4a    |          |               |
 
 | 字符      | 形状     | 其他效果    |
 | ------- | ------ | ------- |
-| \\fs    | \\fscx | \\bord  |
-| \\fsp   | \\fscy | \\xbord |
-| \\c     | \\frx  | \\ybord |
-| \\1c    | \\fry  | \\shad  |
-| \\2c    | \\frz  | \\xshad |
-| \\3c    | \\fr   | \\yshad |
-| \\4c    | \\fax  | \\clip  |
-| \\alpha | \\fay  | \\iclip |
-| \\1a    |        | \\be    |
-| \\2a    |        | \\blur  |
-| \\3a    |        |         |
-| \\4a    |        |         |
+| \fs    | \fscx | \bord  |
+| \fsp   | \fscy | \xbord |
+| \c     | \frx  | \ybord |
+| \1c    | \fry  | \shad  |
+| \2c    | \frz  | \xshad |
+| \3c    | \fr   | \yshad |
+| \4c    | \fax  | \clip  |
+| \alpha | \fay  | \iclip |
+| \1a    |        | \be    |
+| \2a    |        | \blur  |
+| \3a    |        |         |
+| \4a    |        |         |
 
 _Note: For `\clip` and `\iclip`, only the rectangle versions can be animated. The
 vector drawing versions cannot be animated._
@@ -1312,9 +1374,8 @@ between those two points, following the acceleration function described above.
 *style overrides* 会覆盖对应的样式，其他样式仍然不变。在 *t1* 和 *t2*
 时间点之间，样式会从前者按指定的加速度参数渐变到后者。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 {\1c&HFF0000&\t(\1c&H0000FF&)}Hello!
 ```
@@ -1322,11 +1383,9 @@ between those two points, following the acceleration function described above.
 The text starts out blue, but fades towards red so it is completely red when the line ends.
 
 文本开始是蓝色的，然后渐变到红色，当这行字幕结束时，渐变刚好完成。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\t(0,5000,\frz3600)}Wheee
 ```
@@ -1334,11 +1393,9 @@ The text starts out blue, but fades towards red so it is completely red when the
 Makes the text rotate 10 times, counterclockwise, lasting for 5 seconds.
 
 让文本旋转10圈，逆时针方向，持续5秒。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\t(0,5000,0.5,\frz3600)}Wheee
 ```
@@ -1346,11 +1403,9 @@ Makes the text rotate 10 times, counterclockwise, lasting for 5 seconds.
 Same as above, but it will start fast and slow down, still doing the 10 rotations in 5 seconds.
 
 同上。但是旋转速度会渐渐变慢，但还是会在5秒钟内刚好旋转10圈。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\fscx0\fscy0\t(0,500,\fscx100\fscy100)}Boo!
 ```
@@ -1358,12 +1413,14 @@ Same as above, but it will start fast and slow down, still doing the 10 rotation
 Text starts at zero size, i.e. invisible, then grows to 100% size in both X and Y direction.
 
 字符开始尺寸是0，然后在 X 和 Y方向同时变化到正常大小。
-</div>
-</div>
 
-<h3 id="\clip">遮罩（方形</h3>
-<pre><code class="language-plaintext">\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)</code></pre>
+### 遮罩（方形 {#\clip}
+
+```plaintext
+\clip(<x1>,<y1>,<x2>,<y2>)
+\iclip(<x1>,<y1>,<x2>,<y2>)
+```
+
 Define a rectangle to clip the line, only the part of the line that is inside
 the rectangle is visible. The `\iclip` tag has the opposite effect, it defines
 a rectangle where the line is not shown.
@@ -1380,9 +1437,8 @@ clipping always happens on video pixel boundaries.)
 *x1* ， *y1* ， *x2* 和 *y2*
 坐标是按脚本分辨率计算的，以视频左上角为原点。坐标必须是整数，不能使用非整数的坐标。（提高脚本分辨率并不能提高精度，遮罩区域总是要作用到视频像素上的。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \clip(0,0,320,240)
 ```
@@ -1391,11 +1447,9 @@ Assuming 640x480 script resolution, only the part of the line within the top
 left quadrant is visible.
 
 假设脚本分辨率是640x480， 只能看见左上四分之一的字幕。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \iclip(0,0,320,240)
 ```
@@ -1404,24 +1458,24 @@ Similar to above, but instead the part of the line within the top left
 quadrant is hidden.
 
 类似上一个例子，但是相反左上四分之一字幕看不到了。
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 Example of `\clip(0,0,704,245)` on a 704x480 video:
 
 在一个704x480的视频上，`\clip(0,0,704,245)` 的样子。
 
 ![Clip_sample01](/img/3.2/Clip_sample01.jpg)
-</div>
-</div>
 
-<h3 id="">遮罩（矢量绘图</h3>
-<pre><code>\\clip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\clip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\iclip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\iclip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)</code></pre>
+### 遮罩（矢量绘图 {#\clip-vector}
+
+```plaintext
+\clip(<drawing commands>)
+\clip(<scale>,<drawing commands>)
+\iclip(<drawing commands>)
+\iclip(<scale>,<drawing commands>)
+```
+
 Use the shape defined by a vector drawing to selectively display (`\clip`) or
 hide (`\iclip`) parts of the line.
 
@@ -1447,9 +1501,8 @@ animation.
 
 不同于方形的遮罩，矢量绘图遮罩无法被`\t`动画化。如果你想要这种效果，你需要把一行字幕切成许多行，然后设定每一行在这个动画过程中的遮罩区域。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \clip(1,m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0)
 ```
@@ -1457,8 +1510,6 @@ animation.
 Only show the portion of the line within the defined pseudo-circle.
 
 只显示椭圆里面的字幕。
-</div>
-</div>
 
 ## 绘画标签
 
@@ -1469,7 +1520,7 @@ splines will make the understanding of this much simpler.
 Advanced Substation Alpha
 支持很多高级的绘图标签，可以画矢量图形。熟悉矢量和样条会帮助你理解这些内容。
 
-### \\p\<0/1/..> - Toggle drawing mode
+### \p<0/1/..> - Toggle drawing mode
 
 Setting this tag to 1 or above enables drawing mode. Text after this override
 block will then be interpreted as drawing instructions, and not as actually
@@ -1516,7 +1567,7 @@ will actually draw to 50,50)
 
 进入绘制模式，分辨率是倍数是8（2^(4-1)），所以画到点 (400, 400) 实际上画到了点 (50, 50)。
 
-### \\pbo<y> - Baseline offset
+### \pbo<y> - Baseline offset
 
 Defines baseline offset for drawing. This is basically an Y offset to all
 coordinates.
@@ -1589,7 +1640,7 @@ close the line formed, it fills it with the primary color.
 
 绘图指令使用主要填充颜色来填充图形，用边框颜色来填充边框。绘制出的图形也有阴影。绘制矢量的思路是这样的：想象在视频画面上有一个看不见的"光标"（就像绘图程序里的鼠标指针，或者在图片上移动的一支笔），然后你让这个光标移动到另一个位置。当它移动时，它就沿途绘制了曲线。而后你闭合一个形状时，这个图形会被着色成主要填充颜色。
 
-### m \<x> \<y> - Move
+### m <x> <y> - Move
 
 Moves the cursor to x,y. If you have an unclosed shape, it will automatically
 be closed, as the program assumes that you are now drawing a new, independent
@@ -1598,20 +1649,20 @@ shape. All drawing routines must start with this command.
 移动光标到 (x,
 y)。如果你有一个还没画闭合的图形，它会自动闭合，因为程序认为你这是要去从头开始画一个新的独立的图形。所有的绘图指令都要从这个命令开始。
 
-### n \<x> \<y> - Move (no closing)
+### n <x> <y> - Move (no closing)
 
 Moves the cursor to x,y, without closing the current shape.
 
 移动光标到 (x, y)，但是不闭合当前的图形。
 
-### l \<x> \<y> - Line
+### l <x> <y> - Line
 
 Draws a line from the current cursor position to x,y, and moves the cursor
 there afterwards.
 
 从当前光标位置到 (x, y) 画一条直线，同时把光标也移动过去。
 
-### b \<x1> \<y1> \<x2> \<y2> \<x3> \<y3> - Cubic Bézier curve
+### b <x1> <y1> <x2> <y2> <x3> <y3> - Cubic Bézier curve
 
 Draws a cubic (3rd degree) Bézier curve from the cursor position to (x3,y3),
 using (x1,y1) and (x2,y2) as the control points. Check the [article on Wikipedia](http://en.wikipedia.org/wiki/B%C3%A9zier_curve) for more
@@ -1631,7 +1682,7 @@ from P2's direction.
 
 注意这条曲线从 P0开始，切线指向 P1，然后结束在P3点，切线背对 P2。
 
-### s \<x1> \<y1> \<x2> \<y2> \<x3> \<y3> .. \<xN> \<yN> - Cubic b-spline
+### s <x1> <y1> <x2> <y2> <x3> <y3> .. <xN> <yN> - Cubic b-spline
 
 Draws a cubic (3rd degree) uniform b-spline to point N. This must contain at
 least 3 coordinates (and is, in that case, the same as b). This basically lets
@@ -1641,7 +1692,7 @@ Wikipedia for more information.
 画一个到 N 点的 cubic b-spline。它最少要包含三个坐标点（这种情况下和 b
 相同）。这基本上是把几个贝塞尔曲线连接到一起。请参阅维基百科获得更多信息。
 
-### p \<x> \<y> - Extend b-spline
+### p <x> <y> - Extend b-spline
 
 Extends the b-spline to x,y. This is essentially the same as adding another
 pair of coordinates at the end of s.

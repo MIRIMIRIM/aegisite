@@ -34,16 +34,13 @@ code行在一次卡拉OK执行器的执行过程中只运行一次，一般都�
 
 "code once" 行基本用来声明模板中使用的函数。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code once</u>,function setlayer(newlayer) line.layer = newlayer; return ""; end
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,code once,function setlayer(newlayer) line.layer = newlayer; return ""; end
 ```
 
 这个例子声明了一个新的函数，它用来控制输出行的 层次(Layer) 信息。
-</div>
-</div>
 
 ### line *\[name\]*
 
@@ -57,40 +54,31 @@ Code行不能被命名。
 
 已命名模板行的顺序合并是在卡拉OK模板执行器解析模板时发生的，而不是在模板执行时。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code line</u>,fxgroup.funky = line.actor == "funky"
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,code line,fxgroup.funky = line.actor == "funky"
 ```
 
 这个 code
 行对每个输入行运行一次。它开启/关闭一个特效群，依靠输入行的说话人信息进行判断。
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line</u>,{\r\t($start,$end,\bord0)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template line,{\r\t($start,$end,\bord0)}
 ```
 
 这个模板行声明了一个无名称的行类模板。效果是在音节的持续时间内边框粗度由默认值变成0。
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper</u>,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template line jumper,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
 ```
 
 这个模板行声明了一个名称为"jumper"的行类模板，配合下面给出的行前(pre-line)模板，能产生
 "跳跃" 的特效。
-</div>
-</div>
 
 ### pre-line *\[name\]*
 
@@ -105,30 +93,24 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper
 有名称的 pre-line
 模板行会按顺序把模板内容叠加。最后合成的一个模板再进行应用，所以这些模板内容是在解析模板时进行的，而不是执行时。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line</u>,{\be1}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template pre-line,{\be1}
 ```
 
 这个模板行声明了一个无名称的行类模板，这个模板会给每个匹配到的行添加
 {\\be1} 标签。
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line jumper</u>,{\org(-10000,$y)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template pre-line jumper,{\org(-10000,$y)}
 ```
 
 这个模板行会和名称为 "jumper"
 的模板进行合成，如果不存在这样的模板行，它会自己创建。和上面的模板一起使用，会使每个音节产生
 "跳跃" 效果。
-</div>
-</div>
 
 ### syl
 
@@ -136,17 +118,14 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line ju
 
 Syl(音节)类的模板不能被命名。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\pos($x,$y)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl,{\pos($x,$y)}
 ```
 
 这个模板行声明了一个 syl
 类模板，它的作用是拆分音节后保持音节字符原来的位置。
-</div>
-</div>
 
 ### furi
 
@@ -154,17 +133,14 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\p
 
 Furi(假名标注)类模板不能被命名。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\pos($x,$y)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template furi,{\pos($x,$y)}
 ```
 
 这个模板行声明了一个furi
 类模板，它用来简单地修改音节字符的位置。你需要做的只是在输入行中写出标准的假名标注格式。
-</div>
-</div>
 
 ### syl furi
 
@@ -182,16 +158,13 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\
 
 对 code行和 template行都可用。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>,{\pos($x,$y)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl all,{\pos($x,$y)}
 ```
 
 这个模板会被应用于字幕文件中多有单独的音节，无视样式。
-</div>
-</div>
 
 ### char
 
@@ -201,12 +174,11 @@ Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>
 
 它用于 code行时，一般没什么意义，在上面的链接中可以了解到。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
-Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl char,{\pos($x,$y)}
+Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl char,{\pos($x,$y)\bord0}
 ```
 
 行中每个单独字符都会被分别定位。对于每个音节，每个模板对其中字符的应用也是一气呵成的，而不是被交错应用。
@@ -224,8 +196,6 @@ Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u
 {\pos($x,$y)\bord0}c
 {\pos($x,$y)\bord0}d
 ```
-</div>
-</div>
 
 ### fx *name*
 
@@ -233,31 +203,25 @@ Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u
 [(inline-fx)](/zh-cn/docs/卡拉ok内联特效/)
 的音节。指定内联特效名称是必要的；内联特效名称也不建议和修饰语重复。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl fx drop</u>,{\move($x,$y,$x,!$y+30!,$start,$end)}
+Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,template syl fx drop,{\move($x,$y,$x,!$y+30!,$start,$end)}
 ```
 
 使用这个模板，所有含有内联特效 "drop"
 的音节会被模板处理，效果是音节会在持续时间向下移动30像素。
 
 其它的不含有内联特效的模板会照常被应用。
-</div>
-</div>
 
 ### fxgroup *name*
 
 声明这个模板属于一个有名称的特效组。指定特效组名称是必要的；该名称不建议和修饰语重复，也不建议和Lua保留词重复。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 有一个 *fxgroup* 的例子，见 [代码执行环境Code execution
 environment](/zh-cn/docs/execution-envirionment/#conditionaltemplateswithfxgroup/)
-</div>
-</div>
 
 ### keeptags
 
@@ -265,11 +229,10 @@ environment](/zh-cn/docs/execution-envirionment/#conditionaltemplateswithfxgroup
 
 这个修饰语在 `char` 或 `multi`下没有效果。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-template line <u>keeptags</u>: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
+template line keeptags: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
 karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 ```
 
@@ -277,8 +240,6 @@ karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 和其它音节颜色不同。后面的音节不会受影响，因为存在 `\r` 标签。
 
 *notags* 修饰语能确保应用模板后不再含有特殊音节的特殊颜色。
-</div>
-</div>
 
 ### multi
 
@@ -289,12 +250,11 @@ karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 
 当它被用于 code行时，基本没什么卵用，具体可以参照执行顺序。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-template syl <u>multi</u>: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
-karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
+template syl multi: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
+karaoke: {\k33}風{\k36}#{\k89}の{\k46}花{\k28}#{\k57}よ
 ```
 
 打好K的时间轴使用了多次高亮(multi-highlight)标记， #
@@ -306,8 +266,6 @@ karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
 修饰语来标识它会使一个音节多次高亮。这个效果是一种简单的
 "边框扩张"，但是在唱到 風 和 花 时，会产生两次这个效果。如果没有 *multi*
 修饰语的话，一个汉字只会产生一次效果。
-</div>
-</div>
 
 ### noblank
 
@@ -325,9 +283,8 @@ karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
 
 code行不可用。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 code once: sword_shape = "m 0 0 l 5 -5 l 5 -30 l 10 -30 l 10 -32 l 2 -32 l 2 -40 l -2 -40 l -2 -32 l -10 -32 l -10 -30 l -5 -30 l -5 -5 "
 template syl notext noblank: {\an5\move($scenter,!$smiddle-30!,$scenter,$smiddle,!$start-20!,$start)\p2}!sword_shape!
@@ -341,8 +298,6 @@ code行为了方便定义了一个矢量绘图。这个图形是一个简单的�
 修饰语会保证剑形不会落空到 "不可见的"
 音节上。如果那个不可见的音节恰好是个长时间的空格，不加 *noblank*
 修饰，那效果看起来会比较悲剧。
-</div>
-</div>
 
 ### repeat *n*, loop *n*
 
@@ -354,11 +309,10 @@ code行为了方便定义了一个矢量绘图。这个图形是一个简单的�
 音节/假名标记(syl/furi)模板执行顺序不同。详见
 [模板执行顺序](/zh-cn/docs/卡拉ok模板执行环境和顺序/) 。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
-template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&HC0&\t($start,$end,\alpha&HFF&)}
+template syl loop 4: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&HC0&\t($start,$end,\alpha&HFF&)}
 ```
 
 其中 *loop*
@@ -367,8 +321,6 @@ template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.rando
 每个音节副本的初始透明度都是
 `&HC0`，因为C0(HEX)=256-(256/4)=192，4由循环数确定。这样每个副本的不透明度实际上叠加到了256。
 (更科学的数字应该是255，但是靠偶数次循环实现不了)
-</div>
-</div>
 
 > *可以在
 > [代码执行环境](/zh-cn/docs/execution-envirionment/#loopingtemplates/)

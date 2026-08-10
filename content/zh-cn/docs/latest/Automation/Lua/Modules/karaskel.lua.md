@@ -440,17 +440,14 @@ Additions by `karaskel.preproc_line_pos`:
   `syl.right` for one syllable is equal to `syl.left` for the next
   syllable.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```lua
 line.left + syl.center
 ```
 
 Calculates the default X position of a syllable, suitable for use with
 `\an2`, `\an5` or `\an8` alignment.
-</div>
-</div>
 
 #### Highlight table
 

@@ -28,9 +28,8 @@ such that the letters are "stacked".
 This macro modifies all lines that are currently selected in the subtitles
 grid.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Here's a typeset sign:
 
 ```ass
@@ -52,8 +51,6 @@ Now after running this macro on the line:
 This is what it looks before and after running the macro:
 
 ![StackedSign1](/img/3.2/StackedSign1.png) ![StackedSign2](/img/3.2/StackedSign2.png)
-</div>
-</div>
 
 ## Automatic karaoke lead-in
 
@@ -70,9 +67,8 @@ start-time of the selected line that comes before it. It changes the timing
 of the selected lines and adds `\k` tags at the start of them except the
 first.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Here's two lines of "tightly" timed karaoke:
 
 ```ass
@@ -107,8 +103,6 @@ This simply says that the smallest duration between two lines it found, was
 290 milliseconds, or 0.29 seconds, so that's as much time you have to make
 fade-in, fade-out and other transition effects, if you want every
 syllable-highlight to be fully visible.
-</div>
-</div>
 
 ## Clean tags
 
@@ -139,9 +133,8 @@ sensibly into syllable structures, see the example.
 This macro modifies all selected lines in the grid, re-writing all tag
 blocks in them.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Original line:
 
 ```ass
@@ -168,8 +161,6 @@ Now karaskel creates these syllable structures:
 
 The cleaned up version is generally what you'd want since it places the
 override tags inside the syllables they affect.
-</div>
-</div>
 
 ## Add Edgeblur
 

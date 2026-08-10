@@ -77,16 +77,13 @@ Automation 4 Lua include的文件 `utils.lua`
 注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
 无用的部分会被置0。 无法识别的的颜色字符串会返回`nil`。
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```lua
 r, g, b, a = extract_color("&H7F&")
 ```
 
 `r`, `g`,  `b` 都是 0; `a` 是 127.
-</div>
-</div>
 
 ### alpha_from_style
 

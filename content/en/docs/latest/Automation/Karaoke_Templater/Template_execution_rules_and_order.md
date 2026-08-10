@@ -142,9 +142,8 @@ It is important to note that the syllables and furigana syllables looped
 through are the parsed-stored syllables, not multi-highlight virtual syllables,
 not per-character virtual syllables and not a combination.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Assume there are three `syl` class templates: A, B and C.
 
 - A is a regular template with neither _multi_ nor _char_ modifier.
@@ -171,8 +170,6 @@ Now these templates are applied against a line with 2 syllables. This happens in
     - Processing proceeds similar to syllable 1.
 
 Also see later down for more details on multi-highlight and per-character pseudo-syllables.
-</div>
-</div>
 
 If any template matches at any time during the three steps above the (original)
 line is marked as "timed karaoke" and is then made into a comment with
@@ -199,7 +196,8 @@ otherwise.
 
 ## Old mid-level description
 
-<pre>Main kara-templater process:
+```plaintext
+Main kara-templater process:
 1. Collect header
    1. Find all header information, primarily PlayResX and PlayResY
    2. Find all styles
@@ -338,6 +336,7 @@ Running a single template:
          1. Report error
          2. Leave match in result text
       b. Else:
-         1. Replace match with result of running the function</pre>
+         1. Replace match with result of running the function
+```
 
 <div class="alert alert-warning" role="alert"><strong>TODO: </strong>Turn this into something more reasonable?</div>

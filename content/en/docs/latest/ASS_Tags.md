@@ -18,8 +18,12 @@ using some basic tags.
 The following tags are written in the middle of the text, and not inside
 override blocks (i.e. not between { and }).
 
-<h3 id="\n">Soft line break</h3>
-<pre><code class="language-plaintext">\\n</code></pre>
+### Soft line break {#\n}
+
+```plaintext
+\n
+```
+
 Insert a forced line break, but only when in wrapping mode 2. (See
 [the \\q tag](/docs/ass-override-tags/#\q/)). Note that this is a lowercase n.
 
@@ -27,13 +31,21 @@ In all other wrapping modes, this is replaced by a regular space. This is
 rarely (if ever) actually useful. If you're not sure whether you want this or
 \\N, you probably want \\N.
 
-<h3 id="\N">Hard line break</h3>
-<pre><code class="language-plaintext">\\N</code></pre>
+### Hard line break {#\N}
+
+```plaintext
+\N
+```
+
 Insert a forced line break, regardless of wrapping mode. Note that this is an
 uppercase N.
 
-<h3 id="\h">Hard space</h3>
-<pre><code class="language-plaintext">\\h</code></pre>
+### Hard space {#\h}
+
+```plaintext
+\h
+```
+
 Insert a non-breaking "hard" space. The line will never break automatically
 right before or after a hard space, and hard spaces are not folded when they
 appear at the start or end of a displayed line.
@@ -71,38 +83,42 @@ brackets are not part of the value you should enter. Use the examples as a
 guide to how the tags should be entered. In general, the same rules apply to
 all tags in how they look.
 
-<h3 id="\i">Italics</h3>
-<pre><code class="language-plaintext">\\i1
-\\i0</code></pre>
+### Italics {#\i}
+
+```plaintext
+\i1
+\i0
+```
+
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
 
-<h3 id="\b">Bold</h3>
-<pre><code class="language-plaintext">\\b1
-\\b0
-\\b<i>\<weight></i></code></pre>
+### Bold {#\b}
+
+```plaintext
+\b1
+\b0
+\b<weight>
+```
+
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
 
-The <code>\\b<i>\<weight></i></code> form allows you to specify an
+The `\b<weight>` form allows you to specify an
 explicit weight to use. Note that most fonts only support one or two weights
 so you rarely need to use this. Font weights are multiples of 100, such that
 100 is the lowest, 400 is "normal", 700 is "bold" and 900 is the heaviest.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 I am {\b1}not{\b0} amused.
 ```
 
 The word "not" is written in boldface.
-</div>
-</div>
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 {\b100}How {\b300}bold {\b500}can {\b700}you {\b900}get?
 ```
@@ -110,23 +126,33 @@ The word "not" is written in boldface.
 The words are written with increasingly greater weight. Note that most fonts
 do not have more than one or two different weights and you will only be able
 to see "not bold" and "bold" in that case.
-</div>
-</div>
 
-<h3 id="\u">Underline</h3>
-<pre><code class="language-plaintext">\\u1
-\\u0</code></pre>
+### Underline {#\u}
+
+```plaintext
+\u1
+\u0
+```
+
 Switch <u>underlined</u> text on or off. Use `\u1` to enable underlining for
 the following text and `\u0` to disable underlining again.
 
-<h3 id="\s">Strikeout</h3>
-<pre><code class="language-plaintext">\\s1
-\\s0</code></pre>
+### Strikeout {#\s}
+
+```plaintext
+\s1
+\s0
+```
+
 Switch <s>striked out</s> text on or off. Use `\s1` to enable strikeout for
 the following text and `\s0` to disable strikeout again.
 
-<h3 id="\bord">Border size</h3>
-<pre><code class="language-plaintext">\\bord<i>\<size></i></code></pre>
+### Border size {#\bord}
+
+```plaintext
+\bord<size>
+```
+
 Change the width of the border around the text. Set the size to 0 (zero) to
 disable the border entirely.
 
@@ -138,30 +164,29 @@ depending on the resolution of the video on which the subtitles are rendered.)
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \bord0
 ```
 
 Disable border entirely.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \bord3.7
 ```
 
 Set the border width to 3.7 pixels
-</div>
-</div>
 
-<h3 id="\xbord">Border size (extended)</h3>
-<pre><code class="language-plaintext">\\xbord<i>\<size></i>
-\\ybord<i>\<size></i></code></pre>
+### Border size (extended) {#\xbord}
+
+```plaintext
+\xbord<size>
+\ybord<size>
+```
+
 Use the `\xbord` `\ybord` tags to set the border size in X and Y direction
 separately. This can be useful for correcting the border size for anamorphic
 rendering of subtitles.
@@ -172,16 +197,24 @@ override both of them.
 You can set the border width to 0 (zero) in one of the directions to entirely
 disable border in that direction.
 
-<h3 id="\shad">Shadow distance</h3>
-<pre><code class="language-plaintext">\\shad<i>\<depth></i></code></pre>
+### Shadow distance {#\shad}
+
+```plaintext
+\shad<depth>
+```
+
 Set the distance from the text to position the shadow. Set the depth to 0
 (zero) to disable shadow entirely. Works similar to [\\bord](/docs/ass-override-tags/#\bord/).
 
 The shadow distance can not be negative with this tag.
 
-<h3 id="\xshad">Shadow distance (extended)</h3>
-<pre><code class="language-plaintext">\\xshad<i>\<depth></i>
-\\yshad<i>\<depth></i></code></pre>
+### Shadow distance (extended) {#\xshad}
+
+```plaintext
+\xshad<depth>
+\yshad<depth>
+```
+
 Set the distance from the text to position the shadow at, with X and Y
 position set separately. Shadow is only disabled if both X and Y distance is
 0\.
@@ -189,10 +222,14 @@ position set separately. Shadow is only disabled if both X and Y distance is
 Note that unlike \\shad, you can set the distance negative with these tags to
 position the shadow to the top or left of the text.
 
-<h3 id="\be">Blur edges</h3>
-<pre><code class="language-plaintext">\\be0
-\\be1
-\\be<i>\<strength></i></code></pre>
+### Blur edges {#\be}
+
+```plaintext
+\be0
+\be1
+\be<strength>
+```
+
 Enable or disable a subtle softening-effect for the edges of the text. The
 effect isn't always very visible, but it can in some cases make the text look
 better. It is usually more visible at smaller text sizes.
@@ -207,8 +244,12 @@ regular effect. Note that at high values the effect de-generates into
 nothingness, and generally isn't very useful. For strong blurs, `\blur` is
 generally more useful as a result. The _strength_ must be an integer number.
 
-<h3 id="\blur">Blur edges (Gaussian kernel)</h3>
-<pre><code class="language-plaintext">\\blur<i>\<strength></i></code></pre>
+### Blur edges (Gaussian kernel) {#\blur}
+
+```plaintext
+\blur<strength>
+```
+
 In general, this has the same function as the [`\be`](/docs/ass-override-tags/#\be/) tag, but
 uses a more advanced algorithm that looks better at high strengths. Unlike
 `\be`, the _strength_ can be non-integer here. Set _strength_ to 0 (zero) to
@@ -220,35 +261,38 @@ means that if the text has a border (set with [`\bord`](/docs/ass-override-tags/
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
-<h3 id="\fn">Font name</h3>
-<pre><code class="language-plaintext">\\fn<i>\<name></i></code></pre>
+### Font name {#\fn}
+
+```plaintext
+\fn<name>
+```
+
 Set the font face to use for the following text. There should be no space
 between `\fn` and the font name, and you should not put parentheses or similar
 around the font name either.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fnArial
 ```
 
 The text following this tag will be in Arial font.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fnTimes New Roman
 ```
 
 The text following this tag will be in Times New Roman font.
-</div>
-</div>
 
-<h3 id="\fs">Font size</h3>
-<pre><code class="language-plaintext">\\fs<i>\<size></i></code></pre>
+### Font size {#\fs}
+
+```plaintext
+\fs<size>
+```
+
 Set the size of the font. The size specified is the height in script pixels,
 so at font size 40 one line of text is 40 pixels tall. (Technical note: it's
 really typographic (desktop publishing) points, not script pixels, but since
@@ -257,20 +301,21 @@ point ends up being exactly equal to one script resolution pixel.)
 
 You can only specify integer font sizes.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fs10
 ```
 
 The following text will use a size 10 font.
-</div>
-</div>
 
-<h3 id="\fscx">Font scale</h3>
-<pre><code class="language-plaintext">\\fscx<i>\<scale></i>
-\\fscy<i>\<scale></i></code></pre>
+### Font scale {#\fscx}
+
+```plaintext
+\fscx<scale>
+\fscy<scale>
+```
+
 Adjust the size of the text in X (`\fscx` or Y (`\fscy`) direction. The
 _scale_ given is in percent, so 100 means "original size".
 
@@ -287,50 +332,51 @@ text size more precisely than with [\\fs](/docs/ass-override-tags/#\fs/).
 
 Note that older versions of VSFitler will truncate non-integer scales.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fscx150
 ```
 
 Make the text 50% wider than normal.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fscy50
 ```
 
 Make the text half height.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fscx200\fscy200
 ```
 
 Make the text double size.
-</div>
-</div>
 
-<h3 id="\fsp">Letter spacing</h3>
-<pre><code class="language-plaintext">\\fsp<i>\<spacing></i></code></pre>
+### Letter spacing {#\fsp}
+
+```plaintext
+\fsp<spacing>
+```
+
 Changes the spacing between the individual letters in the text. You can use
 this to spread the text more out visually. The _spacing_ is given in script
 resolution pixels.
 
 Spacing can be negative and can have decimals.
 
-<h3 id="\frx">Text rotation</h3>
-<pre><code class="language-plaintext">\\frx<i>\<amount></i>
-\\fry<i>\<amount></i>
-\\frz<i>\<amount></i>
-\\fr<i>\<amount></i></code></pre>
+### Text rotation {#\frx}
+
+```plaintext
+\frx<amount>
+\fry<amount>
+\frz<amount>
+\fr<amount>
+```
+
 Rotates the text along the X, Y or Z axis. The `\fr` tag is a shortcut for `\frz`.
 
 - The **X axis** runs horizontally on the screen. Rotating on it (with
@@ -353,39 +399,32 @@ described with the [\\org](/docs/ass-override-tags/#\org/) tag.
 
 These tags also affect [vector drawings](/docs/ass-override-tags/#drawing-commands/).
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \frx45
 ```
 
 Rotate the text 45 degrees on the X axis.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \fry-45
 ```
 
 Rotate the text 45 degrees in opposite direction on the Y axis.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \frz180
 ```
 
 Rotate the text 180 degrees on the Z axis, making it upside-down.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 The following two rotations produce the same result:
 
 ```plaintext
@@ -394,21 +433,17 @@ The following two rotations produce the same result:
 ```
 
 This is because 330 degrees is 30 degrees less than a full rotation of 360 degrees.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \t(\frz3600)
 ```
 
 Perform an animation where the text performs 10 full revolutions on the Z axis. Also see the [\\t](/docs/ass-override-tags/#\t/) tag.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 The following screenshots illustrate the effect of rotating on the different axes:
 
 ![Fr_sample01](/img/3.2/Fr_sample01.jpg)
@@ -416,12 +451,14 @@ The following screenshots illustrate the effect of rotating on the different axe
 ![Fr_sample02](/img/3.2/Fr_sample02.jpg)
 
 ![Fr_sample03](/img/3.2/Fr_sample03.jpg)
-</div>
-</div>
 
-<h3 id="\fax">Text shearing</h3>
-<pre><code class="language-plaintext">\\fax<i>\<factor></i>
-\\fay<i>\<factor></i></code></pre>
+### Text shearing {#\fax}
+
+```plaintext
+\fax<factor>
+\fay<factor>
+```
+
 Perform a shearing (perspective distortion) transformation of the text. A
 _factor_ of 0 (zero) means no distortion.
 
@@ -431,25 +468,30 @@ unlikely to have desireable results.
 Shearing is performed after rotation, on the rotated coordinates. The
 coordinate system used for shearing is not affected by the [rotation origin](/docs/ass-override-tags/#\org/).
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
-![shearing](/img/3.2/shearing.png)
-</div>
-</div>
+**Example**
 
-<h3 id="\fe">Font encoding</h3>
-<pre><code class="language-plaintext">\\fe<i>\<id></i></code></pre>
+![shearing](/img/3.2/shearing.png)
+
+### Font encoding {#\fe}
+
+```plaintext
+\fe<id>
+```
+
 Overrides the `Encoding` value of the style.
 This is rarely ever useful or a good idea and should thus be avoided.
 See the [style docs](/docs/editing-styles/#the-style-editor/) for more details.
 
-<h3 id="\c">Set color</h3>
-<pre><code class="language-plaintext">\\c&H<i>\<bb>\<gg>\<rr></i>&
-\\1c&H<i>\<bb>\<gg>\<rr></i>&
-\\2c&H<i>\<bb>\<gg>\<rr></i>&
-\\3c&H<i>\<bb>\<gg>\<rr></i>&
-\\4c&H<i>\<bb>\<gg>\<rr></i>&</code></pre>
+### Set color {#\c}
+
+```plaintext
+\c&H<bb><gg><rr>&
+\1c&H<bb><gg><rr>&
+\2c&H<bb><gg><rr>&
+\3c&H<bb><gg><rr>&
+\4c&H<bb><gg><rr>&
+```
+
 Set the color of the following text. The `\c` tag is an abbreviation of `\1c`.
 
 - `\1c` sets the primary fill color.
@@ -466,12 +508,16 @@ must always start with `&H` and end with `&`.
 The Pick Color toolbar buttons ![pick-color-toolbar-buttons](/img/3.2/pick-color-toolbar-buttons.png) can
 assist in picking colors and entering the color codes.
 
-<h3 id="\alpha">Set alpha</h3>
-<pre><code class="language-plaintext">\\alpha&H<i>\<aa></i>
-\\1a&H<i>\<aa></i>
-\\2a&H<i>\<aa></i>
-\\3a&H<i>\<aa></i>
-\\4a&H<i>\<aa></i></code></pre>
+### Set alpha {#\alpha}
+
+```plaintext
+\alpha&H<aa>
+\1a&H<aa>
+\2a&H<aa>
+\3a&H<aa>
+\4a&H<aa>
+```
+
 Set the alpha (transparency) of the text.
 
 - `\alpha` sets the alpha of all components at once.
@@ -484,31 +530,30 @@ Set the alpha (transparency) of the text.
 An alpha of 00 (zero) means opaque/fully visible, and an alpha of FF (ie. 255
 in decimal) is fully transparent/invisible.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \alpha&H80&
 ```
 
 Set the alpha of all components to hexadecimal 80, decimal 128, making the
 text 50% transparent in general.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \1a&HFF&
 ```
 
 Set the primary fill alpha to hexadecimal FF, decimal 255, making it invisible
 and effectively leaving only the border and shadow.
-</div>
-</div>
 
-<h3 id="\an">Line alignment</h3>
-<pre><code class="language-plaintext">\\an<i>\<pos></i></code></pre>
+### Line alignment {#\an}
+
+```plaintext
+\an<pos>
+```
+
 Specify the alignment of the line. The alignment specifies the position of the
 line when no [position override](/docs/ass-override-tags/#\pos/) or
 [movement](/docs/ass-override-tags/#\move/) is in effect, and otherwise specifies the
@@ -528,8 +573,12 @@ keyboard:
 1. Top center
 1. Top right
 
-<h3 id="\a">Line alignment (legacy)</h3>
-<pre><code class="language-plaintext">\\a<i>\<pos></i></code></pre>
+### Line alignment (legacy) {#\a}
+
+```plaintext
+\a<pos>
+```
+
 Specify the alignment of the line using legacy alignment codes from SubStation
 Alpha. This tag is supported but considered deprecated; you should usually use
 `\an` in new scripts instead, as it is more intuitive.
@@ -551,12 +600,15 @@ top-titles, add 4 to the number, to get mid-titles add 8 to the number:
 - 10: Middle center
 - 11: Middle right
 
-<h3 id="\k">Karaoke effect</h3>
-<pre><code class="language-plaintext">\\k<i>\<duration></i>
-\\K<i>\<duration></i>
-\\kf<i>\<duration></i>
-\\ko<i>\<duration></i>
-\\kt<i>\<time></i></code></pre>
+### Karaoke effect {#\k}
+
+```plaintext
+\k<duration>
+\K<duration>
+\kf<duration>
+\ko<duration>
+\kt<time>
+```
 
 > _Please note that these tags alone only create some very specific effects
 > and all other effects are created with a combination of multiple different
@@ -590,8 +642,12 @@ Additionally the `\kt` tag sets the start time of the next karaoke syllable
 relative to the event’s start. Without `\kt` each syllable start is implicitly
 determined as the sum of all preceding syllable’s duration.
 
-<h3 id="\q">Wrap style</h3>
-<pre><code class="language-plaintext">\\q<i>\<style></i></code></pre>
+### Wrap style {#\q}
+
+```plaintext
+\q<style>
+```
+
 Determine how line breaking is applied to the subtitle line. The following
 _style_ values are available:
 
@@ -603,8 +659,13 @@ _style_ values are available:
   Both `\n` and `\N` force line breaks.
 - 3: Smart wrapping, similar to style 0, but bottom lines are made wider.
 
-<h3 id="\r">Reset style</h3>
-<pre><code class="language-plaintext">\\r<br>\\r<i>\<style></i></code></pre>
+### Reset style {#\r}
+
+```plaintext
+\r
+\r<style>
+```
+
 Reset the style. This cancels all style overrides in effect, including
 [animations](/docs/ass-override-tags/#\t/), for all following text.
 
@@ -612,9 +673,8 @@ The first form that does not specify a _style_ will reset to the style defined
 for the entire line, while the second form, that specifies the name of a
 _style_, will reset the style to that specific style.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 -Hey\N{\rAlternate}-Huh?\N{\r}-Who are you?
 ```
@@ -623,11 +683,13 @@ Assuming the current line style is "Default", this has first "Hey" in the
 Default style, then follows on next line "Huh?" in the style "Alternate", and
 on the third line the style is reset to "Default" for the "Who are you?"
 text.
-</div>
-</div>
 
-<h3 id="\pos">Set position</h3>
-<pre><code class="language-plaintext">\\pos(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+### Set position {#\pos}
+
+```plaintext
+\pos(<X>,<Y>)
+```
+
 Set the position of the line. The _X_ and _Y_ coordinates must be integers and
 are given in the script resolution coordinate system. The meaning of _X_ and
 _Y_ changes slightly depending on [alignment](/docs/ass-override-tags/#\an/).
@@ -638,21 +700,22 @@ subtitle is placed at the coordinates given to `\pos`, and for bottom-center
 alignment, the bottom center of the subtitle is placed at the coordinates
 given.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 The following screenshots illustrate the way alignment affects positioning.
 The green cross marks the point (320,240) on the video.
 
 ![Pos_sample01](/img/3.2/Pos_sample01.jpg)
 ![Pos_sample02](/img/3.2/Pos_sample02.jpg)
 ![Pos_sample03](/img/3.2/Pos_sample03.jpg)
-</div>
-</div>
 
-<h3 id="\move">Movement</h3>
-<pre><code class="language-plaintext">\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\move(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>,<i>\<t1</i>>,<i>\<t2</i>>)</code></pre>
+### Movement {#\move}
+
+```plaintext
+\move(<x1>,<y1>,<x2>,<y2>)
+\move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>)
+```
+
 The `\move` tag works similar to [`\pos`](/docs/ass-override-tags/#\pos/) in that it
 positions the subtitle line, the difference is that `\move` makes the subtitle
 move.
@@ -696,9 +759,8 @@ If you need to do do any of those two you will need to split the movement into
 segments that are done on separate subtitle lines. (How to do this is outside
 the scope of this page.)
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \move(100,150,300,350)
 ```
@@ -706,11 +768,9 @@ the scope of this page.)
 When the line appears on screen, the subtitle is at (100,150). While the
 subtitle is displayed, it moves at constant speed such that it will arrive at
 point (300,350) at the same time it disappears.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \move(100,150,300,350,500,1500)
 ```
@@ -719,11 +779,13 @@ The line appears at (100,150). After the line has been displayed for half a
 second (500 milliseconds) it begins moving towards (300,350) such that it will
 arrive at the point a second and a half (1500 milliseconds) after the line
 first appeared on screen.
-</div>
-</div>
 
-<h3 id="\org">Rotation origin</h3>
-<pre><code class="language-plaintext">\\org(<i>\<X></i>,<i>\<Y></i>)</code></pre>
+### Rotation origin {#\org}
+
+```plaintext
+\org(<X>,<Y>)
+```
+
 Set the origin point used for [rotation](/docs/ass-override-tags/#\frx/). This
 affects all rotations of the line. The _X_ and _Y_ coordinates are given in
 integer script resolution pixels.
@@ -748,19 +810,16 @@ the inability to do accelerated moves or several moves per line.
 There can be at most one `\org` tag in a single line, if you put more than one
 in a single line, only the first is used.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \org(320,240)
 ```
 
 Fix the rotation origin at point (320,240).
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \org(10000,0)
 ```
@@ -768,11 +827,13 @@ Fix the rotation origin at point (320,240).
 Placing the rotation origin at a far away point allows you to use slight
 `\frz` rotations to produce "jumping" effects; the text will move up or down
 without seeming to rotate.
-</div>
-</div>
 
-<h3 id="\fad">Fade</h3>
-<pre><code class="language-plaintext">\\fad(<i>\<fadein></i>,<i>\<fadeout></i>)</code></pre>
+### Fade {#\fad}
+
+```plaintext
+\fad(<fadein>,<fadeout>)
+```
+
 Produce a fade-in and fade-out effect. The _fadein_ and _fadeout_ times are
 given in milliseconds, ie. 1000 means one second. You can specify _fadein_ or
 _fadeout_ as 0 (zero) to not have any fade effect on that end.
@@ -783,20 +844,21 @@ reason, you should be careful that _fadein_+_fadeout_ is not greater than the
 duration of the line. For example, for a line displayed for 4 seconds, the sum
 of _fadein_+_fadeout_ should not be greater than 4000.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fad(1200,250)
 ```
 
 Fade in the line in the first 1.2 seconds it is to be displayed, and fade it
 out for the last one quarter second it is displayed.
-</div>
-</div>
 
-<h3 id="\fade">Fade (complex)</h3>
-<pre><code class="language-plaintext">\\fade(<i>\<a1</i>>,<i>\<a2</i>>,<i>\<a3</i>>,<i>\<t1</i>>,<i>\<t2</i>>,<i>\<t3</i>>,<i>\<t4</i>>)</code></pre>
+### Fade (complex) {#\fade}
+
+```plaintext
+\fade(<a1>,<a2>,<a3>,<t1>,<t2>,<t3>,<t4>)
+```
+
 Perform a five-part fade using three alpha values _a1_, _a2_ and _a3_ and four
 times _t1_, _t2_, _t3_ and _t4_.
 
@@ -811,9 +873,8 @@ milliseconds after the start of the line. All seven parameters are required.
 - Between _t3_ and _t4_ the line fades from alpha _a2_ to alpha _a3_.
 - After _t4_ the line has alpha _a3_.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \fade(255,32,224,0,500,2000,2200)
 ```
@@ -821,14 +882,15 @@ milliseconds after the start of the line. All seven parameters are required.
 Starts invisible, fades to almost totally opaque, then fades to almost totally
 invisible. First fade starts when the line starts and lasts 500 milliseconds.
 Second fade starts 1500 milliseconds later, and lasts 200 milliseconds.
-</div>
-</div>
 
-<h3 id="\t">Animated transform</h3>
-<pre><code class="language-plaintext">\\t(<i>\<style modifiers></i>)
-\\t(<i>\<accel></i>,<i>\<style modifiers></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<style modifiers></i>)
-\\t(<i>\<t1</i>>,<i>\<t2</i>>,<i>\<accel></i>,<i>\<style modifiers></i>)</code></pre>
+### Animated transform {#\t}
+
+```plaintext
+\t(<style modifiers>)
+\t(<accel>,<style modifiers>)
+\t(<t1>,<t2>,<style modifiers>)
+\t(<t1>,<t2>,<accel>,<style modifiers>)
+```
 
 Perform a gradual, animated transformation from one style to another. The
 _style modifiers_ are other override tags as specified in this reference. Only
@@ -836,18 +898,18 @@ a limited set of the override tags are animateable with `\t`:
 
 | Font    | Geometry | Other effects |
 | ------- | -------- | ------------- |
-| \\fs    | \\fscx   | \\bord        |
-| \\fsp   | \\fscy   | \\xbord       |
-| \\c     | \\frx    | \\ybord       |
-| \\1c    | \\fry    | \\shad        |
-| \\2c    | \\frz    | \\xshad       |
-| \\3c    | \\fr     | \\yshad       |
-| \\4c    | \\fax    | \\clip        |
-| \\alpha | \\fay    | \\iclip       |
-| \\1a    |          | \\be          |
-| \\2a    |          | \\blur        |
-| \\3a    |          |               |
-| \\4a    |          |               |
+| \fs    | \fscx   | \bord        |
+| \fsp   | \fscy   | \xbord       |
+| \c     | \frx    | \ybord       |
+| \1c    | \fry    | \shad        |
+| \2c    | \frz    | \xshad       |
+| \3c    | \fr     | \yshad       |
+| \4c    | \fax    | \clip        |
+| \alpha | \fay    | \iclip       |
+| \1a    |          | \be          |
+| \2a    |          | \blur        |
+| \3a    |          |               |
+| \4a    |          |               |
 
 _Note: For `\clip` and `\iclip`, only the rectangle versions can be animated. The
 vector drawing versions cannot be animated._
@@ -873,50 +935,45 @@ the style is as all tags before the `\t` tag, and further overridden by the
 given _style overrides_. Between _t1_ and _t2_ the style is gradually animated
 between those two points, following the acceleration function described above.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```ass
 {\1c&HFF0000&\t(\1c&H0000FF&)}Hello!
 ```
 
 The text starts out blue, but fades towards red so it is completely red when the line ends.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\t(0,5000,\frz3600)}Wheee
 ```
 
 Makes the text rotate 10 times, counterclockwise, lasting for 5 seconds.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\t(0,5000,0.5,\frz3600)}Wheee
 ```
 
 Same as above, but it will start fast and slow down, still doing the 10 rotations in 5 seconds.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```ass
 {\an5\fscx0\fscy0\t(0,500,\fscx100\fscy100)}Boo!
 ```
 
 Text starts at zero size, i.e. invisible, then grows to 100% size in both X and Y direction.
-</div>
-</div>
 
-<h3 id="\clip">Clip (rectangle)</h3>
-<pre><code class="language-plaintext">\\clip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)
-\\iclip(<i>\<x1</i>>,<i>\<y1</i>>,<i>\<x2</i>>,<i>\<y2</i>>)</code></pre>
+### Clip (rectangle) {#\clip}
+
+```plaintext
+\clip(<x1>,<y1>,<x2>,<y2>)
+\iclip(<x1>,<y1>,<x2>,<y2>)
+```
+
 Define a rectangle to clip the line, only the part of the line that is inside
 the rectangle is visible. The `\iclip` tag has the opposite effect, it defines
 a rectangle where the line is not shown.
@@ -927,42 +984,39 @@ must be integers, there is no possibility to use non-integer coordinates.
 (Increasing the script resolution will not increase the precision, the
 clipping always happens on video pixel boundaries.)
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \clip(0,0,320,240)
 ```
 
 Assuming 640x480 script resolution, only the part of the line within the top
 left quadrant is visible.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 ```plaintext
 \iclip(0,0,320,240)
 ```
 
 Similar to above, but instead the part of the line within the top left
 quadrant is hidden.
-</div>
-</div>
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+
+**Example**
+
 Example of `\clip(0,0,704,245)` on a 704x480 video:
 
 ![Clip_sample01](/img/3.2/Clip_sample01.jpg)
-</div>
-</div>
 
-<h3 id="">Clip (vector drawing)</h3>
-<pre><code>\\clip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\clip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\iclip(&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)
-\\iclip(&lt;i&gt;\\&lt;scale&gt;&lt;/i&gt;,&lt;i&gt;\\&lt;drawing commands&gt;&lt;/i&gt;)</code></pre>
+### Clip (vector drawing) {#\clip-vector}
+
+```plaintext
+\clip(<drawing commands>)
+\clip(<scale>,<drawing commands>)
+\iclip(<drawing commands>)
+\iclip(<scale>,<drawing commands>)
+```
+
 Use the shape defined by a vector drawing to selectively display (`\clip`) or
 hide (`\iclip`) parts of the line.
 
@@ -979,16 +1033,13 @@ with `\t`. If you need to animate a vector drawing clip, you must create
 multiple similar subtitle lines with each their own "frame" of the clipping
 animation.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```plaintext
 \clip(1,m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0)
 ```
 
 Only show the portion of the line within the defined pseudo-circle.
-</div>
-</div>
 
 ## Drawing tags
 
@@ -996,7 +1047,7 @@ Advanced Substation Alpha also supports some advanced drawing tags that allow
 you to draw with vectorial graphics. Certain familiarity with vectors and
 splines will make the understanding of this much simpler.
 
-### \\p\<0/1/..> - Toggle drawing mode
+### \p<0/1/..> - Toggle drawing mode
 
 Setting this tag to 1 or above enables drawing mode. Text after this override
 block will then be interpreted as drawing instructions, and not as actually
@@ -1032,7 +1083,7 @@ actually draw to 100,100)
 (Enables drawing, and resolution is 8x larger (2^(4-1)). So drawing to 400,400
 will actually draw to 50,50)
 
-### \\pbo<y> - Baseline offset
+### \pbo<y> - Baseline offset
 
 Defines baseline offset for drawing. This is basically an Y offset to all
 coordinates.
@@ -1085,22 +1136,22 @@ as a pen moving through the image) on the video frame, and you tell it to move
 to other positions. As it moves, it draws on the area behind it, and when you
 close the line formed, it fills it with the primary color.
 
-### m \<x> \<y> - Move
+### m <x> <y> - Move
 
 Moves the cursor to x,y. If you have an unclosed shape, it will automatically
 be closed, as the program assumes that you are now drawing a new, independent
 shape. All drawing routines must start with this command.
 
-### n \<x> \<y> - Move (no closing)
+### n <x> <y> - Move (no closing)
 
 Moves the cursor to x,y, without closing the current shape.
 
-### l \<x> \<y> - Line
+### l <x> <y> - Line
 
 Draws a line from the current cursor position to x,y, and moves the cursor
 there afterwards.
 
-### b \<x1> \<y1> \<x2> \<y2> \<x3> \<y3> - Cubic Bézier curve
+### b <x1> <y1> <x2> <y2> <x3> <y3> - Cubic Bézier curve
 
 Draws a cubic (3rd degree) Bézier curve from the cursor position to (x3,y3),
 using (x1,y1) and (x2,y2) as the control points. Check the [article on Wikipedia](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) for more
@@ -1112,14 +1163,14 @@ is the cursor position, P1 is x1,y1, P2 is x2,y2 and P3 is x3,y3:
 Note that the curve begins at P0, heads towards P1, then arrives at P3 coming
 from P2's direction.
 
-### s \<x1> \<y1> \<x2> \<y2> \<x3> \<y3> .. \<xN> \<yN> - Cubic b-spline
+### s <x1> <y1> <x2> <y2> <x3> <y3> .. <xN> <yN> - Cubic b-spline
 
 Draws a cubic (3rd degree) uniform b-spline to point N. This must contain at
 least 3 coordinates (and is, in that case, the same as b). This basically lets
 you chain several cubic Bézier curves together. Check this other article on
 Wikipedia for more information.
 
-### p \<x> \<y> - Extend b-spline
+### p <x> <y> - Extend b-spline
 
 Extends the b-spline to x,y. This is essentially the same as adding another
 pair of coordinates at the end of s.

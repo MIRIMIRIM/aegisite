@@ -26,7 +26,7 @@ layouting functions.
 
 ### karaskel.collect_head
 
-Synopsis: <code class="inline-code language-lua">meta, styles = karaskel.collect_head(subtitles, generate_furigana)</code>
+Synopsis: `meta, styles = karaskel.collect_head(subtitles, generate_furigana)`
 
 Reads the subtitle file to collect all header information and style
 definitions, and optionally also generates new styles for furigana layouts.
@@ -55,7 +55,7 @@ number of styles stored, and `styles[1]` is the first style defined.
 
 ### karaskel.preproc_line
 
-Synopsis: <code class="inline-code language-lua">karaskel.preproc_line(subtitles, meta, styles, line)</code>
+Synopsis: `karaskel.preproc_line(subtitles, meta, styles, line)`
 
 Calculate sizing, positioning and various other information for a single
 subtitle line. This function calls `karaskel.preproc_line_text`,
@@ -66,7 +66,7 @@ table. See below for more information.
 
 ### karaskel.preproc_line_text
 
-Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_text(meta, styles, line)</code>
+Synopsis: `karaskel.preproc_line_text(meta, styles, line)`
 
 Preprocess the text of a single line. `meta` and `styles` are the tables
 returned by [`karaskel.collect_head`](/docs/karaskel-lua/#karaskelcollect_head/).
@@ -86,7 +86,7 @@ arguments at all.)
 
 ### karaskel.preproc_line_size
 
-Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_size(meta, styles, line)</code>
+Synopsis: `karaskel.preproc_line_size(meta, styles, line)`
 
 Calculate sizing data for a line and all karaoke syllables and furigana
 parts. Also adds a reference to the line style.
@@ -113,7 +113,7 @@ If the `line` table does not seem to have been processed with
 
 ### karaskel.preproc_line_pos
 
-Synopsis: <code class="inline-code language-lua">karaskel.preproc_line_pos(meta, styles, line)</code>
+Synopsis: `karaskel.preproc_line_pos(meta, styles, line)`
 
 Calculate line, karaoke and furigana position information.
 
@@ -481,17 +481,14 @@ Additions by `karaskel.preproc_line_pos`:
   `syl.right` for one syllable is equal to `syl.left` for the next
   syllable.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```lua
 line.left + syl.center
 ```
 
 Calculates the default X position of a syllable, suitable for use with
 `\an2`, `\an5` or `\an8` alignment.
-</div>
-</div>
 
 #### Highlight table
 

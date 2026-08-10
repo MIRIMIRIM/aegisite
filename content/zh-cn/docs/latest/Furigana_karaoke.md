@@ -51,9 +51,8 @@ generated syllable structure, but the main timing (`start_time` and `end_time`)
 of the syllable structure reflects only the added-together timings of the
 number sign syllables.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 This line shows how multi-highlight syntax is used to mark up kanji and groups
 of kanji that cover multiple syllables:
 
@@ -75,8 +74,6 @@ It generates the following syllable structures:
     <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td></tr>
     <tr><td>14</td></tr>
 </table>
-</div>
-</div>
 
 ## Basic furigana
 
@@ -92,9 +89,8 @@ syllables they belong to. If the string of furigana is wider than the main text
 the furigana is left-aligned with the main text. You can control this behaviour
 with special control characters, see below.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Adding furigana to the example above:
 
 ```ass
@@ -115,8 +111,6 @@ The following syllables, highlights and furigana are produced:
     <tr><td rowspan="2">時</td><td rowspan="2">20</td><td>6</td><td>と</td></tr>
     <tr><td>14</td><td>き</td></tr>
 </table>
-</div>
-</div>
 
 ## Controlling the layout
 
@@ -146,25 +140,22 @@ In all cases, if two furigana sequences extend beyond their main text such that
 they would overlap, the main text is moved such that the furigana won't
 overlap.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 Here is the same (rather contrived) sample text shown without layout control
 and with each of the two layout control characters:
 
 | Result                                           | Script                                                                                                         |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| ![Furigana-demo-4](/img/3.2/Furigana-demo-4.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`<u>魂\|た</u>`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い   |
-| ![Furigana-demo-3](/img/3.2/Furigana-demo-3.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`<u>魂\|!た</u>`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い  |
-| ![Furigana-demo-2](/img/3.2/Furigana-demo-2.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`<u>魂\|\<た</u>`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い |
+| ![Furigana-demo-4](/img/3.2/Furigana-demo-4.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`魂\|た`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い   |
+| ![Furigana-demo-3](/img/3.2/Furigana-demo-3.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`魂\|!た`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い  |
+| ![Furigana-demo-2](/img/3.2/Furigana-demo-2.png) | `{\k10}`中\|ちゅ`{\k10}`#\|う`{\k10}`国\|ご`{\k10}`#\|く<br>`{\k10}`魂\|\<た`{\k10}`#\|ま`{\k10}`#\|し`{\k10}`#\|い |
 
 It _is_ very hard to tell the difference between the two first as the
 difference is only a few pixels, but it is there. In the first sample, the た
 extends a bit over the left edge of 魂 and above 国 while it exactly
 left-aligns with 魂 in the second. In the second, ちゅうごく is also centered
 above 中国 while it isn't in the first.
-</div>
-</div>
 
 ## Summary
 
@@ -190,9 +181,8 @@ Furigana: [The _furi_ template class](/zh-cn/docs/模版修饰语/#furi/)
 
 Multi-highlight: [The _multi_ modifier](/zh-cn/docs/模版修饰语/#multi/)
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 The examples used earlier on this page are all generated using this kara-templater snippet:
 
 ```plaintext
@@ -205,8 +195,6 @@ Comment: 0,0:00:06.00,0:00:08.00,Default,,0000,0000,0000,karaoke,{\k10}中|ち�
 ```
 
 The font used in MS PMincho 30 pt with the furigana being 15 pt.
-</div>
-</div>
 
 ## Usage in Lua scripts
 

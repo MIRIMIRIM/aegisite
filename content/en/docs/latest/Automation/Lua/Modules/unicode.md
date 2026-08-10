@@ -12,11 +12,11 @@ The `unicode` module for Automation 4 Lua contains various helper functions for 
 
 ## Usage
 
-Import this module with <code class="inline-code language-lua">unicode = require 'aegisub.unicode'</code>.
+Import this module with `unicode = require 'aegisub.unicode'`.
 
 ## unicode.charwidth
 
-Synopsis: <code class="inline-code language-lua">width = unicode.charwidth(instring, index=1)</code>
+Synopsis: `width = unicode.charwidth(instring, index=1)`
 
 Returns the number of bytes occupied by the UTF-8 encoded code points starting at position `index` in `instring`.
 The character pointed to is assumed to be a prefix byte (i.e. the first byte of the code points).
@@ -25,14 +25,14 @@ The `index` parameter is optional abd defaults to 1 (one) when left out, meaning
 
 ## unicode.chars
 
-Synopsis: <code class="inline-code language-lua">for char in unicode.chars(instring) do ... end</code>
+Synopsis: `for char in unicode.chars(instring) do ... end`
 
 Returns an iterator function for looping over all code points in the given UTF-8 encoded string.
 For each iteration of the loop, `char` will contain a string representing the next code point in the string. This string may be more than one byte long.
 
 ## unicode.len
 
-Synopsis: <code class="inline-code language-lua">length = unicode.len(instring)</code>
+Synopsis: `length = unicode.len(instring)`
 
 Determine the length in code points of the given UTF-8 encoded string.
 
@@ -40,27 +40,27 @@ Be aware that this function does not run in constant time, but in linear time (O
 
 ## unicode.codepoint
 
-Synopsis: <code class="inline-code language-lua">val = unicode.codepoint(instring)</code>
+Synopsis: `val = unicode.codepoint(instring)`
 
 Read the first unicode codepoint from `instring`.
 
 ## unicode.to_upper_case
 
-Synopsis: <code class="inline-code language-lua">upper = unicode.to_upper_case(instring)</code>
+Synopsis: `upper = unicode.to_upper_case(instring)`
 
 Convert a string to upper case.
 This function handles accents, non-latin scripts, and the like.
 
 ## unicode.to_lower_case
 
-Synopsis: <code class="inline-code language-lua">lower = unicode.to_lower_case(instring)</code>
+Synopsis: `lower = unicode.to_lower_case(instring)`
 
 Convert a string to lower case.
 This function handles accents, non-latin scripts, and the like.
 
 ## unicode.to_fold_case
 
-Synopsis: <code class="inline-code language-lua">folded = unicode.to_fold_case(instring)</code>
+Synopsis: `folded = unicode.to_fold_case(instring)`
 
 Convert a string to fold case.
 This is similar to lower case, but is locale-insensitive and gives better results for case-insensitive comparisons.

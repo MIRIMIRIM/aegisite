@@ -45,9 +45,8 @@ what values were input.
 : The [Dialog Result table](/zh-cn/docs/对话框/#dialog-result-table-format/) corresponding to
   the values the user input in the dialog.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```lua
 config = {
     {class="label", text="Times to frobulate", x=0, y=0},
@@ -60,8 +59,6 @@ if btn then
     frobulate(result.times)
 end
 ```
-</div>
-</div>
 
 ### aegisub.dialog.open
 
@@ -97,9 +94,8 @@ the path to the selected file(s), or nil if the user canceled.
   selected file if `allow_multiple` is false, or a table containing the
   paths to all selected files if `allow_multiple` is true.
 
-<div class="card">
-<strong class="card-header">Example</strong>
-<div class="card-body">
+**Example**
+
 ```lua
 filename = aegisub.dialog.open('Select file to read', '', '',
                                'Text files (.txt)|*.txt', false, true)
@@ -108,8 +104,6 @@ if not filename then aegisub.cancel() end
 file = io.open(filename, 'rb')
 ....
 ```
-</div>
-</div>
 
 ### aegisub.dialog.save
 
