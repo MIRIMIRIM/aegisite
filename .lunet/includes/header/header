@@ -144,7 +144,12 @@
                 {{~ alt_url = docs_url ~}}
               {{~ end ~}}
             {{~ else if base_url | string.contains "/docs/" ~}}
-              {{~ alt_url = docs_url ~}}
+              {{~# Same slug in en/zh-cn after docs i18n alignment; keep page path. ~}}
+              {{~ if lang == "en" ~}}
+                {{~ alt_url = base_url ~}}
+              {{~ else ~}}
+                {{~ alt_url = "/" + lang + base_url ~}}
+              {{~ end ~}}
             {{~ end ~}}
             <li><a class="dropdown-item" rel="alternate" href="{{ site_href alt_url }}" hreflang="{{ lang }}" lang="{{ lang }}">{{ lang_config.language_name }}</a></li>
           {{~ end ~}}
