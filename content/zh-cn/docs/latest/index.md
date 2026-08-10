@@ -4,4 +4,4 @@ url: "/zh-cn/docs/latest/"
 sitemap_priority: 1.0
 ---
 
-<meta http-equiv="refresh" content="0;URL='/zh-cn/docs/main-page/'">
+<meta http-equiv="refresh" content="0;URL='../main-page/'">
