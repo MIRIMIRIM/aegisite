@@ -20,6 +20,7 @@ layout: base
       {{ include "sidebar/docs-toc" }}
     </nav>
     {{~ end ~}}
-    {{ content }}
+{{## content at column 0 so multi-line <pre> is not re-indented ##}}
+{{ content }}
   </main>
 </div>

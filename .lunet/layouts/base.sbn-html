@@ -17,7 +17,8 @@
 
   <div class="wrap container-{{ site.full_width ? "fluid" : "xxl" }}" role="document">
     <div class="content">
-      {{ content }}
+{{## content at column 0 so multi-line <pre> is not re-indented ##}}
+{{ content }}
     </div>
   </div>
   {{ include "footer/footer" }}
